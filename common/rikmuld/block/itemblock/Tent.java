@@ -1,4 +1,4 @@
-package rikmuld.block;
+package rikmuld.block.itemblock;
 
 import java.util.Iterator;
 import java.util.List;
@@ -50,7 +50,7 @@ public class Tent extends BlockContainer {
 	public Tent(int id) 
 	{
 		super(id, Material.cloth);
-		setBlockName(Blocks.BLOCK_TENT_NAME);
+		setUnlocalizedName(Blocks.BLOCK_TENT_NAME);
 		setHardness(1.5F);
 		setStepSound(soundWoodFootstep);
 		setCreativeTab(CampingMod.customTab);
@@ -71,12 +71,6 @@ public class Tent extends BlockContainer {
 	public ChunkCoordinates getBedSpawnPosition(World world, int x, int y, int z, EntityPlayer player) 
 	{
 		return BlockBed.getNearestEmptyChunkCoordinates(world, x, y, z, 0);
-	}
-		
-	@Override
-	public int getBlockTextureFromSideAndMetadata(int side, int metadata) 
-	{
-		return 6 + metadata;
 	}
 	
 	 @SideOnly(Side.CLIENT)
@@ -122,7 +116,7 @@ public class Tent extends BlockContainer {
 			{
 				 if (currentitem.itemID == ModItems.SleepingBag.itemID)
 				 {
-					 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 2);
+					 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 2, 3);
 					 ItemStack sleepingbag = new ItemStack(ModItems.SleepingBag, currentitem.stackSize-1);
 					 player.destroyCurrentEquippedItem();
 					 player.inventory.addItemStackToInventory(sleepingbag);
@@ -131,7 +125,7 @@ public class Tent extends BlockContainer {
 				 
 				 if (currentitem.itemID == Block.chest.blockID) 
 				 {
-					 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 1);
+					 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 1, 3);
 					 ItemStack chest = new ItemStack(Block.chest, currentitem.stackSize-1);
 					 player.destroyCurrentEquippedItem();
 					 player.inventory.addItemStackToInventory(chest);										 
@@ -183,7 +177,7 @@ public class Tent extends BlockContainer {
 																	par1world.doesBlockHaveSolidTopSurface(par2-1, par3 - 1, par4-2)&&
 																	par1world.doesBlockHaveSolidTopSurface(par2+1, par3 - 1, par4-2))
 																{				    
-																	par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 3);
+																	par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 3, 3);
 																	player.destroyCurrentEquippedItem();
 																	ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
 																	player.inventory.addItemStackToInventory(k);
@@ -214,7 +208,7 @@ public class Tent extends BlockContainer {
 			{
 				 if (currentitem.itemID == ModItems.SleepingBag.itemID)
 				    {
-					 	 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 5);
+					 	 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 5, 3);
 					 	 ItemStack sleepingbag = new ItemStack(ModItems.SleepingBag, currentitem.stackSize-1);
 					     player.destroyCurrentEquippedItem();
 					     player.inventory.addItemStackToInventory(sleepingbag);
@@ -225,7 +219,7 @@ public class Tent extends BlockContainer {
 				 
 				 if (currentitem.itemID == Block.chest.blockID) 
 				 {
-					 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 4);
+					 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 4, 3);
 					 ItemStack chest = new ItemStack(Block.chest, currentitem.stackSize-1);
 					 player.destroyCurrentEquippedItem();
 					 player.inventory.addItemStackToInventory(chest);
@@ -294,7 +288,7 @@ public class Tent extends BlockContainer {
 																		par1world.doesBlockHaveSolidTopSurface(par2+1, par3 - 1, par4+1)&&
 																		par1world.doesBlockHaveSolidTopSurface(par2+2, par3 - 1, par4+1))
 																	{				
-																		par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 0);
+																		par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 0, 3);
 																	   	player.destroyCurrentEquippedItem();
 																        ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
 																        player.inventory.addItemStackToInventory(k);
@@ -326,7 +320,7 @@ public class Tent extends BlockContainer {
 			{
 				 if (currentitem.itemID == ModItems.TentTools.itemID)
 				    {
-						 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 0);
+						 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 0, 3);
 						 ItemStack chest = new ItemStack(Block.chest, 1);
 						 player.inventory.addItemStackToInventory(chest);
 						 player.destroyCurrentEquippedItem();
@@ -351,7 +345,7 @@ public class Tent extends BlockContainer {
 			{
 				 if (currentitem.itemID == ModItems.TentTools.itemID)
 				    {
-						 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 3);
+						 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 3, 3);
 						 ItemStack chest = new ItemStack(Block.chest, 1);
 						 player.inventory.addItemStackToInventory(chest);
 						 player.destroyCurrentEquippedItem();
@@ -376,7 +370,7 @@ public class Tent extends BlockContainer {
 			 {
 				 if (currentitem.itemID == ModItems.TentTools.itemID)
 				 {				
-						 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 3);
+						 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 3 ,3);
 						 ItemStack chest = new ItemStack(ModItems.SleepingBag, 1);
 						 player.inventory.addItemStackToInventory(chest);
 						 player.destroyCurrentEquippedItem();
@@ -397,7 +391,7 @@ public class Tent extends BlockContainer {
 				{
 				 if (currentitem.itemID == ModItems.TentTools.itemID)
 				    {					
-						 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 0);
+						 par1world.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 0, 3);
 						 ItemStack chest = new ItemStack(ModItems.SleepingBag, 1);
 						 player.inventory.addItemStackToInventory(chest);
 					     player.destroyCurrentEquippedItem();
@@ -574,7 +568,7 @@ public class Tent extends BlockContainer {
 	{
 		for(int x=0;x<xNoRoalteTent.length;x++)
 		{
-			par1World.setBlockAndMetadataWithNotify(par2+xNoRoalteTent[x], par3+yNoRoalteTent[x], par4+zNoRoalteTent[x], ModBlocks.ghostBlock.blockID, 0);
+			par1World.setBlockAndMetadataWithNotify(par2+xNoRoalteTent[x], par3+yNoRoalteTent[x], par4+zNoRoalteTent[x], ModBlocks.ghostBlock.blockID, 0, 3);
 		}
 	}
 
@@ -594,15 +588,15 @@ public class Tent extends BlockContainer {
 		
 			if (BID==ModBlocks.ghostBlock.blockID)
 			{
-		    par1World.setBlockAndMetadataWithNotify(par2-1, par3, par4, 0, 0);
-			par1World.setBlockAndMetadataWithNotify(par2-1, par3, par4-1, 0, 0);
-			par1World.setBlockAndMetadataWithNotify(par2, par3+1, par4-1, 0, 0);
-			par1World.setBlockAndMetadataWithNotify(par2-1, par3, par4-2, 0, 0);
-			par1World.setBlockAndMetadataWithNotify(par2+1, par3, par4-2, 0, 0);
-			par1World.setBlockAndMetadataWithNotify(par2, par3, par4-2, 0, 0);
-			par1World.setBlockAndMetadataWithNotify(par2, par3+1, par4+1, 0, 0);
-			par1World.setBlockAndMetadataWithNotify(par2, par3+1, par4, 0, 0);
-			par1World.setBlockAndMetadataWithNotify(par2, par3+1, par4-2, 0, 0);
+		    par1World.setBlockAndMetadataWithNotify(par2-1, par3, par4, 0, 0, 3);
+			par1World.setBlockAndMetadataWithNotify(par2-1, par3, par4-1, 0, 0, 3);
+			par1World.setBlockAndMetadataWithNotify(par2, par3+1, par4-1, 0, 0, 3);
+			par1World.setBlockAndMetadataWithNotify(par2-1, par3, par4-2, 0, 0, 3);
+			par1World.setBlockAndMetadataWithNotify(par2+1, par3, par4-2, 0, 0, 3);
+			par1World.setBlockAndMetadataWithNotify(par2, par3, par4-2, 0, 0, 3);
+			par1World.setBlockAndMetadataWithNotify(par2, par3+1, par4+1, 0, 0, 3);
+			par1World.setBlockAndMetadataWithNotify(par2, par3+1, par4, 0, 0, 3);
+			par1World.setBlockAndMetadataWithNotify(par2, par3+1, par4-2, 0, 0, 3);
 			}
 	
 			for(int x=0;x<xNoRoalteTent.length;x++)
@@ -619,7 +613,7 @@ public class Tent extends BlockContainer {
 							this.dropBlockAsItem_do(par1World, par2+xNoRoalteTent[x], par3+yNoRoalteTent[x], par4+zNoRoalteTent[x], new ItemStack(BID, 1, MID));
 						}	
 					}
-					par1World.setBlockAndMetadataWithNotify(par2+xNoRoalteTent[x], par3+yNoRoalteTent[x], par4+zNoRoalteTent[x], ModBlocks.ghostBlock.blockID, 0);
+					par1World.setBlockAndMetadataWithNotify(par2+xNoRoalteTent[x], par3+yNoRoalteTent[x], par4+zNoRoalteTent[x], ModBlocks.ghostBlock.blockID, 0, 3);
 					
 					if(BID==8||BID==9||BID==10||BID==11)
 					{	
@@ -636,14 +630,14 @@ public class Tent extends BlockContainer {
 			
 			if (BID==ModBlocks.ghostBlock.blockID)
 			{
-			    par1World.setBlockAndMetadataWithNotify(par2, par3, par4+1, 0, 0);
-				par1World.setBlockAndMetadataWithNotify(par2+1, par3, par4+1, 0, 0);
-				par1World.setBlockAndMetadataWithNotify(par2+1, par3+1, par4, 0, 0);
-				par1World.setBlockAndMetadataWithNotify(par2+2, par3, par4-1, 0, 0);
-				par1World.setBlockAndMetadataWithNotify(par2+2, par3, par4+1, 0, 0);
-				par1World.setBlockAndMetadataWithNotify(par2+2, par3+1, par4, 0, 0);
-				par1World.setBlockAndMetadataWithNotify(par2+2, par3, par4, 0, 0);
-				par1World.setBlockAndMetadataWithNotify(par2+1, par3, par4, 0, 0);
+			    par1World.setBlockAndMetadataWithNotify(par2, par3, par4+1, 0, 0, 3);
+				par1World.setBlockAndMetadataWithNotify(par2+1, par3, par4+1, 0, 0, 3);
+				par1World.setBlockAndMetadataWithNotify(par2+1, par3+1, par4, 0, 0, 3);
+				par1World.setBlockAndMetadataWithNotify(par2+2, par3, par4-1, 0, 0, 3);
+				par1World.setBlockAndMetadataWithNotify(par2+2, par3, par4+1, 0, 0, 3);
+				par1World.setBlockAndMetadataWithNotify(par2+2, par3+1, par4, 0, 0, 3);
+				par1World.setBlockAndMetadataWithNotify(par2+2, par3, par4, 0, 0, 3);
+				par1World.setBlockAndMetadataWithNotify(par2+1, par3, par4, 0, 0, 3);
 			}
 					
 			par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, this.tickRate());
@@ -662,7 +656,7 @@ public class Tent extends BlockContainer {
 							this.dropBlockAsItem_do(par1World, par2+xRoalteTent[x], par3+yRoalteTent[x], par4+zRoalteTent[x], new ItemStack(BID, 1, MID));
 						}	
 					}
-					par1World.setBlockAndMetadataWithNotify(par2+xRoalteTent[x], par3+yRoalteTent[x], par4+zRoalteTent[x], ModBlocks.ghostBlock.blockID, 0);
+					par1World.setBlockAndMetadataWithNotify(par2+xRoalteTent[x], par3+yRoalteTent[x], par4+zRoalteTent[x], ModBlocks.ghostBlock.blockID, 0, 3);
 					
 					if(BID==8||BID==9||BID==10||BID==11)
 					{			
@@ -681,18 +675,18 @@ public class Tent extends BlockContainer {
 	{
 		for(int x=0;x<xNoRoalteTent.length;x++)
 		{
-			world.setBlockAndMetadataWithNotify(par2+xNoRoalteTent[x], par3+yNoRoalteTent[x], par4+zNoRoalteTent[x], 0, 0);				
+			world.setBlockAndMetadataWithNotify(par2+xNoRoalteTent[x], par3+yNoRoalteTent[x], par4+zNoRoalteTent[x], 0, 0, 3);				
 		}
-		world.setBlock(par2, par3, par4, 0);
+		world.setBlockAndMetadataWithNotify(par2, par3, par4, 0, 0, 3);
 	}
 	
 	private void DestroyTentMeta(World world, int par2, int par3, int par4) 
 	{
 		for(int x=0;x<xRoalteTent.length;x++)
 		{
-			world.setBlockAndMetadataWithNotify(par2+xRoalteTent[x], par3+yRoalteTent[x], par4+zRoalteTent[x], 0, 0);
+			world.setBlockAndMetadataWithNotify(par2+xRoalteTent[x], par3+yRoalteTent[x], par4+zRoalteTent[x], 0, 0, 3);
 		}
-		world.setBlock(par2, par3, par4, 0);
+		world.setBlockAndMetadataWithNotify(par2, par3, par4, 0, 0, 3);
 	}
 
 	private boolean dropIfCantStay(World world, int x, int y, int z, Random random) 
@@ -758,17 +752,15 @@ public class Tent extends BlockContainer {
 
 		if (par0) 
 		{
-			par1World.setBlockWithNotify(par2, par3, par4,
-					ModBlocks.tent.blockID);
+			par1World.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 0, 3);
 		} 
 		else 
 		{
-			par1World.setBlockWithNotify(par2, par3, par4,
-					ModBlocks.tent.blockID);
+			par1World.setBlockAndMetadataWithNotify(par2, par3, par4, ModBlocks.tent.blockID, 0, 3);
 		}
 
 		keepTentInventory = false;
-		par1World.setBlockMetadataWithNotify(par2, par3, par4, var5);
+		par1World.setBlockMetadataWithNotify(par2, par3, par4, var5, 3);
 
 		if (var6 != null) 
 		{

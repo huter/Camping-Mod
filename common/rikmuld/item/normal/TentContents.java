@@ -1,6 +1,7 @@
-package rikmuld.item;
+package rikmuld.item.normal;
 
 import rikmuld.core.lib.Items;
+import rikmuld.item.CampingItem;
 
 public class TentContents extends CampingItem {
 
@@ -9,7 +10,6 @@ public class TentContents extends CampingItem {
 		super(i);
 		maxStackSize = 4;
 		setMaxDamage(0);
-		setItemName(Items.ITEM_TENT_CONTENTS_NAME);
-		setIconIndex(22);
+		setUnlocalizedName(Items.ITEM_TENT_CONTENTS_NAME);
 	}
 }

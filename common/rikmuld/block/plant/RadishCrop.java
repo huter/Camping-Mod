@@ -3,38 +3,38 @@ package rikmuld.block.plant;
 import java.util.ArrayList;
 import java.util.Random;
 
-import net.minecraft.block.BlockFlower;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import rikmuld.block.CampingBlockPlant;
 import rikmuld.core.lib.Blocks;
 import rikmuld.core.lib.Config;
-import rikmuld.core.lib.Textures;
 import rikmuld.core.register.ModItems;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-public class RadishCrop extends BlockFlower {
-	
+public class RadishCrop extends CampingBlockPlant {
+		
 	    public RadishCrop(int par1)
 	    {
-	        super(par1, 0);
-	        this.blockIndexInTexture = 0;
+	        super(par1, Material.plants);	   
 	        this.setTickRandomly(true);
 	        float var3 = 0.5F;
 	        this.setBlockBounds(0.5F - var3, 0.0F, 0.5F - var3, 0.5F + var3, 0.25F, 0.5F + var3);
 	        this.setHardness(0.0F);
 	        this.setStepSound(soundGrassFootstep);
 	        this.disableStats();
-	        this.setRequiresSelfNotify();
-	        this.setBlockName(Blocks.BLOCK_RADISH_NAME);
+	        this.setCreativeTab((CreativeTabs)null);
+	        this.setUnlocalizedName(Blocks.BLOCK_RADISH_NAME);
+	        this.setGrowStates(7);
 	    }
 	    
 	    @Override
 	    public void onBlockAdded(World par1World, int par2, int par3, int par4) 
 	    {
-	   	 	par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, this.tickRate());
+	   	 	par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, this.tickRate(par1World));
 	    }
 
 	    public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
@@ -52,25 +52,24 @@ public class RadishCrop extends BlockFlower {
 	                if (par5Random.nextInt((int)(25.0F / var7) + 1) == 0)
 	                {
 	                    ++var6;
-	                    par1World.setBlockMetadataWithNotify(par2, par3, par4, var6);
+	                    par1World.setBlockMetadataWithNotify(par2, par3, par4, var6, 3);
 	                }
 	            }
 	        }
 	    }
 
-	    public boolean Grow(World par1World, int par2, int par3, int par4, EntityPlayer player)
+	    public void Grow(World par1World, int par2, int par3, int par4, EntityPlayer player)
 	    {
+	    	 int l = par1World.getBlockMetadata(par2, par3, par4);
+			 ItemStack currentitem = player.getCurrentEquippedItem();
 
-	    	int var6 = par1World.getBlockMetadata(par2, par3, par4);
-			ItemStack currentitem = player.getCurrentEquippedItem();
-				
-			if (var6!=7)
-			{
-				par1World.setBlockMetadataWithNotify(par2, par3, par4, 7);
-				currentitem.stackSize--;
-				return true;
-			}
-			return true;
+	         if (l > 7) {}
+	         else
+	         {
+	        	 if(currentitem!=null)currentitem.stackSize-=1;
+	        	 l += MathHelper.getRandomIntegerInRange(par1World.rand, 3, 5);
+	        	 par1World.setBlockMetadataWithNotify(par2, par3, par4, l, 3);
+	         }      
 	    }
 
 	    private double getGrowthRate(World par1World, int par2, int par3, int par4)
@@ -122,16 +121,6 @@ public class RadishCrop extends BlockFlower {
 	        return var5+(3.0D*Config.PLANT_RADISH_GROW_RATE);
 	    }
 
-	    public int getBlockTextureFromSideAndMetadata(int par1, int par2)
-	    {
-	        if (par2 < 0)
-	        {
-	            par2 = 7;
-	        }
-
-	        return this.blockIndexInTexture + par2;
-	    }
-
 	    public int getRenderType()
 	    {
 	        return 6;
@@ -159,11 +148,15 @@ public class RadishCrop extends BlockFlower {
 
 	        if (metadata >= 7)
 	        {
-	            for (int n = 0; n < 3 + fortune; n++)
+	            for (int n = 0; n < 2 + fortune; n++)
 	            {
 	                if (world.rand.nextInt(15) <= metadata)
 	                {
 	                    ret.add(new ItemStack(this.getSeedItem(), 1, 0));
+	                }
+	                else if (world.rand.nextInt(20) <= metadata)
+	                {
+	                	ret.add(new ItemStack(this.getCropItem(), 1, 0));
 	                }
 	            }
 	        }
@@ -183,13 +176,8 @@ public class RadishCrop extends BlockFlower {
 	    }
 
 	    @Override
-	    public int idPicked (World world, int x, int y, int z) {
+	    public int idPicked (World world, int x, int y, int z) 
+	    {
 	        return ModItems.radishSeed.itemID;
 	    }
-	    
-	    @SideOnly(Side.CLIENT)
- 		public String getTextureFile()
- 		{ 
-	    	return Textures.SPRITE_LOCATION + Textures.SPRITE_BLOCK;
- 		}
 }

@@ -12,9 +12,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public final class TileEntityCampfireFastCooker extends TileEntityCampfire
 {
 	private int cook = 50; 
-	int colorfc;
-	int colormetafc;
-	
+
 	public TileEntityCampfireFastCooker() 
     {
 		super(16, false, 50); 
@@ -90,8 +88,6 @@ public final class TileEntityCampfireFastCooker extends TileEntityCampfire
         super.readFromNBT(par1NBTTagCompound);
         NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
         this.campfireItemStacks = new ItemStack[this.getSizeInventory()];
-        this.colorfc =  par1NBTTagCompound.getInteger("colorfc");
-	    this.colormetafc =  par1NBTTagCompound.getInteger("colormetafc");
 
         for (int var3 = 0; var3 < var2.tagCount(); ++var3)
         {
@@ -107,19 +103,14 @@ public final class TileEntityCampfireFastCooker extends TileEntityCampfire
         this.furnaceBurnTime = par1NBTTagCompound.getShort("BurnTime");
         this.furnaceCookTime = par1NBTTagCompound.getShort("CookTime");
         this.currentItemBurnTime = getItemBurnTime(this.campfireItemStacks[1]);
-        ModBlocks.campfireFastCooker.setColor(colorfc, colormetafc);
     }
 
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeToNBT(par1NBTTagCompound);
-		int colorfc = ModBlocks.campfireFastCooker.getColor();
-		int colormetafc = ModBlocks.campfireFastCooker.getColorMeta();
 		
         par1NBTTagCompound.setShort("BurnTime", (short)this.furnaceBurnTime);
         par1NBTTagCompound.setShort("CookTime", (short)this.furnaceCookTime);
-	    par1NBTTagCompound.setInteger("colorfc", colorfc);
-	    par1NBTTagCompound.setInteger("colormetafc", colormetafc);
 
         NBTTagList var2 = new NBTTagList();
 
@@ -213,7 +204,7 @@ public final class TileEntityCampfireFastCooker extends TileEntityCampfire
             if (var1 != this.furnaceBurnTime > 0)
             {
                 var2 = true;
-                ModBlocks.campfireFastCooker.updateCampfireBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                ModBlocks.campfire.updateCampfireBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
 

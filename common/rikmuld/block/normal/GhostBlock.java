@@ -1,34 +1,27 @@
-package rikmuld.block;
+package rikmuld.block.normal;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import rikmuld.block.CampingBlock;
 import rikmuld.core.lib.Blocks;
-import rikmuld.core.lib.Textures;
 
-public class GhostBlock extends Block {
+public class GhostBlock extends CampingBlock{
 	
 	public GhostBlock(int id) 
 	{
 		super(id, Material.air);
-		setBlockName(Blocks.BLOCK_GHOST_NAME);
-		blockIndexInTexture = 40;
+		setUnlocalizedName(Blocks.BLOCK_GHOST_NAME);
 		setHardness(1.5F);
 	}
 
 	public int getRenderType() 
 	{
 		return -1;
-	}
-
-	@Override
-	public String getTextureFile() 
-	{
-		return Textures.SPRITE_LOCATION + Textures.SPRITE_BLOCK;
 	}
 
 	public int idDropped(int par1, Random par2Random, int par3)
@@ -60,5 +53,11 @@ public class GhostBlock extends Block {
 	public boolean renderAsNormalBlock() 
 	{
 		return false;
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world) 
+	{
+		return null;
 	}
 }

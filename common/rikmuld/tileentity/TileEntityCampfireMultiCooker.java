@@ -13,9 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public final class TileEntityCampfireMultiCooker extends TileEntityCampfire 
 {
 	private int cook = 500;
-	int colormc;
-	int colormetamc;
-	
+
 	public TileEntityCampfireMultiCooker() 
     {
 		super(64, false, 500);
@@ -96,8 +94,6 @@ public final class TileEntityCampfireMultiCooker extends TileEntityCampfire
         super.readFromNBT(par1NBTTagCompound);
         NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
         this.campfireItemStacks = new ItemStack[this.getSizeInventory()];
-	    this.colormc =  par1NBTTagCompound.getInteger("colormc");
-	    this.colormetamc =  par1NBTTagCompound.getInteger("colormetamc");
 
         for (int var3 = 0; var3 < var2.tagCount(); ++var3)
         {
@@ -113,17 +109,12 @@ public final class TileEntityCampfireMultiCooker extends TileEntityCampfire
         this.furnaceBurnTime = par1NBTTagCompound.getShort("BurnTime");
         this.furnaceCookTime = par1NBTTagCompound.getShort("CookTime");
         this.currentItemBurnTime = getItemBurnTime(this.campfireItemStacks[6]);
-        ModBlocks.campfireMultiCooker.setColor(colormc, colormetamc);
     }
     
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeToNBT(par1NBTTagCompound);
-		int colormc = ModBlocks.campfireMultiCooker.getColor();
-		int colormetamc = ModBlocks.campfireMultiCooker.getColorMeta();
-		
-	    par1NBTTagCompound.setInteger("colormc", colormc);
-	    par1NBTTagCompound.setInteger("colormetamc", colormetamc);
+
         par1NBTTagCompound.setShort("BurnTime", (short)this.furnaceBurnTime);
         par1NBTTagCompound.setShort("CookTime", (short)this.furnaceCookTime);
         NBTTagList var2 = new NBTTagList();
@@ -143,7 +134,6 @@ public final class TileEntityCampfireMultiCooker extends TileEntityCampfire
     }
     
     @SideOnly(Side.CLIENT)
-
     public int getCookProgressScaled(int par1)
     {
         return this.furnaceCookTime * par1 / cook;
@@ -217,7 +207,7 @@ public final class TileEntityCampfireMultiCooker extends TileEntityCampfire
             if (var1 != this.furnaceBurnTime > 0)
             {
                 var2 = true;
-                ModBlocks.campfireMultiCooker.updateCampfireBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                ModBlocks.campfire.updateCampfireBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
 

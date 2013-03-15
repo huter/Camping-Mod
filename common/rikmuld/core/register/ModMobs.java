@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityEggInfo;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
 import rikmuld.CampingMod;
+import rikmuld.core.lib.ModInfo;
 import rikmuld.entity.Camper;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -28,11 +29,10 @@ public class ModMobs {
 	 
 	public static void init() 
 	{
-		LanguageRegistry.instance().addStringLocalization("entity.CampingMod.Camper.name", "Camper");
+		LanguageRegistry.instance().addStringLocalization("entity."+ModInfo.MOD_ID+".Camper.name", "Camper");
 		
 		EntityRegistry.registerModEntity(Camper.class, "Camper", 1, CampingMod.instance, 80, 3, true);
-		EntityRegistry.addSpawn(Camper.class, 1, 1, 4, EnumCreatureType.creature);
-		
 		registerEntityEgg(Camper.class, 0x747B51, 0x70471B);
+		
 	}
 }

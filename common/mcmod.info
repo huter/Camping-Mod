@@ -1,6 +1,6 @@
 [
 {
-  "modid": "CampingMod",
+  "modid": "camping",
   "name": "The Camping Mod",
   "description": "This mod adds a some camping elements to minecraft",
   "version": "1.0.0c",
@@ -11,7 +11,7 @@
     "RikMuld"
   ],
   "credits": "",
-  "logoFile": "/rikmuld/art/ArtLogo.jpg",
+  "logoFile": "/mods/camping/textures/ArtLogo.jpg",
   "screenshots": [
   ],
   "parent":"",

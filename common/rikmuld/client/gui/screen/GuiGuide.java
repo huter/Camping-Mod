@@ -21,11 +21,11 @@ public class GuiGuide extends GuiScreen{
 
 	public void initGui()
 	{
-		controlList.clear();
+		buttonList.clear();
 		int var1 = (this.width - this.bookImageWidth) / 2;
 		int var2 = (this.height - this.bookImageHeight) / 2;
-        this.controlList.add(this.buttonNextPage = new GuiButtonGuidePage(0, var1 + 132, var2 + 140, true, BookPages));
-        this.controlList.add(this.buttonPreviousPage = new GuiButtonGuidePage(1, var1 + 26, var2 + 140, false, BookPages));
+        this.buttonList.add(this.buttonNextPage = new GuiButtonGuidePage(0, var1 + 132, var2 + 140, true, BookPages));
+        this.buttonList.add(this.buttonPreviousPage = new GuiButtonGuidePage(1, var1 + 26, var2 + 140, false, BookPages));
 		addButtonByPage(BookPages);
 	}
 	
@@ -56,9 +56,8 @@ public class GuiGuide extends GuiScreen{
 
 	public void drawScreen(int par1, int par2, float par3)
 	{
-		 int var4 = this.mc.renderEngine.getTexture(Textures.GUI_LOCATIONS + Textures.GUI_BOOK_GUIDE);
 		 GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		 this.mc.renderEngine.bindTexture(var4);
+		 this.mc.renderEngine.func_98187_b(Textures.GUI_LOCATIONS + Textures.GUI_BOOK_GUIDE);
 		 int var5 = (this.width - this.bookImageWidth) / 2;
 		 int var6 = ((this.height - this.bookImageHeight) / 2)-10;
 		 this.drawTexturedModalRect(var5, var6, 0, 0, this.bookImageWidth, this.bookImageHeight);

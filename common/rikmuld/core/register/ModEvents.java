@@ -41,11 +41,7 @@ public class ModEvents {
     {
             if (event.ID == ModBlocks.RadishCrop.blockID)
             {
-                    if (!event.world.isRemote)
-                    {
-                            ((RadishCrop)ModBlocks.RadishCrop).Grow(event.world, event.X, event.Y, event.Z, event.entityPlayer);
-                    }
+            		((RadishCrop)ModBlocks.RadishCrop).Grow(event.world, event.X, event.Y, event.Z, event.entityPlayer);
             }
-
     }
 }

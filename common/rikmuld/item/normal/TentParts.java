@@ -1,10 +1,11 @@
-package rikmuld.item;
+package rikmuld.item.normal;
 
 import java.util.List;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import rikmuld.core.lib.Items;
+import rikmuld.item.CampingItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -14,28 +15,17 @@ public class TentParts extends CampingItem {
 
 	public TentParts(int i) 
 	{
-		super(i);
+		super(i, metadataNames);
 		maxStackSize = 64;
 		setHasSubtypes(true);
 		setMaxDamage(0);
-		setItemName(Items.ITEM_META_TENT_PARTS_NAME);
+		setUnlocalizedName(Items.ITEM_META_TENT_PARTS_NAME);
 	}
 
 	@Override
-	public String getItemNameIS(ItemStack itemstack) 
+	public String getUnlocalizedName(ItemStack itemstack) 
 	{
 		return metadataNames[itemstack.getItemDamage()];
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int getIconFromDamage(int i) 
-	{
-		switch (i) 
-		{
-		case 0:return 17;
-		case 1:return 16;
-		default:return 16;
-		}
 	}
 
 	@SideOnly(Side.CLIENT)

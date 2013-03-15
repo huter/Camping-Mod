@@ -47,21 +47,17 @@ public class ModConfig {
 			 }
 			 
 			 
-			 Blocks.BLOCK_CAMP_MULTI_ID = config.getBlock(Blocks.BLOCK_META_CAMP_NORMAL_MULTI_GAME_NAME, Blocks.BLOCK_CAMP_MULTI_ID_DEV).getInt(Blocks.BLOCK_CAMP_MULTI_ID_DEV);
-			 Blocks.BLOCK_CAMP_FAST_ID = config.getBlock(Blocks.BLOCK_CAMP_FAST_GAME_NAME, Blocks.BLOCK_CAMP_FAST_ID_DEV).getInt(Blocks.BLOCK_CAMP_FAST_ID_DEV);
-			 Blocks.BLOCK_CAMP_CHEAP_ID = config.getBlock(Blocks.BLOCK_META_CAMP_CHEAP_INSTA_GAME_NAME, Blocks.BLOCK_CAMP_CHEAP_ID_DEV).getInt(Blocks.BLOCK_CAMP_CHEAP_ID_DEV); 
+			 Blocks.BLOCK_CAMP_ID = config.getBlock(Blocks.BLOCK_META_CAMP_GAME_NAME, Blocks.BLOCK_CAMP_ID_DEV).getInt(Blocks.BLOCK_CAMP_ID_DEV);
 			 Blocks.BLOCK_TENT_ID = config.getBlock(Blocks.BLOCK_TENT_GAME_NAME, Blocks.BLOCK_TENT_ID_DEV).getInt(Blocks.BLOCK_TENT_ID_DEV);
 			 Blocks.BLOCK_GHOST_ID = config.getBlock(Blocks.BLOCK_GHOST_GAME_NAME, Blocks.BLOCK_GHOST_ID_DEV).getInt(Blocks.BLOCK_GHOST_ID_DEV);
 			 Blocks.BLOCK_RADISH_ID = config.getBlock(Blocks.BLOCK_RADISH_GAME_NAME, Blocks.BLOCK_RADISH_ID_DEV).getInt(Blocks.BLOCK_RADISH_ID_DEV);
 			 
 			
-			 if(Blocks.BLOCK_CAMP_MULTI_ID>4096||Blocks.BLOCK_CAMP_MULTI_ID<256||Blocks.BLOCK_CAMP_FAST_ID>4096||Blocks.BLOCK_CAMP_FAST_ID<256||Blocks.BLOCK_CAMP_CHEAP_ID>4096||Blocks.BLOCK_CAMP_CHEAP_ID<256||Blocks.BLOCK_TENT_ID>4096||Blocks.BLOCK_TENT_ID<256||Blocks.BLOCK_GHOST_ID>4096||Blocks.BLOCK_GHOST_ID<256||Blocks.BLOCK_RADISH_ID>4096||Blocks.BLOCK_RADISH_ID<256)
+			 if(Blocks.BLOCK_CAMP_ID>4096||Blocks.BLOCK_CAMP_ID<256||Blocks.BLOCK_TENT_ID>4096||Blocks.BLOCK_TENT_ID<256||Blocks.BLOCK_GHOST_ID>4096||Blocks.BLOCK_GHOST_ID<256||Blocks.BLOCK_RADISH_ID>4096||Blocks.BLOCK_RADISH_ID<256)
 			 {
 				 ModLogger.log(Level.WARNING, "You used an unusable block id in the config, old ones are used now.");
 				 
-				 Blocks.BLOCK_CAMP_MULTI_ID =  Blocks.BLOCK_CAMP_MULTI_ID_DEV;
-				 Blocks.BLOCK_CAMP_FAST_ID = Blocks.BLOCK_CAMP_FAST_ID_DEV;
-				 Blocks.BLOCK_CAMP_CHEAP_ID =  Blocks.BLOCK_CAMP_CHEAP_ID_DEV;
+				 Blocks.BLOCK_CAMP_ID =  Blocks.BLOCK_CAMP_ID_DEV;
 				 Blocks.BLOCK_TENT_ID = Blocks.BLOCK_TENT_ID_DEV;
 				 Blocks.BLOCK_GHOST_ID = Blocks.BLOCK_GHOST_ID_DEV;
 				 Blocks.BLOCK_RADISH_ID = Blocks.BLOCK_RADISH_ID_DEV;

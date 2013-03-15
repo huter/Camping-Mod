@@ -14,6 +14,6 @@ public class CampingTab extends CreativeTabs {
 	@Override
 	public ItemStack getIconItemStack() 
 	{
-	    return new ItemStack(ModBlocks.campfireMultiCooker);
+	    return new ItemStack(ModBlocks.campfire);
 	}
 }

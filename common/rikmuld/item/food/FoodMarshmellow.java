@@ -10,11 +10,9 @@ import net.minecraft.world.World;
 import rikmuld.CampingMod;
 import rikmuld.core.lib.Config;
 import rikmuld.core.lib.Items;
-import rikmuld.core.lib.Textures;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import rikmuld.item.CampingItemFood;
 
-public class FoodMarshmellow extends ItemFood{
+public class FoodMarshmellow extends CampingItemFood{
 
     public final int itemUseDuration;
     private final int healAmount;
@@ -34,7 +32,7 @@ public class FoodMarshmellow extends ItemFood{
         this.healAmount = Config.PLANT_MARSHMALLOW_HEAL;
         this.isWolfsFavoriteMeat = false;
         this.saturationModifier = par3;
-        this.setItemName(Items.ITEM_MARSH_FOOD_NAME);
+        this.setUnlocalizedName(Items.ITEM_MARSH_FOOD_NAME);
         this.setCreativeTab(CampingMod.customTab);
     }
 
@@ -42,24 +40,9 @@ public class FoodMarshmellow extends ItemFood{
     {
         this(par1, par2, 0.6F, par3);
     }
-
-    @SideOnly(Side.CLIENT)
-    public int getIconFromDamage(int i)
-    {
-     switch(i)
-     {
-     case 0: return 21;
-     default: return 21;
-     }
-    }
-    
-    @SideOnly(Side.CLIENT)
-	public String getTextureFile()
-	{ 
-    	return Textures.SPRITE_LOCATION + Textures.SPRITE_ITEM;
-	}
-    
-    public ItemStack onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+  
+    @Override
+    public void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
         --par1ItemStack.stackSize;
         par3EntityPlayer.getFoodStats().addStats(this);
@@ -67,7 +50,6 @@ public class FoodMarshmellow extends ItemFood{
         this.func_77849_c(par1ItemStack, par2World, par3EntityPlayer);
         ItemStack stick = new ItemStack(Item.stick);
 	    par3EntityPlayer.inventory.addItemStackToInventory(stick);
-        return par1ItemStack;
     }
 
     protected void func_77849_c(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)

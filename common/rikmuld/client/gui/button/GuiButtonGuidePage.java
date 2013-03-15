@@ -28,7 +28,7 @@ public class GuiButtonGuidePage extends GuiButton
         {
             boolean var4 = par2 >= this.xPosition && par3 >= this.yPosition && par2 < this.xPosition + this.width && par3 < this.yPosition + this.height;
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            par1Minecraft.renderEngine.bindTexture(par1Minecraft.renderEngine.getTexture(Textures.GUI_LOCATIONS + Textures.GUI_BOOK_GUIDE));
+            par1Minecraft.renderEngine.func_98187_b(Textures.GUI_LOCATIONS + Textures.GUI_BOOK_GUIDE);
             int var5 = 0;
             int var6 = 192;
 

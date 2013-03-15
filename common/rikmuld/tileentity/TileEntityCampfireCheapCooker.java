@@ -15,8 +15,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public final class TileEntityCampfireCheapCooker extends TileEntityCampfire{
 
 	private int cook = 800;
-	int colorcc;
-	int colormetacc;
 	
     public TileEntityCampfireCheapCooker() 
     {
@@ -98,9 +96,7 @@ public final class TileEntityCampfireCheapCooker extends TileEntityCampfire{
         super.readFromNBT(par1NBTTagCompound);
         NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
         this.campfireItemStacks = new ItemStack[this.getSizeInventory()];
-	    
-	    this.colorcc =  par1NBTTagCompound.getInteger("colorcc");
-	    this.colormetacc =  par1NBTTagCompound.getInteger("colormetacc");
+
         for (int var3 = 0; var3 < var2.tagCount(); ++var3)
         {
             NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
@@ -115,8 +111,6 @@ public final class TileEntityCampfireCheapCooker extends TileEntityCampfire{
         this.furnaceBurnTime = par1NBTTagCompound.getShort("BurnTime");
         this.furnaceCookTime = par1NBTTagCompound.getShort("CookTime");
         this.currentItemBurnTime = getItemBurnTime(this.campfireItemStacks[4]);
-        
-    	ModBlocks.campfireCheapCooker.setColor(colorcc, colormetacc);
     }
 
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
@@ -124,11 +118,6 @@ public final class TileEntityCampfireCheapCooker extends TileEntityCampfire{
         super.writeToNBT(par1NBTTagCompound);
         par1NBTTagCompound.setShort("BurnTime", (short)this.furnaceBurnTime);
         par1NBTTagCompound.setShort("CookTime", (short)this.furnaceCookTime);
-		int colorcc = ModBlocks.campfireCheapCooker.getColor();
-		int colormetacc = ModBlocks.campfireCheapCooker.getColorMeta();
-		
-	    par1NBTTagCompound.setInteger("colorcc", colorcc);
-	    par1NBTTagCompound.setInteger("colormetacc", colormetacc);
         NBTTagList var2 = new NBTTagList();
 
         for (int var3 = 0; var3 < this.campfireItemStacks.length; ++var3)
@@ -218,7 +207,7 @@ public final class TileEntityCampfireCheapCooker extends TileEntityCampfire{
             if (var1 != this.furnaceBurnTime > 0)
             {
                 var2 = true;
-                ModBlocks.campfireCheapCooker.updateCampfireBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                ModBlocks.campfire.updateCampfireBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
 

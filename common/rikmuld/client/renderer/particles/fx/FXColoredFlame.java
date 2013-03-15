@@ -2,7 +2,9 @@ package rikmuld.client.renderer.particles.fx;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
+import net.minecraft.client.renderer.RenderEngine;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
@@ -15,6 +17,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class FXColoredFlame extends EntityFX
 {	
+	int color;
+	
 	public FXColoredFlame(World par1World, double par2, double par4, double par6, double par8, double par10, double par12, int color)
 	{
 	super(par1World, par2, par4, par6, par8, par10, par12);
@@ -22,9 +26,10 @@ public class FXColoredFlame extends EntityFX
 	this.motionY = this.motionY * 0.009999999776482582D + par10;
 	this.motionZ = this.motionZ * 0.009999999776482582D + par12;
 	this.particleMaxAge = 20;
-	this.setParticleTextureIndex(color);
-	
+	this.field_94054_b = color % 16;
+    this.field_94055_c = color / 16;
 	}
+	
 	@Override
 	public int getFXLayer()
 	{

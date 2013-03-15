@@ -1,5 +1,6 @@
 package rikmuld.tileentity;
 
+import rikmuld.core.register.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,16 +11,17 @@ import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.common.ISidedInventory;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class TileEntityCampfire extends TileEntity implements IInventory, ISidedInventory{
+public class TileEntityCampfire extends TileEntity implements IInventory{
 
 	private int feul;
 	private boolean nofeul;
 	private int cook;  
+	int color;
 	
 	public TileEntityCampfire(int feulmultiply, boolean neednofeul, int cooktime) 
 	{
@@ -27,6 +29,8 @@ public class TileEntityCampfire extends TileEntity implements IInventory, ISided
 		nofeul=neednofeul;
 		cook=cooktime;
 	}
+	
+	public TileEntityCampfire() {}
 	    
 	@Override
 	public int getSizeInventory() 
@@ -136,4 +140,16 @@ public class TileEntityCampfire extends TileEntity implements IInventory, ISided
     {
         return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
     }
+
+	@Override
+	public boolean func_94042_c()
+	{
+		return false;
+	}
+
+	@Override
+	public boolean func_94041_b(int i, ItemStack itemstack) 
+	{
+		return false;
+	}
 }

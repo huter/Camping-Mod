@@ -1,22 +1,52 @@
 package rikmuld.item;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
+import net.minecraft.util.Icon;
 import rikmuld.CampingMod;
-import rikmuld.core.lib.Textures;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import rikmuld.core.lib.ModInfo;
 
-public class CampingItem extends Item{
+public abstract class CampingItem extends Item{
 
+	private Icon[][] iconBuffer;
+    private String[] metadata;
+	   
+	public CampingItem(int par1, String[] meta) 
+	{
+		super(par1);
+		this.setCreativeTab(CampingMod.customTab);
+		metadata = meta;
+	}
+	
 	public CampingItem(int par1) 
 	{
 		super(par1);
 		this.setCreativeTab(CampingMod.customTab);
 	}
 	
-	@SideOnly(Side.CLIENT)
-	public String getTextureFile()
-	{ 
-		return Textures.SPRITE_LOCATION + Textures.SPRITE_ITEM;
+	@Override
+	public void func_94581_a(IconRegister iconRegister)
+	{
+		if(this.metadata == null)
+		{
+			 iconIndex = iconRegister.func_94245_a(ModInfo.MOD_ID+":"+this.getUnlocalizedName().substring(5));
+		}
+		else
+		{
+			iconBuffer = new Icon[metadata.length+1][1];
+			for(int x = 0; x<metadata.length; x++)
+			{
+				iconBuffer[x][0] = iconRegister.func_94245_a(ModInfo.MOD_ID+":"+this.metadata[x].toString());
+			}
+		}
 	}
+	
+    public Icon getIconFromDamage(int par1)
+    {
+    	if(this.metadata != null)
+		{
+    		iconIndex = iconBuffer[par1][0];
+		}
+    	return this.iconIndex;
+    }
 }

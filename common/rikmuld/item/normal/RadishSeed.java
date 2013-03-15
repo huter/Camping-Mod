@@ -1,4 +1,4 @@
-package rikmuld.item;
+package rikmuld.item.normal;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,6 +8,7 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
 import rikmuld.core.lib.Items;
+import rikmuld.item.CampingItem;
 
 public class RadishSeed extends CampingItem implements IPlantable
 {
@@ -17,8 +18,7 @@ public class RadishSeed extends CampingItem implements IPlantable
 	    {
 	        super(par1);
 	        this.blockType = par2;
-	        setIconIndex(28);
-	        setItemName(Items.ITEM_RADISH_SEED_NAME);
+	        setUnlocalizedName(Items.ITEM_RADISH_SEED_NAME);
 	        
 	    }
 
@@ -35,7 +35,7 @@ public class RadishSeed extends CampingItem implements IPlantable
 
 	            if (soil != null && soil.canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6))
 	            {
-	                par3World.setBlockWithNotify(par4, par5 + 1, par6, this.blockType);
+	                par3World.setBlockAndMetadataWithNotify(par4, par5 + 1, par6, this.blockType, 0, 3);
 	                --par1ItemStack.stackSize;
 	                return true;
 	            }

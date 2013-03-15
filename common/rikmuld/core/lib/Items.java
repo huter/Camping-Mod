@@ -3,7 +3,7 @@ package rikmuld.core.lib;
 
 public class Items {
 
-	public static final String ITEM_MARSH_NORMAL_NAME = "marshmallowNormal";
+	public static final String ITEM_MARSH_NORMAL_NAME = "marshmallow";
 	public static final String ITEM_MARSH_STICK_NAME = "marshmallowStick";
 	public static final String ITEM_MARSH_FOOD_NAME = "marshmallowFood";
 	public static final String ITEM_RADISH_SEED_NAME = "radishSeed";
@@ -14,10 +14,10 @@ public class Items {
 	public static final String ITEM_TOOL_BACK_SMALL_NAME = "campingBagSmall";
 	public static final String ITEM_TOOL_BACK_NORMAL_NAME = "campingBagNormal";
 	public static final String ITEM_TOOL_BACK_LARGE_NAME = "campingBagLarge";
-	public static final String ITEM_TOOL_CAMP_NAME = "toolCamp";
-	public static final String ITEM_BOOK_GUIDE_CAMP_NAME = "guideBookCamp";
+	public static final String ITEM_TOOL_CAMP_NAME = "toolCamping";
+	public static final String ITEM_BOOK_GUIDE_CAMP_NAME = "guideBookCampfires";
 	public static final String ITEM_BOOK_GUIDE_TENT_NAME = "guideBookTent";
-	public static final String ITEM_BOOK_GUIDE_EQUIP_NAME = "guideBookEquip";
+	public static final String ITEM_BOOK_GUIDE_EQUIP_NAME = "guideBookEquipment";
 	public static final String ITEM_BOOK_GUIDE_FOOD_NAME = "guideBookFood";
 	public static final String ITEM_BOOK_GUIDE_WORLD_NAME = "guideBookWorld";
 	

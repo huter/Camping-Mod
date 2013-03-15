@@ -147,4 +147,16 @@ public class TileEntityTent extends TileEntity implements IInventory, ISidedInve
 	{
 		return 1;
 	}
+
+	@Override
+	public boolean func_94042_c() 
+	{
+		return false;
+	}
+
+	@Override
+	public boolean func_94041_b(int i, ItemStack itemstack)
+	{
+		return false;
+	}
 }

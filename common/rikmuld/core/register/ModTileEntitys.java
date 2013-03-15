@@ -1,6 +1,7 @@
 package rikmuld.core.register;
 
 import rikmuld.core.lib.TileEntitys;
+import rikmuld.tileentity.TileEntityCampfire;
 import rikmuld.tileentity.TileEntityCampfireCheapCooker;
 import rikmuld.tileentity.TileEntityCampfireFastCooker;
 import rikmuld.tileentity.TileEntityCampfireMultiCooker;
@@ -15,6 +16,7 @@ public class ModTileEntitys {
 		GameRegistry.registerTileEntity(TileEntityCampfireFastCooker.class, TileEntitys.TILE_CAMP_FAST);
 		GameRegistry.registerTileEntity(TileEntityCampfireCheapCooker.class, TileEntitys.TILE_CAMP_CHEAP);
 		GameRegistry.registerTileEntity(TileEntityCampfireMultiCooker.class, TileEntitys.TILE_CAMP_MULTI);
+		GameRegistry.registerTileEntity(TileEntityCampfire.class, TileEntitys.TILE_CAMP);
 		GameRegistry.registerTileEntity(TileEntityTent.class, TileEntitys.TILE_TENT);
 		GameRegistry.registerTileEntity(TileEntityCamping.class, "TileCamping");
 	}

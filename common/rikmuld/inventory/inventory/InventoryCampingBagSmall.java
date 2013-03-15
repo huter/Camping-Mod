@@ -14,7 +14,7 @@ public class InventoryCampingBagSmall extends InventoryBasic {
 
 	public InventoryCampingBagSmall(EntityPlayer player, ItemStack is) 
 	{
-		super("", getInventorySize(is));
+		super("", false, getInventorySize(is));
 		
 		playerEntity = player;
 		originalIS = is;

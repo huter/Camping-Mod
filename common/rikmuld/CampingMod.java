@@ -77,4 +77,25 @@ public class CampingMod {
 	{
 		 ModLogger.log(Level.INFO, ModInfo.MOD_NAME + " has loaded successfylly.");
 	}
+	
+	/*
+	 * TODO: fix all the 1.5 bugs 
+	 * 
+	 * campers are falling trough the ground -- bug.
+	 * make campfires colorable again.
+	 * bonemeal isn't working -- bug.
+	 * 
+	 * TODO: make the campers trade right
+	 * TODO: make directions with forge directions so the tent class can be very small
+	 * TODO: make blocks just like items with 1 main thingy.
+	 * TODO: complete the guide books.
+	 * TODO: make more achievements for new things ed.
+	 * TODO: add more config options for new things ed.
+	 * TODO: make a camping tool v2 were you can craft with a key.
+	 * TODO: make backpacks wereable on the back and activateble with a key.
+	 * TODO: make a camper AI for bot run into campfires and stay with tents.
+	 * TODO: make metadata tileentitys (especialy for the campfires, so they only need 1 class)
+	 * TODO: make a flashlight
+	 * TODO: clean up code.
+	 */
 }

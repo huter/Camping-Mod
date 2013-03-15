@@ -2,9 +2,9 @@ package rikmuld.core.lib;
 
 public class Textures {
 
-	public static final String GUI_LOCATIONS= "/rikmuld/art/gui/";
-	public static final String SPRITE_LOCATION= "/rikmuld/art/sprites/";	
-	public static final String MODEL_LOCATION= "/rikmuld/art/models/";
+	public static final String GUI_LOCATIONS= "/mods/camping/textures/gui/";
+	public static final String SPRITE_LOCATION= "/mods/camping/textures/sprites/";	
+	public static final String MODEL_LOCATION= "/mods/camping/textures/models/";
 	
 	public static final String SPRITE_BLOCK = "Blocks.png";
 	public static final String SPRITE_ITEM= "Items.png";

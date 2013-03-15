@@ -11,11 +11,11 @@ import cpw.mods.fml.common.ICraftingHandler;
 
 public class CraftHandler implements ICraftingHandler{
 
-	ItemStack campfire1 = new ItemStack(ModBlocks.campfireMultiCooker, 1, 0);
-	ItemStack campfire2 = new ItemStack(ModBlocks.campfireMultiCooker, 1, 1);
-	ItemStack campfire3 = new ItemStack(ModBlocks.campfireFastCooker, 1, 0);
-	ItemStack campfire4 = new ItemStack(ModBlocks.campfireCheapCooker, 1, 0);
-	ItemStack campfire5 = new ItemStack(ModBlocks.campfireCheapCooker, 1, 1);
+	ItemStack campfire1 = new ItemStack(ModBlocks.campfire, 1, 0);
+	ItemStack campfire2 = new ItemStack(ModBlocks.campfire, 1, 1);
+	ItemStack campfire3 = new ItemStack(ModBlocks.campfire, 1, 2);
+	ItemStack campfire4 = new ItemStack(ModBlocks.campfire, 1, 3);
+	ItemStack campfire5 = new ItemStack(ModBlocks.campfire, 1, 4);
 	ItemStack tent1 = new ItemStack(ModBlocks.tent, 1, 0);
 	
 	@Override

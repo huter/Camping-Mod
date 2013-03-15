@@ -144,7 +144,7 @@ public class GuiGuideCampfire extends GuiGuide {
 		}
 		else
 		{
-			 this.mc.renderEngine.bindTexture(this.mc.renderEngine.getTexture(Textures.GUI_LOCATIONS + Textures.GUI_COMPONENTS));
+			 this.mc.renderEngine.func_98187_b(Textures.GUI_LOCATIONS + Textures.GUI_COMPONENTS);
 			 int a = 0;
 			 
 			 for(int i=1; i<6;i++)
@@ -167,11 +167,11 @@ public class GuiGuideCampfire extends GuiGuide {
 		
 		if(page == 0)
 		{
-	        this.controlList.add(this.buttonIcon = new GuiButtonGuideButton(2, var1+35, var2+55, 0));
-	        this.controlList.add(this.buttonIcon = new GuiButtonGuideButton(3, var1+75, var2+55, 2));
-	        this.controlList.add(this.buttonIcon = new GuiButtonGuideButton(4, var1+115, var2+55, 4));
-	        this.controlList.add(this.buttonIcon = new GuiButtonGuideButton(5, var1+55, var2+95, 6));
-	        this.controlList.add(this.buttonIcon = new GuiButtonGuideButton(6, var1+95, var2+95, 8));
+	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(2, var1+35, var2+55, 0));
+	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(3, var1+75, var2+55, 2));
+	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(4, var1+115, var2+55, 4));
+	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(5, var1+55, var2+95, 6));
+	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(6, var1+95, var2+95, 8));
 		}
 	}
 	

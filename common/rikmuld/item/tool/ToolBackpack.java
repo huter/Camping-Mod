@@ -22,31 +22,19 @@ public static final String[] metadataNames = new String[] {Items.ITEM_TOOL_BACK_
 
 		public ToolBackpack(int i) 
 		{
-			super(i);
+			super(i, metadataNames);
 			maxStackSize = 1;
 			setHasSubtypes(true);
 			setMaxDamage(0);
-			setItemName(Items.ITEM_META_TOOL_BACK_NAME);
+			setUnlocalizedName(Items.ITEM_META_TOOL_BACK_NAME);
 		}
 
 		@Override
-		public String getItemNameIS(ItemStack itemstack) 
+		public String getUnlocalizedName(ItemStack itemstack) 
 		{
 			return metadataNames[itemstack.getItemDamage()];
 		}
-
-		@SideOnly(Side.CLIENT)
-		public int getIconFromDamage(int i) 
-		{
-			switch (i) 
-			{
-			case 0:return 24;
-			case 1:return 25;
-			case 2:return 26;
-			default:return 24;
-			}
-		}
-
+		
 		@SideOnly(Side.CLIENT)
 		public void getSubItems(int par1, CreativeTabs creativetabs, List list) 
 		{

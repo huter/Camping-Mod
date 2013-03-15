@@ -1,4 +1,4 @@
-package rikmuld.item;
+package rikmuld.item.normal;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import net.minecraft.world.World;
 import rikmuld.CampingMod;
 import rikmuld.core.lib.GuiIds;
 import rikmuld.core.lib.Items;
+import rikmuld.item.CampingItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -25,8 +26,8 @@ public class GuideBook extends CampingItem{
 
 	public GuideBook(int id) 
 	{
-		super(id);
-		setItemName(Items.ITEM_META_BOOK_GUIDE_NAME);
+		super(id, metadataNames);
+		setUnlocalizedName(Items.ITEM_META_BOOK_GUIDE_NAME);
 		setHasSubtypes(true);
 	}
 	
@@ -57,23 +58,9 @@ public class GuideBook extends CampingItem{
     }
 
 	@Override
-	public String getItemNameIS(ItemStack itemstack) 
+	public String getUnlocalizedName(ItemStack itemstack) 
 	{
 		return metadataNames[itemstack.getItemDamage()];
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int getIconFromDamage(int i) 
-	{
-		switch (i) 
-		{
-			case 0:return 29;
-			case 1:return 30;
-			case 2:return 31;
-			case 3:return 32;
-			case 4:return 33;
-			default:return 29;
-		}
 	}
 
 	@SideOnly(Side.CLIENT)
