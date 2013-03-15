@@ -1,9 +1,9 @@
 The-Camping-mod 
 =============== 
  
-Welcome to the camping mod 1.0.0 universal source for minecraft 1.4.6 and 1.4.7. 
+Welcome to the camping mod 1.0.1 universal source for minecraft 1.5. 
 
-Here are links to official posts/websites.
+Here are links to official posts/websites (newest public version 1.0.0 for minecraft 1.4.7).
  
 [official planet minecraft post] (http://www.minecraftforum.net/topic/1566230-147rikmulds-camping-mods100-pre2ssplansmp-camping-bags-and-radish/) 
  
