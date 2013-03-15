@@ -5,8 +5,8 @@ import net.minecraft.client.gui.GuiScreen;
 
 import org.lwjgl.opengl.GL11;
 
-import rikmuld.client.gui.button.GuiButtonGuidePage;
 import rikmuld.client.gui.button.GuiButtonGuideButton;
+import rikmuld.client.gui.button.GuiButtonGuidePage;
 import rikmuld.core.lib.Textures;
 
 public class GuiGuide extends GuiScreen{

@@ -1,9 +1,7 @@
 package rikmuld.item.tool;
 
-import net.minecraft.client.renderer.texture.IconRegister;
 import rikmuld.core.lib.Config;
 import rikmuld.core.lib.Items;
-import rikmuld.core.lib.ModInfo;
 import rikmuld.item.CampingItem;
 
 public class ToolCamping extends CampingItem {

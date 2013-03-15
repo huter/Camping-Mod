@@ -3,7 +3,6 @@ package rikmuld.core.register;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityEggInfo;
 import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EnumCreatureType;
 import rikmuld.CampingMod;
 import rikmuld.core.lib.ModInfo;
 import rikmuld.entity.Camper;

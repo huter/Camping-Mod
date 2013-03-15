@@ -1,9 +1,9 @@
 package rikmuld.item;
 
-import rikmuld.core.lib.ModInfo;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.ItemFood;
 import net.minecraft.util.Icon;
+import rikmuld.core.lib.ModInfo;
 
 public abstract class CampingItemFood extends ItemFood{
 

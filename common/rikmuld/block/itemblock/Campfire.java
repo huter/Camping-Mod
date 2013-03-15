@@ -37,7 +37,6 @@ public class Campfire extends BlockContainer{
 	private static boolean keepCampfireInventory = false;
 	Minecraft mc;
 	RenderEngine renderEngine;
-	private int color;
 	
 	public Campfire(int id) 
 	{
@@ -150,34 +149,27 @@ public class Campfire extends BlockContainer{
 
 	public void ColorParticle(World par1world, int x, int y, int z, EntityPlayer player)
 	{
-		int var6 = par1world.getBlockMetadata(x, y, z);
-		ItemStack currentitem = player.getCurrentEquippedItem();
-		
 		if(Config.CAMPFIRE_CAN_BE_RECOLORED)
-		{		 
-			{
-				color = currentitem.getItemDamage();
-			}
-			
-			currentitem.stackSize -= 1;	
+		{	
+			TileEntityCampfire Tile = (TileEntityCampfire) par1world.getBlockTileEntity(x, y, z);
+			ItemStack currentitem = player.getCurrentEquippedItem();
+			if(Tile.setColor(currentitem.getItemDamage())) currentitem.stackSize -= 1;	;
 		}
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
 	{
-		int var6 = par1World.getBlockMetadata(par2, par3, par4);
-		int colors[] = {15,2,4,8,1};
 		double var7 = (double)((float)par2 + 0.5F);
      	double var9 = (double)((float)par3 + 0.3F);
      	double var11 = (double)((float)par4 + 0.5F);
 
      	par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, this.tickRate());
+     	TileEntityCampfire Tile = (TileEntityCampfire) par1World.getBlockTileEntity(par2, par3, par4);
      	Particles render = new Particles();
      	
      	par1World.spawnParticle("smoke", var7, var9, var11, 0.0D, 0.05D, 0.0D);
-     	render.doSpawnParticle("coloredflame", var7, var9, var11, 0.0D, 0.05D, 0.0D, colors[var6]);
-     	
+     	render.doSpawnParticle("coloredflame", var7, var9, var11, 0.0D, 0.05D, 0.0D, Tile.getColor(par1World.getBlockMetadata(par2, par3, par4)));    	
 	} 
 	
 	 @Override
@@ -476,12 +468,6 @@ public class Campfire extends BlockContainer{
 	 public void onBlockAdded(World par1World, int par2, int par3, int par4)
 	 {
 		 par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, this.tickRate());
-		 int metadata = par1World.getBlockMetadata(par2, par3, par4);
-		 if(metadata==0) color = 15;
-		 else if(metadata==1) color = 2;
-		 else if(metadata==2) color = 4;
-		 else if(metadata==3) color = 8;
-		 else if(metadata==4) color = 1;
 	 }
 
 	 public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5)

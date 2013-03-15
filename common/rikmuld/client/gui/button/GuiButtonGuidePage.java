@@ -1,13 +1,13 @@
 package rikmuld.client.gui.button;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 
 import org.lwjgl.opengl.GL11;
 
 import rikmuld.core.lib.Textures;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiButtonGuidePage extends GuiButton

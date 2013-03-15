@@ -85,7 +85,7 @@ public class CampingMod {
 	 * make campfires colorable again.
 	 * bonemeal isn't working -- bug.
 	 * 
-	 * TODO: make the campers trade right
+	 * TODO: test the camper metadata trade if the campers are working agian
 	 * TODO: make directions with forge directions so the tent class can be very small
 	 * TODO: make blocks just like items with 1 main thingy.
 	 * TODO: complete the guide books.

@@ -10,28 +10,23 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IMerchant;
+import net.minecraft.entity.INpc;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
-import net.minecraft.entity.ai.EntityAIMoveIndoors;
-import net.minecraft.entity.ai.EntityAIMoveTwardsRestriction;
 import net.minecraft.entity.ai.EntityAIOpenDoor;
-import net.minecraft.entity.ai.EntityAIRestrictOpenDoor;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.ai.EntityAIWatchClosest2;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Tuple;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
-import net.minecraft.village.Village;
 import net.minecraft.world.World;
 import rikmuld.core.lib.Textures;
 import rikmuld.core.register.ModItems;
@@ -40,7 +35,7 @@ import rikmuld.entity.ai.EntityAITradePlayerCamper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class Camper extends EntityAnimal implements  IMerchant{
+public class Camper extends EntityAnimal implements  IMerchant, INpc{
 	 
 	  Random generator = new Random();
 	  int isMale;
@@ -53,23 +48,17 @@ public class Camper extends EntityAnimal implements  IMerchant{
       this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityMob.class, 8.0F, 0.3F, 0.35F));
       this.tasks.addTask(1, new EntityAITradePlayerCamper(this));
       this.tasks.addTask(1, new EntityAILookAtTradePlayerCamper(this));
-      this.tasks.addTask(2, new EntityAIMoveIndoors(this));
-      this.tasks.addTask(3, new EntityAIRestrictOpenDoor(this));
-      this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
-      this.tasks.addTask(5, new EntityAIMoveTwardsRestriction(this, 0.3F));
-      this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
-      this.tasks.addTask(9, new EntityAIWatchClosest2(this, Camper.class, 5.0F, 0.02F));
-      this.tasks.addTask(9, new EntityAIWander(this, 0.3F));
-      this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
+      this.tasks.addTask(2, new EntityAIOpenDoor(this, true));
+      this.tasks.addTask(3, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
+      this.tasks.addTask(3, new EntityAIWatchClosest2(this, Camper.class, 5.0F, 0.02F));
+      this.tasks.addTask(3, new EntityAIWander(this, 0.3F));
+      this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
       
       this.isImmuneToFire = true;
       this.isMale = generator.nextInt(2);
 	 }
 	 
-	    private int randomTickDivider;
-	    private boolean isMating;
 	    private boolean isPlaying;
-	    Village villageObj;
 
 	    /** This villager's current customer. */
 	    private EntityPlayer buyingPlayer;
@@ -204,64 +193,6 @@ public class Camper extends EntityAnimal implements  IMerchant{
         return this.isPlaying;
     }
 
-    public void setRevengeTarget(EntityLiving par1EntityLiving)
-    {
-        super.setRevengeTarget(par1EntityLiving);
-
-        if (this.villageObj != null && par1EntityLiving != null)
-        {
-            this.villageObj.addOrRenewAgressor(par1EntityLiving);
-
-            if (par1EntityLiving instanceof EntityPlayer)
-            {
-                byte var2 = -1;
-
-                if (this.isChild())
-                {
-                    var2 = -3;
-                }
-
-                this.villageObj.setReputationForPlayer(((EntityPlayer)par1EntityLiving).getCommandSenderName(), var2);
-
-                if (this.isEntityAlive())
-                {
-                    this.worldObj.setEntityState(this, (byte)13);
-                }
-            }
-        }
-    }
-
-    public void onDeath(DamageSource par1DamageSource)
-    {
-        if (this.villageObj != null)
-        {
-            Entity var2 = par1DamageSource.getEntity();
-
-            if (var2 != null)
-            {
-                if (var2 instanceof EntityPlayer)
-                {
-                    this.villageObj.setReputationForPlayer(((EntityPlayer)var2).getCommandSenderName(), -2);
-                }
-                else if (var2 instanceof IMob)
-                {
-                    this.villageObj.endMatingSeason();
-                }
-            }
-            else if (var2 == null)
-            {
-                EntityPlayer var3 = this.worldObj.getClosestPlayerToEntity(this, 16.0D);
-
-                if (var3 != null)
-                {
-                    this.villageObj.endMatingSeason();
-                }
-            }
-        }
-
-        super.onDeath(par1DamageSource);
-    }
-
     public void setCustomer(EntityPlayer par1EntityPlayer)
     {
         this.buyingPlayer = par1EntityPlayer;
@@ -318,11 +249,6 @@ public class Camper extends EntityAnimal implements  IMerchant{
         return var2 > 0.9F ? 0.9F - (var2 - 0.9F) : var2;
     }
 
-    /**
-     * based on the villagers profession add items, equipment, and recipies adds par1 random items to the list of things
-     * that the villager wants to buy. (at most 1 of each wanted type is added)
-     */
-    
     private void addDefaultEquipmentAndRecipies(int par1)
     {
         if (this.buyingList != null)
@@ -383,8 +309,6 @@ public class Camper extends EntityAnimal implements  IMerchant{
         }
     }
 
-  //TODO metadata for the guide books
-    
     private static ItemStack getRandomSizedStack(int par0, Random par1Random)
     {
         return new ItemStack(par0, getRandomCountForItem(par0, par1Random), 0);
@@ -414,8 +338,21 @@ public class Camper extends EntityAnimal implements  IMerchant{
             }
             else
             {
+            	int metadata = 0;
+ 
+                if(par1==ModItems.CampingBag.itemID)
+                {	
+                	metadata = MathHelper.getRandomIntegerInRange(par2Random, 0, 2);
+                	var4+=(metadata*MathHelper.getRandomIntegerInRange(par2Random, 2, 4));
+                }
+                if(par1==ModItems.guideBook.itemID)
+                {	
+                	metadata = MathHelper.getRandomIntegerInRange(par2Random, 0, 4);
+                }
+                
                 var5 = new ItemStack(Item.emerald.itemID, var4, 0);
-                var6 = new ItemStack(par1, 1, 0);
+                var6 = new ItemStack(par1, 1, metadata);
+
             }
 
             par0MerchantRecipeList.add(new MerchantRecipe(var5, var6));
@@ -435,12 +372,18 @@ public class Camper extends EntityAnimal implements  IMerchant{
 
     static
     { 	
+		
         villagerStockList.put(Integer.valueOf(ModItems.radish.itemID), new Tuple(Integer.valueOf(8), Integer.valueOf(16)));
         villagerStockList.put(Integer.valueOf(ModItems.Marshmallow.itemID), new Tuple(Integer.valueOf(4), Integer.valueOf(8)));
         villagerStockList.put(Integer.valueOf(ModItems.MarshmallowFood.itemID), new Tuple(Integer.valueOf(3), Integer.valueOf(6)));
         villagerStockList.put(Integer.valueOf(ModItems.radishSeed.itemID), new Tuple(Integer.valueOf(12), Integer.valueOf(24)));
         villagerStockList.put(Integer.valueOf(ModItems.TentParts.itemID), new Tuple(Integer.valueOf(10), Integer.valueOf(20)));
-        villagerStockList.put(Integer.valueOf(ModItems.SleepingBag.itemID), new Tuple(Integer.valueOf(2), Integer.valueOf(4)));      
+        villagerStockList.put(Integer.valueOf(ModItems.SleepingBag.itemID), new Tuple(Integer.valueOf(2), Integer.valueOf(4))); 
+        
+        blacksmithSellingList.put(Integer.valueOf(ModItems.TentTools.itemID), new Tuple(Integer.valueOf(-2), Integer.valueOf(2)));
+        blacksmithSellingList.put(Integer.valueOf(ModItems.CampingBag.itemID), new Tuple(Integer.valueOf(2), Integer.valueOf(4)));
+        blacksmithSellingList.put(Integer.valueOf(ModItems.guideBook.itemID), new Tuple(Integer.valueOf(1), Integer.valueOf(3)));
+        
     }
     
 	@Override

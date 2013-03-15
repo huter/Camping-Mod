@@ -1,6 +1,5 @@
 package rikmuld.tileentity;
 
-import rikmuld.core.register.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,7 +20,7 @@ public class TileEntityCampfire extends TileEntity implements IInventory{
 	private int feul;
 	private boolean nofeul;
 	private int cook;  
-	int color;
+	int color = 16;
 	
 	public TileEntityCampfire(int feulmultiply, boolean neednofeul, int cooktime) 
 	{
@@ -152,4 +151,38 @@ public class TileEntityCampfire extends TileEntity implements IInventory{
 	{
 		return false;
 	}
+
+	public void setDefaultColor(int metadata) 
+	{
+		if(metadata==0) color = 15;
+		else if(metadata==1) color = 2;
+		else if(metadata==2) color = 4;
+		else if (metadata==3) color = 8;
+		else if (metadata==4) color = 1;
+	}
+
+	public boolean setColor(int itemDamage) 
+	{
+		if(color==itemDamage) return false;
+		else color = itemDamage; return true;
+	}
+	
+	public int getColor(int metadata) 
+	{
+		if(color==16) setDefaultColor(metadata);
+		return color;
+	}
+
+	
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
+    {
+        super.readFromNBT(par1NBTTagCompound);
+      	this.color = (par1NBTTagCompound.getInteger("theColor"));
+    }
+	
+    public void writeToNBT(NBTTagCompound par1NBTTagCompound)
+    {
+        super.writeToNBT(par1NBTTagCompound);
+        par1NBTTagCompound.setInteger("theColor", this.color);
+    }
 }
