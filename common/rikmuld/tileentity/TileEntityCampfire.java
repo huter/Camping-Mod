@@ -11,7 +11,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.INetworkManager;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -143,13 +147,13 @@ public class TileEntityCampfire extends TileEntity implements IInventory{
 	@Override
 	public boolean func_94042_c()
 	{
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean func_94041_b(int i, ItemStack itemstack) 
 	{
-		return false;
+		return true;
 	}
 
 	public void setDefaultColor(int metadata) 
@@ -170,6 +174,7 @@ public class TileEntityCampfire extends TileEntity implements IInventory{
 	public int getColor(int metadata) 
 	{
 		if(color==16) setDefaultColor(metadata);
+		this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		return color;
 	}
 
@@ -184,5 +189,19 @@ public class TileEntityCampfire extends TileEntity implements IInventory{
     {
         super.writeToNBT(par1NBTTagCompound);
         par1NBTTagCompound.setInteger("theColor", this.color);
+    }
+    
+    @Override
+    public void onDataPacket(INetworkManager net, Packet132TileEntityData packet) 
+    {
+     readFromNBT(packet.customParam1);
+    }
+    
+    @Override
+    public Packet getDescriptionPacket()
+    {
+        NBTTagCompound var1 = new NBTTagCompound();
+        writeToNBT(var1);
+        return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 1, var1);
     }
 }

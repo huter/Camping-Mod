@@ -82,9 +82,11 @@ public class CampingMod {
 	 * TODO: fix all the 1.5 bugs 
 	 * 
 	 * campers are falling trough the ground -- bug.
-	 * make campfires colorable again.
 	 * bonemeal isn't working -- bug.
+	 * camper texture nbt working (packets)
 	 * 
+	 * 
+	 * TODO: make a cloke for myself. ( http://www.minecraftforge.net/forum/index.php/topic,5961.25.html )
 	 * TODO: test the camper metadata trade if the campers are working agian
 	 * TODO: make directions with forge directions so the tent class can be very small
 	 * TODO: make blocks just like items with 1 main thingy.

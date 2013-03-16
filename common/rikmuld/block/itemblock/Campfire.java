@@ -153,7 +153,7 @@ public class Campfire extends BlockContainer{
 		{	
 			TileEntityCampfire Tile = (TileEntityCampfire) par1world.getBlockTileEntity(x, y, z);
 			ItemStack currentitem = player.getCurrentEquippedItem();
-			if(Tile.setColor(currentitem.getItemDamage())) currentitem.stackSize -= 1;	;
+			if(Tile.setColor(currentitem.getItemDamage())) currentitem.stackSize -= 1;	
 		}
 	}
 	
