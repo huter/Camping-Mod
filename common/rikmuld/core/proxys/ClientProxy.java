@@ -12,8 +12,6 @@ public class ClientProxy extends CommonProxy {
 	
 	public void registerRenderers () 
 	{
-		MinecraftForgeClient.preloadTexture(Textures.SPRITE_LOCATION + Textures.SPRITE_BLOCK);
-		MinecraftForgeClient.preloadTexture(Textures.SPRITE_LOCATION + Textures.SPRITE_ITEM);
 		MinecraftForgeClient.preloadTexture(Textures.SPRITE_LOCATION + Textures.SPRITE_PARTICLES);
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCampfire.class, new TileEntityCampfireRenderer());
@@ -24,4 +22,6 @@ public class ClientProxy extends CommonProxy {
     {
 		
 	}
+	
+	
 }

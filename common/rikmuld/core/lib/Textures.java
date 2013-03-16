@@ -6,8 +6,6 @@ public class Textures {
 	public static final String SPRITE_LOCATION= "/mods/camping/textures/sprites/";	
 	public static final String MODEL_LOCATION= "/mods/camping/textures/models/";
 	
-	public static final String SPRITE_BLOCK = "Blocks.png";
-	public static final String SPRITE_ITEM= "Items.png";
 	public static final String SPRITE_PARTICLES= "Particles.png";
 	public static final String SPRITE_BUTTONS = "Buttons.png";
 	
