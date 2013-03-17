@@ -6,10 +6,14 @@ import java.util.Random;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.src.ModLoader;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.event.Event.Result;
+import net.minecraftforge.event.entity.player.BonemealEvent;
 import rikmuld.block.CampingBlockPlant;
 import rikmuld.core.lib.Blocks;
 import rikmuld.core.lib.Config;
@@ -49,27 +53,44 @@ public class RadishCrop extends CampingBlockPlant {
 	            {
 	                double var7 = this.getGrowthRate(par1World, par2, par3, par4);
 
-	                if (par5Random.nextInt((int)(25.0F / var7) + 1) == 0)
+	                if(var6!=0)
 	                {
-	                    ++var6;
-	                    par1World.setBlockMetadataWithNotify(par2, par3, par4, var6, 3);
+		                if (par5Random.nextInt((int)(25.0F / var7) + 1) == 0)
+		                {
+		                    ++var6;
+		                    par1World.setBlockMetadataWithNotify(par2, par3, par4, var6, 2);
+		                }
+	                }
+	                else
+	                {
+	                	if (par5Random.nextInt(20) == 1)
+		                {
+		                    ++var6;
+		                    par1World.setBlockMetadataWithNotify(par2, par3, par4, var6, 2);
+		                }
+	                	if(var6==0)
+	                	{
+		                	par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, this.tickRate(par1World));
+	                	}
 	                }
 	            }
 	        }
 	    }
-
-	    public void Grow(World par1World, int par2, int par3, int par4, EntityPlayer player)
+	    
+	    public void Grow(World par1World, int par2, int par3, int par4, BonemealEvent event)
 	    {
 	    	 int l = par1World.getBlockMetadata(par2, par3, par4);
-			 ItemStack currentitem = player.getCurrentEquippedItem();
-
-	         if (l > 7) {}
+	
+	         if (l > 7)
+	         {
+	        	 event.setResult(Result.DENY);
+	         }
 	         else
 	         {
-	        	 if(currentitem!=null)currentitem.stackSize-=1;
-	        	 l += MathHelper.getRandomIntegerInRange(par1World.rand, 3, 5);
-	        	 par1World.setBlockMetadataWithNotify(par2, par3, par4, l, 3);
-	         }      
+	        	 event.setResult(Result.ALLOW);
+	        	 l += MathHelper.getRandomIntegerInRange(par1World.rand, 2, 5);
+	        	 par1World.setBlockMetadataWithNotify(par2, par3, par4, l, 2);
+	         }  
 	    }
 
 	    private double getGrowthRate(World par1World, int par2, int par3, int par4)
@@ -117,8 +138,7 @@ public class RadishCrop extends CampingBlockPlant {
 	        {
 	            var5 /= 0.5D;
 	        }
-
-	        return var5+(3.0D*Config.PLANT_RADISH_GROW_RATE);
+	        return var5;	  
 	    }
 
 	    public int getRenderType()
@@ -150,7 +170,7 @@ public class RadishCrop extends CampingBlockPlant {
 	        {
 	            for (int n = 0; n < 2 + fortune; n++)
 	            {
-	                if (world.rand.nextInt(15) <= metadata)
+	                if (world.rand.nextInt(20) <= metadata)
 	                {
 	                    ret.add(new ItemStack(this.getSeedItem(), 1, 0));
 	                }
