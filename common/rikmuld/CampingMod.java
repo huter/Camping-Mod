@@ -79,12 +79,7 @@ public class CampingMod {
 	}
 	
 	/*
-	 * TODO: fix all the 1.5 bugs 
-	 * 
-	 * bonemeal isn't working properly-- bug.
-	 * 
 	 * TODO: make a cloaks working.
-	 * TODO: test the camper metadata trade if the campers are working agian
 	 * TODO: make directions with forge directions so the tent class can be very small
 	 * TODO: make blocks just like items with 1 main thingy.
 	 * TODO: complete the guide books.
