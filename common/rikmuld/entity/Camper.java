@@ -44,6 +44,8 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
 	 {
 	  super(par1World);
 	  this.moveSpeed = 0.30F;
+      this.texture = "Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_MALE";
+      this.setSize(0.6F, 1.8F);
 	  this.tasks.addTask(0, new EntityAISwimming(this));
       this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityMob.class, 8.0F, 0.3F, 0.35F));
       this.tasks.addTask(1, new EntityAITradePlayerCamper(this));
@@ -265,16 +267,16 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
         int var6;
         label50:
 
-                addBlacksmithItem(var2, ModItems.guideBook.itemID, this.rand, this.func_82188_j(0.7F));
-        		addBlacksmithItem(var2, ModItems.CampingBag.itemID, this.rand, this.func_82188_j(0.3F));
-        		addBlacksmithItem(var2, ModItems.TentTools.itemID, this.rand, this.func_82188_j(0.3F));
+                addBlacksmithItem(var2, ModItems.guideBook.itemID, this.rand, this.func_82188_j(0.6F));
+        		addBlacksmithItem(var2, ModItems.CampingBag.itemID, this.rand, this.func_82188_j(0.5F));
+        		addBlacksmithItem(var2, ModItems.TentTools.itemID, this.rand, this.func_82188_j(0.4F));
       
-        		addMerchantItem(var2, ModItems.radish.itemID, this.rand, 0.3F);
-        		addMerchantItem(var2, ModItems.Marshmallow.itemID, this.rand, 0.3F);
-        		addMerchantItem(var2, ModItems.MarshmallowFood.itemID, this.rand, 0.3F);
-        		addMerchantItem(var2, ModItems.radishSeed.itemID, this.rand, 0.3F);
-        		addMerchantItem(var2, ModItems.TentParts.itemID, this.rand, 0.3F);
-        		addMerchantItem(var2, ModItems.SleepingBag.itemID, this.rand, 0.3F);
+        		addMerchantItem(var2, ModItems.radish.itemID, this.rand, 0.2F);
+        		addMerchantItem(var2, ModItems.Marshmallow.itemID, this.rand, 0.2F);
+        		addMerchantItem(var2, ModItems.MarshmallowFood.itemID, this.rand, 0.2F);
+        		addMerchantItem(var2, ModItems.radishSeed.itemID, this.rand, 0.2F);
+        		addMerchantItem(var2, ModItems.TentParts.itemID, this.rand, 0.2F);
+        		addMerchantItem(var2, ModItems.SleepingBag.itemID, this.rand, 0.2F);
 
         if (var2.isEmpty())
         {
@@ -380,7 +382,7 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
         villagerStockList.put(Integer.valueOf(ModItems.TentParts.itemID), new Tuple(Integer.valueOf(10), Integer.valueOf(20)));
         villagerStockList.put(Integer.valueOf(ModItems.SleepingBag.itemID), new Tuple(Integer.valueOf(2), Integer.valueOf(4))); 
         
-        blacksmithSellingList.put(Integer.valueOf(ModItems.TentTools.itemID), new Tuple(Integer.valueOf(-2), Integer.valueOf(2)));
+        blacksmithSellingList.put(Integer.valueOf(ModItems.TentTools.itemID), new Tuple(Integer.valueOf(-2), Integer.valueOf(1)));
         blacksmithSellingList.put(Integer.valueOf(ModItems.CampingBag.itemID), new Tuple(Integer.valueOf(2), Integer.valueOf(4)));
         blacksmithSellingList.put(Integer.valueOf(ModItems.guideBook.itemID), new Tuple(Integer.valueOf(1), Integer.valueOf(3)));
         
