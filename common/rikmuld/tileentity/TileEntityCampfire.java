@@ -15,7 +15,6 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -144,18 +143,6 @@ public class TileEntityCampfire extends TileEntity implements IInventory{
         return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
     }
 
-	@Override
-	public boolean func_94042_c()
-	{
-		return true;
-	}
-
-	@Override
-	public boolean func_94041_b(int i, ItemStack itemstack) 
-	{
-		return true;
-	}
-
 	public void setDefaultColor(int metadata) 
 	{
 		if(metadata==0) color = 15;
@@ -204,4 +191,16 @@ public class TileEntityCampfire extends TileEntity implements IInventory{
         writeToNBT(var1);
         return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 1, var1);
     }
+
+	@Override
+	public boolean isInvNameLocalized() 
+	{
+		return true;
+	}
+
+	@Override
+	public boolean isStackValidForSlot(int i, ItemStack itemstack) 
+	{
+		return true;
+	}
 }

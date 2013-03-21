@@ -25,18 +25,18 @@ public abstract class CampingItem extends Item{
 	}
 	
 	@Override
-	public void func_94581_a(IconRegister iconRegister)
+	public void updateIcons(IconRegister iconRegister)
 	{
 		if(this.metadata == null)
 		{
-			 iconIndex = iconRegister.func_94245_a(ModInfo.MOD_ID+":"+this.getUnlocalizedName().substring(5));
+			 iconIndex = iconRegister.registerIcon(ModInfo.MOD_ID+":"+this.getUnlocalizedName().substring(5));
 		}
 		else
 		{
 			iconBuffer = new Icon[metadata.length+1][1];
 			for(int x = 0; x<metadata.length; x++)
 			{
-				iconBuffer[x][0] = iconRegister.func_94245_a(ModInfo.MOD_ID+":"+this.metadata[x].toString());
+				iconBuffer[x][0] = iconRegister.registerIcon(ModInfo.MOD_ID+":"+this.metadata[x].toString());
 			}
 		}
 	}

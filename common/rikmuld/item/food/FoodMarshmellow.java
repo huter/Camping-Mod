@@ -24,9 +24,10 @@ public class FoodMarshmellow extends CampingItemFood{
     private int potionAmplifier;
     private float potionEffectProbability;
 
-    public FoodMarshmellow(int par1, int par2, float par3, boolean par4)
+    public FoodMarshmellow(int par1)
     {
-        super(par1, par2, par4);
+        super(par1, 10, false);
+        float par3 = 0.6F;
         this.itemUseDuration = 64;
 		maxStackSize = 64;
         this.healAmount = Config.PLANT_MARSHMALLOW_HEAL;
@@ -34,11 +35,6 @@ public class FoodMarshmellow extends CampingItemFood{
         this.saturationModifier = par3;
         this.setUnlocalizedName(Items.ITEM_MARSH_FOOD_NAME);
         this.setCreativeTab(CampingMod.customTab);
-    }
-
-    public FoodMarshmellow(int par1, int par2, boolean par3)
-    {
-        this(par1, par2, 0.6F, par3);
     }
   
     @Override

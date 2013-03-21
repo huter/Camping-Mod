@@ -35,7 +35,7 @@ public class RadishSeed extends CampingItem implements IPlantable
 
 	            if (soil != null && soil.canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6))
 	            {
-	                par3World.setBlockAndMetadataWithNotify(par4, par5 + 1, par6, this.blockType, 0, 3);
+	                par3World.setBlock(par4, par5 + 1, par6, this.blockType, 0, 2);
 	                --par1ItemStack.stackSize;
 	                return true;
 	            }

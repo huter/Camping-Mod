@@ -30,7 +30,7 @@ public class GuiButtonGuideButton extends GuiButton{
         {
             boolean var4 = par2 >= this.xPosition && par3 >= this.yPosition && par2 < this.xPosition + this.width && par3 < this.yPosition + this.height;
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            par1Minecraft.renderEngine.func_98187_b(Textures.SPRITE_LOCATION + Textures.SPRITE_BUTTONS);
+            par1Minecraft.renderEngine.bindTexture(Textures.SPRITE_LOCATION + Textures.SPRITE_BUTTONS);
             int var6 = IconIndexHeight*32;
             int var5 = IconIndexWidth*32;
             if(var4) var5+=32;       

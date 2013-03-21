@@ -34,13 +34,13 @@ public abstract class CampingBlockPlant extends BlockFlower {
     }
     
     @SideOnly(Side.CLIENT)
-    public void func_94332_a(IconRegister iconRegister)
+    public void registerIcons(IconRegister iconRegister)
     {
         this.icon= new Icon[this.metadata+1];
 
         for (int i = 0; i < this.icon.length; ++i)
         {
-            this.icon[i] = iconRegister.func_94245_a(ModInfo.MOD_ID+":"+this.getUnlocalizedName().substring(5)+"_"+i);
+            this.icon[i] = iconRegister.registerIcon(ModInfo.MOD_ID+":"+this.getUnlocalizedName().substring(5)+"_"+i);
         }
     }
 }

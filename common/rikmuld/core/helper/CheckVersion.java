@@ -10,7 +10,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.ModLoader;
 
 import org.w3c.dom.Document;
@@ -99,7 +98,7 @@ public class CheckVersion {
 			String NewVersionDate = NewestVersionDate.getTextContent();
 			String NewVersionNew = NewestVersionNew.getTextContent();
 
-			if(!MinecraftServer.getServer().isDedicatedServer()&&ModLoader.getMinecraftInstance().thePlayer!=null)
+			if(ModLoader.getMinecraftInstance().thePlayer!=null)
 			{
 				if(!NewVersion.equals(ModInfo.MOD_VERSION))
 				{	

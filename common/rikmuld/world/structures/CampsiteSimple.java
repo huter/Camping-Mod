@@ -91,50 +91,50 @@ public class CampsiteSimple extends WorldGenerator {
 				world.spawnEntityInWorld(var4);
 			}    
 			
-			world.setBlockAndMetadataWithNotify(i + 0, j + 0, k + 1, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 2, j + 0, k + 0, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 2, j + 0, k + 1, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 2, j + 0, k + 2, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 0, k + 0, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 0, k + 1, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 0, k + 2, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 0, k + 0, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 0, k + 1, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 0, k + 2, Block.grass.blockID,0 , 3);
+			world.setBlock(i + 0, j + 0, k + 1, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 2, j + 0, k + 0, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 2, j + 0, k + 1, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 2, j + 0, k + 2, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 3, j + 0, k + 0, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 3, j + 0, k + 1, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 3, j + 0, k + 2, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 4, j + 0, k + 0, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 4, j + 0, k + 1, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 4, j + 0, k + 2, Block.grass.blockID,0 , 2);
 		
-			world.setBlockAndMetadataWithNotify(i + 0, j + 1, k + 1, RandomCampfire, Randommetadata, 3);
+			world.setBlock(i + 0, j + 1, k + 1, RandomCampfire, Randommetadata, 2);
 		
-			world.setBlockAndMetadataWithNotify(i + 0, j + 2, k + 1, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 1, j + 2, k + 1, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 1, j + 2, k + 2, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 1, j + 2, k + 0, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 0, j + 2, k + 2, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 0, j + 2, k + 0, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 1, j + 1, k + 1, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 1, j + 1, k + 2, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 1, j + 1, k + 0, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 0, j + 1, k + 2, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 0, j + 1, k + 0, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 2, k + 2, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 2, j + 2, k + 2, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 2, k + 2, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 2, k + 0, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 2, j + 2, k + 0, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 2, k + 0, 0,0 , 3);
+			world.setBlock(i + 0, j + 2, k + 1, 0,0 , 2);
+			world.setBlock(i + 1, j + 2, k + 1, 0,0 , 2);
+			world.setBlock(i + 1, j + 2, k + 2, 0,0 , 2);
+			world.setBlock(i + 1, j + 2, k + 0, 0,0 , 2);
+			world.setBlock(i + 0, j + 2, k + 2, 0,0 , 2);
+			world.setBlock(i + 0, j + 2, k + 0, 0,0 , 2);
+			world.setBlock(i + 1, j + 1, k + 1, 0,0 , 2);
+			world.setBlock(i + 1, j + 1, k + 2, 0,0 , 2);
+			world.setBlock(i + 1, j + 1, k + 0, 0,0 , 2);
+			world.setBlock(i + 0, j + 1, k + 2, 0,0 , 2);
+			world.setBlock(i + 0, j + 1, k + 0, 0,0 , 2);
+			world.setBlock(i + 4, j + 2, k + 2, 0,0 , 2);
+			world.setBlock(i + 2, j + 2, k + 2, 0,0 , 2);
+			world.setBlock(i + 3, j + 2, k + 2, 0,0 , 2);
+			world.setBlock(i + 4, j + 2, k + 0, 0,0 , 2);
+			world.setBlock(i + 2, j + 2, k + 0, 0,0 , 2);
+			world.setBlock(i + 3, j + 2, k + 0, 0,0 , 2);
 			
-			world.setBlockAndMetadataWithNotify(i + 2, j + 1, k + 1, ModBlocks.tent.blockID, 2, 3);
+			world.setBlock(i + 2, j + 1, k + 1, ModBlocks.tent.blockID, 2, 2);
 		
-			world.setBlockAndMetadataWithNotify(i + 2, j + 1, k + 0, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 2, j + 1, k + 2, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 1, k + 0, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 1, k + 2, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 1, k + 2, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 1, k + 0, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 1, k + 1, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 1, k + 1, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 2, k + 1, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 2, j + 2, k + 1, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 2, k + 1, ModBlocks.ghostBlock.blockID,0 , 3);
+			world.setBlock(i + 2, j + 1, k + 0, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 2, j + 1, k + 2, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 3, j + 1, k + 0, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 4, j + 1, k + 2, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 3, j + 1, k + 2, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 4, j + 1, k + 0, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 3, j + 1, k + 1, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 4, j + 1, k + 1, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 4, j + 2, k + 1, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 2, j + 2, k + 1, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 3, j + 2, k + 1, ModBlocks.ghostBlock.blockID,0 , 2);
 		}
 		
 		if (Config.WORLD_GEN_SMALL_CAMP_CANT_SPAWN_ANYWERE==false)
@@ -161,50 +161,50 @@ public class CampsiteSimple extends WorldGenerator {
 				world.spawnEntityInWorld(var4);
 			}    
 			
-			world.setBlockAndMetadataWithNotify(i + 0, j + 0, k + 1, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 2, j + 0, k + 0, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 2, j + 0, k + 1, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 2, j + 0, k + 2, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 0, k + 0, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 0, k + 1, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 0, k + 2, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 0, k + 0, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 0, k + 1, Block.grass.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 0, k + 2, Block.grass.blockID,0 , 3);
+			world.setBlock(i + 0, j + 0, k + 1, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 2, j + 0, k + 0, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 2, j + 0, k + 1, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 2, j + 0, k + 2, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 3, j + 0, k + 0, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 3, j + 0, k + 1, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 3, j + 0, k + 2, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 4, j + 0, k + 0, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 4, j + 0, k + 1, Block.grass.blockID,0 , 2);
+			world.setBlock(i + 4, j + 0, k + 2, Block.grass.blockID,0 , 2);
 		
-			world.setBlockAndMetadataWithNotify(i + 0, j + 1, k + 1, RandomCampfire, Randommetadata, 3);
+			world.setBlock(i + 0, j + 1, k + 1, RandomCampfire, Randommetadata, 2);
 		
-			world.setBlockAndMetadataWithNotify(i + 0, j + 2, k + 1, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 1, j + 2, k + 1, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 1, j + 2, k + 2, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 1, j + 2, k + 0, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 0, j + 2, k + 2, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 0, j + 2, k + 0, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 1, j + 1, k + 1, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 1, j + 1, k + 2, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 1, j + 1, k + 0, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 0, j + 1, k + 2, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 0, j + 1, k + 0, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 2, k + 2, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 2, j + 2, k + 2, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 2, k + 2, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 2, k + 0, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 2, j + 2, k + 0, 0,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 2, k + 0, 0,0 , 3);
+			world.setBlock(i + 0, j + 2, k + 1, 0,0 , 2);
+			world.setBlock(i + 1, j + 2, k + 1, 0,0 , 2);
+			world.setBlock(i + 1, j + 2, k + 2, 0,0 , 2);
+			world.setBlock(i + 1, j + 2, k + 0, 0,0 , 2);
+			world.setBlock(i + 0, j + 2, k + 2, 0,0 , 2);
+			world.setBlock(i + 0, j + 2, k + 0, 0,0 , 2);
+			world.setBlock(i + 1, j + 1, k + 1, 0,0 , 2);
+			world.setBlock(i + 1, j + 1, k + 2, 0,0 , 2);
+			world.setBlock(i + 1, j + 1, k + 0, 0,0 , 2);
+			world.setBlock(i + 0, j + 1, k + 2, 0,0 , 2);
+			world.setBlock(i + 0, j + 1, k + 0, 0,0 , 2);
+			world.setBlock(i + 4, j + 2, k + 2, 0,0 , 2);
+			world.setBlock(i + 2, j + 2, k + 2, 0,0 , 2);
+			world.setBlock(i + 3, j + 2, k + 2, 0,0 , 2);
+			world.setBlock(i + 4, j + 2, k + 0, 0,0 , 2);
+			world.setBlock(i + 2, j + 2, k + 0, 0,0 , 2);
+			world.setBlock(i + 3, j + 2, k + 0, 0,0 , 2);
 			
-			world.setBlockAndMetadataWithNotify(i + 2, j + 1, k + 1, ModBlocks.tent.blockID, 2, 3);
+			world.setBlock(i + 2, j + 1, k + 1, ModBlocks.tent.blockID, 2, 2);
 		
-			world.setBlockAndMetadataWithNotify(i + 2, j + 1, k + 0, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 2, j + 1, k + 2, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 1, k + 0, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 1, k + 2, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 1, k + 2, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 1, k + 0, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 1, k + 1, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 1, k + 1, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 4, j + 2, k + 1, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 2, j + 2, k + 1, ModBlocks.ghostBlock.blockID,0 , 3);
-			world.setBlockAndMetadataWithNotify(i + 3, j + 2, k + 1, ModBlocks.ghostBlock.blockID,0 , 3);
+			world.setBlock(i + 2, j + 1, k + 0, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 2, j + 1, k + 2, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 3, j + 1, k + 0, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 4, j + 1, k + 2, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 3, j + 1, k + 2, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 4, j + 1, k + 0, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 3, j + 1, k + 1, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 4, j + 1, k + 1, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 4, j + 2, k + 1, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 2, j + 2, k + 1, ModBlocks.ghostBlock.blockID,0 , 2);
+			world.setBlock(i + 3, j + 2, k + 1, ModBlocks.ghostBlock.blockID,0 , 2);
 		}
 	return true;
 	}

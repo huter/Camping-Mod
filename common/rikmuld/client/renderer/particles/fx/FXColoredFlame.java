@@ -24,8 +24,8 @@ public class FXColoredFlame extends EntityFX
 	this.motionY = this.motionY * 0.009999999776482582D + par10;
 	this.motionZ = this.motionZ * 0.009999999776482582D + par12;
 	this.particleMaxAge = 20;
-	this.field_94054_b = color % 16;
-    this.field_94055_c = color / 16;
+    this.particleTextureIndexX = color % 16;
+    this.particleTextureIndexY = color / 16;
 	}
 	
 	@Override

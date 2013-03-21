@@ -34,7 +34,7 @@ public class ModItems {
 	{
 		TentTools = new ToolCamping(Items.ITEM_TOOL_CAMP_ID);
 		Marshmallow = new Marshmellow(Items.ITEM_MARSH_ID);
-		MarshmallowFood = new FoodMarshmellow(Items.ITEM_MARSH_FOOD_ID, 10, false);
+		MarshmallowFood = new FoodMarshmellow(Items.ITEM_MARSH_FOOD_ID);
 		TentParts = new TentParts(Items.ITEM_TENT_PARTS_ID);
 		SleepingBag = new TentContents(Items.ITEM_TENT_CONTENTS_ID);
 		CampingBag = new ToolBackpack(Items.ITEM_TOOL_BACK_ID);
