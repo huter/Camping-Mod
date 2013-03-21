@@ -38,7 +38,7 @@ public class ModItems {
 		TentParts = new TentParts(Items.ITEM_TENT_PARTS_ID);
 		SleepingBag = new TentContents(Items.ITEM_TENT_CONTENTS_ID);
 		CampingBag = new ToolBackpack(Items.ITEM_TOOL_BACK_ID);
-		radish = new FoodRadish(Items.ITEM_RADISH_FOOD_ID, 10, false);
+		radish = new FoodRadish(Items.ITEM_RADISH_FOOD_ID);
 		radishSeed = new RadishSeed(Items.ITEM_RADISH_SEED_ID, ModBlocks.RadishCrop.blockID, Block.grass.blockID);
 		guideBook = new GuideBook(Items.ITEM_BOOK_GUIDE_ID);
 		
