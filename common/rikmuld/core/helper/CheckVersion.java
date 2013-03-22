@@ -10,6 +10,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.ModLoader;
 
 import org.w3c.dom.Document;
@@ -97,7 +98,21 @@ public class CheckVersion {
 			String NewVersionDate = NewestVersionDate.getTextContent();
 			String NewVersionNew = NewestVersionNew.getTextContent();
 
-			if(ModLoader.getMinecraftInstance().thePlayer!=null)
+			if(MinecraftServer.getServer()!=null)
+			{
+				if(!MinecraftServer.getServer().isDedicatedServer()&&ModLoader.getMinecraftInstance().thePlayer!=null)
+				{
+					if(!NewVersion.equals(ModInfo.MOD_VERSION))
+					{	
+						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_NEW);
+						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_VERSION + NewVersion); 
+						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_CURR + ModInfo.MOD_VERSION);
+						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_WHATSNEW + NewVersionNew);
+						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_DATE + NewVersionDate);
+					}
+				}
+			}
+			else if(ModLoader.getMinecraftInstance().thePlayer!=null)
 			{
 				if(!NewVersion.equals(ModInfo.MOD_VERSION))
 				{	
@@ -107,7 +122,6 @@ public class CheckVersion {
 					ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_WHATSNEW + NewVersionNew);
 					ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_DATE + NewVersionDate);
 				}
-
 			}
 		}
 	}
