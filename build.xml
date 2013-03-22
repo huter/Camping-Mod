@@ -1,8 +1,14 @@
 <?xml version="1.0" ?> 
-<project name="The Camping mOd">
+<project name="The Camping mod">
 	
 	<property file="build.properties" />
 	
+	<target name="copy">
+		<copy todir="${dir.development}MCP\source">
+			<fileset dir="${dir.development}${dir.modsource}" />
+		</copy>
+	</target>
+
 	<target name="clean">
 		<delete file="${dir.development}\mcp\src\minecraft\mcmod.info" />
 		<delete dir="${dir.development}\mcp\src\minecraft\com" />
@@ -67,6 +73,7 @@
 	
 	<target name="release">
 		<!-- Prep for the release -->
+		<antcall target="copy" />
 		<antcall target="clean" />
 		<antcall target="build" />
 		<antcall target="recompile" />		
@@ -74,13 +81,14 @@
 		
 		<!-- Build the jar -->
 		<mkdir dir="${dir.release}\${release.minecraft.version}\${release.mod.version}" />
-		<jar destfile="${dir.release}\${release.minecraft.version}\${release.mod.version}\The-Camping-Mod${release.mod.version}.jar">
+		<jar destfile="${dir.release}\${release.minecraft.version}\${release.mod.version}\The Camping Mod ${release.mod.version}.jar">
 			<fileset dir="${dir.development}\mcp\src\minecraft\" includes="mcmod.info" />
 			<fileset dir="${dir.development}\mcp\reobf\minecraft" />
 			<fileset dir="${dir.development}\mcp\source\Camping Mod\resources" />
 		</jar>
 		
 		<!-- Clean up the MCP source now that we are done -->
+		<delete dir="${dir.development}\mcp\source\Camping Mod" />
 		<antcall target="clean" />
 	</target>
 	
