@@ -24,7 +24,6 @@ public class CheckVersion {
 	
 	public static final String MOD_MESSAGE_VERSION_NEW = "There is an Updated version of the camping mod";
 	public static final String MOD_MESSAGE_VERSION_VERSION = "Version: ";
-	public static final String MOD_MESSAGE_VERSION_GOOD = "Your camping mod is up to date";
 	public static final String MOD_MESSAGE_VERSION_DATE = "The version came out at: ";
 	public static final String MOD_MESSAGE_VERSION_WHATSNEW = "The new version mainly includes: ";
 	public static final String MOD_MESSAGE_VERSION_CURR = "Your version is: ";
@@ -108,10 +107,7 @@ public class CheckVersion {
 					ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_WHATSNEW + NewVersionNew);
 					ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_DATE + NewVersionDate);
 				}
-				else
-				{
-					ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_GREEN_LIGHT+MOD_MESSAGE_VERSION_GOOD);
-				}
+
 			}
 		}
 	}
