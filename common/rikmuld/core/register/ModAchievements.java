@@ -59,7 +59,7 @@ public class ModAchievements {
 	
 	public static void init() 
 	{
-		campachiev = new Achievement(2500,"campachiev", 0, -2, ItemStacks.campfire, null).registerAchievement();
+		campachiev = new Achievement(2500,"campachiev", 0, -2, ModBlocks.campfire, null).registerAchievement();
 		campachiev1 = new Achievement(2501,"campachiev1", 2, -2, ModItems.TentParts, null).registerAchievement();
 		campachiev2 = new Achievement(2502,"campachiev2", -2, -3, ModItems.MarshmallowFood,ModAchievements.campachiev).registerAchievement();
 		campachiev3 = new Achievement(2503,"campachiev3", -1, 0, ItemStacks.campfireMulti, ModAchievements.campachiev).registerAchievement();

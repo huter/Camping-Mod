@@ -19,9 +19,9 @@ public class ItemStacks {
 	public static ItemStack enderp = new ItemStack(Item.enderPearl);
 	public static ItemStack furnace = new ItemStack(Block.furnaceIdle);
 	public static ItemStack flintst = new ItemStack(Item.flintAndSteel);
-	public static ItemStack campfireFast = new ItemStack(ModBlocks.campfire, 1, 0);
+	public static ItemStack campfire = new ItemStack(ModBlocks.campfire, 1, 0);
 	public static ItemStack campfireMulti = new ItemStack(ModBlocks.campfire, 1, 1);
-	public static ItemStack campfire = new ItemStack(ModBlocks.campfire, 1, 2);
+	public static ItemStack campfireFast = new ItemStack(ModBlocks.campfire, 1, 2);
 	public static ItemStack campfireCheap = new ItemStack(ModBlocks.campfire, 1, 3);
 	public static ItemStack campfireInsta = new ItemStack(ModBlocks.campfire, 1, 4);
 	public static ItemStack waterbottle = new ItemStack(Item.potion);
@@ -44,14 +44,4 @@ public class ItemStacks {
 	public static ItemStack campingBagSmall = new ItemStack(ModItems.CampingBag, 1, 0);
 	public static ItemStack campingBagNormal = new ItemStack(ModItems.CampingBag, 1, 1);
 	public static ItemStack campingBagLarge = new ItemStack(ModItems.CampingBag, 1, 2);
-//	public static ItemStack ink = new ItemStack(Item.dyePowder, 1, 4);
-//	public static ItemStack paper = new ItemStack(Item.paper);
-//	public static ItemStack leather = new ItemStack(Item.leather);
-//	public static ItemStack feather = new ItemStack(Item.feather);
-//	public static ItemStack glassbottle = new ItemStack(Item.glassBottle);
-//	public static ItemStack guideBookCampfire = new ItemStack(ModItems.guideBook, 1, 0);
-//	public static ItemStack guideBookTent = new ItemStack(ModItems.guideBook, 1, 1);
-//	public static ItemStack guideBookEquipment = new ItemStack(ModItems.guideBook, 1, 2);
-//	public static ItemStack guideBookFood = new ItemStack(ModItems.guideBook, 1, 3);
-//	public static ItemStack guideBookWorld = new ItemStack(ModItems.guideBook, 1, 4);
 }
