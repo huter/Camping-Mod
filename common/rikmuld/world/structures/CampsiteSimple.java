@@ -86,7 +86,7 @@ public class CampsiteSimple extends WorldGenerator {
 	   
 			for (int f = 0; f<Config.WORLD_GEN_SMALL_CAMP_CAMPER_SPAWNRATE; f++)
 			{
-				Camper var4 = new Camper(world);
+				Camper var4 = new Camper(world, true);
 				var4.setPosition(i, j+1, k);
 				world.spawnEntityInWorld(var4);
 			}    
@@ -156,7 +156,7 @@ public class CampsiteSimple extends WorldGenerator {
 	   
 			for (int f = 0; f<Config.WORLD_GEN_SMALL_CAMP_CAMPER_SPAWNRATE; f++)
 			{
-				Camper var4 = new Camper(world);
+				Camper var4 = new Camper(world, true);
 				var4.setPosition(i, j+1, k);
 				world.spawnEntityInWorld(var4);
 			}    

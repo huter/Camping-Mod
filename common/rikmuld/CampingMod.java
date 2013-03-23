@@ -86,9 +86,13 @@ public class CampingMod {
 	 * TODO: add more config options for new things ed.
 	 * TODO: make a camping tool v2 were you can craft with a key.
 	 * TODO: make backpacks wereable on the back and activateble with a key.
-	 * TODO: make a camper AI for bot run into campfires and stay with tents.
+	 * TODO: make a camper AI for not run into campfires and stay with tents.
 	 * TODO: make a flashlight
 	 * TODO: larger storage in tents
-	 * TODO: clean up code.
+	 * 
+	 * TODO: fix the bugs
+	 * 
+	 * -camper skin change reload world (nbt)
+	 * -missing texture when breaking blcoks
 	 */
 }

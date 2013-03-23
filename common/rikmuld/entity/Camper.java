@@ -30,6 +30,7 @@ import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.World;
 import rikmuld.core.lib.Textures;
 import rikmuld.core.register.ModItems;
+import rikmuld.entity.ai.EntityAIAvoidCampfire;
 import rikmuld.entity.ai.EntityAILookAtTradePlayerCamper;
 import rikmuld.entity.ai.EntityAITradePlayerCamper;
 import cpw.mods.fml.relauncher.Side;
@@ -39,6 +40,8 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
 	 
 	  Random generator = new Random();
 	  int isMale;
+	  
+	  boolean spawn;
 
 	 public Camper(World par1World) 
 	 {
@@ -55,9 +58,19 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
       this.tasks.addTask(3, new EntityAIWatchClosest2(this, Camper.class, 5.0F, 0.02F));
       this.tasks.addTask(3, new EntityAIWander(this, 0.3F));
       this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
+    
       
       this.isImmuneToFire = true;
       this.isMale = generator.nextInt(2);
+	 }
+	 
+	 public Camper(World par1World, boolean AICampfireAvoid) 
+	 {
+		  this(par1World);	
+		  int SpawnX = (int) this.posX;
+		  int SpawnY = (int) this.posY;
+		  int SpawnZ = (int) this.posZ;
+		  this.tasks.addTask(5, new EntityAIAvoidCampfire(this, SpawnX, SpawnY, SpawnZ));
 	 }
 	 
 	    private boolean isPlaying;
