@@ -88,6 +88,7 @@ public class CampingMod {
 	 * TODO: make backpacks wereable on the back and activateble with a key.
 	 * TODO: make a camper AI for bot run into campfires and stay with tents.
 	 * TODO: make a flashlight
+	 * TODO: larger storage in tents
 	 * TODO: clean up code.
 	 */
 }

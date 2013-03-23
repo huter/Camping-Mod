@@ -98,29 +98,26 @@ public class CheckVersion {
 			String NewVersionDate = NewestVersionDate.getTextContent();
 			String NewVersionNew = NewestVersionNew.getTextContent();
 
-			if(MinecraftServer.getServer()!=null)
-			{
-				if(!MinecraftServer.getServer().isDedicatedServer()&&ModLoader.getMinecraftInstance().thePlayer!=null)
+			if(!NewVersion.equals(ModInfo.MOD_VERSION))
+			{	
+				if(MinecraftServer.getServer()!=null)
 				{
-					if(!NewVersion.equals(ModInfo.MOD_VERSION))
-					{	
+					if(!MinecraftServer.getServer().isDedicatedServer()&&ModLoader.getMinecraftInstance().thePlayer!=null)
+					{
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_NEW);
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_VERSION + NewVersion); 
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_CURR + ModInfo.MOD_VERSION);
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_WHATSNEW + NewVersionNew);
-						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_DATE + NewVersionDate);
+						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_DATE + NewVersionDate);					
 					}
 				}
-			}
-			else if(ModLoader.getMinecraftInstance().thePlayer!=null)
-			{
-				if(!NewVersion.equals(ModInfo.MOD_VERSION))
-				{	
-					ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_NEW);
-					ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_VERSION + NewVersion); 
-					ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_CURR + ModInfo.MOD_VERSION);
-					ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_WHATSNEW + NewVersionNew);
-					ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_DATE + NewVersionDate);
+				else if(ModLoader.getMinecraftInstance().thePlayer!=null)
+				{
+						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_NEW);
+						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_VERSION + NewVersion); 
+						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_CURR + ModInfo.MOD_VERSION);
+						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_WHATSNEW + NewVersionNew);
+						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_DATE + NewVersionDate);					
 				}
 			}
 		}
