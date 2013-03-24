@@ -178,13 +178,14 @@ public class Tent extends BlockContainer {
 																	par1world.doesBlockHaveSolidTopSurface(par2+1, par3 - 1, par4-2))
 																{				    
 																	par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 3, 2);
-																	player.destroyCurrentEquippedItem();
-																	ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
-																	player.inventory.addItemStackToInventory(k);
-																	if (currentitem.getItemDamage()>99)
-																	{
-																		player.destroyCurrentEquippedItem();
-																	}
+																  	 player.destroyCurrentEquippedItem();
+															         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+															         player.inventory.addItemStackToInventory(k);
+															         if (currentitem.getItemDamage()>99)
+															         {
+															        	 player.destroyCurrentEquippedItem();
+															         }
+															         return true;
 																}
 															}
 														}
@@ -288,14 +289,15 @@ public class Tent extends BlockContainer {
 																		par1world.doesBlockHaveSolidTopSurface(par2+1, par3 - 1, par4+1)&&
 																		par1world.doesBlockHaveSolidTopSurface(par2+2, par3 - 1, par4+1))
 																	{				
-																		par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 0, 2);
-																	   	player.destroyCurrentEquippedItem();
-																        ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
-																        player.inventory.addItemStackToInventory(k);
-																        if (currentitem.getItemDamage()>99)
-																        {
-																        	player.destroyCurrentEquippedItem();
-																        }
+																		 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 0, 2);
+																	  	 player.destroyCurrentEquippedItem();
+																         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+																         player.inventory.addItemStackToInventory(k);
+																         if (currentitem.getItemDamage()>99)
+																         {
+																        	 player.destroyCurrentEquippedItem();
+																         }
+																         return true;
 																	}															
 																}
 														    }
@@ -323,14 +325,14 @@ public class Tent extends BlockContainer {
 						 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 0, 2);
 						 ItemStack chest = new ItemStack(Block.chest, 1);
 						 player.inventory.addItemStackToInventory(chest);
-						 player.destroyCurrentEquippedItem();
-						 ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
-						 player.inventory.addItemStackToInventory(k);
-						 if (currentitem.getItemDamage()>99)
-						 {
-							 player.destroyCurrentEquippedItem();
-						 }
-						 return true;					 
+					  	 player.destroyCurrentEquippedItem();
+				         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+				         player.inventory.addItemStackToInventory(k);
+				         if (currentitem.getItemDamage()>99)
+				         {
+				        	 player.destroyCurrentEquippedItem();
+				         }
+				         return true;				 
 				    }
 				player.openGui(CampingMod.instance, 4, par1world, par2, par3, par4);
 				return true;
@@ -348,14 +350,14 @@ public class Tent extends BlockContainer {
 						 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 3, 2);
 						 ItemStack chest = new ItemStack(Block.chest, 1);
 						 player.inventory.addItemStackToInventory(chest);
-						 player.destroyCurrentEquippedItem();
-						 ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
-						 player.inventory.addItemStackToInventory(k);
-						 if (currentitem.getItemDamage()>99)
-						 {
-						    	player.destroyCurrentEquippedItem();
-						 }
-						 return true;	 
+					  	 player.destroyCurrentEquippedItem();
+				         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+				         player.inventory.addItemStackToInventory(k);
+				         if (currentitem.getItemDamage()>99)
+				         {
+				        	 player.destroyCurrentEquippedItem();
+				         }
+				         return true;
 				     }							
 				player.openGui(CampingMod.instance, 4, par1world, par2, par3, par4);
 				return true;
@@ -373,14 +375,14 @@ public class Tent extends BlockContainer {
 						 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 3 ,2);
 						 ItemStack chest = new ItemStack(ModItems.SleepingBag, 1);
 						 player.inventory.addItemStackToInventory(chest);
-						 player.destroyCurrentEquippedItem();
-						 ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
-						 player.inventory.addItemStackToInventory(k);
-						 if (currentitem.getItemDamage()>99)
-						 {
-							player.destroyCurrentEquippedItem();
-						 }
-						 return true;
+					  	 player.destroyCurrentEquippedItem();
+				         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+				         player.inventory.addItemStackToInventory(k);
+				         if (currentitem.getItemDamage()>99)
+				         {
+				        	 player.destroyCurrentEquippedItem();
+				         }
+				         return true;
 				 }				 
 			}
 		}
@@ -394,14 +396,14 @@ public class Tent extends BlockContainer {
 						 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 0, 2);
 						 ItemStack chest = new ItemStack(ModItems.SleepingBag, 1);
 						 player.inventory.addItemStackToInventory(chest);
-					     player.destroyCurrentEquippedItem();
-						 ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
-						 player.inventory.addItemStackToInventory(k);
-						 if (currentitem.getItemDamage()>99)
-						 {
-							player.destroyCurrentEquippedItem();
-						 }
-						 return true;
+					  	 player.destroyCurrentEquippedItem();
+				         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+				         player.inventory.addItemStackToInventory(k);
+				         if (currentitem.getItemDamage()>99)
+				         {
+				        	 player.destroyCurrentEquippedItem();
+				         }
+				         return true;
 					 }				 
 				}
 		}

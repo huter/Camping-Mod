@@ -16,7 +16,7 @@ public class CraftHandler implements ICraftingHandler{
 	ItemStack campfire3 = new ItemStack(ModBlocks.campfire, 1, 2);
 	ItemStack campfire4 = new ItemStack(ModBlocks.campfire, 1, 3);
 	ItemStack campfire5 = new ItemStack(ModBlocks.campfire, 1, 4);
-	ItemStack tent1 = new ItemStack(ModBlocks.tent, 1, 0);
+	ItemStack tent = new ItemStack(ModBlocks.tent, 1, 0);
 	
 	@Override
 	public void onCrafting(EntityPlayer player, ItemStack item, IInventory inv) 
@@ -46,47 +46,17 @@ public class CraftHandler implements ICraftingHandler{
             }
         }
 		
-		if (item.itemID == campfire1.itemID)
-		{	
-			if (item.getItemDamage() == campfire1.getItemDamage())
-			{
-                player.addStat(ModAchievements.campachiev, 1);
-			}
-			if (item.getItemDamage() == campfire2.getItemDamage())
-			{
-                player.addStat(ModAchievements.campachiev3, 1);
-			}
+		if(item.itemID == ModBlocks.campfire.blockID)
+		{
+			if (item.getItemDamage() == campfire1.getItemDamage()) player.addStat(ModAchievements.campachiev, 1);
+			if (item.getItemDamage() == campfire1.getItemDamage()) player.addStat(ModAchievements.campachiev3, 1);
+			if (item.getItemDamage() == campfire1.getItemDamage()) player.addStat(ModAchievements.campachiev4, 1);
+			if (item.getItemDamage() == campfire1.getItemDamage()) player.addStat(ModAchievements.campachiev5, 1);
+			if (item.getItemDamage() == campfire1.getItemDamage()) player.addStat(ModAchievements.campachiev6, 1);	
 		}
 		
-        if (item.itemID == ModItems.TentParts.itemID)
-        {
-                player.addStat(ModAchievements.campachiev1, 1);
-        } 
-        
-        if (item.itemID  == campfire3.itemID )
-        {
-                player.addStat(ModAchievements.campachiev4, 1);
-        }
-        
-        if (item.itemID  == campfire4.itemID )
-        {
-        	if (item.getItemDamage()  == campfire4.getItemDamage() )
-        	{
-                player.addStat(ModAchievements.campachiev5, 1);
-        	}
-        	if (item.getItemDamage()  == campfire5.getItemDamage() )
-        	{
-        		player.addStat(ModAchievements.campachiev6, 1);
-        	}	       	 
-        }
-        
-        if (item.itemID == tent1.itemID)
-		{	
-        	if (item.getItemDamage() == tent1.getItemDamage())
-        	{
-                player.addStat(ModAchievements.campachiev7, 1);
-        	}
-		}
+		if (item.itemID == ModItems.TentParts.itemID) player.addStat(ModAchievements.campachiev1, 1);
+		if (item.itemID == tent.itemID) player.addStat(ModAchievements.campachiev7, 1);
 	}
 
 	@Override

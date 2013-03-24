@@ -6,7 +6,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.world.WorldEvent.Load;
 import rikmuld.block.plant.RadishCrop;
-import rikmuld.core.helper.CheckVersion;
+import rikmuld.core.helper.VersionHelper;
 
 public class ModEvents {
 	
@@ -22,7 +22,7 @@ public class ModEvents {
 	{
 		if(FirstTime)
 		{
-			CheckVersion.CheckNewestVersion();
+			VersionHelper.CheckNewestVersion();
 			FirstTime = false;
 		}
 	}

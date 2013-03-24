@@ -2,9 +2,9 @@ package rikmuld.core.register;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
-import rikmuld.core.lib.ItemStacks;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModAchievements {
@@ -57,15 +57,21 @@ public class ModAchievements {
 
 	public static AchievementPage campachivepage;
 	
+	public static ItemStack campfire = new ItemStack(ModBlocks.campfire, 1, 0);
+	public static ItemStack campfireMulti = new ItemStack(ModBlocks.campfire, 1, 1);
+	public static ItemStack campfireFast = new ItemStack(ModBlocks.campfire, 1, 2);
+	public static ItemStack campfireCheap = new ItemStack(ModBlocks.campfire, 1, 3);
+	public static ItemStack campfireInsta = new ItemStack(ModBlocks.campfire, 1, 4);
+	
 	public static void init() 
 	{
-		campachiev = new Achievement(2500,"campachiev", 0, -2, ModBlocks.campfire, null).registerAchievement();
+		campachiev = new Achievement(2500,"campachiev", 0, -2, campfire, null).registerAchievement();
 		campachiev1 = new Achievement(2501,"campachiev1", 2, -2, ModItems.TentParts, null).registerAchievement();
 		campachiev2 = new Achievement(2502,"campachiev2", -2, -3, ModItems.MarshmallowFood,ModAchievements.campachiev).registerAchievement();
-		campachiev3 = new Achievement(2503,"campachiev3", -1, 0, ItemStacks.campfireMulti, ModAchievements.campachiev).registerAchievement();
-		campachiev4 = new Achievement(2504,"campachiev4", -1, 1, ItemStacks.campfireFast, ModAchievements.campachiev).registerAchievement();
-		campachiev5 = new Achievement(2505,"campachiev5", -1, 2, ItemStacks.campfireCheap, ModAchievements.campachiev).registerAchievement();
-		campachiev6 = new Achievement(2506,"campachiev6", -2, 1, ItemStacks.campfireInsta, ModAchievements.campachiev4).registerAchievement();
+		campachiev3 = new Achievement(2503,"campachiev3", -1, 0, campfireMulti, ModAchievements.campachiev).registerAchievement();
+		campachiev4 = new Achievement(2504,"campachiev4", -1, 1, campfireFast, ModAchievements.campachiev).registerAchievement();
+		campachiev5 = new Achievement(2505,"campachiev5", -1, 2, campfireCheap, ModAchievements.campachiev).registerAchievement();
+		campachiev6 = new Achievement(2506,"campachiev6", -2, 1, campfireInsta, ModAchievements.campachiev4).registerAchievement();
 		campachiev7 = new Achievement(2507,"campachiev7", 4, -1, ModBlocks.tent, ModAchievements.campachiev1).registerAchievement();
 		campachiev8 = new Achievement(2508,"campachiev8", 3, 1, Block.chest, ModAchievements.campachiev7).registerAchievement();
 		campachiev9 = new Achievement(2509,"campachiev9", 3, 2, Item.bed, ModAchievements.campachiev7).registerAchievement();

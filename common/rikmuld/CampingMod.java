@@ -94,5 +94,13 @@ public class CampingMod {
 	 * 
 	 * -camper skin change reload world (nbt)
 	 * -missing texture when breaking blcoks
+	 * -camping bags not keeping inv when upgraded
+	 * -when you get an itemstack it should spawn in the same slot were you made it.
+	 * 
+	 * TODO: for nect update
+	 * 
+	 * TODO: make more achievements for new things ed.
+	 * TODO: add more config options for new things ed.
+	 * TODO: fix some bugs
 	 */
 }

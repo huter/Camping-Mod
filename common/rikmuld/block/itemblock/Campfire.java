@@ -214,7 +214,8 @@ public class Campfire extends BlockContainer{
 						     ItemStack camp = new ItemStack(ModBlocks.campfire.blockID, 1, 0);
 					         player.inventory.addItemStackToInventory(camp);
 					    	 par1world.setBlock(x, y, z, 0 , 0, 2);
-					    	 player.destroyCurrentEquippedItem();
+					    	 
+					      	 player.destroyCurrentEquippedItem();
 					         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
 					         player.inventory.addItemStackToInventory(k);
 					         if (currentitem.getItemDamage()>99)
@@ -257,14 +258,15 @@ public class Campfire extends BlockContainer{
 						     ItemStack camp = new ItemStack(ModBlocks.campfire.blockID, 1, 1);
 					         player.inventory.addItemStackToInventory(camp);
 							 par1world.setBlock(x, y, z, 0 , 0, 2);
-						   	 player.destroyCurrentEquippedItem();
+							 
+						  	 player.destroyCurrentEquippedItem();
 					         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
 					         player.inventory.addItemStackToInventory(k);
 					         if (currentitem.getItemDamage()>99)
 					         {
 					        	 player.destroyCurrentEquippedItem();
 					         }
-							 return true;
+					         return true;
 						}	
 					player.openGui(CampingMod.instance, 1, par1world, x, y, z);
 					return true;
@@ -309,14 +311,15 @@ public class Campfire extends BlockContainer{
 						     ItemStack camp = new ItemStack(ModBlocks.campfire.blockID, 1, 2);
 					         player.inventory.addItemStackToInventory(camp);
 					    	 par1world.setBlock(x, y, z, 0 , 0, 2);
-					       	 player.destroyCurrentEquippedItem();
+					    	 
+					      	 player.destroyCurrentEquippedItem();
 					         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
 					         player.inventory.addItemStackToInventory(k);
 					         if (currentitem.getItemDamage()>99)
 					         {
 					        	 player.destroyCurrentEquippedItem();
 					         }
-					    	 return true;
+					         return true;
 						}
 						player.openGui(CampingMod.instance, 2, par1world, x, y, z);
 						return true;
@@ -393,14 +396,15 @@ public class Campfire extends BlockContainer{
 						    ItemStack camp = new ItemStack(ModBlocks.campfire.blockID, 1, 4);
 					        player.inventory.addItemStackToInventory(camp);
 					    	par1world.setBlock(x, y, z, 0 , 0, 2);
-					      	 player.destroyCurrentEquippedItem();
+					    	
+					     	 player.destroyCurrentEquippedItem();
 					         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
 					         player.inventory.addItemStackToInventory(k);
 					         if (currentitem.getItemDamage()>99)
 					         {
 					        	 player.destroyCurrentEquippedItem();
 					         }
-					    	return true;
+					         return true;
 						}
 					}
 					return true;
@@ -442,14 +446,15 @@ public class Campfire extends BlockContainer{
 						    ItemStack camp = new ItemStack(ModBlocks.campfire.blockID, 1, 3);
 					        player.inventory.addItemStackToInventory(camp);
 					    	par1world.setBlock(x, y, z, 0 , 0, 2);
-					      	 player.destroyCurrentEquippedItem();
+					    	
+					     	 player.destroyCurrentEquippedItem();
 					         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
 					         player.inventory.addItemStackToInventory(k);
 					         if (currentitem.getItemDamage()>99)
 					         {
 					        	 player.destroyCurrentEquippedItem();
 					         }
-							return true;
+					         return true;
 						}
 						player.openGui(CampingMod.instance, 3, par1world, x, y, z);
 						return true;

@@ -21,7 +21,7 @@ import org.xml.sax.SAXException;
 import rikmuld.core.lib.Colors;
 import rikmuld.core.lib.ModInfo;
 
-public class CheckVersion {
+public class VersionHelper {
 	
 	public static final String MOD_MESSAGE_VERSION_NEW = "There is an Updated version of the camping mod";
 	public static final String MOD_MESSAGE_VERSION_VERSION = "Version: ";
