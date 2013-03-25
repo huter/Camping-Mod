@@ -42,16 +42,16 @@ public class ModRecipies {
 		RecipieHelper.addShapelessRecipe(marshmallow[1], 3, stick, marshmallow[0]);
 		RecipieHelper.addShapelessMetaCycleRecipie(tentParts[0], 4, toolCamp, iron);
 		RecipieHelper.addShapelessMetaCycleRecipie(tentParts[1], 10, toolCamp, string, string, string, string, string, string);
-		RecipieHelper.addRecipe(tent, 1, RecipieHelper.getArrayStacks(tentParts[1], tentParts[0]), "000", "0 0", "1 1");
-		RecipieHelper.addRecipe(SleepBag, 1, RecipieHelper.getArrayStacks(Block.cloth), "000");
-		RecipieHelper.addRecipe(toolCamp[0], 1, RecipieHelper.getArrayStacks(rosered[1], iron), "010", "010", "010");
-		RecipieHelper.addRecipe(campfire[0], 1, RecipieHelper.getArrayStacks(torch, flint, stone), " 0 ", "010", "222");
-		RecipieHelper.addRecipe(campfire[1], 1, RecipieHelper.getArrayStacks(furnace, campfire[0]), " 0 ", "010", " 0 ");
-		RecipieHelper.addRecipe(campfire[2], 1, RecipieHelper.getArrayStacks(flintst, campfire[0]), " 0 ", "010", " 0 ");
-		RecipieHelper.addRecipe(campfire[3], 1, RecipieHelper.getArrayStacks(enderp, campfire[0]), " 0 ", "010", " 0 ");
-		RecipieHelper.addRecipe(marshmallow[0], 4, RecipieHelper.getArrayStacks(sugar, waterbottle, egg, bowl), "010", "020", "030");
-		RecipieHelper.addRecipe(campingBag[0], 1, RecipieHelper.getArrayStacks(tentParts[1]), "000", "0 0", "000");
-		RecipieHelper.addRecipe(campingBag[1], 1, RecipieHelper.getArrayStacks(tentParts[1], campingBag[0]), "000", "010", "000");
-		RecipieHelper.addRecipe(campingBag[2], 1, RecipieHelper.getArrayStacks(tentParts[1], campingBag[1]), "000", "010", "000");
+		RecipieHelper.addRecipe(tent, 1, "000", "0 0", "1 1", '0', tentParts[1], '1', tentParts[0]);
+		RecipieHelper.addRecipe(SleepBag, 1, "000", '0', Block.cloth);
+		RecipieHelper.addRecipe(toolCamp[0], 1,  "010", "010", "010", '0', rosered[1], '1', iron);
+		RecipieHelper.addRecipe(campfire[0], 1, " 0 ", "010", "222", '0', torch, '1', flint, '2', stone);
+		RecipieHelper.addRecipe(campfire[1], 1, " 0 ", "010", " 0 ", '0', furnace, '1', campfire[0]);
+		RecipieHelper.addRecipe(campfire[2], 1, " 0 ", "010", " 0 ", '0', flintst, '1', campfire[0]);
+		RecipieHelper.addRecipe(campfire[3], 1, " 0 ", "010", " 0 ", '0', enderp, '1', campfire[0]);
+		RecipieHelper.addRecipe(marshmallow[0], 4, "010", "020", "030", '0', sugar, '1', waterbottle, '2', egg, '3', bowl);
+		RecipieHelper.addRecipe(campingBag[0], 1, "000", "0 0", "000", '0', tentParts[1]);
+		RecipieHelper.addRecipe(campingBag[1], 1, "000", "010", "000", '0', tentParts[1], '1', campingBag[0]);
+		RecipieHelper.addRecipe(campingBag[2], 1, "000", "010", "000", '0', tentParts[1], '1', campingBag[1]);
 	}
 }

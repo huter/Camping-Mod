@@ -10,18 +10,10 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipieHelper {
 	
-	public static void addRecipe(ItemStack output, int count, Object[] stack, String... input)
+	public static void addRecipe(ItemStack output, int count, Object... params)
 	{
 		output.stackSize = count;
-		if(stack.length==1) GameRegistry.addRecipe(output, input, '0', stack[0]);
-		else if(stack.length==2) GameRegistry.addRecipe(output, input, '0', stack[0], '1', stack[1]);
-		else if(stack.length==3) GameRegistry.addRecipe(output, input, '0', stack[0], '1', stack[1], '2', stack[2]);
-		else if(stack.length==4) GameRegistry.addRecipe(output, input, '0', stack[0], '1', stack[1], '2', stack[2], '3', stack[3]);
-		else if(stack.length==5) GameRegistry.addRecipe(output, input, '0', stack[0], '1', stack[1], '2', stack[2], '3', stack[3], '4', stack[4]);
-		else if(stack.length==6) GameRegistry.addRecipe(output, input, '0', stack[0], '1', stack[1], '2', stack[2], '3', stack[3], '4', stack[4], '5', stack[5]);
-		else if(stack.length==7) GameRegistry.addRecipe(output, input, '0', stack[0], '1', stack[1], '2', stack[2], '3', stack[3], '4', stack[4], '5', stack[5], '6', stack[6]);
-		else if(stack.length==8) GameRegistry.addRecipe(output, input, '0', stack[0], '1', stack[1], '2', stack[2], '3', stack[3], '4', stack[4], '5', stack[5], '6', stack[6], '7', stack[7]);
-		else if(stack.length==9) GameRegistry.addRecipe(output, input, '0', stack[0], '1', stack[1], '2', stack[2], '3', stack[3], '4', stack[4], '5', stack[5], '6', stack[6], '7', stack[7], '8', stack[8]);
+		GameRegistry.addRecipe(output, params);
 	}
 	
 	public static void addShapelessRecipe(ItemStack output, int count, Object... input)
