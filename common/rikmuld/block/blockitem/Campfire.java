@@ -1,4 +1,4 @@
-package rikmuld.block.itemblock;
+package rikmuld.block.blockitem;
 
 import java.util.List;
 import java.util.Random;
@@ -18,6 +18,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import rikmuld.CampingMod;
+import rikmuld.block.CampingBlock;
+import rikmuld.block.CampingBlockItem;
 import rikmuld.client.renderer.particles.Particles;
 import rikmuld.core.lib.Blocks;
 import rikmuld.core.lib.Config;
@@ -31,7 +33,7 @@ import rikmuld.tileentity.TileEntityCampfireMultiCooker;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class Campfire extends BlockContainer{
+public class Campfire extends CampingBlockItem{
 
 	private Random campfireRand = new Random();
 	private static boolean keepCampfireInventory = false;

@@ -1,4 +1,4 @@
-package rikmuld.block.itemblock;
+package rikmuld.block.blockitem;
 
 import java.util.Iterator;
 import java.util.List;
@@ -24,6 +24,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import rikmuld.CampingMod;
+import rikmuld.block.CampingBlockItem;
 import rikmuld.core.lib.Blocks;
 import rikmuld.core.register.ModAchievements;
 import rikmuld.core.register.ModBlocks;
@@ -32,7 +33,7 @@ import rikmuld.tileentity.TileEntityTent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class Tent extends BlockContainer {
+public class Tent extends CampingBlockItem{
 	
 	private int[] xNoRoalteTent = {0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 1};
 	private int[] yNoRoalteTent = {0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0};

@@ -2,8 +2,8 @@ package rikmuld.core.register;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
-import rikmuld.block.itemblock.Campfire;
-import rikmuld.block.itemblock.Tent;
+import rikmuld.block.blockitem.Campfire;
+import rikmuld.block.blockitem.Tent;
 import rikmuld.block.normal.GhostBlock;
 import rikmuld.block.plant.RadishCrop;
 import rikmuld.core.lib.Blocks;
