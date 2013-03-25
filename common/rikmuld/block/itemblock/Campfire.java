@@ -206,17 +206,17 @@ public class Campfire extends BlockContainer{
 						     ItemStack marsh = new ItemStack(ModItems.MarshmallowFood.itemID, currentitem.stackSize, 0);
 						     player.destroyCurrentEquippedItem();
 						     player.inventory.addItemStackToInventory(marsh);
-						     player.addStat(ModAchievements.campachiev2, 1);
+						     player.addStat(ModAchievements.MarshMallowFood, 1);
 						}
 					    	
-						if (currentitem.itemID == ModItems.TentTools.itemID)
+						if (currentitem.itemID == ModItems.CampTool.itemID)
 						{
 						     ItemStack camp = new ItemStack(ModBlocks.campfire.blockID, 1, 0);
 					         player.inventory.addItemStackToInventory(camp);
 					    	 par1world.setBlock(x, y, z, 0 , 0, 2);
 					    	 
 					      	 player.destroyCurrentEquippedItem();
-					         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+					         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
 					         player.inventory.addItemStackToInventory(k);
 					         if (currentitem.getItemDamage()>99)
 					         {
@@ -250,17 +250,17 @@ public class Campfire extends BlockContainer{
 						     ItemStack marsh = new ItemStack(ModItems.MarshmallowFood, currentitem.stackSize, 0);
 						     player.destroyCurrentEquippedItem();
 						     player.inventory.addItemStackToInventory(marsh);
-						     player.addStat(ModAchievements.campachiev2, 1);
+						     player.addStat(ModAchievements.MarshMallowFood, 1);
 						     return true;
 						}			
-						if (currentitem.itemID == ModItems.TentTools.itemID)
+						if (currentitem.itemID == ModItems.CampTool.itemID)
 						{
 						     ItemStack camp = new ItemStack(ModBlocks.campfire.blockID, 1, 1);
 					         player.inventory.addItemStackToInventory(camp);
 							 par1world.setBlock(x, y, z, 0 , 0, 2);
 							 
 						  	 player.destroyCurrentEquippedItem();
-					         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+					         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
 					         player.inventory.addItemStackToInventory(k);
 					         if (currentitem.getItemDamage()>99)
 					         {
@@ -302,18 +302,18 @@ public class Campfire extends BlockContainer{
 						     ItemStack marsh = new ItemStack(ModItems.MarshmallowFood, currentitem.stackSize, 0);
 						     player.destroyCurrentEquippedItem();
 						     player.inventory.addItemStackToInventory(marsh);
-						     player.addStat(ModAchievements.campachiev2, 1);
+						     player.addStat(ModAchievements.MarshMallowFood, 1);
 						     return true;    
 						 }
 						 
-						if (currentitem.itemID == ModItems.TentTools.itemID)
+						if (currentitem.itemID == ModItems.CampTool.itemID)
 						{
 						     ItemStack camp = new ItemStack(ModBlocks.campfire.blockID, 1, 2);
 					         player.inventory.addItemStackToInventory(camp);
 					    	 par1world.setBlock(x, y, z, 0 , 0, 2);
 					    	 
 					      	 player.destroyCurrentEquippedItem();
-					         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+					         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
 					         player.inventory.addItemStackToInventory(k);
 					         if (currentitem.getItemDamage()>99)
 					         {
@@ -388,17 +388,17 @@ public class Campfire extends BlockContainer{
 						     ItemStack marsh = new ItemStack(ModItems.MarshmallowFood.itemID, currentitem.stackSize, 0);
 						     player.destroyCurrentEquippedItem();
 						     player.inventory.addItemStackToInventory(marsh);
-						     player.addStat(ModAchievements.campachiev2, 1);
+						     player.addStat(ModAchievements.MarshMallowFood, 1);
 					    }
 						
-						if (currentitem.itemID == ModItems.TentTools.itemID)
+						if (currentitem.itemID == ModItems.CampTool.itemID)
 					    {
 						    ItemStack camp = new ItemStack(ModBlocks.campfire.blockID, 1, 4);
 					        player.inventory.addItemStackToInventory(camp);
 					    	par1world.setBlock(x, y, z, 0 , 0, 2);
 					    	
 					     	 player.destroyCurrentEquippedItem();
-					         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+					         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
 					         player.inventory.addItemStackToInventory(k);
 					         if (currentitem.getItemDamage()>99)
 					         {
@@ -437,18 +437,18 @@ public class Campfire extends BlockContainer{
 						     ItemStack marsh = new ItemStack(ModItems.MarshmallowFood, currentitem.stackSize, 0);
 						     player.destroyCurrentEquippedItem();
 						     player.inventory.addItemStackToInventory(marsh);
-						     player.addStat(ModAchievements.campachiev2, 1);
+						     player.addStat(ModAchievements.MarshMallowFood, 1);
 						     return true;			    
 						 }
 		   	
-						if (currentitem.itemID == ModItems.TentTools.itemID)
+						if (currentitem.itemID == ModItems.CampTool.itemID)
 					    {
 						    ItemStack camp = new ItemStack(ModBlocks.campfire.blockID, 1, 3);
 					        player.inventory.addItemStackToInventory(camp);
 					    	par1world.setBlock(x, y, z, 0 , 0, 2);
 					    	
 					     	 player.destroyCurrentEquippedItem();
-					         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+					         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
 					         player.inventory.addItemStackToInventory(k);
 					         if (currentitem.getItemDamage()>99)
 					         {

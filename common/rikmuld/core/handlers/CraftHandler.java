@@ -4,6 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import rikmuld.core.helper.RecipieHelper;
 import rikmuld.core.register.ModAchievements;
 import rikmuld.core.register.ModBlocks;
 import rikmuld.core.register.ModItems;
@@ -11,11 +12,8 @@ import cpw.mods.fml.common.ICraftingHandler;
 
 public class CraftHandler implements ICraftingHandler{
 
-	ItemStack campfire1 = new ItemStack(ModBlocks.campfire, 1, 0);
-	ItemStack campfire2 = new ItemStack(ModBlocks.campfire, 1, 1);
-	ItemStack campfire3 = new ItemStack(ModBlocks.campfire, 1, 2);
-	ItemStack campfire4 = new ItemStack(ModBlocks.campfire, 1, 3);
-	ItemStack campfire5 = new ItemStack(ModBlocks.campfire, 1, 4);
+	ItemStack campfire[] = RecipieHelper.getMetaCycle(ModBlocks.campfire, 5);
+	ItemStack bag[] = RecipieHelper.getMetaCycle(ModItems.CampingBag, 3);
 	ItemStack tent = new ItemStack(ModBlocks.tent, 1, 0);
 	
 	@Override
@@ -35,9 +33,9 @@ public class CraftHandler implements ICraftingHandler{
             if(inv.getStackInSlot(i) != null)
             {
                 ItemStack j = inv.getStackInSlot(i);
-                if(j.getItem() != null && j.getItem() == ModItems.TentTools)
+                if(j.getItem() != null && j.getItem() == ModItems.CampTool)
                 {
-                    ItemStack k = new ItemStack(ModItems.TentTools, 2, (j.getItemDamage() + 1));
+                    ItemStack k = new ItemStack(ModItems.CampTool, 2, (j.getItemDamage() + 1));
      
                     if(k.getItemDamage() >= k.getMaxDamage())
                         k = null;
@@ -48,15 +46,23 @@ public class CraftHandler implements ICraftingHandler{
 		
 		if(item.itemID == ModBlocks.campfire.blockID)
 		{
-			if (item.getItemDamage() == campfire1.getItemDamage()) player.addStat(ModAchievements.campachiev, 1);
-			if (item.getItemDamage() == campfire1.getItemDamage()) player.addStat(ModAchievements.campachiev3, 1);
-			if (item.getItemDamage() == campfire1.getItemDamage()) player.addStat(ModAchievements.campachiev4, 1);
-			if (item.getItemDamage() == campfire1.getItemDamage()) player.addStat(ModAchievements.campachiev5, 1);
-			if (item.getItemDamage() == campfire1.getItemDamage()) player.addStat(ModAchievements.campachiev6, 1);	
+			if (item.getItemDamage() == campfire[0].getItemDamage()) player.addStat(ModAchievements.Campfire, 1);
+			if (item.getItemDamage() == campfire[1].getItemDamage()) player.addStat(ModAchievements.CampfireMultiCook, 1);
+			if (item.getItemDamage() == campfire[2].getItemDamage()) player.addStat(ModAchievements.CampfireFastCook, 1);
+			if (item.getItemDamage() == campfire[3].getItemDamage()) player.addStat(ModAchievements.CampfireCheapCook, 1);
+			if (item.getItemDamage() == campfire[4].getItemDamage()) player.addStat(ModAchievements.CampfireInstaCook, 1);	
 		}
 		
-		if (item.itemID == ModItems.TentParts.itemID) player.addStat(ModAchievements.campachiev1, 1);
-		if (item.itemID == tent.itemID) player.addStat(ModAchievements.campachiev7, 1);
+		if(item.itemID == ModItems.CampingBag.itemID)
+		{
+			if (item.getItemDamage() == bag[0].getItemDamage()) player.addStat(ModAchievements.CampingBagSmall, 1);
+			if (item.getItemDamage() == bag[1].getItemDamage()) player.addStat(ModAchievements.CampingBagNormal, 1);
+			if (item.getItemDamage() == bag[2].getItemDamage()) player.addStat(ModAchievements.CampingBagLarge, 1);	
+		}
+		
+		if (item.itemID == ModItems.CampTool.itemID) player.addStat(ModAchievements.CampersTool, 1);
+		if (item.itemID == ModItems.TentParts.itemID) player.addStat(ModAchievements.TentParts, 1);
+		if (item.itemID == tent.itemID) player.addStat(ModAchievements.Tent, 1);
 	}
 
 	@Override

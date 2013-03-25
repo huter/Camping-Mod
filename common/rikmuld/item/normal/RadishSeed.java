@@ -8,6 +8,7 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
 import rikmuld.core.lib.Items;
+import rikmuld.core.register.ModAchievements;
 import rikmuld.item.CampingItem;
 
 public class RadishSeed extends CampingItem implements IPlantable
@@ -37,6 +38,7 @@ public class RadishSeed extends CampingItem implements IPlantable
 	            {
 	                par3World.setBlock(par4, par5 + 1, par6, this.blockType, 0, 2);
 	                --par1ItemStack.stackSize;
+	    	        par2EntityPlayer.addStat(ModAchievements.Radish, 1);
 	                return true;
 	            }
 	            else

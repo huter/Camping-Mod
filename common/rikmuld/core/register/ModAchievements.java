@@ -1,5 +1,6 @@
 package rikmuld.core.register;
 
+import rikmuld.core.helper.RecipieHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,64 +22,93 @@ public class ModAchievements {
 	
 	static void addAchievementLocalizations() 
 	{
-		ModAchievements.addAchievementName("campachiev", "Campfires!");
-		ModAchievements.addAchievementName("campachiev1", "The begining of tents!");
-		ModAchievements.addAchievementName("campachiev2", "Campfire tales!");
-		ModAchievements.addAchievementName("campachiev3", "Cooking efficient!");
-		ModAchievements.addAchievementName("campachiev4", "Power Cooker!");
-		ModAchievements.addAchievementName("campachiev5", "We don't need coal!");
-		ModAchievements.addAchievementName("campachiev6", "Campfire legend!");
-		ModAchievements.addAchievementName("campachiev7", "Tents are awesome!");
-		ModAchievements.addAchievementName("campachiev8", "The power of storage!");
-		ModAchievements.addAchievementName("campachiev9", "Sleepover!");
+		ModAchievements.addAchievementName("CampersTool", "First things first!");
+		ModAchievements.addAchievementName("Campfire", "Campfires!");
+		ModAchievements.addAchievementName("CampfireMultiCook", "Cooking efficient!");
+		ModAchievements.addAchievementName("CampfireFastCook", "Power Cooker!");
+		ModAchievements.addAchievementName("CampfireCheapCook", "We don't need coal!");
+		ModAchievements.addAchievementName("CampfireInstaCook", "Campfire legend!");
+		ModAchievements.addAchievementName("MarshMallowFood", "Campfire tales!");
+		ModAchievements.addAchievementName("TentParts", "The begining of tents!");
+		ModAchievements.addAchievementName("Tent", "Tents are awesome!");
+		ModAchievements.addAchievementName("TentStorage", "The power of storage!");
+		ModAchievements.addAchievementName("TentSleeping", "Sleepover!");
+		ModAchievements.addAchievementName("Radish", "Fast-Food");
+		ModAchievements.addAchievementName("RadishFood", "Bitter-Sweet!");
+		ModAchievements.addAchievementName("CampingBagSmall", "Portalble storage!");
+		ModAchievements.addAchievementName("CampingBagNormal", "Store-More!");
+		ModAchievements.addAchievementName("CampingBagLarge", "Hiking trip!");
+		ModAchievements.addAchievementName("CamperTrade", "Trading!");
+		ModAchievements.addAchievementName("Guides", "Learning...!");
 
-		ModAchievements.addAchievementDesc("campachiev", "Make a campfire!");
-		ModAchievements.addAchievementDesc("campachiev1", "Make some tent parts!");
-		ModAchievements.addAchievementDesc("campachiev2", "Cook a marshmallow!");
-		ModAchievements.addAchievementDesc("campachiev3","Make the multi cooking campfire!");
-		ModAchievements.addAchievementDesc("campachiev4","Make the fast cooking campfire!");
-		ModAchievements.addAchievementDesc("campachiev5","Make the cheap cooking campfire!");
-		ModAchievements.addAchievementDesc("campachiev6","Make the insta cooking campfire!");
-		ModAchievements.addAchievementDesc("campachiev7", "Make a tent!");
-		ModAchievements.addAchievementDesc("campachiev8", "Make a storage tent!");
-		ModAchievements.addAchievementDesc("campachiev9", "Make a sleeping tent!");
+		ModAchievements.addAchievementDesc("CampersTool", "Make the camper's tool!");
+		ModAchievements.addAchievementDesc("Campfire", "Make a campfire!");
+		ModAchievements.addAchievementDesc("CampfireMultiCook","Make the multi cooking campfire!");
+		ModAchievements.addAchievementDesc("CampfireFastCook","Make the fast cooking campfire!");
+		ModAchievements.addAchievementDesc("CampfireCheapCook","Make the cheap cooking campfire!");
+		ModAchievements.addAchievementDesc("CampfireInstaCook","Make the insta cooking campfire!");
+		ModAchievements.addAchievementDesc("MarshMallowFood", "Cook a marshmallow!");
+		ModAchievements.addAchievementDesc("TentParts", "Make some tent parts!");
+		ModAchievements.addAchievementDesc("Tent", "Make a tent!");
+		ModAchievements.addAchievementDesc("TentStorage", "Make a storage tent!");
+		ModAchievements.addAchievementDesc("TentSleeping", "Make a sleeping tent!");
+		ModAchievements.addAchievementDesc("Radish", "Plant some radish!");
+		ModAchievements.addAchievementDesc("RadishFood", "Eat some radish!");
+		ModAchievements.addAchievementDesc("CampingBagSmall", "Make a small camping bag!");
+		ModAchievements.addAchievementDesc("CampingBagNormal", "Make a normal camping bag!");
+		ModAchievements.addAchievementDesc("CampingBagLarge", "Make a large camping bag!");
+		ModAchievements.addAchievementDesc("CamperTrade", "Take a look at the camper trading!");
+		ModAchievements.addAchievementDesc("Guides", "Read a guide book;");
 	}
 	
-	public static Achievement campachiev;
-	public static Achievement campachiev1;
-	public static Achievement campachiev2;
-	public static Achievement campachiev3;
-	public static Achievement campachiev4;
-	public static Achievement campachiev5;
-	public static Achievement campachiev6;
-	public static Achievement campachiev7;
-	public static Achievement campachiev8;
-	public static Achievement campachiev9;
+	public static Achievement CampersTool;
+	public static Achievement Campfire;
+	public static Achievement CampfireMultiCook;
+	public static Achievement CampfireFastCook;
+	public static Achievement CampfireCheapCook;
+	public static Achievement CampfireInstaCook;
+	public static Achievement MarshMallowFood;
+	public static Achievement TentParts;
+	public static Achievement Tent;
+	public static Achievement TentStorage;
+	public static Achievement TentSleeping;
+	public static Achievement Radish;
+	public static Achievement RadishFood;
+	public static Achievement CampingBagSmall;
+	public static Achievement CampingBagNormal;
+	public static Achievement CampingBagLarge;
+	public static Achievement CamperTrade;
+	public static Achievement Guides;
 
-	public static AchievementPage campachivepage;
+	public static AchievementPage CampingMillestones;
 	
-	public static ItemStack campfire = new ItemStack(ModBlocks.campfire, 1, 0);
-	public static ItemStack campfireMulti = new ItemStack(ModBlocks.campfire, 1, 1);
-	public static ItemStack campfireFast = new ItemStack(ModBlocks.campfire, 1, 2);
-	public static ItemStack campfireCheap = new ItemStack(ModBlocks.campfire, 1, 3);
-	public static ItemStack campfireInsta = new ItemStack(ModBlocks.campfire, 1, 4);
+	public static ItemStack campfire[] = RecipieHelper.getMetaCycle(ModBlocks.campfire, 5);
+	public static ItemStack bag[] = RecipieHelper.getMetaCycle(ModItems.CampingBag, 3);
 	
 	public static void init() 
 	{
-		campachiev = new Achievement(2500,"campachiev", 0, -2, campfire, null).registerAchievement();
-		campachiev1 = new Achievement(2501,"campachiev1", 2, -2, ModItems.TentParts, null).registerAchievement();
-		campachiev2 = new Achievement(2502,"campachiev2", -2, -3, ModItems.MarshmallowFood,ModAchievements.campachiev).registerAchievement();
-		campachiev3 = new Achievement(2503,"campachiev3", -1, 0, campfireMulti, ModAchievements.campachiev).registerAchievement();
-		campachiev4 = new Achievement(2504,"campachiev4", -1, 1, campfireFast, ModAchievements.campachiev).registerAchievement();
-		campachiev5 = new Achievement(2505,"campachiev5", -1, 2, campfireCheap, ModAchievements.campachiev).registerAchievement();
-		campachiev6 = new Achievement(2506,"campachiev6", -2, 1, campfireInsta, ModAchievements.campachiev4).registerAchievement();
-		campachiev7 = new Achievement(2507,"campachiev7", 4, -1, ModBlocks.tent, ModAchievements.campachiev1).registerAchievement();
-		campachiev8 = new Achievement(2508,"campachiev8", 3, 1, Block.chest, ModAchievements.campachiev7).registerAchievement();
-		campachiev9 = new Achievement(2509,"campachiev9", 3, 2, Item.bed, ModAchievements.campachiev7).registerAchievement();
+		CampersTool = new Achievement(6000,"CampersTool", 1, 0, ModItems.CampTool, null).registerAchievement();
+		Campfire = new Achievement(6001,"Campfire", 0, -2, campfire[0], ModAchievements.CampersTool).registerAchievement();
+		CampfireMultiCook = new Achievement(6002,"CampfireMultiCook", -1, 0, campfire[1], ModAchievements.Campfire).registerAchievement();
+		CampfireFastCook = new Achievement(6003,"CampfireFastCook", -1, 1, campfire[2], ModAchievements.Campfire).registerAchievement();
+		CampfireCheapCook = new Achievement(6004,"CampfireCheapCook", -1, 2, campfire[3], ModAchievements.Campfire).registerAchievement();
+		CampfireInstaCook = new Achievement(6005,"CampfireInstaCook", -2, 1, campfire[4], ModAchievements.CampfireFastCook).registerAchievement();
+		MarshMallowFood = new Achievement(6006,"MarshMallowFood", -2, -2, ModItems.MarshmallowFood,ModAchievements.Campfire).registerAchievement();
+		TentParts = new Achievement(6007,"TentParts", 2, -2, ModItems.TentParts, ModAchievements.CampersTool).registerAchievement();
+		Tent = new Achievement(6008,"Tent", 4, -1, ModBlocks.tent, ModAchievements.TentParts).registerAchievement();
+		TentStorage = new Achievement(6009,"TentStorage", 3, 1, Block.chest, ModAchievements.Tent).registerAchievement();
+		TentSleeping = new Achievement(6010,"TentSleeping", 3, 2, Item.bed, ModAchievements.Tent).registerAchievement();
+		Radish = new Achievement(6011,"Radish", 2, 1, ModItems.radishSeed, ModAchievements.CampersTool).registerAchievement();
+		RadishFood = new Achievement(6012,"RadishFood", 2, 2, ModItems.radish, ModAchievements.Radish).registerAchievement();
+		CampingBagSmall = new Achievement(6013,"CampingBagSmall", 0, -3, bag[0], ModAchievements.CampersTool).registerAchievement();
+		CampingBagNormal = new Achievement(6014,"CampingBagNormal", -1, -3, bag[1], ModAchievements.CampingBagSmall).registerAchievement();
+		CampingBagLarge = new Achievement(6015,"CampingBagLarge", -2, -3, bag[2], ModAchievements.CampingBagNormal).registerAchievement();
+		CamperTrade = new Achievement(6016,"CamperTrade", 2, -3, Item.emerald, ModAchievements.CampersTool).registerAchievement();
+		Guides = new Achievement(6017,"Guides", 4, -3, ModItems.guideBook, ModAchievements.CamperTrade).registerAchievement();
 
-		campachivepage = new AchievementPage("Camping milestones", campachiev, campachiev1, campachiev2, campachiev3, campachiev4, campachiev5, campachiev6, campachiev7, campachiev8, campachiev9);
+		CampingMillestones = new AchievementPage("Camping milestones", CampersTool, Campfire, TentParts, MarshMallowFood, CampfireMultiCook, CampfireFastCook, CampfireCheapCook, CampfireInstaCook, Tent, TentStorage, TentSleeping, Radish, RadishFood, CampingBagSmall, CampingBagNormal, CampingBagLarge, CamperTrade, Guides);
 		
-		AchievementPage.registerAchievementPage(campachivepage);
+		AchievementPage.registerAchievementPage(CampingMillestones);
 		ModAchievements.addAchievementLocalizations();
 	}
 }

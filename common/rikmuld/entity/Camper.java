@@ -29,6 +29,7 @@ import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.World;
 import rikmuld.core.lib.Textures;
+import rikmuld.core.register.ModAchievements;
 import rikmuld.core.register.ModItems;
 import rikmuld.entity.ai.EntityAIAvoidCampfire;
 import rikmuld.entity.ai.EntityAILookAtTradePlayerCamper;
@@ -187,6 +188,7 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
              if (!this.worldObj.isRemote)
              {
                  this.setCustomer(par1EntityPlayer);
+                 par1EntityPlayer.addStat(ModAchievements.CamperTrade, 1);
                  par1EntityPlayer.displayGUIMerchant(this, "Camper");
              }
 
@@ -282,7 +284,7 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
 
                 addBlacksmithItem(var2, ModItems.guideBook.itemID, this.rand, this.func_82188_j(0.6F));
         		addBlacksmithItem(var2, ModItems.CampingBag.itemID, this.rand, this.func_82188_j(0.5F));
-        		addBlacksmithItem(var2, ModItems.TentTools.itemID, this.rand, this.func_82188_j(0.4F));
+        		addBlacksmithItem(var2, ModItems.CampTool.itemID, this.rand, this.func_82188_j(0.4F));
       
         		addMerchantItem(var2, ModItems.radish.itemID, this.rand, 0.2F);
         		addMerchantItem(var2, ModItems.Marshmallow.itemID, this.rand, 0.2F);
@@ -395,7 +397,7 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
         villagerStockList.put(Integer.valueOf(ModItems.TentParts.itemID), new Tuple(Integer.valueOf(10), Integer.valueOf(20)));
         villagerStockList.put(Integer.valueOf(ModItems.SleepingBag.itemID), new Tuple(Integer.valueOf(2), Integer.valueOf(4))); 
         
-        blacksmithSellingList.put(Integer.valueOf(ModItems.TentTools.itemID), new Tuple(Integer.valueOf(-2), Integer.valueOf(1)));
+        blacksmithSellingList.put(Integer.valueOf(ModItems.CampTool.itemID), new Tuple(Integer.valueOf(-2), Integer.valueOf(1)));
         blacksmithSellingList.put(Integer.valueOf(ModItems.CampingBag.itemID), new Tuple(Integer.valueOf(2), Integer.valueOf(4)));
         blacksmithSellingList.put(Integer.valueOf(ModItems.guideBook.itemID), new Tuple(Integer.valueOf(1), Integer.valueOf(3)));
         

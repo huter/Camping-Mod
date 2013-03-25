@@ -9,6 +9,7 @@ import net.minecraft.world.World;
 import rikmuld.CampingMod;
 import rikmuld.core.lib.GuiIds;
 import rikmuld.core.lib.Items;
+import rikmuld.core.register.ModAchievements;
 import rikmuld.item.CampingItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -34,6 +35,8 @@ public class GuideBook extends CampingItem{
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World par2World, EntityPlayer par3EntityPlayer)
     {	
+		par3EntityPlayer.addStat(ModAchievements.Guides, 1);
+		
         if(stack.getItemDamage()==0)
         {
         	par3EntityPlayer.openGui(CampingMod.instance, GuiIds.GUIGuideCampfire, par2World,  0, 0, 0);

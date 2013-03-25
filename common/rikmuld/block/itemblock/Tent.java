@@ -120,7 +120,7 @@ public class Tent extends BlockContainer {
 					 ItemStack sleepingbag = new ItemStack(ModItems.SleepingBag, currentitem.stackSize-1);
 					 player.destroyCurrentEquippedItem();
 					 player.inventory.addItemStackToInventory(sleepingbag);
-					 player.addStat(ModAchievements.campachiev9, 1);	
+					 player.addStat(ModAchievements.TentSleeping, 1);	
 				 }
 				 
 				 if (currentitem.itemID == Block.chest.blockID) 
@@ -129,10 +129,10 @@ public class Tent extends BlockContainer {
 					 ItemStack chest = new ItemStack(Block.chest, currentitem.stackSize-1);
 					 player.destroyCurrentEquippedItem();
 					 player.inventory.addItemStackToInventory(chest);										 
-					 player.addStat(ModAchievements.campachiev8, 1);			
+					 player.addStat(ModAchievements.TentStorage, 1);			
 			     }
 				 
-				 if (currentitem.itemID == ModItems.TentTools.itemID)
+				 if (currentitem.itemID == ModItems.CampTool.itemID)
 				 {
 					BID = par1world.getBlockId(par2, par3+1, par4);
 					if (BID==0||BID==ModBlocks.ghostBlock.blockID||BID==31||BID==78)
@@ -179,7 +179,7 @@ public class Tent extends BlockContainer {
 																{				    
 																	par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 3, 2);
 																  	 player.destroyCurrentEquippedItem();
-															         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+															         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
 															         player.inventory.addItemStackToInventory(k);
 															         if (currentitem.getItemDamage()>99)
 															         {
@@ -213,7 +213,7 @@ public class Tent extends BlockContainer {
 					 	 ItemStack sleepingbag = new ItemStack(ModItems.SleepingBag, currentitem.stackSize-1);
 					     player.destroyCurrentEquippedItem();
 					     player.inventory.addItemStackToInventory(sleepingbag);
-						 player.addStat(ModAchievements.campachiev9, 1);
+						 player.addStat(ModAchievements.TentSleeping, 1);
 						 
 				     return true;
 				    }
@@ -224,12 +224,12 @@ public class Tent extends BlockContainer {
 					 ItemStack chest = new ItemStack(Block.chest, currentitem.stackSize-1);
 					 player.destroyCurrentEquippedItem();
 					 player.inventory.addItemStackToInventory(chest);
-					 player.addStat(ModAchievements.campachiev8, 1);
+					 player.addStat(ModAchievements.TentStorage, 1);
 
 					 return true;
 			      }
 				 
-				if (currentitem.itemID == ModItems.TentTools.itemID)
+				if (currentitem.itemID == ModItems.CampTool.itemID)
 				{
 					BID = par1world.getBlockId(par2, par3, par4+1);
 					if (BID==0||BID==31||BID==78)
@@ -291,7 +291,7 @@ public class Tent extends BlockContainer {
 																	{				
 																		 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 0, 2);
 																	  	 player.destroyCurrentEquippedItem();
-																         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+																         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
 																         player.inventory.addItemStackToInventory(k);
 																         if (currentitem.getItemDamage()>99)
 																         {
@@ -320,13 +320,13 @@ public class Tent extends BlockContainer {
 		{
 			if (currentitem != null)
 			{
-				 if (currentitem.itemID == ModItems.TentTools.itemID)
+				 if (currentitem.itemID == ModItems.CampTool.itemID)
 				    {
 						 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 0, 2);
 						 ItemStack chest = new ItemStack(Block.chest, 1);
 						 player.inventory.addItemStackToInventory(chest);
 					  	 player.destroyCurrentEquippedItem();
-				         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+				         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
 				         player.inventory.addItemStackToInventory(k);
 				         if (currentitem.getItemDamage()>99)
 				         {
@@ -345,13 +345,13 @@ public class Tent extends BlockContainer {
 	{
 			if (currentitem != null)
 			{
-				 if (currentitem.itemID == ModItems.TentTools.itemID)
+				 if (currentitem.itemID == ModItems.CampTool.itemID)
 				    {
 						 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 3, 2);
 						 ItemStack chest = new ItemStack(Block.chest, 1);
 						 player.inventory.addItemStackToInventory(chest);
 					  	 player.destroyCurrentEquippedItem();
-				         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+				         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
 				         player.inventory.addItemStackToInventory(k);
 				         if (currentitem.getItemDamage()>99)
 				         {
@@ -370,13 +370,13 @@ public class Tent extends BlockContainer {
 		{			
 			 if (currentitem != null)
 			 {
-				 if (currentitem.itemID == ModItems.TentTools.itemID)
+				 if (currentitem.itemID == ModItems.CampTool.itemID)
 				 {				
 						 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 3 ,2);
 						 ItemStack chest = new ItemStack(ModItems.SleepingBag, 1);
 						 player.inventory.addItemStackToInventory(chest);
 					  	 player.destroyCurrentEquippedItem();
-				         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+				         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
 				         player.inventory.addItemStackToInventory(k);
 				         if (currentitem.getItemDamage()>99)
 				         {
@@ -391,13 +391,13 @@ public class Tent extends BlockContainer {
 		{			
 			 if (currentitem != null)
 				{
-				 if (currentitem.itemID == ModItems.TentTools.itemID)
+				 if (currentitem.itemID == ModItems.CampTool.itemID)
 				    {					
 						 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 0, 2);
 						 ItemStack chest = new ItemStack(ModItems.SleepingBag, 1);
 						 player.inventory.addItemStackToInventory(chest);
 					  	 player.destroyCurrentEquippedItem();
-				         ItemStack k = new ItemStack(ModItems.TentTools, 1, (currentitem.getItemDamage() + 1));
+				         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
 				         player.inventory.addItemStackToInventory(k);
 				         if (currentitem.getItemDamage()>99)
 				         {

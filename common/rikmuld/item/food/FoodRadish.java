@@ -9,6 +9,7 @@ import net.minecraft.world.World;
 import rikmuld.CampingMod;
 import rikmuld.core.lib.Config;
 import rikmuld.core.lib.Items;
+import rikmuld.core.register.ModAchievements;
 import rikmuld.item.CampingItemFood;
 
 public class FoodRadish extends CampingItemFood{
@@ -36,6 +37,7 @@ public class FoodRadish extends CampingItemFood{
 	    {
 	        par3EntityPlayer.getFoodStats().addStats(this);
 	        par2World.playSoundAtEntity(par3EntityPlayer, "random.burp", 0.5F, par2World.rand.nextFloat() * 0.1F + 0.9F);
+	        par3EntityPlayer.addStat(ModAchievements.RadishFood, 1);
 	    }
 
 	    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
