@@ -53,5 +53,6 @@ public class ModRecipies {
 		RecipieHelper.addRecipe(campingBag[0], 1, "000", "0 0", "000", '0', tentParts[1]);
 		RecipieHelper.addRecipe(campingBag[1], 1, "000", "010", "000", '0', tentParts[1], '1', campingBag[0]);
 		RecipieHelper.addRecipe(campingBag[2], 1, "000", "010", "000", '0', tentParts[1], '1', campingBag[1]);
+		RecipieHelper.addMetaCycleRecipie(campingBag[2], 1, "000", "010", "000", '0', tentParts[1], '1', toolCamp);
 	}
 }

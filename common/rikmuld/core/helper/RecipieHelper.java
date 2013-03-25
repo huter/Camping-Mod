@@ -1,8 +1,5 @@
 package rikmuld.core.helper;
 
-import java.util.logging.Level;
-
-import rikmuld.core.register.ModLogger;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,10 +7,10 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipieHelper {
 	
-	public static void addRecipe(ItemStack output, int count, Object... params)
+	public static void addRecipe(ItemStack output, int count, Object... input)
 	{
 		output.stackSize = count;
-		GameRegistry.addRecipe(output, params);
+		GameRegistry.addRecipe(output, input);
 	}
 	
 	public static void addShapelessRecipe(ItemStack output, int count, Object... input)
@@ -44,9 +41,15 @@ public class RecipieHelper {
 			addShapelessRecipe(output, count, inputStack);	
 		}
 	}
-
-	public static Object[] getArrayStacks(Object... stack) 
-	{
-		return stack;
+	
+	public static void addMetaCycleRecipie(ItemStack output, int count, Object... input)
+	{	
+		ItemStack[] stack = (ItemStack[]) input[input.length-1];
+		
+		for(int a = 0;a<stack.length;a++)
+		{	
+			input[input.length-1] = stack[a];
+			addRecipe(output, count, input);	
+		}
 	}
 }
