@@ -4,7 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import rikmuld.core.helper.RecipieHelper;
+import rikmuld.core.helper.CodeHelper;
 import rikmuld.core.register.ModAchievements;
 import rikmuld.core.register.ModBlocks;
 import rikmuld.core.register.ModItems;
@@ -12,8 +12,8 @@ import cpw.mods.fml.common.ICraftingHandler;
 
 public class CraftHandler implements ICraftingHandler{
 
-	ItemStack campfire[] = RecipieHelper.getMetaCycle(ModBlocks.campfire, 5);
-	ItemStack bag[] = RecipieHelper.getMetaCycle(ModItems.CampingBag, 3);
+	ItemStack campfire[] = CodeHelper.getMetaCycle(ModBlocks.campfire, 5);
+	ItemStack bag[] = CodeHelper.getMetaCycle(ModItems.CampingBag, 3);
 	ItemStack tent = new ItemStack(ModBlocks.tent, 1, 0);
 	
 	@Override

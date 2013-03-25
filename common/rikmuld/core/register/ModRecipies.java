@@ -1,18 +1,18 @@
 package rikmuld.core.register;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import rikmuld.core.helper.RecipieHelper;
-import rikmuld.core.lib.Config;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import rikmuld.core.helper.CodeHelper;
+import rikmuld.core.helper.RecipieHelper;
+import rikmuld.core.lib.Config;
 
 public class ModRecipies {
 
 	public static boolean insta = Config.CAMPFIRE_INSTA_COOK_ENABLED;
 	
     public static ItemStack iron = new ItemStack(Item.ingotIron);
-    public static ItemStack[] rosered = RecipieHelper.getMetaCycle(Item.dyePowder, 16);
+    public static ItemStack[] rosered = CodeHelper.getMetaCycle(Item.dyePowder, 16);
     public static ItemStack torch = new ItemStack(Block.torchWood);
 	public static ItemStack flint = new ItemStack(Item.flint);
 	public static ItemStack stone = new ItemStack(Block.stone);
@@ -25,16 +25,16 @@ public class ModRecipies {
 	public static ItemStack bowl = new ItemStack(Item.bowlEmpty);
 	public static ItemStack stick = new ItemStack(Item.stick);
 	public static ItemStack bed = new ItemStack(Item.bed);
-	public static ItemStack[] wool = RecipieHelper.getMetaCycle(Block.cloth, 16);
+	public static ItemStack[] wool = CodeHelper.getMetaCycle(Block.cloth, 16);
 	public static ItemStack string = new ItemStack(Item.silk);
 	public static ItemStack chest = new ItemStack(Block.chest);
-	public static ItemStack[] toolCamp = RecipieHelper.getMetaCycle(ModItems.CampTool, 100);
-	public static ItemStack[] campfire = RecipieHelper.getMetaCycle(ModBlocks.campfire, 5);
-	public static ItemStack[] marshmallow = RecipieHelper.getMetaCycle(ModItems.Marshmallow, 2);
+	public static ItemStack[] toolCamp = CodeHelper.getMetaCycle(ModItems.CampTool, 100);
+	public static ItemStack[] campfire = CodeHelper.getMetaCycle(ModBlocks.campfire, 5);
+	public static ItemStack[] marshmallow = CodeHelper.getMetaCycle(ModItems.Marshmallow, 2);
 	public static ItemStack tent = new ItemStack(ModBlocks.tent);
-	public static ItemStack[] tentParts = RecipieHelper.getMetaCycle(ModItems.TentParts, 2);
+	public static ItemStack[] tentParts = CodeHelper.getMetaCycle(ModItems.TentParts, 2);
 	public static ItemStack SleepBag = new ItemStack(ModItems.SleepingBag);
-	public static ItemStack[] campingBag = RecipieHelper.getMetaCycle(ModItems.CampingBag, 3);
+	public static ItemStack[] campingBag = CodeHelper.getMetaCycle(ModItems.CampingBag, 3);
 	
 	public static void init() 
 	{

@@ -1,11 +1,11 @@
 package rikmuld.core.register;
 
-import rikmuld.core.helper.RecipieHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
+import rikmuld.core.helper.CodeHelper;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModAchievements {
@@ -82,8 +82,8 @@ public class ModAchievements {
 
 	public static AchievementPage CampingMillestones;
 	
-	public static ItemStack campfire[] = RecipieHelper.getMetaCycle(ModBlocks.campfire, 5);
-	public static ItemStack bag[] = RecipieHelper.getMetaCycle(ModItems.CampingBag, 3);
+	public static ItemStack campfire[] = CodeHelper.getMetaCycle(ModBlocks.campfire, 5);
+	public static ItemStack bag[] = CodeHelper.getMetaCycle(ModItems.CampingBag, 3);
 	
 	public static void init() 
 	{
