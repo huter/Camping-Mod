@@ -3,7 +3,7 @@
   "modid": "camping",
   "name": "The Camping Mod",
   "description": "This mod adds a some camping elements to minecraft",
-  "version": "@VERSION@",
+  "version": "CAMP_ERSION",
   "mcversion": "1.5.1",
   "url": "rikmuld.com",
   "updateUrl": "",

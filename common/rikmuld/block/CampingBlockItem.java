@@ -15,6 +15,6 @@ public abstract class CampingBlockItem extends BlockContainer{
 	@Override
 	public void registerIcons(IconRegister iconRegister)
 	{		
-		blockIcon = iconRegister.registerIcon(ModInfo.MOD_ID+":"+this.getUnlocalizedName().substring(5)+"_Particle");
+		blockIcon = iconRegister.registerIcon(ModInfo.MOD_ID+":"+this.getUnlocalizedName().substring(5)+"_particle");
 	}
 }

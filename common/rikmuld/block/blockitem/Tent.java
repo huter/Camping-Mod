@@ -25,6 +25,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import rikmuld.CampingMod;
 import rikmuld.block.CampingBlockItem;
+import rikmuld.core.helper.ToolHelper;
 import rikmuld.core.lib.Blocks;
 import rikmuld.core.register.ModAchievements;
 import rikmuld.core.register.ModBlocks;
@@ -133,7 +134,7 @@ public class Tent extends CampingBlockItem{
 					 player.addStat(ModAchievements.TentStorage, 1);			
 			     }
 				 
-				 if (currentitem.itemID == ModItems.CampTool.itemID)
+				 if (ToolHelper.isTool(currentitem))
 				 {
 					BID = par1world.getBlockId(par2, par3+1, par4);
 					if (BID==0||BID==ModBlocks.ghostBlock.blockID||BID==31||BID==78)
@@ -178,15 +179,10 @@ public class Tent extends CampingBlockItem{
 																	par1world.doesBlockHaveSolidTopSurface(par2-1, par3 - 1, par4-2)&&
 																	par1world.doesBlockHaveSolidTopSurface(par2+1, par3 - 1, par4-2))
 																{				    
-																	par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 3, 2);
-																  	 player.destroyCurrentEquippedItem();
-															         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
-															         player.inventory.addItemStackToInventory(k);
-															         if (currentitem.getItemDamage()>99)
-															         {
-															        	 player.destroyCurrentEquippedItem();
-															         }
-															         return true;
+																par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 3, 2);
+														    	player.destroyCurrentEquippedItem();				    	
+														    	player.inventory.addItemStackToInventory( ToolHelper.addDamage(currentitem, player));
+															   	return true;
 																}
 															}
 														}
@@ -230,7 +226,7 @@ public class Tent extends CampingBlockItem{
 					 return true;
 			      }
 				 
-				if (currentitem.itemID == ModItems.CampTool.itemID)
+				if (ToolHelper.isTool(currentitem))
 				{
 					BID = par1world.getBlockId(par2, par3, par4+1);
 					if (BID==0||BID==31||BID==78)
@@ -290,15 +286,10 @@ public class Tent extends CampingBlockItem{
 																		par1world.doesBlockHaveSolidTopSurface(par2+1, par3 - 1, par4+1)&&
 																		par1world.doesBlockHaveSolidTopSurface(par2+2, par3 - 1, par4+1))
 																	{				
-																		 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 0, 2);
-																	  	 player.destroyCurrentEquippedItem();
-																         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
-																         player.inventory.addItemStackToInventory(k);
-																         if (currentitem.getItemDamage()>99)
-																         {
-																        	 player.destroyCurrentEquippedItem();
-																         }
-																         return true;
+																	par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 0, 2);
+																	player.destroyCurrentEquippedItem();				    	
+																    player.inventory.addItemStackToInventory( ToolHelper.addDamage(currentitem, player));
+																	return true;
 																	}															
 																}
 														    }
@@ -321,19 +312,14 @@ public class Tent extends CampingBlockItem{
 		{
 			if (currentitem != null)
 			{
-				 if (currentitem.itemID == ModItems.CampTool.itemID)
+				 if (ToolHelper.isTool(currentitem))
 				    {
 						 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 0, 2);
 						 ItemStack chest = new ItemStack(Block.chest, 1);
 						 player.inventory.addItemStackToInventory(chest);
-					  	 player.destroyCurrentEquippedItem();
-				         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
-				         player.inventory.addItemStackToInventory(k);
-				         if (currentitem.getItemDamage()>99)
-				         {
-				        	 player.destroyCurrentEquippedItem();
-				         }
-				         return true;				 
+					     player.destroyCurrentEquippedItem();				    	
+					     player.inventory.addItemStackToInventory( ToolHelper.addDamage(currentitem, player));
+						 return true;			 
 				    }
 				player.openGui(CampingMod.instance, 4, par1world, par2, par3, par4);
 				return true;
@@ -346,19 +332,14 @@ public class Tent extends CampingBlockItem{
 	{
 			if (currentitem != null)
 			{
-				 if (currentitem.itemID == ModItems.CampTool.itemID)
+				 if (ToolHelper.isTool(currentitem))
 				    {
 						 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 3, 2);
 						 ItemStack chest = new ItemStack(Block.chest, 1);
 						 player.inventory.addItemStackToInventory(chest);
-					  	 player.destroyCurrentEquippedItem();
-				         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
-				         player.inventory.addItemStackToInventory(k);
-				         if (currentitem.getItemDamage()>99)
-				         {
-				        	 player.destroyCurrentEquippedItem();
-				         }
-				         return true;
+						 player.destroyCurrentEquippedItem();				    	
+						 player.inventory.addItemStackToInventory( ToolHelper.addDamage(currentitem, player));
+						 return true;
 				     }							
 				player.openGui(CampingMod.instance, 4, par1world, par2, par3, par4);
 				return true;
@@ -371,19 +352,14 @@ public class Tent extends CampingBlockItem{
 		{			
 			 if (currentitem != null)
 			 {
-				 if (currentitem.itemID == ModItems.CampTool.itemID)
+				 if (ToolHelper.isTool(currentitem))
 				 {				
 						 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 3 ,2);
 						 ItemStack chest = new ItemStack(ModItems.SleepingBag, 1);
 						 player.inventory.addItemStackToInventory(chest);
-					  	 player.destroyCurrentEquippedItem();
-				         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
-				         player.inventory.addItemStackToInventory(k);
-				         if (currentitem.getItemDamage()>99)
-				         {
-				        	 player.destroyCurrentEquippedItem();
-				         }
-				         return true;
+						 player.destroyCurrentEquippedItem();				    	
+						 player.inventory.addItemStackToInventory( ToolHelper.addDamage(currentitem, player));
+					   	 return true;
 				 }				 
 			}
 		}
@@ -392,19 +368,14 @@ public class Tent extends CampingBlockItem{
 		{			
 			 if (currentitem != null)
 				{
-				 if (currentitem.itemID == ModItems.CampTool.itemID)
+				 if (ToolHelper.isTool(currentitem))
 				    {					
 						 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 0, 2);
 						 ItemStack chest = new ItemStack(ModItems.SleepingBag, 1);
 						 player.inventory.addItemStackToInventory(chest);
-					  	 player.destroyCurrentEquippedItem();
-				         ItemStack k = new ItemStack(ModItems.CampTool, 1, (currentitem.getItemDamage() + 1));
-				         player.inventory.addItemStackToInventory(k);
-				         if (currentitem.getItemDamage()>99)
-				         {
-				        	 player.destroyCurrentEquippedItem();
-				         }
-				         return true;
+						 player.destroyCurrentEquippedItem();				    	
+						 player.inventory.addItemStackToInventory( ToolHelper.addDamage(currentitem, player));
+					   	 return true;
 					 }				 
 				}
 		}

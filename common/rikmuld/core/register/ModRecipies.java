@@ -12,7 +12,7 @@ public class ModRecipies {
 	public static boolean insta = Config.CAMPFIRE_INSTA_COOK_ENABLED;
 	
     public static ItemStack iron = new ItemStack(Item.ingotIron);
-    public static ItemStack[] rosered = CodeHelper.getMetaCycle(Item.dyePowder, 16);
+    public static ItemStack[] dye = CodeHelper.getMetaCycle(Item.dyePowder, 16);
     public static ItemStack torch = new ItemStack(Block.torchWood);
 	public static ItemStack flint = new ItemStack(Item.flint);
 	public static ItemStack stone = new ItemStack(Block.stone);
@@ -29,6 +29,7 @@ public class ModRecipies {
 	public static ItemStack string = new ItemStack(Item.silk);
 	public static ItemStack chest = new ItemStack(Block.chest);
 	public static ItemStack[] toolCamp = CodeHelper.getMetaCycle(ModItems.CampTool, 100);
+	public static ItemStack[] toolCamp2 = CodeHelper.getMetaCycle(ModItems.CampTool2, 250);
 	public static ItemStack[] campfire = CodeHelper.getMetaCycle(ModBlocks.campfire, 5);
 	public static ItemStack[] marshmallow = CodeHelper.getMetaCycle(ModItems.Marshmallow, 2);
 	public static ItemStack tent = new ItemStack(ModBlocks.tent);
@@ -42,9 +43,12 @@ public class ModRecipies {
 		RecipieHelper.addShapelessRecipe(marshmallow[1], 3, stick, marshmallow[0]);
 		RecipieHelper.addShapelessMetaCycleRecipie(tentParts[0], 4, toolCamp, iron);
 		RecipieHelper.addShapelessMetaCycleRecipie(tentParts[1], 10, toolCamp, string, string, string, string, string, string);
+		RecipieHelper.addShapelessMetaCycleRecipie(tentParts[0], 4, toolCamp2, iron);
+		RecipieHelper.addShapelessMetaCycleRecipie(tentParts[1], 10, toolCamp2, string, string, string, string, string, string);
 		RecipieHelper.addRecipe(tent, 1, "000", "0 0", "1 1", '0', tentParts[1], '1', tentParts[0]);
 		RecipieHelper.addRecipe(SleepBag, 1, "000", '0', Block.cloth);
-		RecipieHelper.addRecipe(toolCamp[0], 1,  "010", "010", "010", '0', rosered[1], '1', iron);
+		RecipieHelper.addRecipe(toolCamp[0], 1,  "010", "010", "010", '0', dye[1], '1', iron);
+		RecipieHelper.addRecipe(toolCamp2[0], 1,  "121", "101", "121", '0', toolCamp[0], '1', iron, '2', dye[1]);
 		RecipieHelper.addRecipe(campfire[0], 1, " 0 ", "010", "222", '0', torch, '1', flint, '2', stone);
 		RecipieHelper.addRecipe(campfire[1], 1, " 0 ", "010", " 0 ", '0', furnace, '1', campfire[0]);
 		RecipieHelper.addRecipe(campfire[2], 1, " 0 ", "010", " 0 ", '0', flintst, '1', campfire[0]);

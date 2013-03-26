@@ -87,16 +87,13 @@ public class CampingMod {
 	 * TODO: make a camper AI for not run into campfires and stay with tents.
 	 * TODO: make a flashlight
 	 * TODO: larger storage in tents
+	 * TODO: make tents with traped chests and ender chests
 	 * 
 	 * TODO: fix the bugs
 	 * 
 	 * -camper skin change reload world (nbt)
-	 * -missing texture when breaking blcoks
 	 * -camping bags not keeping inv when upgraded
 	 * -when you get an itemstack it should spawn in the same slot were you made it.
 	 * 
-	 * TODO: for nect update
-	 * 
-	 * TODO: fix some bugs
 	 */
 }

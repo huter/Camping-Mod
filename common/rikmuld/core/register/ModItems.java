@@ -16,11 +16,13 @@ import rikmuld.item.normal.TentContents;
 import rikmuld.item.normal.TentParts;
 import rikmuld.item.tool.ToolBackpack;
 import rikmuld.item.tool.ToolCamping;
+import rikmuld.item.tool.ToolCampingV2;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModItems {
 	
 	public static Item CampTool;
+	public static Item CampTool2;
 	public static Item Marshmallow;
 	public static Item MarshmallowFood;
 	public static Item TentParts;
@@ -33,6 +35,7 @@ public class ModItems {
 	public static void init() 
 	{
 		CampTool = new ToolCamping(Items.ITEM_TOOL_CAMP_ID);
+		CampTool2 = new ToolCampingV2(Items.ITEM_TOOL_CAMP2_ID);
 		Marshmallow = new Marshmellow(Items.ITEM_MARSH_ID);
 		MarshmallowFood = new FoodMarshmellow(Items.ITEM_MARSH_FOOD_ID);
 		TentParts = new TentParts(Items.ITEM_TENT_PARTS_ID);
@@ -43,6 +46,7 @@ public class ModItems {
 		guideBook = new GuideBook(Items.ITEM_BOOK_GUIDE_ID);
 		
 		LanguageRegistry.addName(CampTool, Items.ITEM_TOOL_CAMP_GAME_NAME);
+		LanguageRegistry.addName(CampTool2, Items.ITEM_TOOL_CAMP2_GAME_NAME);
 		LanguageRegistry.addName(MarshmallowFood, Items.ITEM_MARSH_FOOD_GAME_NAME);
 		LanguageRegistry.addName(SleepingBag, Items.ITEM_TENT_CONTENTS_GAME_NAME);
 		LanguageRegistry.addName(radish, Items.ITEM_RADISH_FOOD_GAME_NAME);

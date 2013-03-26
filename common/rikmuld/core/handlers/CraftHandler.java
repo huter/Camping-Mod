@@ -5,6 +5,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import rikmuld.core.helper.CodeHelper;
+import rikmuld.core.helper.ToolHelper;
 import rikmuld.core.register.ModAchievements;
 import rikmuld.core.register.ModBlocks;
 import rikmuld.core.register.ModItems;
@@ -29,19 +30,17 @@ public class CraftHandler implements ICraftingHandler{
         }
 		
 		for(int i=0; i < inv.getSizeInventory(); i++)
-        {         
+        {  		
             if(inv.getStackInSlot(i) != null)
             {
                 ItemStack j = inv.getStackInSlot(i);
-                if(j.getItem() != null && j.getItem() == ModItems.CampTool)
+                if(j.getItem() != null&&ToolHelper.isTool(j))
                 {
-                    ItemStack k = new ItemStack(ModItems.CampTool, 2, (j.getItemDamage() + 1));
-     
-                    if(k.getItemDamage() >= k.getMaxDamage())
-                        k = null;
-                    inv.setInventorySlotContents(i, k);
-                }  
-            }
+                	 ItemStack k = ToolHelper.addDamage(j, player);
+                	 if(k!=null)k.stackSize++;
+                     inv.setInventorySlotContents(i, k);
+                }
+             }      
         }
 		
 		if(item.itemID == ModBlocks.campfire.blockID)

@@ -1,5 +1,6 @@
 package rikmuld.item.tool;
 
+import rikmuld.core.helper.ToolHelper;
 import rikmuld.core.lib.Config;
 import rikmuld.core.lib.Items;
 import rikmuld.item.CampingItem;
@@ -14,6 +15,7 @@ public class ToolCamping extends CampingItem {
 		setMaxDamage(Config.GENERAL_CAMPTOOL_MAX_DURABILATY);
 		isDamageable();
 		this.setNoRepair();
+		ToolHelper.addTool(itemID);
 	}
 }
 
