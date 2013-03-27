@@ -84,7 +84,6 @@ public class CampingMod {
 	 * TODO: make the cloaks working.
 	 * TODO: make directions with forge directions so the tent class can be very small
 	 * TODO: complete the guide books.
-	 * TODO: make the camping tool v2 that you can craft and open gui with a key.
 	 * TODO: make backpacks wereable on the back and activateble with a key.
 	 * TODO: make a camper AI for not run into campfires and stay with tents.
 	 * TODO: make a flashlight
@@ -97,6 +96,11 @@ public class CampingMod {
 	 * -camper skin change reload world (nbt)
 	 * -camping bags not keeping inv when upgraded
 	 * -when you get an itemstack it should spawn in the same slot were you made it.
+	 * 
+	 * TODO: for next update
+	 * 
+	 * -finish another guide book
+	 * -make the tent store more
 	 * 
 	 */
 }

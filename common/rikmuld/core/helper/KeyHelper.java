@@ -2,10 +2,10 @@ package rikmuld.core.helper;
 
 import java.util.ArrayList;
 
-import cpw.mods.fml.common.registry.LanguageRegistry;
-
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class KeyHelper {
 
@@ -15,9 +15,9 @@ public static ArrayList<Integer> keyItems = new ArrayList<Integer>();
  	public static ArrayList<KeyBinding> keyBindingsList;
 	public static ArrayList<Boolean> isRepeatingList;
 
-	public static void addKeyItem(int id)
+	public static void addKeyItem(Item item)
 	{		
-		keyItems.add(id);
+		keyItems.add(item.itemID);
 		LanguageRegistry.instance().addStringLocalization(keyCraft, "en_US", "Crafting Key");
 	}
 	

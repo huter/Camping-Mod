@@ -47,7 +47,6 @@ public class ModRecipies {
 		
 		for(ItemStack[] tool : ToolHelper.toolStacks)
 		{
-			ModLogger.log(Level.INFO, Integer.toString(tool.length));
 			RecipieHelper.addShapelessMetaCycleRecipie(tentParts[0], 4, tool, iron);
 			RecipieHelper.addShapelessMetaCycleRecipie(tentParts[1], 10, tool, string, string, string, string, string, string);
 		}

@@ -20,7 +20,7 @@ public class ToolCampingV2 extends CampingItem{
 			setMaxDamage(Config.GENERAL_CAMPTOOL2_MAX_DURABILATY);
 			isDamageable();
 			ToolHelper.addTool(this);
-			KeyHelper.addKeyItem(itemID);
+			KeyHelper.addKeyItem(this);
 		}
 		
 		public void openCraftingGui(ItemStack stack, EntityPlayer player)
