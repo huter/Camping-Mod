@@ -1,7 +1,9 @@
 package rikmuld.item;
 
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import rikmuld.CampingMod;
 import rikmuld.core.lib.ModInfo;
@@ -49,4 +51,6 @@ public abstract class CampingItem extends Item{
 		}
     	return this.iconIndex;
     }
+    
+    public void doKeyAction(EntityPlayer thePlayer, ItemStack itemStack, String keyBinding) {}
 }

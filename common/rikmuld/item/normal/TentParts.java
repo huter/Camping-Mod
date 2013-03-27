@@ -36,5 +36,4 @@ public class TentParts extends CampingItem {
 			list.add(new ItemStack(par1, 1, var4));
 		}
 	}
-
 }

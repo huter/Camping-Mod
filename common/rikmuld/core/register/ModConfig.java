@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.logging.Level;
 
 import net.minecraftforge.common.Configuration;
+import rikmuld.CampingMod;
+import rikmuld.core.helper.KeyHelper;
 import rikmuld.core.lib.Blocks;
 import rikmuld.core.lib.Config;
 import rikmuld.core.lib.Items;
@@ -72,7 +74,8 @@ public class ModConfig {
 			 
 			 Config.GENERAL_CAMPTOOL_MAX_DURABILATY = config.get(Config.CATEGORY_GENERAL,  Config.GENERAL_CAMPTOOL_MAX_DURABILATY_MESSAGE, Config.GENERAL_CAMPTOOL_MAX_DURABILATY_DEV).getInt(Config.GENERAL_CAMPTOOL_MAX_DURABILATY_DEV);
 			 Config.GENERAL_CAMPTOOL2_MAX_DURABILATY = config.get(Config.CATEGORY_GENERAL,  Config.GENERAL_CAMPTOOL2_MAX_DURABILATY_MESSAGE, Config.GENERAL_CAMPTOOL2_MAX_DURABILATY_DEV).getInt(Config.GENERAL_CAMPTOOL2_MAX_DURABILATY_DEV);
-				
+			 CampingMod.proxy.setKeyBinding(KeyHelper.keyCraft, config.get(Config.CATEGORY_GENERAL,  Config.GENERAL_KEYBIND_MESSAGE, Config.GENERAL_KEYBIND_DEV).getInt(Config.GENERAL_KEYBIND_DEV));
+					
 			 Config.PLANT_RADISH_HEAL = config.get(Config.CATEGORY_PLANT, Config.PLANT_RADISH_HEAL_MESSAGE, Config.PLANT_RADISH_HEAL_DEV).getInt(Config.PLANT_RADISH_HEAL_DEV);
 			 Config.PLANT_MARSHMALLOW_HEAL = config.get(Config.CATEGORY_PLANT, Config.PLANT_MARSHMALLOW_HEAL_MESSAGE, Config.PLANT_MARSHMALLOW_HEAL_DEV).getInt(Config.PLANT_MARSHMALLOW_HEAL_DEV);
 			 Config.PLANT_RADISH_DROP_RATE = config.get(Config.CATEGORY_PLANT, Config.PLANT_RADISH_DROP_RATE_MESSAGE, Config.PLANT_RADISH_DROP_RATE_DEV).getInt(Config.PLANT_RADISH_DROP_RATE_DEV);

@@ -17,6 +17,7 @@ import rikmuld.core.register.ModMobs;
 import rikmuld.core.register.ModRecipies;
 import rikmuld.core.register.ModTileEntitys;
 import rikmuld.core.tab.CampingTab;
+import rikmuld.network.PacketHandler;
 import rikmuld.world.WorldGen;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -33,7 +34,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.MOD_VERSION, dependencies = ModInfo.MOD_DEPENDENCIES)
-@NetworkMod(clientSideRequired = true, serverSideRequired = false)
+@NetworkMod(channels = { ModInfo.PACKET_CHANEL }, clientSideRequired = true, serverSideRequired = false, packetHandler = PacketHandler.class)
 
 public class CampingMod {
 
@@ -50,6 +51,7 @@ public class CampingMod {
 	{
 		ModLogger.preinit();
 		ModConfig.preInit(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/Camping/" + ModInfo.MOD_ID + ".cfg"));
+		proxy.registerKeyBindingHandler();
 	}
 	
 	@Init
@@ -88,6 +90,7 @@ public class CampingMod {
 	 * TODO: make a flashlight
 	 * TODO: larger storage in tents
 	 * TODO: make tents with traped chests and ender chests
+	 * TODO: place the foods in one metadata, place the tentContents in the tentParts metadata
 	 * 
 	 * TODO: fix the bugs
 	 * 

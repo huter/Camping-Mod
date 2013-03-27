@@ -6,6 +6,7 @@ public class Config {
 	public static final int WORLD_GEN_SMALL_CAMP_CAMPER_SPAWNRATE_DEV = 1;
 	public static final int GENERAL_CAMPTOOL_MAX_DURABILATY_DEV = 100;
 	public static final int GENERAL_CAMPTOOL2_MAX_DURABILATY_DEV = 250;
+	public static final int GENERAL_KEYBIND_DEV = 19;
 	public static final int PLANT_RADISH_HEAL_DEV = 2;
 	public static final int PLANT_MARSHMALLOW_HEAL_DEV = 5;
 	public static final int PLANT_RADISH_DROP_RATE_DEV = 10;
@@ -21,6 +22,7 @@ public class Config {
 	public static int WORLD_GEN_SMALL_CAMP_CAMPER_SPAWNRATE;
 	public static int GENERAL_CAMPTOOL_MAX_DURABILATY;
 	public static int GENERAL_CAMPTOOL2_MAX_DURABILATY;
+	public static int GENERAL_KEYBIND;
 	public static int PLANT_RADISH_HEAL;
 	public static int PLANT_MARSHMALLOW_HEAL;
 	public static int PLANT_RADISH_DROP_RATE;
@@ -38,6 +40,7 @@ public class Config {
 	public static String WORLD_GEN_SMALL_CAMP_CAMPER_SPAWNRATE_MESSAGE = "camper spawn rate small campsite";
 	public static String GENERAL_CAMPTOOL_MAX_DURABILATY_MESSAGE = "max durabilaty camper's tool";
 	public static String GENERAL_CAMPTOOL2_MAX_DURABILATY_MESSAGE = "max durabilaty camper's tool v2";
+	public static String GENERAL_KEYBIND_MESSAGE = "the key code for crafting";
 	public static String PLANT_RADISH_HEAL_MESSAGE = "radish heal amount";
 	public static String PLANT_MARSHMALLOW_HEAL_MESSAGE = "marshmallow heal amount";
 	public static String PLANT_RADISH_DROP_RATE_MESSAGE = "radish seed drop rate tail grass";

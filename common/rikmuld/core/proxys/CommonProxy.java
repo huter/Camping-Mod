@@ -4,6 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import rikmuld.client.gui.GuiCampToolV2;
 import rikmuld.client.gui.GuiCampfireCheapCooker;
 import rikmuld.client.gui.GuiCampfireFastCooker;
 import rikmuld.client.gui.GuiCampfireMultiCooker;
@@ -17,6 +18,7 @@ import rikmuld.client.gui.screen.GuiGuideFood;
 import rikmuld.client.gui.screen.GuiGuideTent;
 import rikmuld.client.gui.screen.GuiGuideWorld;
 import rikmuld.core.lib.GuiIds;
+import rikmuld.inventory.container.ContainerCampToolV2;
 import rikmuld.inventory.container.ContainerCampfireCheapCooker;
 import rikmuld.inventory.container.ContainerCampfireFastCooker;
 import rikmuld.inventory.container.ContainerCampfireMultiCooker;
@@ -39,7 +41,9 @@ public class CommonProxy implements IGuiHandler {
 	public void initRenderingAndTextures() {} 
 	public void registerRenderers() {}
 	public void registerTileEntitySpecialRenderer(TileEntity tileentity){}
-	
+    public void registerKeyBindingHandler() {}
+    public void setKeyBinding(String name, int value) {}
+    
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) 
 	{
@@ -75,6 +79,10 @@ public class CommonProxy implements IGuiHandler {
 		{
 			ItemStack backpack = player.getCurrentEquippedItem();
             return new ContainerCampingBagSmall(player.inventory, (InventoryCampingBagSmall) ToolBackpack.getBackpackInv(player), backpack);
+     	}
+		if (ID == GuiIds.GUICampTool) 
+		{
+            return new ContainerCampToolV2(player.inventory, world, x, y, z);
      	}
 		return null;
 	}
@@ -132,6 +140,10 @@ public class CommonProxy implements IGuiHandler {
 		{
             return new GuiGuideWorld();
 	    }
+		if (ID == GuiIds.GUICampTool) 
+		{
+            return new GuiCampToolV2(player, world, x, y, z);
+     	}
 		return null;	
 	}
 }

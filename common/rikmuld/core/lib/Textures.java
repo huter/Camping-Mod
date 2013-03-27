@@ -25,4 +25,5 @@ public class Textures {
 	public static final String GUI_BAG_LARGE= "CampingBagLarge.png";
 	public static final String GUI_BOOK_GUIDE= "GuideBook.png";
 	public static final String GUI_COMPONENTS = "GuideBookComponents.png";
+	public static final String GUI_TOOL_CAMP = "GuiCampTool.png";
 }
