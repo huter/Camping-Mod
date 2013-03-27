@@ -1,10 +1,13 @@
 package rikmuld.core.register;
 
+import java.util.logging.Level;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import rikmuld.core.helper.ItemStackHelper;
 import rikmuld.core.helper.RecipieHelper;
+import rikmuld.core.helper.ToolHelper;
 import rikmuld.core.lib.Config;
 
 public class ModRecipies {
@@ -41,10 +44,14 @@ public class ModRecipies {
 	{
 		if(insta) RecipieHelper.addShapelessRecipe(campfire[4], 1, campfire[0], campfire[1], campfire[2], campfire[3]);
 		RecipieHelper.addShapelessRecipe(marshmallow[1], 3, stick, marshmallow[0]);
-		RecipieHelper.addShapelessMetaCycleRecipie(tentParts[0], 4, toolCamp, iron);
-		RecipieHelper.addShapelessMetaCycleRecipie(tentParts[1], 10, toolCamp, string, string, string, string, string, string);
-		RecipieHelper.addShapelessMetaCycleRecipie(tentParts[0], 4, toolCamp2, iron);
-		RecipieHelper.addShapelessMetaCycleRecipie(tentParts[1], 10, toolCamp2, string, string, string, string, string, string);
+		
+		for(ItemStack[] tool : ToolHelper.toolStacks)
+		{
+			ModLogger.log(Level.INFO, Integer.toString(tool.length));
+			RecipieHelper.addShapelessMetaCycleRecipie(tentParts[0], 4, tool, iron);
+			RecipieHelper.addShapelessMetaCycleRecipie(tentParts[1], 10, tool, string, string, string, string, string, string);
+		}
+
 		RecipieHelper.addRecipe(tent, 1, "000", "0 0", "1 1", '0', tentParts[1], '1', tentParts[0]);
 		RecipieHelper.addRecipe(SleepBag, 1, "000", '0', Block.cloth);
 		RecipieHelper.addRecipe(toolCamp[0], 1,  "010", "010", "010", '0', dye[1], '1', iron);

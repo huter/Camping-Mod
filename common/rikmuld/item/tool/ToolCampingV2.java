@@ -19,7 +19,7 @@ public class ToolCampingV2 extends CampingItem{
 			setUnlocalizedName(Items.ITEM_TOOL_CAMP2_NAME);
 			setMaxDamage(Config.GENERAL_CAMPTOOL2_MAX_DURABILATY);
 			isDamageable();
-			ToolHelper.addTool(itemID);
+			ToolHelper.addTool(this);
 			KeyHelper.addKeyItem(itemID);
 		}
 		

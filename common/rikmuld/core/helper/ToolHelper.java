@@ -3,14 +3,18 @@ package rikmuld.core.helper;
 import java.util.ArrayList;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 public class ToolHelper {
 
 	public static ArrayList<Integer> tools = new ArrayList<Integer>();
+	public static ArrayList<ItemStack[]> toolStacks = new ArrayList<ItemStack[]>();
 	
-	public static void addTool(int id)
+	public static void addTool(Item item)
 	{		
-		tools.add(id);
+		tools.add(item.itemID);
+		ItemStack[] theTool = ItemStackHelper.getMetaCycle(item, 100);
+		toolStacks.add(theTool);
 	}
 	
 	public static boolean isTool(ItemStack item)
