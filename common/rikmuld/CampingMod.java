@@ -82,7 +82,7 @@ public class CampingMod {
 	 * TODO: make the cloaks working.
 	 * TODO: make directions with forge directions so the tent class can be very small
 	 * TODO: complete the guide books.
-	 * TODO: make a camping tool v2 were you can craft with a key.
+	 * TODO: make the camping tool v2 that you can craft and open gui with a key.
 	 * TODO: make backpacks wereable on the back and activateble with a key.
 	 * TODO: make a camper AI for not run into campfires and stay with tents.
 	 * TODO: make a flashlight

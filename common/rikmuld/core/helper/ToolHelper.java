@@ -6,7 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 public class ToolHelper {
 
-	public static ArrayList<Integer> tools = new ArrayList();
+	public static ArrayList<Integer> tools = new ArrayList<Integer>();
 	
 	public static void addTool(int id)
 	{		

@@ -4,7 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import rikmuld.core.helper.CodeHelper;
+import rikmuld.core.helper.ItemStackHelper;
 import rikmuld.core.helper.ToolHelper;
 import rikmuld.core.register.ModAchievements;
 import rikmuld.core.register.ModBlocks;
@@ -13,8 +13,8 @@ import cpw.mods.fml.common.ICraftingHandler;
 
 public class CraftHandler implements ICraftingHandler{
 
-	ItemStack campfire[] = CodeHelper.getMetaCycle(ModBlocks.campfire, 5);
-	ItemStack bag[] = CodeHelper.getMetaCycle(ModItems.CampingBag, 3);
+	ItemStack campfire[] = ItemStackHelper.getMetaCycle(ModBlocks.campfire, 5);
+	ItemStack bag[] = ItemStackHelper.getMetaCycle(ModItems.CampingBag, 3);
 	ItemStack tent = new ItemStack(ModBlocks.tent, 1, 0);
 	
 	@Override
@@ -34,7 +34,7 @@ public class CraftHandler implements ICraftingHandler{
             if(inv.getStackInSlot(i) != null)
             {
                 ItemStack j = inv.getStackInSlot(i);
-                if(j.getItem() != null&&ToolHelper.isTool(j))
+                if(j.getItem() != null&&ToolHelper.isTool(j)&&!ToolHelper.isTool(item))
                 {
                 	 ItemStack k = ToolHelper.addDamage(j, player);
                 	 if(k!=null)k.stackSize++;

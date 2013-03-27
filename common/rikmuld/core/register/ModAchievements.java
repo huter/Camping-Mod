@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
-import rikmuld.core.helper.CodeHelper;
+import rikmuld.core.helper.ItemStackHelper;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModAchievements {
@@ -82,8 +82,8 @@ public class ModAchievements {
 
 	public static AchievementPage CampingMillestones;
 	
-	public static ItemStack campfire[] = CodeHelper.getMetaCycle(ModBlocks.campfire, 5);
-	public static ItemStack bag[] = CodeHelper.getMetaCycle(ModItems.CampingBag, 3);
+	public static ItemStack campfire[] = ItemStackHelper.getMetaCycle(ModBlocks.campfire, 5);
+	public static ItemStack bag[] = ItemStackHelper.getMetaCycle(ModItems.CampingBag, 3);
 	
 	public static void init() 
 	{

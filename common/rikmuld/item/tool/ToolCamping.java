@@ -14,7 +14,6 @@ public class ToolCamping extends CampingItem {
 		setUnlocalizedName(Items.ITEM_TOOL_CAMP_NAME);
 		setMaxDamage(Config.GENERAL_CAMPTOOL_MAX_DURABILATY);
 		isDamageable();
-		this.setNoRepair();
 		ToolHelper.addTool(itemID);
 	}
 }
