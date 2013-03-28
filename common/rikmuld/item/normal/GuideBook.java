@@ -16,6 +16,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class GuideBook extends CampingItem{
 
+	public static boolean isGuiOpen = false;
+	
 	public static final String[] metadataNames = new String[]	
 	{
 		Items.ITEM_BOOK_GUIDE_CAMP_NAME,
@@ -57,9 +59,10 @@ public class GuideBook extends CampingItem{
         {
         	par3EntityPlayer.openGui(CampingMod.instance, GuiIds.GUIGuideWorld, par2World,  0, 0, 0);
         }
+        isGuiOpen = true;
         return stack;
     }
-
+	
 	@Override
 	public String getUnlocalizedName(ItemStack itemstack) 
 	{

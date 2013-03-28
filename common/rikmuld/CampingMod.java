@@ -52,6 +52,7 @@ public class CampingMod {
 		ModLogger.preinit();
 		ModConfig.preInit(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/Camping/" + ModInfo.MOD_ID + ".cfg"));
 		proxy.registerKeyBindingHandler();
+		proxy.registerTickHandler();
 	}
 	
 	@Init
@@ -82,13 +83,13 @@ public class CampingMod {
 	
 	/*
 	 * TODO: make the cloaks working.
-	 * TODO: make directions with forge directions so the tent class can be very small
+	 * TODO: make directions with forge directions so the tent class can be smaller
 	 * TODO: complete the guide books.
+	 * TODO: make the tickhandler update the recipies textures for guide book tent
 	 * TODO: make backpacks wereable on the back and activateble with a key.
 	 * TODO: make a camper AI for not run into campfires and stay with tents.
 	 * TODO: make a flashlight
-	 * TODO: larger storage in tents
-	 * TODO: make tents with traped chests and ender chests
+	 * TODO: make tents with traped chests and ender chests and make more for inside tents
 	 * TODO: place the foods in one metadata, place the tentContents in the tentParts metadata
 	 * 
 	 * TODO: fix the bugs
@@ -100,7 +101,6 @@ public class CampingMod {
 	 * TODO: for next update
 	 * 
 	 * -finish another guide book
-	 * -make the tent store more
 	 * 
 	 */
 }

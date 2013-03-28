@@ -13,7 +13,7 @@ public class ToolHelper {
 	public static void addTool(Item item)
 	{		
 		tools.add(item.itemID);
-		ItemStack[] theTool = ItemStackHelper.getMetaCycle(item, 100);
+		ItemStack[] theTool = ItemStackHelper.getMetaCycle(item, item.getMaxDamage());
 		toolStacks.add(theTool);
 	}
 	

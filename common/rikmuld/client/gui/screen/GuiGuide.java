@@ -8,6 +8,7 @@ import org.lwjgl.opengl.GL11;
 import rikmuld.client.gui.button.GuiButtonGuideButton;
 import rikmuld.client.gui.button.GuiButtonGuidePage;
 import rikmuld.core.lib.Textures;
+import rikmuld.item.normal.GuideBook;
 
 public class GuiGuide extends GuiScreen{
     
@@ -73,5 +74,11 @@ public class GuiGuide extends GuiScreen{
 		 }
 		 fontRenderer.drawString(Integer.toString(BookPages+1), var1+89-var3, var2 + 145, 0x2b2b2b, false);
 	     super.drawScreen(par1, par2, par3);
+	}
+	
+	@Override
+	public void onGuiClosed()
+	{
+		GuideBook.isGuiOpen = false;
 	}
 }

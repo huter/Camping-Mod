@@ -5,9 +5,13 @@ import net.minecraft.util.MathHelper;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import rikmuld.client.gui.button.GuiButtonGuideButton;
 import rikmuld.core.lib.Textures;
 
+@SideOnly(Side.CLIENT)
 public class GuiGuideCampfire extends GuiGuide { 
 	
 	public GuiGuideCampfire()

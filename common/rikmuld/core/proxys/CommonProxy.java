@@ -17,6 +17,7 @@ import rikmuld.client.gui.screen.GuiGuideEquipment;
 import rikmuld.client.gui.screen.GuiGuideFood;
 import rikmuld.client.gui.screen.GuiGuideTent;
 import rikmuld.client.gui.screen.GuiGuideWorld;
+import rikmuld.core.handlers.TickHandler;
 import rikmuld.core.lib.GuiIds;
 import rikmuld.inventory.container.ContainerCampToolV2;
 import rikmuld.inventory.container.ContainerCampfireCheapCooker;
@@ -35,6 +36,8 @@ import rikmuld.tileentity.TileEntityCampfireFastCooker;
 import rikmuld.tileentity.TileEntityCampfireMultiCooker;
 import rikmuld.tileentity.TileEntityTent;
 import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 public class CommonProxy implements IGuiHandler {
 
@@ -43,6 +46,11 @@ public class CommonProxy implements IGuiHandler {
 	public void registerTileEntitySpecialRenderer(TileEntity tileentity){}
     public void registerKeyBindingHandler() {}
     public void setKeyBinding(String name, int value) {}
+    
+    public void registerTickHandler() 
+    {
+    	 TickRegistry.registerTickHandler(new TickHandler(), Side.SERVER);
+    }
     
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) 
