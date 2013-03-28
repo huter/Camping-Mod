@@ -11,38 +11,38 @@ import net.minecraftforge.common.ISidedInventory;
 
 public class TileEntityTent extends TileEntity implements IInventory, ISidedInventory {
 	
-	private ItemStack[] campfireItemStacks = new ItemStack[36];
+	private ItemStack[] TentStacks = new ItemStack[55];
 
 	public int getSizeInventory() 
 	{
-		return this.campfireItemStacks.length;
+		return this.TentStacks.length;
 	}
 
 	public ItemStack getStackInSlot(int par1) 
 	{
-		return this.campfireItemStacks[par1];
+		return this.TentStacks[par1];
 	}
 
 	public ItemStack decrStackSize(int par1, int par2) 
 	{
-		if (this.campfireItemStacks[par1] != null) 
+		if (this.TentStacks[par1] != null) 
 		{
 			ItemStack var3;
 
-			if (this.campfireItemStacks[par1].stackSize <= par2) 
+			if (this.TentStacks[par1].stackSize <= par2) 
 			{
-				var3 = this.campfireItemStacks[par1];
-				this.campfireItemStacks[par1] = null;
+				var3 = this.TentStacks[par1];
+				this.TentStacks[par1] = null;
 				return var3;
 			} 
 			
 			else 
 			{
-				var3 = this.campfireItemStacks[par1].splitStack(par2);
+				var3 = this.TentStacks[par1].splitStack(par2);
 
-				if (this.campfireItemStacks[par1].stackSize == 0) 
+				if (this.TentStacks[par1].stackSize == 0) 
 				{
-					this.campfireItemStacks[par1] = null;
+					this.TentStacks[par1] = null;
 				}
 				return var3;
 			}
@@ -56,10 +56,10 @@ public class TileEntityTent extends TileEntity implements IInventory, ISidedInve
 
 	public ItemStack getStackInSlotOnClosing(int par1) 
 	{
-		if (this.campfireItemStacks[par1] != null) 
+		if (this.TentStacks[par1] != null) 
 		{
-			ItemStack var2 = this.campfireItemStacks[par1];
-			this.campfireItemStacks[par1] = null;
+			ItemStack var2 = this.TentStacks[par1];
+			this.TentStacks[par1] = null;
 			return var2;
 		} 
 		
@@ -71,7 +71,7 @@ public class TileEntityTent extends TileEntity implements IInventory, ISidedInve
 
 	public void setInventorySlotContents(int par1, ItemStack par2ItemStack) 
 	{
-		this.campfireItemStacks[par1] = par2ItemStack;
+		this.TentStacks[par1] = par2ItemStack;
 
 		if (par2ItemStack != null&& par2ItemStack.stackSize > this.getInventoryStackLimit())
 		{
@@ -88,16 +88,16 @@ public class TileEntityTent extends TileEntity implements IInventory, ISidedInve
 	{
 		super.readFromNBT(par1NBTTagCompound);
 		NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
-		this.campfireItemStacks = new ItemStack[this.getSizeInventory()];
+		this.TentStacks = new ItemStack[this.getSizeInventory()];
 
 		for (int var3 = 0; var3 < var2.tagCount(); ++var3) 
 		{
 			NBTTagCompound var4 = (NBTTagCompound) var2.tagAt(var3);
 			byte var5 = var4.getByte("Slot");
 
-			if (var5 >= 0 && var5 < this.campfireItemStacks.length) 
+			if (var5 >= 0 && var5 < this.TentStacks.length) 
 			{
-				this.campfireItemStacks[var5] = ItemStack.loadItemStackFromNBT(var4);
+				this.TentStacks[var5] = ItemStack.loadItemStackFromNBT(var4);
 			}
 		}
 	}
@@ -107,13 +107,13 @@ public class TileEntityTent extends TileEntity implements IInventory, ISidedInve
 		super.writeToNBT(par1NBTTagCompound);
 		NBTTagList var2 = new NBTTagList();
 		
-		for (int var3 = 0; var3 < this.campfireItemStacks.length; ++var3) 
+		for (int var3 = 0; var3 < this.TentStacks.length; ++var3) 
 		{
-			if (this.campfireItemStacks[var3] != null) 
+			if (this.TentStacks[var3] != null) 
 			{
 				NBTTagCompound var4 = new NBTTagCompound();
 				var4.setByte("Slot", (byte) var3);
-				this.campfireItemStacks[var3].writeToNBT(var4);
+				this.TentStacks[var3].writeToNBT(var4);
 				var2.appendTag(var4);
 			}
 		}

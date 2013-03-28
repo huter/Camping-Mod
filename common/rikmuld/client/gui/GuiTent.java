@@ -14,6 +14,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiTent extends GuiContainer {
 
+	public int xSize = 212;
+	public int ySize = 184;
+	
 	public GuiTent(InventoryPlayer par1InventoryPlayer,	TileEntityTent par2TileEntitycampfire) 
 	{
 		super(new ContainerTent(par1InventoryPlayer, par2TileEntitycampfire));
