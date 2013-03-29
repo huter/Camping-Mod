@@ -1,14 +1,15 @@
 package rikmuld.core.handlers;
 
 import java.util.EnumSet;
+import java.util.logging.Level;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import rikmuld.client.gui.screen.GuiGuide;
-import rikmuld.core.helper.ToolHelper;
+import net.minecraft.item.ItemStack;
 import rikmuld.core.lib.ModInfo;
+import rikmuld.core.proxys.CommonProxy;
 import rikmuld.core.register.ModItems;
+import rikmuld.core.register.ModLogger;
 import rikmuld.item.normal.GuideBook;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
@@ -17,20 +18,32 @@ import cpw.mods.fml.common.TickType;
 public class TickHandler implements ITickHandler{
 
 	static Minecraft mc;
-	private int update;
 	
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) 
 	{
-		EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
-		Item currentItem = player.getCurrentEquippedItem().getItem();
-		if(currentItem.itemID == ModItems.guideBook.itemID)
+		if(type.equals(EnumSet.of(TickType.RENDER)))	
 		{
-			if(GuideBook.isGuiOpen)
+			if(FMLClientHandler.instance().getClient().thePlayer!=null)
 			{
-				// TODO: make the GuiGuide update every 10 sec
+				EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
+				ItemStack currentItem = player.getCurrentEquippedItem();
+				if(currentItem!=null)
+				{
+					if(currentItem.itemID == ModItems.guideBook.itemID)
+					{
+						if(GuideBook.isGuiOpen)
+						{
+							if(CommonProxy.guideCamp!=null)CommonProxy.guideCamp.updateTick();
+							if(CommonProxy.guideTent!=null)CommonProxy.guideTent.updateTick();
+							if(CommonProxy.guideEquipment!=null)CommonProxy.guideEquipment.updateTick();
+							if(CommonProxy.guideFood!=null)CommonProxy.guideFood.updateTick();
+							if(CommonProxy.guideWorld!=null)CommonProxy.guideWorld.updateTick();
+						}
+					}	
+				}
 			}
-		}			
+		}
 	}
 
 	@Override

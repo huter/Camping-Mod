@@ -1,5 +1,7 @@
 package rikmuld.client.gui.screen;
 
+import java.util.logging.Level;
+
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 
@@ -8,6 +10,7 @@ import org.lwjgl.opengl.GL11;
 import rikmuld.client.gui.button.GuiButtonGuideButton;
 import rikmuld.client.gui.button.GuiButtonGuidePage;
 import rikmuld.core.lib.Textures;
+import rikmuld.core.register.ModLogger;
 import rikmuld.item.normal.GuideBook;
 
 public class GuiGuide extends GuiScreen{
@@ -17,7 +20,7 @@ public class GuiGuide extends GuiScreen{
     public GuiButtonGuidePage buttonNextPage;
     public GuiButtonGuidePage buttonPreviousPage;
     public int BookPages;
-    public int BookPagesTotaal = 15;
+    public int BookPagesTotaal = 99;
     public GuiButtonGuideButton buttonIcon;
 
 	public void initGui()
@@ -34,6 +37,7 @@ public class GuiGuide extends GuiScreen{
 	public void addTextByPage(int page) {}
 	public void addButtonByPage(int page) {}
 	public void triggerButtons(GuiButton button) {}
+	public void updateTick() {}
 
 	@Override
 	public void actionPerformed(GuiButton button)

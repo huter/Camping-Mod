@@ -8,7 +8,6 @@ import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import rikmuld.client.gui.button.GuiButtonGuideButton;
 import rikmuld.core.helper.ToolHelper;
 import rikmuld.core.lib.Textures;
 import cpw.mods.fml.relauncher.Side;
@@ -18,6 +17,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class GuiGuideTent extends GuiGuide{
 
     private RenderItem itemRender;
+    int update = 0;
+    int toolNum = 0;
     
 	public GuiGuideTent()
 	{
@@ -89,12 +90,12 @@ public class GuiGuideTent extends GuiGuide{
 			 {	 
 				if(page==i)
 				{
-					ItemStack tool = new ItemStack(ToolHelper.tools.get(/* make it change from 0 to max tools every 10 sec with tick handler*/ 0), 1, 0);
+					ItemStack tool = new ItemStack(ToolHelper.tools.get(toolNum), 1, 0);
 					GL11.glDisable(GL11.GL_LIGHTING);
 		            GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		            GL11.glEnable(GL11.GL_COLOR_MATERIAL);
 		            GL11.glEnable(GL11.GL_LIGHTING);
-					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, tool, ((this.width - this.bookImageWidth) / 2), ((this.height - this.bookImageHeight) / 2));
+					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, tool, ((this.width - this.bookImageWidth) / 2)+50, ((this.height - this.bookImageHeight) / 2)+75);
                     GL11.glDisable(GL11.GL_LIGHTING);
                     GL11.glDepthMask(true);
                     GL11.glEnable(GL11.GL_DEPTH_TEST);
@@ -125,6 +126,19 @@ public class GuiGuideTent extends GuiGuide{
 		switch(button.id)
 		{
 
+		}
+	}
+	
+	@Override
+	public void updateTick()
+	{
+		update++;
+		if(update>100)
+		{
+			update=0;
+			toolNum++;
+			if(toolNum>1)toolNum=0;
+			addImgByPage(this.BookPages); 
 		}
 	}
 }
