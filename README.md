@@ -1,5 +1,5 @@
-The-Camping-mod Master-Branch
-=============================
+The-Camping-mod
+===============
  
 Welcome to the camping mod 1.0.1 universal source for minecraft 1.5.1
 
