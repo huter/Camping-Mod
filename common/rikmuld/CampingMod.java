@@ -19,6 +19,7 @@ import rikmuld.core.register.ModTileEntitys;
 import rikmuld.core.tab.CampingTab;
 import rikmuld.network.PacketHandler;
 import rikmuld.world.WorldGen;
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;

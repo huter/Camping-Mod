@@ -81,29 +81,34 @@ public class GuiGuideTent extends GuiGuide{
 	{
 		if(page==0)
 		{
-
+			this.drawTexturedModalRect(((this.width - this.bookImageWidth) / 2)+50, ((this.height - this.bookImageHeight) / 2)+28, 49, 194, 82, 12);
 		}
 		else
 		{
-			 int a = 0;
-			 for(int i=1; i<5;i++)
-			 {	 
-				if(page==i)
-				{
+			this.mc.renderEngine.bindTexture(Textures.GUI_LOCATIONS + Textures.GUI_COMPONENTS);
+			int a = 0;
+			
+			if(page==1||page==2)
+	        {
 					ItemStack tool = new ItemStack(ToolHelper.tools.get(toolNum), 1, 0);
 					GL11.glDisable(GL11.GL_LIGHTING);
-		            GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-		            GL11.glEnable(GL11.GL_COLOR_MATERIAL);
-		            GL11.glEnable(GL11.GL_LIGHTING);
+					GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+	            	GL11.glEnable(GL11.GL_COLOR_MATERIAL);
+	            	GL11.glEnable(GL11.GL_LIGHTING);
 					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, tool, ((this.width - this.bookImageWidth) / 2)+50, ((this.height - this.bookImageHeight) / 2)+75);
-                    GL11.glDisable(GL11.GL_LIGHTING);
-                    GL11.glDepthMask(true);
-                    GL11.glEnable(GL11.GL_DEPTH_TEST);
-				
-					this.mc.renderEngine.bindTexture(Textures.GUI_LOCATIONS + Textures.GUI_COMPONENTS);
-					
-				}
-				a+=50;
+					GL11.glDisable(GL11.GL_LIGHTING);
+					GL11.glDepthMask(true);
+					GL11.glEnable(GL11.GL_DEPTH_TEST);
+	        }	
+			
+			for(int i=1; i<5;i++)
+			{  	
+               if(page==i)
+               {      			
+					this.drawTexturedModalRect(((this.width - this.bookImageWidth) / 2)+108, ((this.height - this.bookImageHeight) / 2)+85, a+i, 0, 50, 50);
+					this.drawTexturedModalRect(((this.width - this.bookImageWidth) / 2)+131, ((this.height - this.bookImageHeight) / 2)+8, a+i, 51, 23, 25);					 			
+               }
+               a+=50;
 			}
 		}
 	}
