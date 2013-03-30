@@ -11,6 +11,6 @@ Here are links to official posts/websites (newest public version 1.0.1 for minec
  
 [official website] (rikmuld.com)  - Contains the downloads. 
  
--------------------------------------------------------------------------------------- 
+------------------------------------------------------------------------------------
  
 If you want always the newest you can compilte this code. Expect bugs becouse the code is untested.
