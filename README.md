@@ -1,7 +1,7 @@
 The-Camping-mod 
 =============== 
  
-Welcome to the camping mod 1.0.1 universal source for minecraft 1.5.1 
+Welcome to the camping mod 1.0.1 universal source for minecraft 1.5.1
 
 Here are links to official posts/websites (newest public version 1.0.1 for minecraft 1.5.1).
  
@@ -11,6 +11,6 @@ Here are links to official posts/websites (newest public version 1.0.1 for minec
  
 [official website] (rikmuld.com)  - Contains the downloads. 
  
---------------------------------------------------------------------------------------- 
+-------------------------------------------------------------------------------------- 
  
 If you want always the newest you can compilte this code. Expect bugs becouse the code is untested.
