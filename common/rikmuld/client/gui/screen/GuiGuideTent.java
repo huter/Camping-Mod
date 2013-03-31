@@ -8,6 +8,7 @@ import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import rikmuld.client.gui.button.GuiButtonGuideButton;
 import rikmuld.core.helper.ToolHelper;
 import rikmuld.core.lib.Textures;
 import cpw.mods.fml.relauncher.Side;
@@ -81,11 +82,10 @@ public class GuiGuideTent extends GuiGuide{
 	{
 		if(page==0)
 		{
-			this.drawTexturedModalRect(((this.width - this.bookImageWidth) / 2)+50, ((this.height - this.bookImageHeight) / 2)+28, 49, 194, 82, 12);
+			this.drawTexturedModalRect(((this.width - this.bookImageWidth) / 2)+70, ((this.height - this.bookImageHeight) / 2)+28, 180, 194, 40, 12);
 		}
 		else
 		{
-			this.mc.renderEngine.bindTexture(Textures.GUI_LOCATIONS + Textures.GUI_COMPONENTS);
 			int a = 0;
 			
 			if(page==1||page==2)
@@ -99,7 +99,9 @@ public class GuiGuideTent extends GuiGuide{
 					GL11.glDisable(GL11.GL_LIGHTING);
 					GL11.glDepthMask(true);
 					GL11.glEnable(GL11.GL_DEPTH_TEST);
-	        }	
+	        }
+			
+			this.mc.renderEngine.bindTexture(Textures.GUI_LOCATIONS + Textures.GUI_COMPONENTS);
 			
 			for(int i=1; i<5;i++)
 			{  	
@@ -121,7 +123,10 @@ public class GuiGuideTent extends GuiGuide{
 		
 		if(page == 0)
 		{
-	     
+	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(2, var1+35, var2+55, 10));
+	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(3, var1+75, var2+55, 12));
+	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(4, var1+115, var2+55, 14));
+	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(5, var1+55, var2+95, 16));
 		}
 	}
 	
@@ -138,7 +143,7 @@ public class GuiGuideTent extends GuiGuide{
 	public void updateTick()
 	{
 		update++;
-		if(update>100)
+		if(update>40)
 		{
 			update=0;
 			toolNum++;

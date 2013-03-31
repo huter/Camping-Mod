@@ -1,7 +1,5 @@
 package rikmuld.core.register;
 
-import java.util.logging.Level;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -47,12 +45,12 @@ public class ModRecipies {
 		
 		for(ItemStack[] tool : ToolHelper.toolStacks)
 		{
-			RecipieHelper.addShapelessMetaCycleRecipie(tentParts[0], 4, tool, iron);
-			RecipieHelper.addShapelessMetaCycleRecipie(tentParts[1], 10, tool, string, string, string, string, string, string);
+			RecipieHelper.addShapelessRecipe(tentParts[0], 4, ItemStackHelper.getWildValleu(tool[0]), iron);
+			RecipieHelper.addShapelessRecipe(tentParts[1], 10, ItemStackHelper.getWildValleu(tool[0]), string, string, string, string, string, string);
 		}
 
 		RecipieHelper.addRecipe(tent, 1, "000", "0 0", "1 1", '0', tentParts[1], '1', tentParts[0]);
-		RecipieHelper.addRecipe(SleepBag, 1, "000", '0', Block.cloth);
+		RecipieHelper.addRecipe(SleepBag, 1, "000", '0', ItemStackHelper.getWildValleu(wool[0]));
 		RecipieHelper.addRecipe(toolCamp[0], 1,  "010", "010", "010", '0', dye[1], '1', iron);
 		RecipieHelper.addRecipe(toolCamp2[0], 1,  "121", "101", "121", '0', toolCamp[0], '1', iron, '2', dye[1]);
 		RecipieHelper.addRecipe(campfire[0], 1, " 0 ", "010", "222", '0', torch, '1', flint, '2', stone);
