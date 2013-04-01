@@ -20,7 +20,7 @@ public class FoodMarshmellow extends CampingItemFood{
     
     public FoodMarshmellow(int par1)
     {
-        super(par1, 10, false);
+        super(par1, 1, false);
         float par3 = 0.6F;
         this.itemUseDuration = 64;
 		maxStackSize = 64;
@@ -48,5 +48,10 @@ public class FoodMarshmellow extends CampingItemFood{
             par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
         }
         return par1ItemStack;
+    }
+    
+    public int getHealAmount()
+    {
+        return Config.PLANT_MARSHMALLOW_HEAL;
     }
 }

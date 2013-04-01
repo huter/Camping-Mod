@@ -167,7 +167,7 @@ public class RadishCrop extends CampingBlockPlant {
 	        {
 	            for (int n = 0; n < 2 + fortune; n++)
 	            {
-	                if (world.rand.nextInt(20) <= metadata)
+	                if (world.rand.nextInt(20) >= metadata)
 	                {
 	                    ret.add(new ItemStack(this.getSeedItem(), 1, 0));
 	                }

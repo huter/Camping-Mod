@@ -14,7 +14,7 @@ import rikmuld.item.CampingItemFood;
 
 public class FoodRadish extends CampingItemFood{
 
-	   public final int itemUseDuration;
+		public final int itemUseDuration;
 	    private final int healAmount;
 	    private final float saturationModifier;
 	    private final boolean isWolfsFavoriteMeat;
@@ -22,7 +22,7 @@ public class FoodRadish extends CampingItemFood{
 	    
 	    public FoodRadish(int par1)
 	    {
-	        super(par1, 10, false);
+	        super(par1, 1, false);
 	    	float par3 = 0.6F;
 	        this.itemUseDuration = 12;
 			maxStackSize = 64;
@@ -47,5 +47,17 @@ public class FoodRadish extends CampingItemFood{
 	            par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
 	        }
 	        return par1ItemStack;
+	    }
+	    
+	    @Override
+	    public int getHealAmount()
+	    {
+	        return Config.PLANT_RADISH_HEAL;
+	    }
+	    
+	    @Override
+	    public int getMaxItemUseDuration(ItemStack par1ItemStack)
+	    {
+	        return this.itemUseDuration;
 	    }
 }
