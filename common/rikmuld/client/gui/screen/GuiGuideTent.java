@@ -1,5 +1,6 @@
 package rikmuld.client.gui.screen;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;
@@ -9,6 +10,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import rikmuld.client.gui.button.GuiButtonGuideButton;
+import rikmuld.core.helper.IntegerHelper;
 import rikmuld.core.helper.ToolHelper;
 import rikmuld.core.lib.Textures;
 import cpw.mods.fml.relauncher.Side;
@@ -20,6 +22,9 @@ public class GuiGuideTent extends GuiGuide{
     private RenderItem itemRender;
     int update = 0;
     int toolNum = 0;
+    int woolNum = 0;
+    int woolNum1 = 0;
+    int woolNum2 = 0;
     
 	public GuiGuideTent()
 	{
@@ -87,19 +92,11 @@ public class GuiGuideTent extends GuiGuide{
 		else
 		{
 			int a = 0;
+			ItemStack tool = new ItemStack(ToolHelper.tools.get(toolNum), 1, 0);
 			
-			if(page==1||page==2)
-	        {
-					ItemStack tool = new ItemStack(ToolHelper.tools.get(toolNum), 1, 0);
-					GL11.glDisable(GL11.GL_LIGHTING);
-					GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-	            	GL11.glEnable(GL11.GL_COLOR_MATERIAL);
-	            	GL11.glEnable(GL11.GL_LIGHTING);
-					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, tool, ((this.width - this.bookImageWidth) / 2)+50, ((this.height - this.bookImageHeight) / 2)+75);
-					GL11.glDisable(GL11.GL_LIGHTING);
-					GL11.glDepthMask(true);
-					GL11.glEnable(GL11.GL_DEPTH_TEST);
-	        }
+			ItemStack wool = new ItemStack(Block.cloth, 1, IntegerHelper.getLimitedNumber(woolNum, 0, 15));
+			ItemStack wool1 = new ItemStack(Block.cloth, 1, IntegerHelper.getLimitedNumber(woolNum1, 0, 15));
+			ItemStack wool2 = new ItemStack(Block.cloth, 1, IntegerHelper.getLimitedNumber(woolNum2, 0, 15));
 			
 			this.mc.renderEngine.bindTexture(Textures.GUI_LOCATIONS + Textures.GUI_COMPONENTS);
 			
@@ -107,10 +104,34 @@ public class GuiGuideTent extends GuiGuide{
 			{  	
                if(page==i)
                {      			
-					this.drawTexturedModalRect(((this.width - this.bookImageWidth) / 2)+108, ((this.height - this.bookImageHeight) / 2)+85, a+i, 0, 50, 50);
-					this.drawTexturedModalRect(((this.width - this.bookImageWidth) / 2)+131, ((this.height - this.bookImageHeight) / 2)+8, a+i, 51, 23, 25);					 			
+					this.drawTexturedModalRect(((this.width - this.bookImageWidth) / 2)+108, ((this.height - this.bookImageHeight) / 2)+85, a+i, 76, 50, 50);
+					this.drawTexturedModalRect(((this.width - this.bookImageWidth) / 2)+131, ((this.height - this.bookImageHeight) / 2)+8, a+i, 126, 25, 25);					 			
                }
                a+=50;
+			}
+			
+			if(page==1||page==2)
+	        {
+					GL11.glDisable(GL11.GL_LIGHTING);
+					GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+	        		GL11.glEnable(GL11.GL_COLOR_MATERIAL);
+	        		GL11.glEnable(GL11.GL_LIGHTING);
+					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, tool, ((this.width - this.bookImageWidth) / 2)+50, ((this.height - this.bookImageHeight) / 2)+75);
+					GL11.glDisable(GL11.GL_LIGHTING);
+					GL11.glDepthMask(true);
+					GL11.glEnable(GL11.GL_DEPTH_TEST);
+	        }
+			if(page==3)
+	        {
+					GL11.glDisable(GL11.GL_LIGHTING);
+					GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+	        		GL11.glEnable(GL11.GL_COLOR_MATERIAL);
+					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, wool, ((this.width - this.bookImageWidth) / 2)+30, ((this.height - this.bookImageHeight) / 2)+75);
+					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, wool1, ((this.width - this.bookImageWidth) / 2)+50, ((this.height - this.bookImageHeight) / 2)+75);
+					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, wool2, ((this.width - this.bookImageWidth) / 2)+70, ((this.height - this.bookImageHeight) / 2)+75);
+					GL11.glDisable(GL11.GL_LIGHTING);
+					GL11.glDepthMask(true);
+					GL11.glEnable(GL11.GL_DEPTH_TEST);
 			}
 		}
 	}
@@ -123,10 +144,10 @@ public class GuiGuideTent extends GuiGuide{
 		
 		if(page == 0)
 		{
-	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(2, var1+35, var2+55, 10));
+	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(2, var1+35, var2+75, 10));
 	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(3, var1+75, var2+55, 12));
-	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(4, var1+115, var2+55, 14));
-	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(5, var1+55, var2+95, 16));
+	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(4, var1+115, var2+75, 14));
+	        this.buttonList.add(this.buttonIcon = new GuiButtonGuideButton(5, var1+75, var2+95, 16));
 		}
 	}
 	
@@ -135,7 +156,10 @@ public class GuiGuideTent extends GuiGuide{
 	{
 		switch(button.id)
 		{
-
+			case 2:	this.BookPages = 1;	break;
+			case 3:	this.BookPages = 2;	break;
+			case 4:	this.BookPages = 3;	break;
+			case 5:	this.BookPages = 4;	break;
 		}
 	}
 	
@@ -143,10 +167,13 @@ public class GuiGuideTent extends GuiGuide{
 	public void updateTick()
 	{
 		update++;
-		if(update>40)
+		if(update>30)
 		{
 			update=0;
 			toolNum++;
+			woolNum = (int)(Math.random()*100+1);
+			woolNum1 = (int)(Math.random()*100+1);
+			woolNum2 = (int)(Math.random()*100+1);
 			if(toolNum>1)toolNum=0;
 			addImgByPage(this.BookPages); 
 		}

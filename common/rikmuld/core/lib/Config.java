@@ -2,7 +2,7 @@ package rikmuld.core.lib;
 
 public class Config {
 
-	public static final int WORLD_GEN_SMALL_CAMP_SPAWN_RARENESS_DEV = 450;
+	public static final int WORLD_GEN_SMALL_CAMP_SPAWN_RARENESS_DEV = 800;
 	public static final int WORLD_GEN_SMALL_CAMP_CAMPER_SPAWNRATE_DEV = 1;
 	public static final int GENERAL_CAMPTOOL_MAX_DURABILATY_DEV = 100;
 	public static final int GENERAL_CAMPTOOL2_MAX_DURABILATY_DEV = 250;

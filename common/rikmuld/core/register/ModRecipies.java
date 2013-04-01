@@ -41,7 +41,7 @@ public class ModRecipies {
 	public static void init() 
 	{
 		if(insta) RecipieHelper.addShapelessRecipe(campfire[4], 1, campfire[0], campfire[1], campfire[2], campfire[3]);
-		RecipieHelper.addShapelessRecipe(marshmallow[1], 3, stick, marshmallow[0]);
+		RecipieHelper.addShapelessRecipe(marshmallow[1], 3, stick, stick, stick, marshmallow[0]);
 		
 		for(ItemStack[] tool : ToolHelper.toolStacks)
 		{

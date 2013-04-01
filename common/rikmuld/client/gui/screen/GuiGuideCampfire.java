@@ -156,7 +156,7 @@ public class GuiGuideCampfire extends GuiGuide {
 				if(page==i)
 				{
 					this.drawTexturedModalRect(((this.width - this.bookImageWidth) / 2)+108, ((this.height - this.bookImageHeight) / 2)+85, a+i, 0, 50, 50);
-					this.drawTexturedModalRect(((this.width - this.bookImageWidth) / 2)+131, ((this.height - this.bookImageHeight) / 2)+8, a+i, 51, 23, 25);					 
+					this.drawTexturedModalRect(((this.width - this.bookImageWidth) / 2)+131, ((this.height - this.bookImageHeight) / 2)+8, a+i, 51, 25, 25);					 
 				} 
 				a+=50;	
 			 }
