@@ -2,14 +2,14 @@ package rikmuld.core.lib;
 
 public class Config {
 
-	public static final int WORLD_GEN_SMALL_CAMP_SPAWN_RARENESS_DEV = 800;
+	public static final int WORLD_GEN_SMALL_CAMP_SPAWN_RARENESS_DEV = 1500;
 	public static final int WORLD_GEN_SMALL_CAMP_CAMPER_SPAWNRATE_DEV = 1;
 	public static final int GENERAL_CAMPTOOL_MAX_DURABILATY_DEV = 100;
 	public static final int GENERAL_CAMPTOOL2_MAX_DURABILATY_DEV = 250;
 	public static final int GENERAL_KEYBIND_DEV = 19;
-	public static final int PLANT_RADISH_HEAL_DEV = 2;
-	public static final int PLANT_MARSHMALLOW_HEAL_DEV = 5;
-	public static final int PLANT_RADISH_DROP_RATE_DEV = 10;
+	public static final int PLANT_RADISH_HEAL_DEV = 1;
+	public static final int PLANT_MARSHMALLOW_HEAL_DEV = 4;
+	public static final int PLANT_RADISH_DROP_RATE_DEV = 15;
 	public static final double PLANT_RADISH_GROW_RATE_DEV = 5.0D;
 	public static final boolean WORLD_GEN_ENABLED_DEV = true;
 	public static final boolean WORLD_GEN_SMALL_CAMP_CANT_SPAWN_ANYWERE_DEV =true;

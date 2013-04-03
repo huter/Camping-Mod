@@ -167,11 +167,11 @@ public class RadishCrop extends CampingBlockPlant {
 	        {
 	            for (int n = 0; n < 2 + fortune; n++)
 	            {
-	                if (world.rand.nextInt(20) >= metadata)
+	                if (world.rand.nextInt(Config.PLANT_RADISH_DROP_RATE) >= metadata)
 	                {
 	                    ret.add(new ItemStack(this.getSeedItem(), 1, 0));
 	                }
-	                else if (world.rand.nextInt(20) <= metadata)
+	                else if (world.rand.nextInt(Config.PLANT_RADISH_DROP_RATE) >= metadata)
 	                {
 	                	ret.add(new ItemStack(this.getCropItem(), 1, 0));
 	                }
