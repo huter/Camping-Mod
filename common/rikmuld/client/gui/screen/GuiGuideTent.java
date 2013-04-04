@@ -35,29 +35,29 @@ public class GuiGuideTent extends GuiGuide{
 	@Override
 	public void addTextByPage(int page)
 	{
-		 int var1 = MathHelper.floor_float((this.width - this.bookImageWidth) / 2.2F);
-		 int var2 = MathHelper.floor_float((this.height - this.bookImageHeight) / 2.2F);
+		 int var1 = MathHelper.floor_float((this.width - this.bookImageWidth) / 2.4F);
+		 int var2 = MathHelper.floor_float((this.height - this.bookImageHeight) / 2.4F);
 		 
-		 int var3 = MathHelper.floor_float((this.width - this.bookImageWidth) / 1.2F);
-		 int var4 = MathHelper.floor_float((this.height - this.bookImageHeight) / 1.2F);
+		 int var3 = MathHelper.floor_float((this.width - this.bookImageWidth) / 1.4F);
+		 int var4 = MathHelper.floor_float((this.height - this.bookImageHeight) / 1.4F);
 	
 		 GL11.glPushMatrix();
-		 GL11.glScalef(1.10F, 1.10F, 1.10F);
+		 GL11.glScalef(1.20F, 1.20F, 1.20F);
 		 if(page==1)
 		 {		
-			 
+			 	fontRenderer.drawString("Tent Pegs", var1+38, var2+11, 0x2b2b2b, false);		 
 		 }	
 		 if(page==2)
 		 {
-			 
+			 	fontRenderer.drawString("Canvas", var1+48, var2+11, 0x2b2b2b, false);
 		 }	
 		 if(page==3)
 		 {
-		
+			 	fontRenderer.drawString("Sleeping Bag", var1+30, var2+11, 0x2b2b2b, false);
 		 }
 		 if(page==4)
 		 {
-			
+			 	fontRenderer.drawString("The Tent", var1+40, var2+11, 0x2b2b2b, false);
 		 }
 		 GL11.glPopMatrix();
 		 
@@ -116,7 +116,7 @@ public class GuiGuideTent extends GuiGuide{
 					GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 	        		GL11.glEnable(GL11.GL_COLOR_MATERIAL);
 	        		GL11.glEnable(GL11.GL_LIGHTING);
-					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, tool, ((this.width - this.bookImageWidth) / 2)+50, ((this.height - this.bookImageHeight) / 2)+75);
+					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, tool, ((this.width - this.bookImageWidth) / 2)+107, ((this.height - this.bookImageHeight) / 2)+85);
 					GL11.glDisable(GL11.GL_LIGHTING);
 					GL11.glDepthMask(true);
 					GL11.glEnable(GL11.GL_DEPTH_TEST);
@@ -126,9 +126,9 @@ public class GuiGuideTent extends GuiGuide{
 					GL11.glDisable(GL11.GL_LIGHTING);
 					GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 	        		GL11.glEnable(GL11.GL_COLOR_MATERIAL);
-					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, wool, ((this.width - this.bookImageWidth) / 2)+30, ((this.height - this.bookImageHeight) / 2)+75);
-					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, wool1, ((this.width - this.bookImageWidth) / 2)+50, ((this.height - this.bookImageHeight) / 2)+75);
-					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, wool2, ((this.width - this.bookImageWidth) / 2)+70, ((this.height - this.bookImageHeight) / 2)+75);
+					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, wool, ((this.width - this.bookImageWidth) / 2)+107, ((this.height - this.bookImageHeight) / 2)+102);
+					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, wool1, ((this.width - this.bookImageWidth) / 2)+124, ((this.height - this.bookImageHeight) / 2)+102);
+					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, wool2, ((this.width - this.bookImageWidth) / 2)+141, ((this.height - this.bookImageHeight) / 2)+102);
 					GL11.glDisable(GL11.GL_LIGHTING);
 					GL11.glDepthMask(true);
 					GL11.glEnable(GL11.GL_DEPTH_TEST);
@@ -167,7 +167,7 @@ public class GuiGuideTent extends GuiGuide{
 	public void updateTick()
 	{
 		update++;
-		if(update>30)
+		if(update>50)
 		{
 			update=0;
 			toolNum++;
