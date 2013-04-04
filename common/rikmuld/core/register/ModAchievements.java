@@ -1,119 +1,78 @@
 package rikmuld.core.register;
 
-import java.awt.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
-import net.minecraft.stats.StatBase;
-import net.minecraft.stats.StatList;
 import net.minecraftforge.common.AchievementPage;
 import rikmuld.core.helper.ItemStackHelper;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-public class ModAchievements {
+public class ModAchievements extends AchievementPage{
 
-	public static Achievement CampersTool;
-	public static Achievement Campfire;
-	public static Achievement CampfireMultiCook;
-	public static Achievement CampfireFastCook;
-	public static Achievement CampfireCheapCook;
-	public static Achievement CampfireInstaCook;
-	public static Achievement MarshMallowFood;
-	public static Achievement TentParts;
-	public static Achievement Tent;
-	public static Achievement TentStorage;
-	public static Achievement TentSleeping;
-	public static Achievement Radish;
-	public static Achievement RadishFood;
-	public static Achievement CampingBagSmall;
-	public static Achievement CampingBagNormal;
-	public static Achievement CampingBagLarge;
-	public static Achievement CamperTrade;
-	public static Achievement Guides;
-
-	public static AchievementPage CampingMillestones;
-	
 	public static ItemStack campfire[] = ItemStackHelper.getMetaCycle(ModBlocks.campfire, 5);
 	public static ItemStack bag[] = ItemStackHelper.getMetaCycle(ModItems.CampingBag, 3);
 	
-	public static void init() 
-	{	
-		CampersTool = new Achievement(40,"CampersTool", 1, 0, ModItems.CampTool, null).registerAchievement();
-		Campfire = new Achievement(41,"Campfire", 0, -2, campfire[0], ModAchievements.CampersTool).registerAchievement();
-		CampfireMultiCook = new Achievement(43,"CampfireMultiCook", -1, 0, campfire[1], ModAchievements.Campfire).registerAchievement();
-		CampfireFastCook = new Achievement(44, "CampfireFastCook", -1, 1, campfire[2], ModAchievements.Campfire).registerAchievement();
-		CampfireCheapCook = new Achievement(45,"CampfireCheapCook", -1, 2, campfire[3], ModAchievements.Campfire).registerAchievement();
-		CampfireInstaCook = new Achievement(46,"CampfireInstaCook", -2, 1, campfire[4], ModAchievements.CampfireFastCook).registerAchievement();
-		MarshMallowFood = new Achievement(47,"MarshMallowFood", -2, -2, ModItems.MarshmallowFood,ModAchievements.Campfire).registerAchievement();
-		TentParts = new Achievement(48,"TentParts", 2, -2, ModItems.TentParts, ModAchievements.CampersTool).registerAchievement();
-		Tent = new Achievement(49,"Tent", 4, -1, ModBlocks.tent, ModAchievements.TentParts).registerAchievement();
-		TentStorage = new Achievement(50,"TentStorage", 3, 1, Block.chest, ModAchievements.Tent).registerAchievement();
-		TentSleeping = new Achievement(51,"TentSleeping", 3, 2, Item.bed, ModAchievements.Tent).registerAchievement();
-		Radish = new Achievement(52,"Radish", 2, 1, ModItems.radishSeed, ModAchievements.CampersTool).registerAchievement();
-		RadishFood = new Achievement(53,"RadishFood", 2, 2, ModItems.radish, ModAchievements.Radish).registerAchievement();
-		CampingBagSmall = new Achievement(54,"CampingBagSmall", 0, -3, bag[0], ModAchievements.CampersTool).registerAchievement();
-		CampingBagNormal = new Achievement(55,"CampingBagNormal", -1, -3, bag[1], ModAchievements.CampingBagSmall).registerAchievement();
-		CampingBagLarge = new Achievement(56,"CampingBagLarge", -2, -3, bag[2], ModAchievements.CampingBagNormal).registerAchievement();
-		CamperTrade = new Achievement(57,"CamperTrade", 2, -3, Item.emerald, ModAchievements.CampersTool).registerAchievement();
-		Guides = new Achievement(58,"Guides", 4, -3, ModItems.guideBook, ModAchievements.CamperTrade).registerAchievement();
-		
-		ModAchievements.addAchievementLocalizations();
-		
-		CampingMillestones = new AchievementPage("Camping milestones", CampersTool, Campfire, TentParts, MarshMallowFood, CampfireMultiCook, CampfireFastCook, CampfireCheapCook, CampfireInstaCook, Tent, TentStorage, TentSleeping, Radish, RadishFood, CampingBagSmall, CampingBagNormal, CampingBagLarge, CamperTrade, Guides);		
-		AchievementPage.registerAchievementPage(CampingMillestones);
-	}
-	
-	private static void addAchievementName(String ach, String name) 
-	{
-		LanguageRegistry.instance().addStringLocalization("achievement." + ach,"en_US", name);
-	}
+	public static Achievement CampersTool = (new Achievement(2380,"CampersTool", 1, 0, ModItems.CampTool, null).setIndependent().registerAchievement());
+	public static Achievement Campfire = (new Achievement(2381,"Campfire", 0, -2, campfire[0], ModAchievements.CampersTool).registerAchievement());
+	public static Achievement CampfireMultiCook = (new Achievement(2382,"CampfireMultiCook", -1, 0, campfire[1], ModAchievements.Campfire).registerAchievement());
+	public static Achievement CampfireFastCook = (new Achievement(2383, "CampfireFastCook", -1, 1, campfire[2], ModAchievements.Campfire).registerAchievement());
+	public static Achievement CampfireCheapCook = (new Achievement(2384,"CampfireCheapCook", -1, 2, campfire[3], ModAchievements.Campfire).registerAchievement());
+	public static Achievement CampfireInstaCook = (new Achievement(2385,"CampfireInstaCook", -2, 1, campfire[4], ModAchievements.CampfireFastCook).setSpecial().registerAchievement());
+	public static Achievement MarshMallowFood = (new Achievement(2386,"MarshMallowFood", -2, -2, ModItems.MarshmallowFood,ModAchievements.Campfire).registerAchievement());
+	public static Achievement TentParts = (new Achievement(2387,"TentParts", 2, -2, ModItems.TentParts, ModAchievements.CampersTool).registerAchievement());
+	public static Achievement Tent = (new Achievement(2388,"Tent", 4, -1, ModBlocks.tent, ModAchievements.TentParts).registerAchievement());
+	public static Achievement TentStorage = (new Achievement(2389,"TentStorage", 3, 1, Block.chest, ModAchievements.Tent).registerAchievement());
+	public static Achievement TentSleeping = (new Achievement(2390,"TentSleeping", 3, 2, Item.bed, ModAchievements.Tent).registerAchievement());
+	public static Achievement Radish = (new Achievement(2391,"Radish", 2, 1, ModItems.radishSeed, ModAchievements.CampersTool).registerAchievement());
+	public static Achievement RadishFood = (new Achievement(2392,"RadishFood", 2, 2, ModItems.radish, ModAchievements.Radish).registerAchievement());
+	public static Achievement CampingBagSmall = (new Achievement(2393,"CampingBagSmall", 0, -3, bag[0], ModAchievements.CampersTool).registerAchievement());
+	public static Achievement CampingBagNormal = (new Achievement(2394,"CampingBagNormal", -1, -3, bag[1], ModAchievements.CampingBagSmall).registerAchievement());
+	public static Achievement CampingBagLarge = (new Achievement(2395,"CampingBagLarge", -2, -3, bag[2], ModAchievements.CampingBagNormal).registerAchievement());
+	public static Achievement CamperTrade = (new Achievement(2396,"CamperTrade", 2, -3, Item.emerald, ModAchievements.CampersTool).registerAchievement());
+	public static Achievement Guides = (new Achievement(2397,"Guides", 4, -3, ModItems.guideBook, ModAchievements.CamperTrade).registerAchievement());
 
-	private static void addAchievementDesc(String ach, String desc) 
+	public ModAchievements() 
 	{
-		LanguageRegistry.instance().addStringLocalization("achievement." + ach + ".desc", "en_US", desc);
-	}
-	
-	static void addAchievementLocalizations() 
-	{
-		ModAchievements.addAchievementName("CampersTool", "First things first!");
-		ModAchievements.addAchievementName("Campfire", "Campfires!");
-		ModAchievements.addAchievementName("CampfireMultiCook", "Cooking efficient!");
-		ModAchievements.addAchievementName("CampfireFastCook", "Power Cooker!");
-		ModAchievements.addAchievementName("CampfireCheapCook", "We don't need coal!");
-		ModAchievements.addAchievementName("CampfireInstaCook", "Campfire legend!");
-		ModAchievements.addAchievementName("MarshMallowFood", "Campfire tales!");
-		ModAchievements.addAchievementName("TentParts", "The begining of tents!");
-		ModAchievements.addAchievementName("Tent", "Tents are awesome!");
-		ModAchievements.addAchievementName("TentStorage", "The power of storage!");
-		ModAchievements.addAchievementName("TentSleeping", "Sleepover!");
-		ModAchievements.addAchievementName("Radish", "Fast-Food");
-		ModAchievements.addAchievementName("RadishFood", "Bitter-Sweet!");
-		ModAchievements.addAchievementName("CampingBagSmall", "Portalble storage!");
-		ModAchievements.addAchievementName("CampingBagNormal", "Store-More!");
-		ModAchievements.addAchievementName("CampingBagLarge", "Hiking trip!");
-		ModAchievements.addAchievementName("CamperTrade", "Trading!");
-		ModAchievements.addAchievementName("Guides", "Learning...!");
+		super("Camping Millestones", new Achievement[] { CampersTool, Campfire, TentParts, MarshMallowFood, CampfireMultiCook, CampfireFastCook, CampfireCheapCook, CampfireInstaCook, Tent, TentStorage, TentSleeping, Radish, RadishFood, CampingBagSmall, CampingBagNormal, CampingBagLarge, CamperTrade, Guides} );
 
-		ModAchievements.addAchievementDesc("CampersTool", "Make the camper's tool!");
-		ModAchievements.addAchievementDesc("Campfire", "Make a campfire!");
-		ModAchievements.addAchievementDesc("CampfireMultiCook","Make the multi cooking campfire!");
-		ModAchievements.addAchievementDesc("CampfireFastCook","Make the fast cooking campfire!");
-		ModAchievements.addAchievementDesc("CampfireCheapCook","Make the cheap cooking campfire!");
-		ModAchievements.addAchievementDesc("CampfireInstaCook","Make the insta cooking campfire!");
-		ModAchievements.addAchievementDesc("MarshMallowFood", "Cook a marshmallow!");
-		ModAchievements.addAchievementDesc("TentParts", "Make some tent parts!");
-		ModAchievements.addAchievementDesc("Tent", "Make a tent!");
-		ModAchievements.addAchievementDesc("TentStorage", "Make a storage tent!");
-		ModAchievements.addAchievementDesc("TentSleeping", "Make a sleeping tent!");
-		ModAchievements.addAchievementDesc("Radish", "Plant some radish!");
-		ModAchievements.addAchievementDesc("RadishFood", "Eat some radish!");
-		ModAchievements.addAchievementDesc("CampingBagSmall", "Make a small camping bag!");
-		ModAchievements.addAchievementDesc("CampingBagNormal", "Make a normal camping bag!");
-		ModAchievements.addAchievementDesc("CampingBagLarge", "Make a large camping bag!");
-		ModAchievements.addAchievementDesc("CamperTrade", "Take a look at the camper trading!");
-		ModAchievements.addAchievementDesc("Guides", "Read a guide book;");
+		LanguageRegistry.instance().addStringLocalization("achievement.CampersTool", "en_US", "First things first!");
+		LanguageRegistry.instance().addStringLocalization("achievement.Campfire", "en_US", "Campfires!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CampfireMultiCook", "en_US", "Cooking efficient!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CampfireFastCook", "en_US", "Power Cooker!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CampfireCheapCook", "en_US", "We don't need coal!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CampfireInstaCook", "en_US", "Campfire legend!");
+		LanguageRegistry.instance().addStringLocalization("achievement.MarshMallowFood", "en_US", "Campfire tales!");
+		LanguageRegistry.instance().addStringLocalization("achievement.TentParts", "en_US", "The begining of tents!");
+		LanguageRegistry.instance().addStringLocalization("achievement.Tent", "en_US", "Tents are awesome!");
+		LanguageRegistry.instance().addStringLocalization("achievement.TentStorage", "en_US", "The power of storage!");
+		LanguageRegistry.instance().addStringLocalization("achievement.TentSleeping", "en_US", "Sleepover!");
+		LanguageRegistry.instance().addStringLocalization("achievement.Radish", "en_US", "Fast-Food");
+		LanguageRegistry.instance().addStringLocalization("achievement.RadishFood", "en_US", "Bitter-Sweet!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CampingBagSmall", "en_US", "Portalble storage!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CampingBagNormal", "en_US", "Store-More!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CampingBagLarge", "en_US", "Hiking trip!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CamperTrade", "en_US", "Trading!");
+		LanguageRegistry.instance().addStringLocalization("achievement.Guides", "en_US", "Learning...!");
+
+		LanguageRegistry.instance().addStringLocalization("achievement.CampersTool.desc", "en_US", "Make the camper's tool!");
+		LanguageRegistry.instance().addStringLocalization("achievement.Campfire.desc", "en_US", "Make a campfire!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CampfireMultiCook.desc", "en_US", "Make the multi cooking campfire!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CampfireFastCook.desc", "en_US", "Make the fast cooking campfire!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CampfireCheapCook.desc", "en_US", "Make the cheap cooking campfire!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CampfireInstaCook.desc", "en_US", "Make the insta cooking campfire!");
+		LanguageRegistry.instance().addStringLocalization("achievement.MarshMallowFood.desc", "en_US", "Cook a marshmallow!");
+		LanguageRegistry.instance().addStringLocalization("achievement.TentParts.desc", "en_US", "Make some tent parts!");
+		LanguageRegistry.instance().addStringLocalization("achievement.Tent.desc", "en_US", "Make a tent!");
+		LanguageRegistry.instance().addStringLocalization("achievement.TentStorage.desc", "en_US", "Make a storage tent!");
+		LanguageRegistry.instance().addStringLocalization("achievement.TentSleeping.desc", "en_US", "Make a sleeping tent!");
+		LanguageRegistry.instance().addStringLocalization("achievement.Radish.desc", "en_US", "Plant some radish!");
+		LanguageRegistry.instance().addStringLocalization("achievement.RadishFood.desc", "en_US", "Eat some radish!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CampingBagSmall.desc", "en_US", "Make a small camping bag!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CampingBagNormal.desc", "en_US", "Make a normal camping bag!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CampingBagLarge.desc", "en_US", "Make a large camping bag!");
+		LanguageRegistry.instance().addStringLocalization("achievement.CamperTrade.desc", "en_US", "Take a look at the camper trading!");
+		LanguageRegistry.instance().addStringLocalization("achievement.Guides.desc", "en_US", "Read a guide book;");
 	}
 }

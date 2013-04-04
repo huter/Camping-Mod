@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.logging.Level;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.common.AchievementPage;
 import rikmuld.core.handlers.CraftHandler;
 import rikmuld.core.lib.ModInfo;
 import rikmuld.core.proxys.CommonProxy;
@@ -54,6 +55,11 @@ public class CampingMod {
 		ModConfig.preInit(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/Camping/" + ModInfo.MOD_ID + ".cfg"));
 		proxy.registerKeyBindingHandler();
 		proxy.registerTickHandler();
+		
+		ModBlocks.init();
+		ModItems.init();
+		
+	    AchievementPage.registerAchievementPage(new ModAchievements());
 	}
 	
 	@Init
@@ -63,15 +69,12 @@ public class CampingMod {
 		
 		NetworkRegistry.instance().registerGuiHandler(this, CampingMod.proxy);	
 		LanguageRegistry.instance().addStringLocalization("itemGroup.customTab", "en_US", "Camping Stuff");
-		
-		ModBlocks.init();
-		ModItems.init();
+	
 		ModTileEntitys.init();
 		ModRecipies.init();
-		ModAchievements.init();
 		ModMobs.init();
 		ModEvents.init();
-		
+	    
 		GameRegistry.registerCraftingHandler(new CraftHandler());
 		GameRegistry.registerWorldGenerator(new WorldGen());	
 	}

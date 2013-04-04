@@ -10,7 +10,7 @@ public class Config {
 	public static final int PLANT_RADISH_HEAL_DEV = 1;
 	public static final int PLANT_MARSHMALLOW_HEAL_DEV = 4;
 	public static final int PLANT_RADISH_DROP_RATE_DEV = 15;
-	public static final double PLANT_RADISH_GROW_RATE_DEV = 5.0D;
+	public static final double PLANT_RADISH_GROW_RATE_DEV = 2.0D;
 	public static final boolean WORLD_GEN_ENABLED_DEV = true;
 	public static final boolean WORLD_GEN_SMALL_CAMP_CANT_SPAWN_ANYWERE_DEV =true;
 	public static final boolean CAMPFIRE_CAN_BURN_DEV = true;
@@ -44,7 +44,7 @@ public class Config {
 	public static String PLANT_RADISH_HEAL_MESSAGE = "radish heal amount";
 	public static String PLANT_MARSHMALLOW_HEAL_MESSAGE = "marshmallow heal amount";
 	public static String PLANT_RADISH_DROP_RATE_MESSAGE = "radish seed drop rate tail grass";
-	public static String PLANT_RADISH_GROW_RATE_MESSAGE = "radish grow rate (5.0 is max)";
+	public static String PLANT_RADISH_GROW_RATE_MESSAGE = "radish grow rate (5.0 is max, 0.2 is normal)";
 	public static String CAMPFIRE_INSTA_COOK_ENABLED_MESSAGE = "insta cooker is enabled";
 	public static String CAMPFIRE_CAN_BURN_MESSAGE = "campfires will hurt entitys";
 	public static String CAMPFIRE_CAN_BE_RECOLORED_MESSAGE = "campfires can be recolored";

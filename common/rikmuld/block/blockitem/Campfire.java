@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EffectRenderer;
@@ -18,7 +17,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import rikmuld.CampingMod;
-import rikmuld.block.CampingBlock;
 import rikmuld.block.CampingBlockItem;
 import rikmuld.client.renderer.particles.Particles;
 import rikmuld.core.helper.ToolHelper;
@@ -482,16 +480,16 @@ public class Campfire extends CampingBlockItem{
 		
 		    if (par0)
 		    {
-		        par1World.setBlockMetadataWithNotify(par2, par3, par4, this.blockID, 3);
+		        par1World.setBlockMetadataWithNotify(par2, par3, par4, this.blockID, 2);
 		    }
 		    
 		    else
 		    {
-		        par1World.setBlockMetadataWithNotify(par2, par3, par4, this.blockID, 3);
+		        par1World.setBlockMetadataWithNotify(par2, par3, par4, this.blockID, 2);
 		    }
 		
 		    keepCampfireInventory = false;
-		    par1World.setBlockMetadataWithNotify(par2, par3, par4, var5, 3);
+		    par1World.setBlockMetadataWithNotify(par2, par3, par4, var5, 2);
 		
 		    if (var6 != null)
 		    {
