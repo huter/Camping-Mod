@@ -38,8 +38,8 @@ public class GuiGuideTent extends GuiGuide{
 		 int var1 = MathHelper.floor_float((this.width - this.bookImageWidth) / 2.4F);
 		 int var2 = MathHelper.floor_float((this.height - this.bookImageHeight) / 2.4F);
 		 
-		 int var3 = MathHelper.floor_float((this.width - this.bookImageWidth) / 1.4F);
-		 int var4 = MathHelper.floor_float((this.height - this.bookImageHeight) / 1.4F);
+		 int var3 = MathHelper.floor_float((this.width - this.bookImageWidth) / 1.2F);
+		 int var4 = MathHelper.floor_float((this.height - this.bookImageHeight) / 1.2F);
 	
 		 GL11.glPushMatrix();
 		 GL11.glScalef(1.20F, 1.20F, 1.20F);
@@ -61,23 +61,52 @@ public class GuiGuideTent extends GuiGuide{
 		 }
 		 GL11.glPopMatrix();
 		 
+		 
 		 GL11.glPushMatrix();
 		 GL11.glScalef(0.6F, 0.6F, 0.6F);
 		 if(page==1)
 		 {
-		
+			 fontRenderer.drawString("If you ever want to make a tent you first", var3+32, var4+65, 0x2b2b2b, false);
+			 fontRenderer.drawString("need tent pegs, tent pegs are very easy to", var3+32, var4+75, 0x2b2b2b, false);
+			 fontRenderer.drawString("make you only need a camper's tool and a", var3+32, var4+85, 0x2b2b2b, false);
+			 fontRenderer.drawString("little bit of iron. Furthermore every time", var3+32, var4+95, 0x2b2b2b, false);
+			 fontRenderer.drawString("you craft tent pegs you will get 4 of them", var3+32, var4+105, 0x2b2b2b, false);
+			 fontRenderer.drawString("and the camper's tool only takes 1 damage,", var3+32, var4+115, 0x2b2b2b, false);
+			 fontRenderer.drawString("so you can make a total of", var3+32, var4+125, 0x2b2b2b, false);
+			 fontRenderer.drawString("400 tent pegs with only 1", var3+32, var4+135, 0x2b2b2b, false);
+			 fontRenderer.drawString("camper's tool, but you still", var3+32, var4+145, 0x2b2b2b, false);
+			 fontRenderer.drawString("need 100 iron to do that.", var3+32, var4+155, 0x2b2b2b, false);
+			 fontRenderer.drawString("Specifications:", var3+32, var4+170, 0x2b2b2b, false);
+			 fontRenderer.drawString("The Recipie is shapless.", var3+32, var4+185, 0x2b2b2b, false);
+			 fontRenderer.drawString("The tool will take 1 damage.", var3+32, var4+195, 0x2b2b2b, false);
+			 fontRenderer.drawString("1 tent needs 2 tent pegs.",var3+32, var4+215, 0x2b2b2b, false);
+			 fontRenderer.drawString("You will get 4 tent pegs.", var3+32, var4+205, 0x2b2b2b, false);
 		 }
 		 if(page==2)
 		 {
-			
+			 fontRenderer.drawString("If you ever want to make a tent you also", var3+32, var4+65, 0x2b2b2b, false);
+			 fontRenderer.drawString("need canvas, canvas is a little harder to", var3+32, var4+75, 0x2b2b2b, false);
+			 fontRenderer.drawString("make than the tent pegs, you need a camper's", var3+32, var4+85, 0x2b2b2b, false);
+			 fontRenderer.drawString("tool and 6 string. However every time you", var3+32, var4+95, 0x2b2b2b, false);
+			 fontRenderer.drawString("craft canvas you will get 10 of them", var3+32, var4+105, 0x2b2b2b, false);
+			 fontRenderer.drawString("and the camper's tool only takes 1 damage,", var3+32, var4+115, 0x2b2b2b, false);
+			 fontRenderer.drawString("so you can make a total of", var3+32, var4+125, 0x2b2b2b, false);
+			 fontRenderer.drawString("1000 canvas with only 1", var3+32, var4+135, 0x2b2b2b, false);
+			 fontRenderer.drawString("camper's tool, but you still", var3+32, var4+145, 0x2b2b2b, false);
+			 fontRenderer.drawString("need 600 string to do that.", var3+32, var4+155, 0x2b2b2b, false);
+			 fontRenderer.drawString("Specifications:", var3+32, var4+170, 0x2b2b2b, false);
+			 fontRenderer.drawString("The Recipie is shapless.", var3+32, var4+185, 0x2b2b2b, false);
+			 fontRenderer.drawString("The tool will take 1 damage.", var3+32, var4+195, 0x2b2b2b, false);
+			 fontRenderer.drawString("1 tent needs 5 canvas.",var3+32, var4+205, 0x2b2b2b, false);
+			 fontRenderer.drawString("You will get 10 canvas.", var3+32, var4+215, 0x2b2b2b, false);
 		 }
 		 if(page==3)
 		 {
-		
+			 
 		 }
 		 if(page==4)
 		 {
-		
+
 		 }
 		 GL11.glPopMatrix();
 	}
