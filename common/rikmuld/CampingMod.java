@@ -85,25 +85,50 @@ public class CampingMod {
 	}
 	
 	/*
+	 * TODO: update the site!!! (also the new planed feutures)
+	 * TODO: make special armor for campers.
 	 * TODO: make the cloaks working.
-	 * TODO: make directions with forge directions so the tent class can be smaller
 	 * TODO: complete the guide books.
-	 * TODO: make the tickhandler update the recipies textures for guide book tent
 	 * TODO: make backpacks wereable on the back and activateble with a key.
 	 * TODO: make a camper AI for not run into campfires and stay with tents.
 	 * TODO: make a flashlight
 	 * TODO: make tents with traped chests and ender chests and make more for inside tents
 	 * TODO: place the foods in one metadata, place the tentContents in the tentParts metadata
-	 * 
 	 * TODO: fix the bugs
+	 * TODO: add camping animals 
 	 * 
 	 * -camper skin change reload world (nbt)
 	 * -camping bags not keeping inv when upgraded
 	 * -when you get an itemstack it should spawn in the same slot were you made it.
 	 * 
-	 * TODO: for next update
+	 * TODO: for next update (backpack Update) 1.0.1 --> 1.0.2
 	 * 
-	 * -finish another guide book
+	 * -place the foods in one metadata, place the tentContents in the tentParts metadata
+	 * -finish the tent and the equipment guide book.
+	 * -fix the known bugs. (especialy the campers bag bug)
+	 * -add a new larger camping bag.
+	 * -make backpacks wereable on the back and activateble with a key.
+	 * 
+	 * TODO: for next update (equipment update) 1.0.2 --> 1.0.3
+	 * 
+	 * -finish the food guide book.
+	 * -fix bugs (if i find more, what i will)
+	 * -make a special armor set (ex. the camping boots (get fast speed ed.))
+	 * 
+	 * TODO for next update (tent update) 1.0.3 --> 1.0.4
+	 * 
+	 * -finifh the word guide book.
+	 * -make the tent also working with trapped chests and ender chests
+	 * -make the tent rolatable in 4 directions 
+	 * -make the ghost blocks also half blocks so you are not standing very hight above the tent
+	 * -fix the position were you sleep in the tents
+	 * 
+	 * TODO for next update (Campsite update) 1.0.4 --> 1.0.5
+	 * 
+	 * finish all the guide books and update them.
+	 * make a log were you can sit on
+	 * make a lantarn with gives light when equiped
+	 * make a supply box were you can stack upstackeble items.
 	 * 
 	 */
 }
