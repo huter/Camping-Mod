@@ -4,6 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import rikmuld.core.helper.ItemStackHelper;
 import rikmuld.core.helper.ToolHelper;
 import rikmuld.core.register.ModAchievements;
@@ -42,6 +43,24 @@ public class CraftHandler implements ICraftingHandler{
                 }
              }      
         }
+		
+		if(item.itemID == ModItems.CampingBag.itemID)
+		{
+			for(int i=0; i < inv.getSizeInventory(); i++)
+	        {  		
+	            if(inv.getStackInSlot(i) != null)
+	            {
+	                ItemStack j = inv.getStackInSlot(i);
+	                if(j.getItem() != null&&j.itemID==ModItems.CampingBag.itemID)
+	                {
+	                	 if(j.hasTagCompound())
+	                	 {
+	                		item.setTagCompound((NBTTagCompound)j.getTagCompound().copy());
+	                	 }
+	                }
+	             }      
+	        }
+		}
 		
 		if(item.itemID == ModBlocks.campfire.blockID)
 		{
