@@ -9,7 +9,7 @@ public class Config {
 	public static final int GENERAL_KEYBIND_DEV = 19;
 	public static final int PLANT_RADISH_HEAL_DEV = 1;
 	public static final int PLANT_MARSHMALLOW_HEAL_DEV = 4;
-	public static final int PLANT_RADISH_DROP_RATE_DEV = 15;
+	public static final int PLANT_RADISH_DROP_RATE_DEV = 25;
 	public static final double PLANT_RADISH_GROW_RATE_DEV = 2.0D;
 	public static final boolean WORLD_GEN_ENABLED_DEV = true;
 	public static final boolean WORLD_GEN_SMALL_CAMP_CANT_SPAWN_ANYWERE_DEV =true;

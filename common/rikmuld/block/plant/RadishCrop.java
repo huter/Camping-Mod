@@ -169,10 +169,6 @@ public class RadishCrop extends CampingBlockPlant {
 	            {
 	                if (world.rand.nextInt(Config.PLANT_RADISH_DROP_RATE) >= metadata)
 	                {
-	                    ret.add(new ItemStack(this.getSeedItem(), 1, 0));
-	                }
-	                else if (world.rand.nextInt(Config.PLANT_RADISH_DROP_RATE) >= metadata)
-	                {
 	                	ret.add(new ItemStack(this.getCropItem(), 1, 1));
 	                }
 	            }
@@ -181,15 +177,9 @@ public class RadishCrop extends CampingBlockPlant {
 	        return ret;
 	    }
 
-
 	    public int idDropped(int par1, Random par2Random, int par3)
 	    {
-	        return par1 == 7 ? this.getCropItem() : this.getSeedItem();
-	    }
-	    
-	    public int DamageDropped(int par1, Random par2Random, int par3)
-	    {
-	        return par1 == 7 ? 1 : 0;
+	        return this.getSeedItem();
 	    }
 
 	    public int quantityDropped(Random par1Random)
