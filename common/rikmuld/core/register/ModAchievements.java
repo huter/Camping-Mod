@@ -13,6 +13,7 @@ public class ModAchievements extends AchievementPage{
 
 	public static ItemStack campfire[] = ItemStackHelper.getMetaCycle(ModBlocks.campfire, 5);
 	public static ItemStack bag[] = ItemStackHelper.getMetaCycle(ModItems.CampingBag, 3);
+	public static ItemStack food[] = ItemStackHelper.getMetaCycle(ModItems.CampingFood, 2);
 	
 	public static Achievement CampersTool = (new Achievement(2380,"CampersTool", 1, 0, ModItems.CampTool, null).setIndependent().registerAchievement());
 	public static Achievement Campfire = (new Achievement(2381,"Campfire", 0, -2, campfire[0], ModAchievements.CampersTool).registerAchievement());
@@ -20,13 +21,13 @@ public class ModAchievements extends AchievementPage{
 	public static Achievement CampfireFastCook = (new Achievement(2383, "CampfireFastCook", -1, 1, campfire[2], ModAchievements.Campfire).registerAchievement());
 	public static Achievement CampfireCheapCook = (new Achievement(2384,"CampfireCheapCook", -1, 2, campfire[3], ModAchievements.Campfire).registerAchievement());
 	public static Achievement CampfireInstaCook = (new Achievement(2385,"CampfireInstaCook", -2, 1, campfire[4], ModAchievements.CampfireFastCook).setSpecial().registerAchievement());
-	public static Achievement MarshMallowFood = (new Achievement(2386,"MarshMallowFood", -2, -2, ModItems.MarshmallowFood,ModAchievements.Campfire).registerAchievement());
+	public static Achievement MarshMallowFood = (new Achievement(2386,"MarshMallowFood", -2, -2, food[0],ModAchievements.Campfire).registerAchievement());
 	public static Achievement TentParts = (new Achievement(2387,"TentParts", 2, -2, ModItems.TentParts, ModAchievements.CampersTool).registerAchievement());
 	public static Achievement Tent = (new Achievement(2388,"Tent", 4, -1, ModBlocks.tent, ModAchievements.TentParts).registerAchievement());
 	public static Achievement TentStorage = (new Achievement(2389,"TentStorage", 3, 1, Block.chest, ModAchievements.Tent).registerAchievement());
 	public static Achievement TentSleeping = (new Achievement(2390,"TentSleeping", 3, 2, Item.bed, ModAchievements.Tent).registerAchievement());
 	public static Achievement Radish = (new Achievement(2391,"Radish", 2, 1, ModItems.radishSeed, ModAchievements.CampersTool).registerAchievement());
-	public static Achievement RadishFood = (new Achievement(2392,"RadishFood", 2, 2, ModItems.radish, ModAchievements.Radish).registerAchievement());
+	public static Achievement RadishFood = (new Achievement(2392,"RadishFood", 2, 2, food[1], ModAchievements.Radish).registerAchievement());
 	public static Achievement CampingBagSmall = (new Achievement(2393,"CampingBagSmall", 0, -3, bag[0], ModAchievements.CampersTool).registerAchievement());
 	public static Achievement CampingBagNormal = (new Achievement(2394,"CampingBagNormal", -1, -3, bag[1], ModAchievements.CampingBagSmall).registerAchievement());
 	public static Achievement CampingBagLarge = (new Achievement(2395,"CampingBagLarge", -2, -3, bag[2], ModAchievements.CampingBagNormal).registerAchievement());

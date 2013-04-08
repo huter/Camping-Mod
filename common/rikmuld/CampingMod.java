@@ -93,26 +93,21 @@ public class CampingMod {
 	 * TODO: make a camper AI for not run into campfires and stay with tents.
 	 * TODO: make a flashlight
 	 * TODO: make tents with traped chests and ender chests and make more for inside tents
-	 * TODO: place the foods in one metadata, place the tentContents in the tentParts metadata
 	 * TODO: fix the bugs
 	 * TODO: add camping animals 
 	 * 
 	 * -camper skin change reload world (nbt)
-	 * -camping bags not keeping inv when upgraded
 	 * -when you get an itemstack it should spawn in the same slot were you made it.
 	 * 
 	 * TODO: for next update (backpack Update) 1.0.1 --> 1.0.2
 	 * 
-	 * -place the foods in one metadata, place the tentContents in the tentParts metadata
 	 * -finish the tent and the equipment guide book.
-	 * -fix the known bugs. (especialy the campers bag bug)
-	 * -add a new larger camping bag.
+	 * -fix the known bugs.
 	 * -make backpacks wereable on the back and activateble with a key.
 	 * 
 	 * TODO: for next update (equipment update) 1.0.2 --> 1.0.3
 	 * 
 	 * -finish the food guide book.
-	 * -fix bugs (if i find more, what i will)
 	 * -make a special armor set (ex. the camping boots (get fast speed ed.))
 	 * 
 	 * TODO for next update (tent update) 1.0.3 --> 1.0.4

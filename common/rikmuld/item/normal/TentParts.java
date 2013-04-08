@@ -11,7 +11,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class TentParts extends CampingItem {
 
-	public static final String[] metadataNames = new String[] {Items.ITEM_TENT_PARTS_PEGS_NAME, Items.ITEM_TENT_PARTS_CANVAS_NAME };
+	public static final String[] metadataNames = new String[] {Items.ITEM_TENT_PARTS_PEGS_NAME, Items.ITEM_TENT_PARTS_CANVAS_NAME, Items.ITEM_TENT_PARTS_SLEEP_NAME};
 
 	public TentParts(int i) 
 	{
@@ -31,7 +31,7 @@ public class TentParts extends CampingItem {
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int par1, CreativeTabs creativetabs, List list) 
 	{
-		for (int var4 = 0; var4 < 2; ++var4) 
+		for (int var4 = 0; var4 < 3; ++var4) 
 		{
 			list.add(new ItemStack(par1, 1, var4));
 		}

@@ -34,8 +34,7 @@ public class ModRecipies {
 	public static ItemStack[] campfire = ItemStackHelper.getMetaCycle(ModBlocks.campfire, 5);
 	public static ItemStack[] marshmallow = ItemStackHelper.getMetaCycle(ModItems.Marshmallow, 2);
 	public static ItemStack tent = new ItemStack(ModBlocks.tent);
-	public static ItemStack[] tentParts = ItemStackHelper.getMetaCycle(ModItems.TentParts, 2);
-	public static ItemStack SleepBag = new ItemStack(ModItems.SleepingBag);
+	public static ItemStack[] tentParts = ItemStackHelper.getMetaCycle(ModItems.TentParts, 3);
 	public static ItemStack[] campingBag = ItemStackHelper.getMetaCycle(ModItems.CampingBag, 3);
 	
 	public static void init() 
@@ -50,7 +49,7 @@ public class ModRecipies {
 		}
 
 		RecipieHelper.addRecipe(tent, 1, "000", "0 0", "1 1", '0', tentParts[1], '1', tentParts[0]);
-		RecipieHelper.addRecipe(SleepBag, 1, "000", '0', ItemStackHelper.getWildValleu(wool[0]));
+		RecipieHelper.addRecipe(tentParts[2], 1, "000", '0', ItemStackHelper.getWildValleu(wool[0]));
 		RecipieHelper.addRecipe(toolCamp[0], 1,  "010", "010", "010", '0', dye[1], '1', iron);
 		RecipieHelper.addRecipe(toolCamp2[0], 1,  "121", "101", "121", '0', toolCamp[0], '1', iron, '2', dye[1]);
 		RecipieHelper.addRecipe(campfire[0], 1, " 0 ", "010", "222", '0', torch, '1', flint, '2', stone);

@@ -204,7 +204,7 @@ public class Campfire extends CampingBlockItem{
 						
 						if (currentitem.itemID == ModItems.Marshmallow.itemID&&currentitem.getItemDamage() == 1)
 						{			    
-						     ItemStack marsh = new ItemStack(ModItems.MarshmallowFood.itemID, currentitem.stackSize, 0);
+						     ItemStack marsh = new ItemStack(ModItems.CampingFood.itemID, currentitem.stackSize, 0);
 						     player.destroyCurrentEquippedItem();
 						     player.inventory.addItemStackToInventory(marsh);
 						     player.addStat(ModAchievements.MarshMallowFood, 1);
@@ -242,7 +242,7 @@ public class Campfire extends CampingBlockItem{
 						}					
 						if (currentitem.itemID == ModItems.Marshmallow.itemID&&currentitem.getItemDamage() == 1)
 						{
-						     ItemStack marsh = new ItemStack(ModItems.MarshmallowFood, currentitem.stackSize, 0);
+						     ItemStack marsh = new ItemStack(ModItems.CampingFood, currentitem.stackSize, 0);
 						     player.destroyCurrentEquippedItem();
 						     player.inventory.addItemStackToInventory(marsh);
 						     player.addStat(ModAchievements.MarshMallowFood, 1);
@@ -288,7 +288,7 @@ public class Campfire extends CampingBlockItem{
 						 
 						 if (currentitem.itemID == ModItems.Marshmallow.itemID&&currentitem.getItemDamage() == 1)
 						 {   
-						     ItemStack marsh = new ItemStack(ModItems.MarshmallowFood, currentitem.stackSize, 0);
+						     ItemStack marsh = new ItemStack(ModItems.CampingFood, currentitem.stackSize, 0);
 						     player.destroyCurrentEquippedItem();
 						     player.inventory.addItemStackToInventory(marsh);
 						     player.addStat(ModAchievements.MarshMallowFood, 1);
@@ -368,7 +368,7 @@ public class Campfire extends CampingBlockItem{
 						
 					    else if (currentitem.itemID == ModItems.Marshmallow.itemID&&currentitem.getItemDamage() == 1)
 					    {			    
-						     ItemStack marsh = new ItemStack(ModItems.MarshmallowFood.itemID, currentitem.stackSize, 0);
+						     ItemStack marsh = new ItemStack(ModItems.CampingFood.itemID, currentitem.stackSize, 0);
 						     player.destroyCurrentEquippedItem();
 						     player.inventory.addItemStackToInventory(marsh);
 						     player.addStat(ModAchievements.MarshMallowFood, 1);
@@ -411,7 +411,7 @@ public class Campfire extends CampingBlockItem{
 						 
 						 if (currentitem.itemID == ModItems.Marshmallow.itemID&&currentitem.getItemDamage() == 1)
 						 {				    
-						     ItemStack marsh = new ItemStack(ModItems.MarshmallowFood, currentitem.stackSize, 0);
+						     ItemStack marsh = new ItemStack(ModItems.CampingFood, currentitem.stackSize, 0);
 						     player.destroyCurrentEquippedItem();
 						     player.inventory.addItemStackToInventory(marsh);
 						     player.addStat(ModAchievements.MarshMallowFood, 1);

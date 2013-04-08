@@ -150,7 +150,7 @@ public class RadishCrop extends CampingBlockPlant {
 
 	    protected int getCropItem()
 	    {
-	        return ModItems.radish.itemID;
+	        return ModItems.CampingFood.itemID;
 	    }
 
 	    public void dropBlockAsItemWithChance(World par1World, int par2, int par3, int par4, int par5, float par6, int par7)
@@ -173,7 +173,7 @@ public class RadishCrop extends CampingBlockPlant {
 	                }
 	                else if (world.rand.nextInt(Config.PLANT_RADISH_DROP_RATE) >= metadata)
 	                {
-	                	ret.add(new ItemStack(this.getCropItem(), 1, 0));
+	                	ret.add(new ItemStack(this.getCropItem(), 1, 1));
 	                }
 	            }
 	        }
@@ -185,6 +185,11 @@ public class RadishCrop extends CampingBlockPlant {
 	    public int idDropped(int par1, Random par2Random, int par3)
 	    {
 	        return par1 == 7 ? this.getCropItem() : this.getSeedItem();
+	    }
+	    
+	    public int DamageDropped(int par1, Random par2Random, int par3)
+	    {
+	        return par1 == 7 ? 1 : 0;
 	    }
 
 	    public int quantityDropped(Random par1Random)
