@@ -96,14 +96,13 @@ public class CampingMod {
 	 * TODO: fix the bugs
 	 * TODO: add camping animals 
 	 * 
-	 * -camper skin change reload world (nbt)
-	 * -when you get an itemstack it should spawn in the same slot were you made it.
+	 * -camper skin change reload world (nbt thingy)
 	 * 
 	 * TODO: for next update (backpack Update) 1.0.1 --> 1.0.2
 	 * 
 	 * -finish the tent and the equipment guide book.
-	 * -fix the known bugs.
 	 * -make backpacks wereable on the back and activateble with a key.
+	 * -fix the known bugs.
 	 * 
 	 * TODO: for next update (equipment update) 1.0.2 --> 1.0.3
 	 * 
