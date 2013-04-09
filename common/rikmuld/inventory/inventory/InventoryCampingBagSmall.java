@@ -110,12 +110,24 @@ public class InventoryCampingBagSmall extends InventoryBasic {
 
 		NBTTagCompound inventory = new NBTTagCompound();
 		inventory.setTag("Items", itemList);
+		
+		if (originalIS.stackTagCompound == null) 
+		{
+			originalIS.setTagCompound(new NBTTagCompound());
+		}
+		
 		originalIS.stackTagCompound.setCompoundTag("Inventory", inventory);
 	}
 
 	private void readFromNBT(NBTTagCompound outerTag) 
 	{
 		reading = true;
+		
+		if (originalIS.stackTagCompound == null) 
+		{
+			originalIS.setTagCompound(new NBTTagCompound());
+		}
+		
 		NBTTagList itemList = originalIS.stackTagCompound.getCompoundTag("Inventory").getTagList("Items");
 		for (int i = 0; i < itemList.tagCount(); i++) 
 		{
