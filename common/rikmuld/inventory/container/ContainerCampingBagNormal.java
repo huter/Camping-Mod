@@ -7,7 +7,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import rikmuld.inventory.inventory.InventoryCampingBagNormal;
 import rikmuld.inventory.slot.BackpackSlot;
-import rikmuld.item.tool.ToolBackpack;
+import rikmuld.item.armor.ArmorBackpack;
 
 public class ContainerCampingBagNormal extends Container {
 	
@@ -62,7 +62,7 @@ public class ContainerCampingBagNormal extends Container {
 
         if (slot != null && slot.getHasStack()) {
             ItemStack itemStack = slot.getStack();
-            if ((itemStack.getItem() instanceof ToolBackpack)) {
+            if ((itemStack.getItem() instanceof ArmorBackpack)) {
     	        return returnStack;
             }
             returnStack = itemStack.copy();

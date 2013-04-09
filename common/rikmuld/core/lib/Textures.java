@@ -15,6 +15,9 @@ public class Textures {
 	public static final String MODEL_TENT_NORMAL= "TentNormal.png";
 	public static final String MODEL_TENT_STORAGE= "TentStorage.png";
 	public static final String MODEL_TENT_SLEEPING= "TentSleeping.png";
+	public static final String MODEL_ARMOR_BACKPACK_SMALL = "armorBackpack-small.png";
+	public static final String MODEL_ARMOR_BACKPACK_NORMAL = "armorBackpack-normal.png";
+	public static final String MODEL_ARMOR_BACKPACK_LARGE = "armorBackpack-large.png";
 	
 	public static final String GUI_CAMPFIRE_MULTI= "CampfireMultiCooker.png";
 	public static final String GUI_CAMPFIRE_FAST= "CampfireFastCooker.png";

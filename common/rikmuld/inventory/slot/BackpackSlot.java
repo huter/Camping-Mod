@@ -3,7 +3,7 @@ package rikmuld.inventory.slot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import rikmuld.item.tool.ToolBackpack;
+import rikmuld.item.armor.ArmorBackpack;
 
 public class BackpackSlot extends Slot {
 	
@@ -14,6 +14,6 @@ public class BackpackSlot extends Slot {
 
 	public boolean isItemValid(ItemStack is) 
 	{
-        return (is != null && is.getItem() instanceof ToolBackpack) ? false : true;
+        return (is != null && is.getItem() instanceof ArmorBackpack) ? false : true;
     }
 }
