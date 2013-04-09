@@ -8,6 +8,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import rikmuld.core.helper.KeyHelper;
 import rikmuld.item.CampingItem;
+import rikmuld.item.CampingItemArmor;
+import rikmuld.item.tool.ToolBackpack;
 import rikmuld.network.PacketTypeHandler;
 import cpw.mods.fml.common.network.Player;
 
@@ -45,8 +47,14 @@ public class PacketKeyPressed extends PacketCamping {
 
 	        if (thePlayer.getCurrentEquippedItem() != null && KeyHelper.hasKeyBind(thePlayer.getCurrentEquippedItem())) 
 	        {
-	            ((CampingItem) thePlayer.getCurrentEquippedItem().getItem()).doKeyAction(thePlayer, thePlayer.getCurrentEquippedItem(), key);
+	            if(thePlayer.getCurrentEquippedItem().getItem() instanceof CampingItemArmor)((CampingItemArmor) thePlayer.getCurrentEquippedItem().getItem()).doKeyAction(thePlayer, thePlayer.getCurrentEquippedItem(), key);
+	            if(thePlayer.getCurrentEquippedItem().getItem() instanceof CampingItem)((CampingItem) thePlayer.getCurrentEquippedItem().getItem()).doKeyAction(thePlayer, thePlayer.getCurrentEquippedItem(), key);
 	        }
+	        
+			if((thePlayer.getCurrentEquippedItem() == null ||!(thePlayer.getCurrentEquippedItem().getItem() instanceof ToolBackpack)) && thePlayer.inventory.getStackInSlot(38).getItem() instanceof ToolBackpack)
+			{
+				((CampingItemArmor) thePlayer.inventory.getStackInSlot(38).getItem()).doKeyAction(thePlayer, thePlayer.inventory.getStackInSlot(38), key);
+			}
 	    }
 }
 

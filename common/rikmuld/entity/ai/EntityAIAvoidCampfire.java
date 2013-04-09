@@ -1,9 +1,7 @@
 package rikmuld.entity.ai;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.src.ModLoader;
 
 public class EntityAIAvoidCampfire extends EntityAIBase{
 	

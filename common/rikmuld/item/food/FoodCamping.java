@@ -1,7 +1,6 @@
 package rikmuld.item.food;
 
 import java.util.List;
-import java.util.logging.Level;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,7 +11,6 @@ import rikmuld.CampingMod;
 import rikmuld.core.lib.Config;
 import rikmuld.core.lib.Items;
 import rikmuld.core.register.ModAchievements;
-import rikmuld.core.register.ModLogger;
 import rikmuld.item.CampingItemFood;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

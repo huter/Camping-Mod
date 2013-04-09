@@ -1,23 +1,18 @@
 package rikmuld.core.handlers;
 
 import java.util.EnumSet;
-import java.util.logging.Level;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import rikmuld.core.lib.ModInfo;
 import rikmuld.core.proxys.CommonProxy;
 import rikmuld.core.register.ModItems;
-import rikmuld.core.register.ModLogger;
 import rikmuld.item.normal.GuideBook;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 
 public class TickHandler implements ITickHandler{
-
-	static Minecraft mc;
 	
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) 

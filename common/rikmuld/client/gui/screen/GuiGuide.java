@@ -1,7 +1,5 @@
 package rikmuld.client.gui.screen;
 
-import java.util.logging.Level;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 
@@ -10,7 +8,6 @@ import org.lwjgl.opengl.GL11;
 import rikmuld.client.gui.button.GuiButtonGuideButton;
 import rikmuld.client.gui.button.GuiButtonGuidePage;
 import rikmuld.core.lib.Textures;
-import rikmuld.core.register.ModLogger;
 import rikmuld.item.normal.GuideBook;
 
 public class GuiGuide extends GuiScreen{

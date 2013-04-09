@@ -11,7 +11,9 @@ public class KeyHelper {
 
 public static ArrayList<Integer> keyItems = new ArrayList<Integer>();
 
-	public static String keyCraft = "Crafting Key";
+	public static String keyCraft = "camping.craftKey";
+	public static String keyBackpack = "camping.backpackKey";
+	
  	public static ArrayList<KeyBinding> keyBindingsList;
 	public static ArrayList<Boolean> isRepeatingList;
 
@@ -19,6 +21,7 @@ public static ArrayList<Integer> keyItems = new ArrayList<Integer>();
 	{		
 		keyItems.add(item.itemID);
 		LanguageRegistry.instance().addStringLocalization(keyCraft, "en_US", "Crafting Key");
+		LanguageRegistry.instance().addStringLocalization(keyBackpack, "en_US", "Open Backpack");
 	}
 	
 	public static boolean hasKeyBind(ItemStack item)
