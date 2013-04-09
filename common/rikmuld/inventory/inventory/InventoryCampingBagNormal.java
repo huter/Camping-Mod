@@ -9,7 +9,7 @@ import net.minecraft.nbt.NBTTagList;
 public class InventoryCampingBagNormal extends InventoryBasic {
 
 	private EntityPlayer playerEntity;
-
+	private boolean reading = false;
 	private ItemStack originalIS;
 
 	public InventoryCampingBagNormal(EntityPlayer player, ItemStack is) 
@@ -31,7 +31,10 @@ public class InventoryCampingBagNormal extends InventoryBasic {
 	public void onInventoryChanged() 
 	{
 		super.onInventoryChanged();
-		saveInventory();
+		if (!reading) 
+		{
+			saveInventory();
+		}
 	}
 
 	@Override
@@ -91,13 +94,8 @@ public class InventoryCampingBagNormal extends InventoryBasic {
 		setNBT();
 	}
 
-	private NBTTagCompound writeToNBT(NBTTagCompound outerTag) 
+	private void writeToNBT(NBTTagCompound outerTag) 
 	{
-		if (outerTag == null) 
-		{
-			return null;
-		}
-
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < getSizeInventory(); i++) 
 		{
@@ -112,27 +110,22 @@ public class InventoryCampingBagNormal extends InventoryBasic {
 
 		NBTTagCompound inventory = new NBTTagCompound();
 		inventory.setTag("Items", itemList);
-		outerTag.setCompoundTag("Inventory", inventory);
-		return outerTag;
+		originalIS.stackTagCompound.setCompoundTag("Inventory", inventory);
 	}
 
 	private void readFromNBT(NBTTagCompound outerTag) 
 	{
-		if (outerTag == null) 
-		{
-			return;
-		}
-		NBTTagList itemList = outerTag.getCompoundTag("Inventory").getTagList("Items");
-	
+		reading = true;
+		NBTTagList itemList = originalIS.stackTagCompound.getCompoundTag("Inventory").getTagList("Items");
 		for (int i = 0; i < itemList.tagCount(); i++) 
 		{
 			NBTTagCompound slotEntry = (NBTTagCompound) itemList.tagAt(i);
 			int j = slotEntry.getByte("Slot") & 0xff;
-
 			if (j >= 0 && j < getSizeInventory()) 
 			{
 				setInventorySlotContents(j, ItemStack.loadItemStackFromNBT(slotEntry));
 			}
 		}
+		reading = false;
 	}
 }

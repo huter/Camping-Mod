@@ -89,10 +89,10 @@ public class CampingMod {
 	 * TODO: make special armor for campers.
 	 * TODO: make the cloaks working.
 	 * TODO: complete the guide books.
-	 * TODO: make backpacks wereable on the back and activateble with a key.
 	 * TODO: make a camper AI for not run into campfires and stay with tents.
 	 * TODO: make a flashlight
 	 * TODO: make tents with traped chests and ender chests and make more for inside tents
+	 * TODO: make an seperated backpack slot for the backpack and make the backpack an model for when you were them.
 	 * TODO: fix the bugs
 	 * TODO: add camping animals 
 	 * 
@@ -101,7 +101,7 @@ public class CampingMod {
 	 * TODO: for next update (backpack Update) 1.0.1 --> 1.0.2
 	 * 
 	 * -finish the tent and the equipment guide book.
-	 * -make backpacks wereable on the back and activateble with a key.
+	 * -make an seperated backpack slot for the backpack and make the backpack an model for when you were them.
 	 * -fix the known bugs.
 	 * 
 	 * TODO: for next update (equipment update) 1.0.2 --> 1.0.3
