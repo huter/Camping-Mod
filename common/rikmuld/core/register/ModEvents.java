@@ -2,7 +2,6 @@ package rikmuld.core.register;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.world.WorldEvent.Load;
 import rikmuld.block.plant.RadishCrop;
@@ -18,21 +17,12 @@ public class ModEvents {
 	}
 	
 	@ForgeSubscribe
-	public void WorldIsLoaded(LivingJumpEvent event)
+	public void WorldIsLoaded(Load event)
 	{
 		if(FirstTime)
 		{
-			VersionHelper.CheckNewestVersion();
 			FirstTime = false;
-		}
-	}
-	
-	@ForgeSubscribe
-	public void WorldIsLoaded(Load event)
-	{
-		if(!FirstTime)
-		{
-			FirstTime = true;
+			VersionHelper.execute();
 		}
 	}
 	

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.logging.Level;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -20,8 +21,11 @@ import org.xml.sax.SAXException;
 
 import rikmuld.core.lib.Colors;
 import rikmuld.core.lib.ModInfo;
+import rikmuld.core.register.ModLogger;
 
-public class VersionHelper {
+public class VersionHelper implements Runnable{
+	
+	private static VersionHelper instance = new VersionHelper();
 	
 	public static final String MOD_MESSAGE_VERSION_NEW = "There is an Updated version of the camping mod";
 	public static final String MOD_MESSAGE_VERSION_VERSION = "Version: ";
@@ -35,6 +39,8 @@ public class VersionHelper {
 	static DocumentBuilder builder;
 	static Document doc;
 	static Transformer xform;
+	
+	static boolean checked = false;
 
 	public static void GetXmlFile()
 	{
@@ -81,7 +87,7 @@ public class VersionHelper {
 		}
 	}
 	
-	public static void CheckNewestVersion()
+	public static void CheckVersion()
 	{
 		GetXmlFile();
 		if(doc!=null)
@@ -98,28 +104,69 @@ public class VersionHelper {
 			String NewVersionDate = NewestVersionDate.getTextContent();
 			String NewVersionNew = NewestVersionNew.getTextContent();
 
+			ModLogger.log(Level.WARNING, "checking");
+			
 			if(!NewVersion.equals(ModInfo.MOD_VERSION))
 			{	
 				if(MinecraftServer.getServer()!=null)
 				{
 					if(!MinecraftServer.getServer().isDedicatedServer()&&ModLoader.getMinecraftInstance().thePlayer!=null)
 					{
+						ModLogger.log(Level.WARNING, "checking 1e");
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_NEW);
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_VERSION + NewVersion); 
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_CURR + ModInfo.MOD_VERSION);
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_WHATSNEW + NewVersionNew);
-						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_DATE + NewVersionDate);					
+						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_DATE + NewVersionDate);
+						checked = true;
 					}
 				}
 				else if(ModLoader.getMinecraftInstance().thePlayer!=null)
 				{
+						ModLogger.log(Level.WARNING, "checking 2e");
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_NEW);
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_VERSION + NewVersion); 
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_CURR + ModInfo.MOD_VERSION);
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_WHATSNEW + NewVersionNew);
-						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_DATE + NewVersionDate);					
+						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_DATE + NewVersionDate);	
+						checked = true;
 				}
 			}
 		}
 	}
+
+	@Override
+	public void run() 
+	{
+		while(checked==false)
+		{
+			try 
+			{
+				Thread.sleep(4000);
+			} 
+			catch (InterruptedException e) 
+			{
+				e.printStackTrace();
+			}
+			
+			CheckVersion();
+	        
+			if(checked==false)
+			{
+				try 
+				{
+					Thread.sleep(500000);
+				} 
+				catch (InterruptedException e) 
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	 public static void execute() 
+	 {
+	     new Thread(instance).start();
+	 }
 }

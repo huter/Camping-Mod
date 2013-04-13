@@ -5,13 +5,13 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import rikmuld.inventory.inventory.InventoryCampingBagNormal;
+import rikmuld.inventory.inventory.InventoryCampingBag;
 import rikmuld.inventory.slot.BackpackSlot;
 import rikmuld.item.armor.ArmorBackpack;
 
 public class ContainerCampingBagNormal extends Container {
 	
-	public ContainerCampingBagNormal(IInventory playerInventory, InventoryCampingBagNormal backpackInventoryM, ItemStack backpack) {
+	public ContainerCampingBagNormal(IInventory playerInventory, InventoryCampingBag backpackInventoryM, ItemStack backpack) {
 
 		int var3;
 		

@@ -7,14 +7,14 @@ import org.lwjgl.opengl.GL11;
 
 import rikmuld.core.lib.Textures;
 import rikmuld.inventory.container.ContainerCampingBagNormal;
-import rikmuld.inventory.inventory.InventoryCampingBagNormal;
+import rikmuld.inventory.inventory.InventoryCampingBag;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiCampingBagNormal extends GuiContainer {
     
-	public GuiCampingBagNormal(InventoryPlayer par1InventoryPlayer,	InventoryCampingBagNormal iInventory) 
+	public GuiCampingBagNormal(InventoryPlayer par1InventoryPlayer,	InventoryCampingBag iInventory) 
 	{
 		super(new ContainerCampingBagNormal(par1InventoryPlayer, iInventory, null));
 	}

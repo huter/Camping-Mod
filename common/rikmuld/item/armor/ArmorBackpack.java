@@ -7,16 +7,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.IArmorTextureProvider;
-import net.minecraft.world.World;
 import rikmuld.CampingMod;
 import rikmuld.core.helper.KeyHelper;
 import rikmuld.core.lib.Items;
 import rikmuld.core.lib.Textures;
-import rikmuld.inventory.inventory.InventoryCampingBagLarge;
-import rikmuld.inventory.inventory.InventoryCampingBagNormal;
-import rikmuld.inventory.inventory.InventoryCampingBagSmall;
+import rikmuld.inventory.inventory.InventoryCampingBag;
 import rikmuld.item.CampingItemArmor;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -98,37 +96,13 @@ public class ArmorBackpack extends CampingItemArmor implements IArmorTextureProv
 			if(player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() instanceof ArmorBackpack)
 			{
 				backpack = player.getCurrentEquippedItem();
-				
-				if(backpack.getItemDamage() == 2)
-				{
-					inventoryBackpack = new InventoryCampingBagLarge(player, backpack);
-				}
-				if(backpack.getItemDamage() == 1)
-				{
-					inventoryBackpack = new InventoryCampingBagNormal(player, backpack);
-				}
-				if(backpack.getItemDamage() == 0)
-				{
-					inventoryBackpack = new InventoryCampingBagSmall(player, backpack);
-				}
+				inventoryBackpack = new InventoryCampingBag(player, backpack);
 			}
 			
 			if((player.getCurrentEquippedItem() == null ||!(player.getCurrentEquippedItem().getItem() instanceof ArmorBackpack)) && player.inventory.getStackInSlot(38).getItem() instanceof ArmorBackpack)
 			{
 				backpack = player.inventory.getStackInSlot(38);
-				
-				if(backpack.getItemDamage() == 2)
-				{
-					inventoryBackpack = new InventoryCampingBagLarge(player, backpack);
-				}
-				if(backpack.getItemDamage() == 1)
-				{
-					inventoryBackpack = new InventoryCampingBagNormal(player, backpack);
-				}
-				if(backpack.getItemDamage() == 0)
-				{
-					inventoryBackpack = new InventoryCampingBagSmall(player, backpack);
-				}
+				inventoryBackpack = new InventoryCampingBag(player, backpack);
 			}
 			
 			return inventoryBackpack;
