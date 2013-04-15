@@ -12,6 +12,7 @@ public class InventoryCampingBag extends InventoryBasic {
 	private boolean reading = false;
 	private ItemStack theBackpack;
 	public static int backpackNum;
+	public String invName;
 
 	public InventoryCampingBag(EntityPlayer player, ItemStack is) 
 	{
@@ -21,14 +22,13 @@ public class InventoryCampingBag extends InventoryBasic {
 		theBackpack = is;
 		backpackNum = is.getItemDamage();
 		
-		if (!hasInventory(is.getTagCompound())) 
+		if (!hasInventory()) 
 		{
 			createInventory();
 		}
 		loadInventory();
 	}
 
-	
 	@Override
 	public void onInventoryChanged() 
 	{
@@ -51,53 +51,57 @@ public class InventoryCampingBag extends InventoryBasic {
 		saveInventory();
 	}
 
+	@Override
+	public String getInvName() 
+	{
+		return this.invName;
+	}
+	
 	protected static int getInventorySize(ItemStack is)
 	{
 		return 9 * (backpackNum+1);
 	}
-
-	private boolean hasInventory(NBTTagCompound nbt)
+	
+	private boolean hasInventory()
 	{
-		return (nbt != null && (nbt.hasKey("Inventory")));
+		if(theBackpack.stackTagCompound!=null) return theBackpack.stackTagCompound.hasKey("Inventory");
+		else return false;
 	}
 
 	private void createInventory() 
 	{
-		NBTTagCompound tag;
-		if (theBackpack.hasTagCompound())
-		{
-			tag = theBackpack.getTagCompound();
-		} 
-		
-		else 
-		{
-			tag = new NBTTagCompound();
-		}
-		
-		writeToNBT(tag);
-		theBackpack.setTagCompound(tag);
+		setInvName(theBackpack.getDisplayName());
+		writeToNBT();
+	}
+	
+	public void setInvName(String name) 
+	{
+		this.invName = name;
 	}
 	
 	private void setNBT() 
 	{
-		if(playerEntity.getCurrentEquippedItem() != null) 
+		if(playerEntity.getCurrentArmor(2)!=null) 
 		{
-			playerEntity.getCurrentEquippedItem().setTagCompound(theBackpack.getTagCompound());
+			if(playerEntity.getCurrentArmor(2).isItemEqual(theBackpack)) 
+			{
+				playerEntity.getCurrentArmor(2).setTagCompound(theBackpack.getTagCompound());
+			}
 		}
 	}
 
 	public void loadInventory() 
 	{
-		readFromNBT(theBackpack.getTagCompound());
+		readFromNBT();
 	}
 
 	public void saveInventory() 
 	{
-		writeToNBT(theBackpack.getTagCompound());
+		writeToNBT();
 		setNBT();
 	}
 
-	private void writeToNBT(NBTTagCompound outerTag) 
+	private void writeToNBT() 
 	{
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < getSizeInventory(); i++) 
@@ -121,7 +125,7 @@ public class InventoryCampingBag extends InventoryBasic {
 		theBackpack.stackTagCompound.setCompoundTag("Inventory", inventory);
 	}
 
-	private void readFromNBT(NBTTagCompound outerTag) 
+	private void readFromNBT() 
 	{
 		reading = true;
 		

@@ -12,7 +12,7 @@ public class ToolCamping extends CampingItem {
 		super(i);
 		maxStackSize = 1;
 		setUnlocalizedName(Items.ITEM_TOOL_CAMP_NAME);
-		setMaxDamage(Config.GENERAL_CAMPTOOL_MAX_DURABILATY);
+		setMaxDamage(Config.TOOL_CAMPTOOL_MAX_DURABILATY);
 		isDamageable();
 		ToolHelper.addTool(this);
 	}

@@ -2,11 +2,12 @@ package rikmuld.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemStack;
 
 import org.lwjgl.opengl.GL11;
 
 import rikmuld.core.lib.Textures;
-import rikmuld.inventory.container.ContainerCampingBagLarge;
+import rikmuld.inventory.container.ContainerCampingBag;
 import rikmuld.inventory.inventory.InventoryCampingBag;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -14,9 +15,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiCampingBagLarge extends GuiContainer {
 	
-	public GuiCampingBagLarge(InventoryPlayer par1InventoryPlayer,	InventoryCampingBag iInventory) 
+	InventoryCampingBag inventory;
+	
+	public GuiCampingBagLarge(InventoryPlayer par1InventoryPlayer,	InventoryCampingBag iInventory, ItemStack backpack) 
 	{
-		super(new ContainerCampingBagLarge(par1InventoryPlayer, iInventory, null));
+		super(new ContainerCampingBag(par1InventoryPlayer, iInventory, backpack));
+		inventory = iInventory;
 	}
 
 	@Override

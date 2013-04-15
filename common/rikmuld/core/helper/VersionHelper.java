@@ -103,8 +103,6 @@ public class VersionHelper implements Runnable{
 			String NewVersion = NewestVersion.getTextContent();
 			String NewVersionDate = NewestVersionDate.getTextContent();
 			String NewVersionNew = NewestVersionNew.getTextContent();
-
-			ModLogger.log(Level.WARNING, "checking");
 			
 			if(!NewVersion.equals(ModInfo.MOD_VERSION))
 			{	
@@ -123,7 +121,6 @@ public class VersionHelper implements Runnable{
 				}
 				else if(ModLoader.getMinecraftInstance().thePlayer!=null)
 				{
-						ModLogger.log(Level.WARNING, "checking 2e");
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_NEW);
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_VERSION + NewVersion); 
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_CURR + ModInfo.MOD_VERSION);

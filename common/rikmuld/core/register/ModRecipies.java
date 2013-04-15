@@ -11,8 +11,11 @@ import rikmuld.core.lib.Config;
 public class ModRecipies {
 
 	public static boolean insta = Config.CAMPFIRE_INSTA_COOK_ENABLED;
+	public static boolean peasfull = Config.GENERAL_RECIPIE_PEASFULL;
 	
     public static ItemStack iron = new ItemStack(Item.ingotIron);
+    public static ItemStack gold = new ItemStack(Item.ingotGold);
+    public static ItemStack leather = new ItemStack(Item.leather);
     public static ItemStack[] dye = ItemStackHelper.getMetaCycle(Item.dyePowder, 16);
     public static ItemStack torch = new ItemStack(Block.torchWood);
 	public static ItemStack flint = new ItemStack(Item.flint);
@@ -42,10 +45,23 @@ public class ModRecipies {
 		if(insta) RecipieHelper.addShapelessRecipe(campfire[4], 1, campfire[0], campfire[1], campfire[2], campfire[3]);
 		RecipieHelper.addShapelessRecipe(marshmallow[1], 3, stick, stick, stick, marshmallow[0]);
 		
-		for(ItemStack[] tool : ToolHelper.toolStacks)
+		if(!peasfull)
 		{
-			RecipieHelper.addShapelessRecipe(tentParts[0], 4, ItemStackHelper.getWildValleu(tool[0]), iron);
-			RecipieHelper.addShapelessRecipe(tentParts[1], 10, ItemStackHelper.getWildValleu(tool[0]), string, string, string, string, string, string);
+			RecipieHelper.addRecipe(campfire[3], 1, " 0 ", "010", " 0 ", '0', enderp, '1', campfire[0]);
+			for(ItemStack[] tool : ToolHelper.toolStacks)
+			{
+				RecipieHelper.addShapelessRecipe(tentParts[0], 4, ItemStackHelper.getWildValleu(tool[0]), iron);
+				RecipieHelper.addShapelessRecipe(tentParts[1], 10, ItemStackHelper.getWildValleu(tool[0]), string, string, string, string, string, string);
+			}
+		}
+		else
+		{
+			RecipieHelper.addRecipe(campfire[3], 1, " 0 ", "010", " 0 ", '0', gold, '1', campfire[0]);
+			for(ItemStack[] tool : ToolHelper.toolStacks)
+			{
+				RecipieHelper.addShapelessRecipe(tentParts[0], 4, ItemStackHelper.getWildValleu(tool[0]), iron);
+				RecipieHelper.addShapelessRecipe(tentParts[1], 10, ItemStackHelper.getWildValleu(tool[0]), leather, leather, leather, leather, leather, leather);
+			}
 		}
 
 		RecipieHelper.addRecipe(tent, 1, "000", "0 0", "1 1", '0', tentParts[1], '1', tentParts[0]);
@@ -55,7 +71,7 @@ public class ModRecipies {
 		RecipieHelper.addRecipe(campfire[0], 1, " 0 ", "010", "222", '0', torch, '1', flint, '2', stone);
 		RecipieHelper.addRecipe(campfire[1], 1, " 0 ", "010", " 0 ", '0', furnace, '1', campfire[0]);
 		RecipieHelper.addRecipe(campfire[2], 1, " 0 ", "010", " 0 ", '0', flintst, '1', campfire[0]);
-		RecipieHelper.addRecipe(campfire[3], 1, " 0 ", "010", " 0 ", '0', enderp, '1', campfire[0]);
+
 		RecipieHelper.addRecipe(marshmallow[0], 4, "010", "020", "030", '0', sugar, '1', waterbottle, '2', egg, '3', bowl);
 		RecipieHelper.addRecipe(campingBag[0], 1, "000", "0 0", "000", '0', tentParts[1]);
 		RecipieHelper.addRecipe(campingBag[1], 1, "000", "010", "000", '0', tentParts[1], '1', campingBag[0]);

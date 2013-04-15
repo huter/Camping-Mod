@@ -2,21 +2,25 @@ package rikmuld.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemStack;
 
 import org.lwjgl.opengl.GL11;
 
 import rikmuld.core.lib.Textures;
-import rikmuld.inventory.container.ContainerCampingBagSmall;
+import rikmuld.inventory.container.ContainerCampingBag;
 import rikmuld.inventory.inventory.InventoryCampingBag;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiCampingBagSmall extends GuiContainer {
-    
-	public GuiCampingBagSmall(InventoryPlayer par1InventoryPlayer,	InventoryCampingBag InventorycampingBagSmall) 
+   	
+	InventoryCampingBag inventory;
+	
+	public GuiCampingBagSmall(InventoryPlayer par1InventoryPlayer,	InventoryCampingBag iInventory, ItemStack backpack) 
 	{
-		super(new ContainerCampingBagSmall(par1InventoryPlayer, InventorycampingBagSmall, null));
+		super(new ContainerCampingBag(par1InventoryPlayer, iInventory, backpack));
+		inventory = iInventory;
 	}
 
 	@Override
@@ -33,7 +37,6 @@ public class GuiCampingBagSmall extends GuiContainer {
 		int var5 = (this.width - this.xSize) / 2;
 		int var6 = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(var5, var6, 0, 0, this.xSize, this.ySize);	
-
 	}
 	
 	protected void keyTyped(char par1, int par2) 

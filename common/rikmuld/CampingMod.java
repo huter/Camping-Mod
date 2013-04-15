@@ -84,7 +84,11 @@ public class CampingMod {
 		 ModLogger.log(Level.INFO, ModInfo.MOD_NAME + " has loaded successfylly.");
 	}
 	
-	/*
+	/* TODO: fix the invertory backpack glich bug thingy!!!!!!!
+	 * TODO: finish the guide books.
+	 * TODO: make 2 new config options 1 for peasfull mode recipies, 1 for set home to tent.
+	 * 
+	 * 
 	 * TODO: update the site!!! (also the new planed feutures)
 	 * TODO: make special armor for campers.
 	 * TODO: make the cloaks working.

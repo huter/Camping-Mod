@@ -155,10 +155,10 @@ public class Campfire extends CampingBlockItem{
 			TileEntityCampfire Tile = (TileEntityCampfire) par1world.getBlockTileEntity(x, y, z);
 			ItemStack currentitem = player.getCurrentEquippedItem();
 			if(Tile.setColor(currentitem.getItemDamage())) currentitem.stackSize -= 1;	
+			par1world.markBlockForUpdate(x, y, z);
 		}
 	}
 	
-	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
 	{
 		double var7 = (double)((float)par2 + 0.5F);

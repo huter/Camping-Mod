@@ -61,13 +61,6 @@ public class ArmorBackpack extends CampingItemArmor implements IArmorTextureProv
 			}
 		}
 		
-		@Override
-		public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-	    {
-			this.openGui(par1ItemStack, par2World, par3EntityPlayer);
-			return par1ItemStack;
-	    }
-		
 		public ItemStack openGui(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	    {
 			if (par1ItemStack.itemID == this.itemID)
@@ -92,21 +85,27 @@ public class ArmorBackpack extends CampingItemArmor implements IArmorTextureProv
 		{
 			ItemStack backpack;
 			IInventory inventoryBackpack = null;
-						
-			if(player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() instanceof ArmorBackpack)
-			{
-				backpack = player.getCurrentEquippedItem();
-				inventoryBackpack = new InventoryCampingBag(player, backpack);
-			}
 			
-			if((player.getCurrentEquippedItem() == null ||!(player.getCurrentEquippedItem().getItem() instanceof ArmorBackpack)) && player.inventory.getStackInSlot(38).getItem() instanceof ArmorBackpack)
+			if(player.inventory.getStackInSlot(38).getItem() instanceof ArmorBackpack)
 			{
 				backpack = player.inventory.getStackInSlot(38);
 				inventoryBackpack = new InventoryCampingBag(player, backpack);
 			}
-			
 			return inventoryBackpack;
 		}
+		
+		@Override
+	    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+	    {
+	        ItemStack itemstack1 = par3EntityPlayer.inventory.getStackInSlot(38);
+
+	        if (itemstack1 == null)
+	        {
+	            par3EntityPlayer.setCurrentItemOrArmor(3, par1ItemStack.copy());
+	            par3EntityPlayer.destroyCurrentEquippedItem();
+	        }
+	        return par1ItemStack;
+	    }
 		
 		public void doKeyAction(EntityPlayer thePlayer, ItemStack itemStack, String keyBinding)
 		{

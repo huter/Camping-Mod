@@ -22,9 +22,7 @@ import rikmuld.inventory.container.ContainerCampToolV2;
 import rikmuld.inventory.container.ContainerCampfireCheapCooker;
 import rikmuld.inventory.container.ContainerCampfireFastCooker;
 import rikmuld.inventory.container.ContainerCampfireMultiCooker;
-import rikmuld.inventory.container.ContainerCampingBagLarge;
-import rikmuld.inventory.container.ContainerCampingBagNormal;
-import rikmuld.inventory.container.ContainerCampingBagSmall;
+import rikmuld.inventory.container.ContainerCampingBag;
 import rikmuld.inventory.container.ContainerTent;
 import rikmuld.inventory.inventory.InventoryCampingBag;
 import rikmuld.item.armor.ArmorBackpack;
@@ -72,21 +70,11 @@ public class CommonProxy implements IGuiHandler {
 		{
 				return new ContainerTent(player.inventory, (TileEntityTent) tileEntity);
 		}
-		if (ID == GuiIds.GUICampingBagLarge) 
+		if (ID == GuiIds.GUICampingBagLarge||ID == GuiIds.GUICampingBagNormal||ID == GuiIds.GUICampingBagSmall) 
 		{
-		 	ItemStack backpack = player.getCurrentEquippedItem();
-            return new ContainerCampingBagLarge(player.inventory, (InventoryCampingBag) ArmorBackpack.getBackpackInv(player), backpack);
+		 	ItemStack backpack = player.inventory.getStackInSlot(38);
+            return new ContainerCampingBag(player.inventory, (InventoryCampingBag) ArmorBackpack.getBackpackInv(player), backpack);
 		}
-		if (ID == GuiIds.GUICampingBagNormal) 
-		{
-		 	ItemStack backpack = player.getCurrentEquippedItem();
-            return new ContainerCampingBagNormal(player.inventory, (InventoryCampingBag) ArmorBackpack.getBackpackInv(player), backpack);
-		}
-		if (ID == GuiIds.GUICampingBagSmall) 
-		{
-			ItemStack backpack = player.getCurrentEquippedItem();
-            return new ContainerCampingBagSmall(player.inventory, (InventoryCampingBag) ArmorBackpack.getBackpackInv(player), backpack);
-     	}
 		if (ID == GuiIds.GUICampTool) 
 		{
             return new ContainerCampToolV2(player.inventory, world, x, y, z);
@@ -117,15 +105,18 @@ public class CommonProxy implements IGuiHandler {
 		
 		if (ID == GuiIds.GUICampingBagLarge) 
 		{
-            return new GuiCampingBagLarge(player.inventory, (InventoryCampingBag) ArmorBackpack.getBackpackInv(player));
+		 	ItemStack backpack = player.inventory.getStackInSlot(38);
+            return new GuiCampingBagLarge(player.inventory, (InventoryCampingBag) ArmorBackpack.getBackpackInv(player), backpack);
 	    }
 		if (ID == GuiIds.GUICampingBagNormal) 
 		{
-            return new GuiCampingBagNormal(player.inventory, (InventoryCampingBag) ArmorBackpack.getBackpackInv(player));
+		 	ItemStack backpack = player.inventory.getStackInSlot(38);
+            return new GuiCampingBagNormal(player.inventory, (InventoryCampingBag) ArmorBackpack.getBackpackInv(player), backpack);
 	    }
 		if (ID == GuiIds.GUICampingBagSmall) 
 		{
-            return new GuiCampingBagSmall(player.inventory, (InventoryCampingBag) ArmorBackpack.getBackpackInv(player));
+		 	ItemStack backpack = player.inventory.getStackInSlot(38);
+            return new GuiCampingBagSmall(player.inventory, (InventoryCampingBag) ArmorBackpack.getBackpackInv(player), backpack);
 	    }	
 		if (ID == GuiIds.GUIGuideCampfire) 
 		{

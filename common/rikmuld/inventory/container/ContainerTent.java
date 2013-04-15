@@ -55,15 +55,15 @@ public class ContainerTent extends Container {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
 			
-			if (i < 36) 
+			if (i < 55) 
 			{
-				if (!mergeItemStack(itemstack1, 36, inventorySlots.size(), true)) 
+				if (!mergeItemStack(itemstack1, 55, inventorySlots.size(), true)) 
 				{
 					return null;
 				}
 			} 
 			
-			else if (!mergeItemStack(itemstack1, 0, 36, false)) 
+			else if (!mergeItemStack(itemstack1, 0, 55, false)) 
 			{
 				return null;
 			}

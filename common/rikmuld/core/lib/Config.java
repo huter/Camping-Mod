@@ -4,8 +4,8 @@ public class Config {
 
 	public static final int WORLD_GEN_SMALL_CAMP_SPAWN_RARENESS_DEV = 1500;
 	public static final int WORLD_GEN_SMALL_CAMP_CAMPER_SPAWNRATE_DEV = 1;
-	public static final int GENERAL_CAMPTOOL_MAX_DURABILATY_DEV = 100;
-	public static final int GENERAL_CAMPTOOL2_MAX_DURABILATY_DEV = 250;
+	public static final int TOOL_CAMPTOOL_MAX_DURABILATY_DEV = 100;
+	public static final int TOOL_CAMPTOOL2_MAX_DURABILATY_DEV = 250;
 	public static final int GENERAL_KEYBIND_CRAFT_DEV = 19;
 	public static final int GENERAL_KEYBIND_BACKPACK_DEV = 33;
 	public static final int PLANT_RADISH_HEAL_DEV = 1;
@@ -18,11 +18,12 @@ public class Config {
 	public static final boolean CAMPFIRE_INSTA_COOK_ENABLED_DEV = true;
 	public static final boolean CAMPFIRE_CAN_BE_RECOLORED_DEV = true;
 	public static final boolean CAMPFIRE_CAN_TRANS_STICK_DEV = true;
+	public static final boolean GENERAL_RECIPIE_PEASFULL_DEV = false;
 	
 	public static int WORLD_GEN_SMALL_CAMP_SPAWN_RARENESS;
 	public static int WORLD_GEN_SMALL_CAMP_CAMPER_SPAWNRATE;
-	public static int GENERAL_CAMPTOOL_MAX_DURABILATY;
-	public static int GENERAL_CAMPTOOL2_MAX_DURABILATY;
+	public static int TOOL_CAMPTOOL_MAX_DURABILATY;
+	public static int TOOL_CAMPTOOL2_MAX_DURABILATY;
 	public static int GENERAL_KEYBIND_CRAFT;
 	public static int GENERAL_KEYBIND_BACKPACK;
 	public static int PLANT_RADISH_HEAL;
@@ -35,15 +36,17 @@ public class Config {
 	public static boolean CAMPFIRE_INSTA_COOK_ENABLED;
 	public static boolean CAMPFIRE_CAN_BE_RECOLORED;
 	public static boolean CAMPFIRE_CAN_TRANS_STICK;
+	public static boolean GENERAL_RECIPIE_PEASFULL;
 	
 	public static String WORLD_GEN_ENABLED_MESSAGE = "enable word genaration";
 	public static String WORD_GEN_SMALL_CAMP_SPAWN_RARENESS_MESSAGE = "spawn rareness small campsite";
 	public static String WORLD_GEN_SMALL_CAMP_CANT_SPAWN_ANYWERE_MESSAGE = "campsites can spawn only in forrsts and plains";
 	public static String WORLD_GEN_SMALL_CAMP_CAMPER_SPAWNRATE_MESSAGE = "camper spawn rate small campsite";
-	public static String GENERAL_CAMPTOOL_MAX_DURABILATY_MESSAGE = "max durabilaty camper's tool";
-	public static String GENERAL_CAMPTOOL2_MAX_DURABILATY_MESSAGE = "max durabilaty camper's tool v2";
+	public static String TOOL_CAMPTOOL_MAX_DURABILATY_MESSAGE = "max durabilaty camper's tool";
+	public static String TOOL_CAMPTOOL2_MAX_DURABILATY_MESSAGE = "max durabilaty camper's tool v2";
 	public static String GENERAL_KEYBIND_CRAFT_MESSAGE = "the key code for crafting";
 	public static String GENERAL_KEYBIND_BACKPACK_MESSAGE = "the key code using the backpack";
+	public static String GENERAL_RECIPIE_PEASFULL_MESSAGE = "use the peasefull mode recipies";
 	public static String PLANT_RADISH_HEAL_MESSAGE = "radish heal amount";
 	public static String PLANT_MARSHMALLOW_HEAL_MESSAGE = "marshmallow heal amount";
 	public static String PLANT_RADISH_DROP_RATE_MESSAGE = "radish seed drop rate tail grass";
@@ -54,7 +57,8 @@ public class Config {
 	public static String CAMPFIRE_CAN_TRANS_STICK_MESSAGE = "campfires can transform sticks into torches";
 	
 	public static String CATEGORY_WORLD_GEN = "world genaration";
-	public static String CATEGORY_CAMPFIRE = "campfire";
+	public static String CATEGORY_CAMPFIRE = "campfires";
 	public static String CATEGORY_PLANT = "plants and food";
 	public static String CATEGORY_GENERAL = "general";
+	public static String CATEGORY_TOOL = "tools";
 }

@@ -17,7 +17,7 @@ public class ToolCampingV2 extends CampingItem{
 			super(i);
 			maxStackSize = 1;
 			setUnlocalizedName(Items.ITEM_TOOL_CAMP2_NAME);
-			setMaxDamage(Config.GENERAL_CAMPTOOL2_MAX_DURABILATY);
+			setMaxDamage(Config.TOOL_CAMPTOOL2_MAX_DURABILATY);
 			isDamageable();
 			ToolHelper.addTool(this);
 			KeyHelper.addKeyItem(this);
