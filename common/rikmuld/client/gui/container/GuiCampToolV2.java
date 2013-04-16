@@ -1,4 +1,4 @@
-package rikmuld.client.gui;
+package rikmuld.client.gui.container;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;

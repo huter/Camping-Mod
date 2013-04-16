@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
+import rikmuld.core.helper.BackpackHelper;
 import rikmuld.core.helper.KeyHelper;
 import rikmuld.item.CampingItem;
 import rikmuld.item.CampingItemArmor;
@@ -47,14 +48,12 @@ public class PacketKeyPressed extends PacketCamping {
 
 	        if (thePlayer.getCurrentEquippedItem() != null && KeyHelper.hasKeyBind(thePlayer.getCurrentEquippedItem())) 
 	        {
-	            if(thePlayer.getCurrentEquippedItem().getItem() instanceof CampingItemArmor)((CampingItemArmor) thePlayer.getCurrentEquippedItem().getItem()).doKeyAction(thePlayer, thePlayer.getCurrentEquippedItem(), key);
 	            if(thePlayer.getCurrentEquippedItem().getItem() instanceof CampingItem)((CampingItem) thePlayer.getCurrentEquippedItem().getItem()).doKeyAction(thePlayer, thePlayer.getCurrentEquippedItem(), key);
 	        }
-	        
-			if((thePlayer.getCurrentEquippedItem() == null ||!(thePlayer.getCurrentEquippedItem().getItem() instanceof ArmorBackpack)) && thePlayer.inventory.getStackInSlot(38).getItem() instanceof ArmorBackpack)
-			{
-				((CampingItemArmor) thePlayer.inventory.getStackInSlot(38).getItem()).doKeyAction(thePlayer, thePlayer.inventory.getStackInSlot(38), key);
-			}
+	        else if(key.equals(KeyHelper.keyBackpack))
+	        {
+	        	BackpackHelper.doKeyAction(thePlayer, key);
+	        }
 	    }
 }
 

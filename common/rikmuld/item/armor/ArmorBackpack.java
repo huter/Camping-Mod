@@ -31,7 +31,6 @@ public class ArmorBackpack extends CampingItemArmor implements IArmorTextureProv
 			setHasSubtypes(true);
 			setMaxDamage(0);
 			setUnlocalizedName(Items.ITEM_META_TOOL_BACK_NAME);
-			KeyHelper.addKeyItem(this);
 		}
 
 		@Override
@@ -59,60 +58,6 @@ public class ArmorBackpack extends CampingItemArmor implements IArmorTextureProv
 			{
 				list.add(new ItemStack(par1, 1, var4));
 			}
-		}
-		
-		public ItemStack openGui(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-	    {
-			if (par1ItemStack.itemID == this.itemID)
-			{
-				if(par1ItemStack.getItemDamage() == 2)
-				{
-					par3EntityPlayer.openGui(CampingMod.instance, 5, par2World,  0, 0, 0);
-				}
-				if(par1ItemStack.getItemDamage() == 1)
-				{
-					par3EntityPlayer.openGui(CampingMod.instance, 6, par2World,  0, 0, 0);
-				}
-				if(par1ItemStack.getItemDamage() == 0)
-				{
-					par3EntityPlayer.openGui(CampingMod.instance, 7, par2World,  0, 0, 0);
-				}
-			}		
-			return par1ItemStack;
-	    }
-		
-		public static IInventory getBackpackInv(EntityPlayer player)
-		{
-			ItemStack backpack;
-			IInventory inventoryBackpack = null;
-			
-			if(player.inventory.getStackInSlot(38).getItem() instanceof ArmorBackpack)
-			{
-				backpack = player.inventory.getStackInSlot(38);
-				inventoryBackpack = new InventoryCampingBag(player, backpack);
-			}
-			return inventoryBackpack;
-		}
-		
-		@Override
-	    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-	    {
-	        ItemStack itemstack1 = par3EntityPlayer.inventory.getStackInSlot(38);
-
-	        if (itemstack1 == null)
-	        {
-	            par3EntityPlayer.setCurrentItemOrArmor(3, par1ItemStack.copy());
-	            par3EntityPlayer.destroyCurrentEquippedItem();
-	        }
-	        return par1ItemStack;
-	    }
-		
-		public void doKeyAction(EntityPlayer thePlayer, ItemStack itemStack, String keyBinding)
-		{
-			if (keyBinding.equals(KeyHelper.keyBackpack)) 
-			{
-				openGui(itemStack, thePlayer.worldObj, thePlayer);				
-	        }
 		}
 }
 

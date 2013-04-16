@@ -110,7 +110,6 @@ public class VersionHelper implements Runnable{
 				{
 					if(!MinecraftServer.getServer().isDedicatedServer()&&ModLoader.getMinecraftInstance().thePlayer!=null)
 					{
-						ModLogger.log(Level.WARNING, "checking 1e");
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_NEW);
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_VERSION + NewVersion); 
 						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_CURR + ModInfo.MOD_VERSION);

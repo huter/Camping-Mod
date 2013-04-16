@@ -1,8 +1,7 @@
-package rikmuld.client.gui;
+package rikmuld.client.gui.container;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.item.ItemStack;
 
 import org.lwjgl.opengl.GL11;
 
@@ -13,20 +12,20 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiCampingBagSmall extends GuiContainer {
+public class GuiCampingBag extends GuiContainer {
    	
 	InventoryCampingBag inventory;
 	
-	public GuiCampingBagSmall(InventoryPlayer par1InventoryPlayer,	InventoryCampingBag iInventory, ItemStack backpack) 
+	public GuiCampingBag(InventoryPlayer par1InventoryPlayer,	InventoryCampingBag iInventory) 
 	{
-		super(new ContainerCampingBag(par1InventoryPlayer, iInventory, backpack));
+		super(new ContainerCampingBag(par1InventoryPlayer, iInventory));
 		inventory = iInventory;
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
-		fontRenderer.drawString("Small Camping Bag", 43, 6, 4210752);
+		fontRenderer.drawString("Camping Bag", 10, 6, 4210752);
 	}
 
 	@Override
@@ -46,5 +45,4 @@ public class GuiCampingBagSmall extends GuiContainer {
 			super.mc.setIngameFocus();
 		}
 	}
-
 }

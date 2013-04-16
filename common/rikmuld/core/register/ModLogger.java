@@ -19,4 +19,9 @@ public class ModLogger {
 	 {
 		 campLogger.log(logLevel, message);
 	 }
+	 
+	 public static void logDebug(int message)
+	 {
+		 campLogger.log(Level.WARNING, "DEBUGGING... <"+Integer.toString(message)+">");
+	 }
 }

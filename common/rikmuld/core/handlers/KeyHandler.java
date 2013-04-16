@@ -39,22 +39,7 @@ public class KeyHandler extends KeyBindingRegistry.KeyHandler {
                 EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
                 if (player != null) 
                 {
-                    ItemStack currentItem = player.getCurrentEquippedItem();
-                    ItemStack armorItem = player.inventory.getStackInSlot(38);
-                    if (currentItem != null) 
-                    {
-                        if (KeyHelper.hasKeyBind(currentItem)) 
-                        {
-                        	 PacketDispatcher.sendPacketToServer(PacketTypeHandler.populatePacket(new PacketKeyPressed(kb.keyDescription)));
-                        }
-                    }
-                    if (armorItem != null) 
-                    {
-                        if (KeyHelper.hasKeyBind(armorItem)) 
-                        {
-                        	 PacketDispatcher.sendPacketToServer(PacketTypeHandler.populatePacket(new PacketKeyPressed(kb.keyDescription)));
-                        }
-                    }
+                	PacketDispatcher.sendPacketToServer(PacketTypeHandler.populatePacket(new PacketKeyPressed(kb.keyDescription)));                                   
                 }
             }
         }

@@ -7,35 +7,41 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import rikmuld.core.register.ModItems;
 import rikmuld.inventory.inventory.InventoryCampingBag;
+import rikmuld.inventory.slot.BackpackOnlySlot;
 import rikmuld.inventory.slot.BackpackSlot;
 
 public class ContainerCampingBag extends Container {
 	
-	ItemStack backpack;
+	InventoryCampingBag backInv;
 	
-	public ContainerCampingBag(IInventory playerInventory, InventoryCampingBag backpackInventory, ItemStack theBackpack) {
+	public ContainerCampingBag(IInventory playerInventory, InventoryCampingBag backpackInventory) {
 
 		int var3;
+
+		this.addSlotToContainer(new BackpackOnlySlot(backpackInventory, 0, 150, 10));
 		
-		if(theBackpack.getItemDamage()==0)
+		if(backpackInventory.getStackInSlot(0)!=null)
 		{
-			for (int row = 0; row < 3; ++row) for (int col = 0; col < 3; ++col) 
+			if(backpackInventory.getStackInSlot(0).getItemDamage()==0)
 			{
-				this.addSlotToContainer(new BackpackSlot(backpackInventory, col + row * 3, 62 + col * 18, 18 + row * 18));
+				for (int row = 0; row < 3; ++row) for (int col = 0; col < 3; ++col) 
+				{
+					this.addSlotToContainer(new BackpackSlot(backpackInventory, (col + row * 3)+1, 62 + col * 18, 18 + row * 18));
+				}
 			}
-		}
-		else if(theBackpack.getItemDamage()==1)
-		{
-			for (int row = 0; row < 3; ++row) for (int col = 0; col < 6; ++col) 
+			else if(backpackInventory.getStackInSlot(0).getItemDamage()==1)
 			{
-				this.addSlotToContainer(new BackpackSlot(backpackInventory, col + row * 6, 36 + col * 18, 18 + row * 18));
+				for (int row = 0; row < 3; ++row) for (int col = 0; col < 6; ++col) 
+				{
+					this.addSlotToContainer(new BackpackSlot(backpackInventory, (col + row * 6)+1, 36 + col * 18, 18 + row * 18));
+				}
 			}
-		}
-		else if(theBackpack.getItemDamage()==2)
-		{
-			for (int row = 0; row < 3; ++row) for (int col = 0; col < 9; ++col) 
+			else if(backpackInventory.getStackInSlot(0).getItemDamage()==2)
 			{
-				this.addSlotToContainer(new BackpackSlot(backpackInventory, col + row * 9, 8 + col * 18, 18 + row * 18));
+				for (int row = 0; row < 3; ++row) for (int col = 0; col < 9; ++col) 
+				{
+					this.addSlotToContainer(new BackpackSlot(backpackInventory, (col + row * 9)+1, 8 + col * 18, 18 + row * 18));
+				}
 			}
 		}
 		
@@ -54,7 +60,7 @@ public class ContainerCampingBag extends Container {
 			this.addSlotToContainer(new Slot(playerInventory, var3, 8 + var3 * 18, 142));
 		}
 		
-		backpack=theBackpack;
+		backInv = backpackInventory;
 	}
 
 	@Override
@@ -68,20 +74,20 @@ public class ContainerCampingBag extends Container {
 	{
 		ItemStack itemstack = null;
 		Slot slot = (Slot) inventorySlots.get(i);
-		if (slot != null && slot.getHasStack() && slot.getStack().getItem()!=ModItems.CampingBag) 
+		if (slot != null && slot.getHasStack()) 
 		{
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
 			
-			if (i < 9*(backpack.getItemDamage()+1)) 
+			if (i < backInv.getInventorySize()) 
 			{
-				if (!mergeItemStack(itemstack1, 9*(backpack.getItemDamage()+1), inventorySlots.size(), true)) 
+				if (!mergeItemStack(itemstack1, backInv.getInventorySize(), inventorySlots.size(), true)) 
 				{
 					return null;
 				}
 			} 
 			
-			else if (!mergeItemStack(itemstack1, 0, 9*(backpack.getItemDamage()+1), false)) 
+			else if (!mergeItemStack(itemstack1, 0, backInv.getInventorySize(), false)) 
 			{
 				return null;
 			}
