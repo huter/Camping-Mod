@@ -11,6 +11,7 @@ public class InventoryCampingBag extends InventoryBasic {
 	private EntityPlayer playerEntity;
 	private boolean reading = false;
 	private boolean set = false;
+	private int setBack = 0;
 	
 	public InventoryCampingBag(EntityPlayer player) 
 	{
@@ -55,42 +56,26 @@ public class InventoryCampingBag extends InventoryBasic {
 	public void onInventoryChanged() 
 	{
 		super.onInventoryChanged();
+		if(getStackInSlot(0)==null)
+		{
+			for (int i = 0; i < 28; i++) 
+			{
+				if (getStackInSlot(i) != null&&this.setBack==2) 
+				{
+					this.setInventorySlotContents(i, null);
+					this.setBack = 1;
+				}
+			}
+		}
 		if (!reading) 
 		{
 			saveInventory();
-		}
-		if(getStackInSlot(0)==null)
-		{
-			playerEntity.getEntityData().removeTag("BackpackInv");
-			for (int i = 0; i < 28; i++) 
-			{
-				if (getStackInSlot(i) != null) 
-				{
-					this.setInventorySlotContents(i, null);
-				}
-			}
 		}
 	}
 
 	@Override
 	public void openChest() 
 	{
-		if(getStackInSlot(0)!=null)
-		{
-			if(getStackInSlot(0).getTagCompound()!=null) playerEntity.getEntityData().setCompoundTag("BackpackInv", getStackInSlot(0).getTagCompound());
-			
-			NBTTagList itemList = playerEntity.getEntityData().getCompoundTag("BackpackInv").getTagList("BackpackItems");
-			for (int i = 0; i < itemList.tagCount(); i++) 
-			{
-				NBTTagCompound slotEntry = (NBTTagCompound) itemList.tagAt(i);
-				int j = slotEntry.getByte("BackpackSlot") & 0xff;
-				if (j >= 1 && j < 28) 
-				{
-					setInventorySlotContents(j, ItemStack.loadItemStackFromNBT(slotEntry));
-				}
-			}
-		}
-
 		loadInventory();
 	}
 
@@ -108,11 +93,6 @@ public class InventoryCampingBag extends InventoryBasic {
 		else if (this.getStackInSlot(0).getItemDamage()==0) return 28;
 		else return 1;
 	}
-	
-	private void setNBT() 
-	{
-		if(getStackInSlot(0)!=null)getStackInSlot(0).setTagCompound(playerEntity.getEntityData().getCompoundTag("BackpackInv"));
-	}
 
 	public void loadInventory() 
 	{
@@ -122,28 +102,10 @@ public class InventoryCampingBag extends InventoryBasic {
 	public void saveInventory() 
 	{
 		writeToNBT();
-		if(set)setNBT();
 	}
 
 	private void writeToNBT() 
 	{	
-		NBTTagList itemList = new NBTTagList();
-		for (int i = 1; i < 28; i++) 
-		{
-			if (getStackInSlot(i) != null) 
-			{
-				NBTTagCompound slotEntry = new NBTTagCompound();
-				slotEntry.setByte("BackpackSlot", (byte) i);
-				getStackInSlot(i).writeToNBT(slotEntry);
-				itemList.appendTag(slotEntry);
-			}
-		}
-
-		NBTTagCompound inventory = new NBTTagCompound();
-		inventory.setTag("BackpackItems", itemList);
-	
-		playerEntity.getEntityData().setCompoundTag("BackpackInv", inventory);
-		
 		NBTTagList backpack = new NBTTagList();
 		if (getStackInSlot(0) != null) 
 		{
@@ -157,23 +119,36 @@ public class InventoryCampingBag extends InventoryBasic {
 		theBack.setTag("theBackPack", backpack);
 		
 		playerEntity.getEntityData().setCompoundTag("theBackpack", theBack);
+		
+		
+		if(getStackInSlot(0)!=null&&set)
+		{
+			NBTTagList itemList = new NBTTagList();
+			for (int i = 1; i < 28; i++) 
+			{
+				if (getStackInSlot(i) != null) 
+				{
+					NBTTagCompound slotEntry = new NBTTagCompound();
+					slotEntry.setByte("BackpackSlot", (byte) i);
+					getStackInSlot(i).writeToNBT(slotEntry);
+					itemList.appendTag(slotEntry);
+				}
+			}
+	
+			NBTTagCompound inventory = new NBTTagCompound();
+			inventory.setTag("BackpackItems", itemList);
+			
+			if (getStackInSlot(0).stackTagCompound == null) 
+			{
+				getStackInSlot(0).setTagCompound(new NBTTagCompound());
+			}
+			getStackInSlot(0).stackTagCompound.setCompoundTag("BackpackInv", inventory);
+		}
 	}
 
 	private void readFromNBT() 
 	{
-		reading = true;
-		
-		NBTTagList itemList = playerEntity.getEntityData().getCompoundTag("BackpackInv").getTagList("BackpackItems");
-		for (int i = 0; i < itemList.tagCount(); i++) 
-		{
-			NBTTagCompound slotEntry = (NBTTagCompound) itemList.tagAt(i);
-			int j = slotEntry.getByte("BackpackSlot") & 0xff;
-			if (j >= 1 && j < 28) 
-			{
-				setInventorySlotContents(j, ItemStack.loadItemStackFromNBT(slotEntry));
-			}
-		}
-		
+		reading = true;	
 
 		NBTTagList backpack = playerEntity.getEntityData().getCompoundTag("theBackpack").getTagList("theBackPack");
 		for (int i = 0; i < backpack.tagCount(); i++) 
@@ -183,6 +158,26 @@ public class InventoryCampingBag extends InventoryBasic {
 			if (j >= 0 && j < 1) 
 			{
 				setInventorySlotContents(j, ItemStack.loadItemStackFromNBT(slotEntry));
+			}
+		}
+		
+		if(getStackInSlot(0)!=null)
+		{
+			if (getStackInSlot(0).stackTagCompound == null) 
+			{
+				getStackInSlot(0).setTagCompound(new NBTTagCompound());
+			}
+			
+			if(!getStackInSlot(0).hasTagCompound()) writeToNBT();
+			NBTTagList itemList = getStackInSlot(0).getTagCompound().getCompoundTag("BackpackInv").getTagList("BackpackItems");
+			for (int i = 0; i < itemList.tagCount(); i++) 
+			{
+				NBTTagCompound slotEntry = (NBTTagCompound) itemList.tagAt(i);
+				int j = slotEntry.getByte("BackpackSlot") & 0xff;
+				if (j >= 1 && j < 28) 
+				{
+					setInventorySlotContents(j, ItemStack.loadItemStackFromNBT(slotEntry));
+				}
 			}
 		}
 		

@@ -5,7 +5,6 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import rikmuld.core.register.ModItems;
 import rikmuld.inventory.inventory.InventoryCampingBag;
 import rikmuld.inventory.slot.BackpackOnlySlot;
 import rikmuld.inventory.slot.BackpackSlot;
@@ -18,7 +17,7 @@ public class ContainerCampingBag extends Container {
 
 		int var3;
 
-		this.addSlotToContainer(new BackpackOnlySlot(backpackInventory, 0, 150, 10));
+		this.addSlotToContainer(new BackpackOnlySlot(backpackInventory, 0, 142, 1));
 		
 		if(backpackInventory.getStackInSlot(0)!=null)
 		{
@@ -26,21 +25,21 @@ public class ContainerCampingBag extends Container {
 			{
 				for (int row = 0; row < 3; ++row) for (int col = 0; col < 3; ++col) 
 				{
-					this.addSlotToContainer(new BackpackSlot(backpackInventory, (col + row * 3)+1, 62 + col * 18, 18 + row * 18));
+					this.addSlotToContainer(new BackpackSlot(backpackInventory, (col + row * 3)+1, 62 + col * 18, 24 + row * 18));
 				}
 			}
 			else if(backpackInventory.getStackInSlot(0).getItemDamage()==1)
 			{
 				for (int row = 0; row < 3; ++row) for (int col = 0; col < 6; ++col) 
 				{
-					this.addSlotToContainer(new BackpackSlot(backpackInventory, (col + row * 6)+1, 36 + col * 18, 18 + row * 18));
+					this.addSlotToContainer(new BackpackSlot(backpackInventory, (col + row * 6)+1, 35 + col * 18, 24 + row * 18));
 				}
 			}
 			else if(backpackInventory.getStackInSlot(0).getItemDamage()==2)
 			{
 				for (int row = 0; row < 3; ++row) for (int col = 0; col < 9; ++col) 
 				{
-					this.addSlotToContainer(new BackpackSlot(backpackInventory, (col + row * 9)+1, 8 + col * 18, 18 + row * 18));
+					this.addSlotToContainer(new BackpackSlot(backpackInventory, (col + row * 9)+1, 8 + col * 18, 24 + row * 18));
 				}
 			}
 		}
@@ -51,13 +50,13 @@ public class ContainerCampingBag extends Container {
 		{
 			for (int var4 = 0; var4 < 9; ++var4) 
 			{
-				this.addSlotToContainer(new Slot(playerInventory, var4 + var3 * 9 + 9, 8 + var4 * 18, 84 + var3 * 18));
+				this.addSlotToContainer(new Slot(playerInventory, var4 + var3 * 9 + 9, 8 + var4 * 18, 90 + var3 * 18));
 			}
 		}
 
 		for (var3 = 0; var3 < 9; ++var3) 
 		{
-			this.addSlotToContainer(new Slot(playerInventory, var3, 8 + var3 * 18, 142));
+			this.addSlotToContainer(new Slot(playerInventory, var3, 8 + var3 * 18, 148));
 		}
 		
 		backInv = backpackInventory;
