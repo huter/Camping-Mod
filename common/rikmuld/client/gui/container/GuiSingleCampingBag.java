@@ -27,7 +27,7 @@ public class GuiSingleCampingBag extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
-		fontRenderer.drawString("Camping Bag", 56, 5, 4210752);
+		fontRenderer.drawString("Camping Bag", 58, 5, 4210752);
 	}
 
 	@Override
