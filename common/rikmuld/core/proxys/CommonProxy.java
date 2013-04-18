@@ -1,6 +1,7 @@
 package rikmuld.core.proxys;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import rikmuld.client.gui.container.GuiCampToolV2;
@@ -8,6 +9,7 @@ import rikmuld.client.gui.container.GuiCampfireCheapCooker;
 import rikmuld.client.gui.container.GuiCampfireFastCooker;
 import rikmuld.client.gui.container.GuiCampfireMultiCooker;
 import rikmuld.client.gui.container.GuiCampingBag;
+import rikmuld.client.gui.container.GuiSingleCampingBag;
 import rikmuld.client.gui.container.GuiTent;
 import rikmuld.client.gui.screen.GuiGuideCampfire;
 import rikmuld.client.gui.screen.GuiGuideEquipment;
@@ -20,8 +22,10 @@ import rikmuld.inventory.container.ContainerCampfireCheapCooker;
 import rikmuld.inventory.container.ContainerCampfireFastCooker;
 import rikmuld.inventory.container.ContainerCampfireMultiCooker;
 import rikmuld.inventory.container.ContainerCampingBag;
+import rikmuld.inventory.container.ContainerSingleCampingBag;
 import rikmuld.inventory.container.ContainerTent;
 import rikmuld.inventory.inventory.InventoryCampingBag;
+import rikmuld.inventory.inventory.InventorySingleCampingBag;
 import rikmuld.tileentity.TileEntityCampfireCheapCooker;
 import rikmuld.tileentity.TileEntityCampfireFastCooker;
 import rikmuld.tileentity.TileEntityCampfireMultiCooker;
@@ -45,6 +49,7 @@ public class CommonProxy implements IGuiHandler {
     public static GuiGuideWorld guideWorld;
     
     InventoryCampingBag campingBagInv = null;
+    InventorySingleCampingBag singleCampingBagInv = null;
     
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) 
@@ -67,10 +72,16 @@ public class CommonProxy implements IGuiHandler {
 		{
 				return new ContainerTent(player.inventory, (TileEntityTent) tileEntity);
 		}
-		if (ID == GuiIds.GUICampingBag) 
+		if (ID == GuiIds.GUICamping) 
 		{
 			campingBagInv = new InventoryCampingBag(player);
             return new ContainerCampingBag(player.inventory, campingBagInv);
+		}
+		if (ID == GuiIds.GUICampingBag) 
+		{
+			ItemStack backpack = player.getCurrentEquippedItem();
+			singleCampingBagInv = new InventorySingleCampingBag(player, backpack);
+            return new ContainerSingleCampingBag(player.inventory, singleCampingBagInv, backpack);
 		}
 		if (ID == GuiIds.GUICampTool) 
 		{
@@ -99,10 +110,16 @@ public class CommonProxy implements IGuiHandler {
 		{
 				return new GuiTent(player.inventory, (TileEntityTent) tileEntity);
 		}
-		if (ID == GuiIds.GUICampingBag) 
+		if (ID == GuiIds.GUICamping) 
 		{
 			campingBagInv = new InventoryCampingBag(player);
             return new GuiCampingBag(player.inventory, campingBagInv);
+	    }
+		if (ID == GuiIds.GUICampingBag) 
+		{
+			ItemStack backpack = player.getCurrentEquippedItem();
+			singleCampingBagInv = new InventorySingleCampingBag(player, backpack);
+            return new GuiSingleCampingBag(player.inventory, singleCampingBagInv, backpack);
 	    }
 		if (ID == GuiIds.GUIGuideCampfire) 
 		{

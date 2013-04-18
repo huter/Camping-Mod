@@ -6,7 +6,8 @@ public class GuiIds {
 	public static final int GuiCampfireFastCooker = 2;
 	public static final int GuiCampfireCheapCooker = 3;
 	public static final int GuiTent = 4;
-	public static final int GUICampingBag = 5;
+	public static final int GUICamping = 5;
+	public static final int GUICampingBag = 6;
 	public static final int GUIGuideCampfire = 8;
 	public static final int GUIGuideTent = 9;
 	public static final int GUIGuideEquipment = 10;	

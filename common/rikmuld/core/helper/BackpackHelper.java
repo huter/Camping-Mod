@@ -14,6 +14,6 @@ public class BackpackHelper {
 
 	private static void openGui(World world, EntityPlayer player)
 	{
-		player.openGui(CampingMod.instance, GuiIds.GUICampingBag, world,  0, 0, 0);
+		player.openGui(CampingMod.instance, GuiIds.GUICamping, world,  0, 0, 0);
 	}
 }

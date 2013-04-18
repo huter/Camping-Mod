@@ -16,7 +16,7 @@ public class ContainerTent extends Container {
 		tent = par2TileEntityTent;
 		int var3;
 		int x = 0;
-		
+
 		for (var3 = 0; var3 < 5; ++var3) 
 		{
 			for (int var4 = 0; var4 < 11; ++var4) 

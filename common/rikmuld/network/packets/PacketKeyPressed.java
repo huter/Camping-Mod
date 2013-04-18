@@ -9,8 +9,6 @@ import net.minecraft.network.INetworkManager;
 import rikmuld.core.helper.BackpackHelper;
 import rikmuld.core.helper.KeyHelper;
 import rikmuld.item.CampingItem;
-import rikmuld.item.CampingItemArmor;
-import rikmuld.item.armor.ArmorBackpack;
 import rikmuld.network.PacketTypeHandler;
 import cpw.mods.fml.common.network.Player;
 

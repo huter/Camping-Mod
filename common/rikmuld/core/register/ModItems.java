@@ -7,8 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import rikmuld.core.lib.Config;
 import rikmuld.core.lib.Items;
-import rikmuld.item.armor.ArmorBackpack;
 import rikmuld.item.food.FoodCamping;
+import rikmuld.item.normal.Backpack;
 import rikmuld.item.normal.GuideBook;
 import rikmuld.item.normal.Marshmellow;
 import rikmuld.item.normal.RadishSeed;
@@ -35,7 +35,7 @@ public class ModItems {
 		Marshmallow = new Marshmellow(Items.ITEM_MARSH_ID);
 		CampingFood = new FoodCamping(Items.ITEM_FOOD_ID);
 		TentParts = new TentParts(Items.ITEM_TENT_PARTS_ID);
-		CampingBag = new ArmorBackpack(Items.ITEM_TOOL_BACK_ID);
+		CampingBag = new Backpack(Items.ITEM_TOOL_BACK_ID);
 		radishSeed = new RadishSeed(Items.ITEM_RADISH_SEED_ID, ModBlocks.RadishCrop.blockID, Block.grass.blockID);
 		guideBook = new GuideBook(Items.ITEM_BOOK_GUIDE_ID);
 		

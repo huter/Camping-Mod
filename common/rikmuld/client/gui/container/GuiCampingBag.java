@@ -8,8 +8,6 @@ import org.lwjgl.opengl.GL11;
 import rikmuld.core.lib.Textures;
 import rikmuld.inventory.container.ContainerCampingBag;
 import rikmuld.inventory.inventory.InventoryCampingBag;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class GuiCampingBag extends GuiContainer {
    	
@@ -25,7 +23,7 @@ public class GuiCampingBag extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
-		fontRenderer.drawString("Camping Bag", 43, 6, 4210752);
+		fontRenderer.drawString("Camping Bag", 46, 4, 4210752);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package rikmuld.inventory.inventory;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.item.ItemStack;
@@ -11,6 +12,7 @@ public class InventoryCampingBag extends InventoryBasic {
 	private EntityPlayer playerEntity;
 	private boolean reading = false;
 	private int backpackHelp = 0;
+	static Minecraft mc;
 	
 	public InventoryCampingBag(EntityPlayer player) 
 	{
@@ -28,7 +30,6 @@ public class InventoryCampingBag extends InventoryBasic {
 		{
 			saveInventory();
 			saveBackpackInventory();
-			
 		}
 		if(getStackInSlot(0)==null)
 		{
