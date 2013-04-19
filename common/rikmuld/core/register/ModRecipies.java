@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import rikmuld.core.helper.ItemStackHelper;
-import rikmuld.core.helper.RecipieHelper;
+import rikmuld.core.helper.RecipeHelper;
 import rikmuld.core.helper.ToolHelper;
 import rikmuld.core.lib.Config;
 
@@ -42,39 +42,39 @@ public class ModRecipies {
 	
 	public static void init() 
 	{
-		if(insta) RecipieHelper.addShapelessRecipe(campfire[4], 1, campfire[0], campfire[1], campfire[2], campfire[3]);
-		RecipieHelper.addShapelessRecipe(marshmallow[1], 3, stick, stick, stick, marshmallow[0]);
+		if(insta) RecipeHelper.addShapelessRecipe(campfire[4], 1, campfire[0], campfire[1], campfire[2], campfire[3]);
+		RecipeHelper.addShapelessRecipe(marshmallow[1], 3, stick, stick, stick, marshmallow[0]);
 		
 		if(!peasfull)
 		{
-			RecipieHelper.addRecipe(campfire[3], 1, " 0 ", "010", " 0 ", '0', enderp, '1', campfire[0]);
+			RecipeHelper.addRecipe(campfire[3], 1, " 0 ", "010", " 0 ", '0', enderp, '1', campfire[0]);
 			for(ItemStack[] tool : ToolHelper.toolStacks)
 			{
-				RecipieHelper.addShapelessRecipe(tentParts[0], 4, ItemStackHelper.getWildValleu(tool[0]), iron);
-				RecipieHelper.addShapelessRecipe(tentParts[1], 10, ItemStackHelper.getWildValleu(tool[0]), string, string, string, string, string, string);
+				RecipeHelper.addShapelessRecipe(tentParts[0], 4, ItemStackHelper.getWildValue(tool[0]), iron);
+				RecipeHelper.addShapelessRecipe(tentParts[1], 10, ItemStackHelper.getWildValue(tool[0]), string, string, string, string, string, string);
 			}
 		}
 		else
 		{
-			RecipieHelper.addRecipe(campfire[3], 1, " 0 ", "010", " 0 ", '0', gold, '1', campfire[0]);
+			RecipeHelper.addRecipe(campfire[3], 1, " 0 ", "010", " 0 ", '0', gold, '1', campfire[0]);
 			for(ItemStack[] tool : ToolHelper.toolStacks)
 			{
-				RecipieHelper.addShapelessRecipe(tentParts[0], 4, ItemStackHelper.getWildValleu(tool[0]), iron);
-				RecipieHelper.addShapelessRecipe(tentParts[1], 10, ItemStackHelper.getWildValleu(tool[0]), leather, leather, leather, leather, leather, leather);
+				RecipeHelper.addShapelessRecipe(tentParts[0], 4, ItemStackHelper.getWildValue(tool[0]), iron);
+				RecipeHelper.addShapelessRecipe(tentParts[1], 10, ItemStackHelper.getWildValue(tool[0]), leather, leather, leather, leather, leather, leather);
 			}
 		}
 
-		RecipieHelper.addRecipe(tent, 1, "000", "0 0", "1 1", '0', tentParts[1], '1', tentParts[0]);
-		RecipieHelper.addRecipe(tentParts[2], 1, "000", '0', ItemStackHelper.getWildValleu(wool[0]));
-		RecipieHelper.addRecipe(toolCamp[0], 1,  "010", "010", "010", '0', dye[1], '1', iron);
-		RecipieHelper.addRecipe(toolCamp2[0], 1,  "121", "101", "121", '0', toolCamp[0], '1', iron, '2', dye[1]);
-		RecipieHelper.addRecipe(campfire[0], 1, " 0 ", "010", "222", '0', torch, '1', flint, '2', stone);
-		RecipieHelper.addRecipe(campfire[1], 1, " 0 ", "010", " 0 ", '0', furnace, '1', campfire[0]);
-		RecipieHelper.addRecipe(campfire[2], 1, " 0 ", "010", " 0 ", '0', flintst, '1', campfire[0]);
+		RecipeHelper.addRecipe(tent, 1, "000", "0 0", "1 1", '0', tentParts[1], '1', tentParts[0]);
+		RecipeHelper.addRecipe(tentParts[2], 1, "000", '0', ItemStackHelper.getWildValue(wool[0]));
+		RecipeHelper.addRecipe(toolCamp[0], 1,  "010", "010", "010", '0', dye[1], '1', iron);
+		RecipeHelper.addRecipe(toolCamp2[0], 1,  "121", "101", "121", '0', toolCamp[0], '1', iron, '2', dye[1]);
+		RecipeHelper.addRecipe(campfire[0], 1, " 0 ", "010", "222", '0', torch, '1', flint, '2', stone);
+		RecipeHelper.addRecipe(campfire[1], 1, " 0 ", "010", " 0 ", '0', furnace, '1', campfire[0]);
+		RecipeHelper.addRecipe(campfire[2], 1, " 0 ", "010", " 0 ", '0', flintst, '1', campfire[0]);
 
-		RecipieHelper.addRecipe(marshmallow[0], 4, "010", "020", "030", '0', sugar, '1', waterbottle, '2', egg, '3', bowl);
-		RecipieHelper.addRecipe(campingBag[0], 1, "000", "0 0", "000", '0', tentParts[1]);
-		RecipieHelper.addRecipe(campingBag[1], 1, "000", "010", "000", '0', tentParts[1], '1', campingBag[0]);
-		RecipieHelper.addRecipe(campingBag[2], 1, "000", "010", "000", '0', tentParts[1], '1', campingBag[1]);
+		RecipeHelper.addRecipe(marshmallow[0], 4, "010", "020", "030", '0', sugar, '1', waterbottle, '2', egg, '3', bowl);
+		RecipeHelper.addRecipe(campingBag[0], 1, "000", "0 0", "000", '0', tentParts[1]);
+		RecipeHelper.addRecipe(campingBag[1], 1, "000", "010", "000", '0', tentParts[1], '1', campingBag[0]);
+		RecipeHelper.addRecipe(campingBag[2], 1, "000", "010", "000", '0', tentParts[1], '1', campingBag[1]);
 	}
 }

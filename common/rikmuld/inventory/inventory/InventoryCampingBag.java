@@ -1,6 +1,6 @@
 package rikmuld.inventory.inventory;
 
-import net.minecraft.client.Minecraft;
+import rikmuld.core.register.ModLogger;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.item.ItemStack;
@@ -11,17 +11,46 @@ public class InventoryCampingBag extends InventoryBasic {
 
 	private EntityPlayer playerEntity;
 	private boolean reading = false;
-	private int backpackHelp = 0;
-	static Minecraft mc;
-	
-	public InventoryCampingBag(EntityPlayer player) 
+	private ItemStack theBackpack;
+	public InventoryCamping campInv;
+	public static int backpackNum;
+	public boolean usedInCampingInv;
+
+	public InventoryCampingBag(EntityPlayer player, ItemStack is, boolean usedInCampingInventory) 
 	{
-		super("playerBackInv", false, 28);		
+		super("", false, (is.getItemDamage()+1)*9);
+
 		playerEntity = player;
+		theBackpack = is;
+		backpackNum = is.getItemDamage();
+		usedInCampingInv = usedInCampingInventory;
+		
+		if (!hasInventory(is.getTagCompound())) 
+		{
+			createInventory();
+		}
 		loadInventory();
-		loadBackpackInventory();
 	}
 	
+	public InventoryCampingBag(EntityPlayer player, ItemStack is, boolean usedInCampingInventory, InventoryCamping campingInv) 
+	{
+		super("", false, (is.getItemDamage()+1)*9);
+
+		playerEntity = player;
+		theBackpack = is;
+		backpackNum = is.getItemDamage();
+		campInv = campingInv;
+		campInv.setCampingBagInv(this);
+		usedInCampingInv = usedInCampingInventory;
+		
+		if (!hasInventory(is.getTagCompound())) 
+		{
+			createInventory();
+		}
+		loadInventory();
+	}
+
+
 	@Override
 	public void onInventoryChanged() 
 	{
@@ -29,11 +58,14 @@ public class InventoryCampingBag extends InventoryBasic {
 		if (!reading) 
 		{
 			saveInventory();
-			saveBackpackInventory();
 		}
-		if(getStackInSlot(0)==null)
+	}
+	
+	public void onCampingInventoryChanged() 
+	{
+		if(campInv.getStackInSlot(0)==null)
 		{
-			for (int i = 1; i < 28; i++) 
+			for (int i = 0; i <  9 *(backpackNum+1); i++) 
 			{
 				if (getStackInSlot(i) != null) 
 				{
@@ -41,74 +73,70 @@ public class InventoryCampingBag extends InventoryBasic {
 				}
 			}
 		}
-	}
-
-	private void saveBackpackInventory() 
-	{
-		if(this.isNewBackpack()) loadBackpackInventory();
-		if(getStackInSlot(0)!=null)writeToNBT(true);
-	}
-
-	private void loadBackpackInventory()
-	{
-		if(getStackInSlot(0)!=null)readFromNBT(true);
+		if(campInv.getStackInSlot(0)!=null)
+		{
+			loadInventory();
+		}
+		saveInventory();
 	}
 
 	@Override
 	public void openChest() 
 	{
 		loadInventory();
-		loadBackpackInventory();
 	}
 
 	@Override
 	public void closeChest() 
 	{
 		saveInventory();
-		saveBackpackInventory();	
 	}
-	
-	public int getInventorySize()
+
+	public static int getInventorySize(ItemStack is)
 	{
-		if (this.getStackInSlot(0)==null) return 1;
-		else if (this.getStackInSlot(0).getItemDamage()==0) return 10;
-		else if (this.getStackInSlot(0).getItemDamage()==0) return 19;
-		else if (this.getStackInSlot(0).getItemDamage()==0) return 28;
-		else return 1;
+		return 9 * (backpackNum+1);
+	}
+
+	private boolean hasInventory(NBTTagCompound nbt)
+	{
+		return (nbt != null && (nbt.hasKey("BackpackInv")));
+	}
+
+	private void createInventory() 
+	{
+		if(!usedInCampingInv||campInv.getStackInSlot(0)!=null)writeToNBT();
+	}
+
+	private void setNBT() 
+	{
+		if(playerEntity.getCurrentEquippedItem() != null&&!usedInCampingInv) 
+		{
+			playerEntity.getCurrentEquippedItem().setTagCompound(theBackpack.getTagCompound());
+		}
+		else if(theBackpack!=null&&campInv.getStackInSlot(0)!=null)
+		{
+			campInv.getStackInSlot(0).setTagCompound(theBackpack.getTagCompound());
+		}
 	}
 
 	public void loadInventory() 
 	{
-		readFromNBT(false);
+		if(!usedInCampingInv||campInv.getStackInSlot(0)!=null)readFromNBT();
 	}
 
 	public void saveInventory() 
 	{
-		writeToNBT(false);
+		if(!usedInCampingInv||campInv.getStackInSlot(0)!=null)writeToNBT();
+		if(!usedInCampingInv||campInv.getStackInSlot(0)!=null)setNBT();
 	}
 
-	private void writeToNBT(boolean backpackInv) 
-	{	
-		if(!backpackInv)
+	private void writeToNBT() 
+	{
+		if(!usedInCampingInv||campInv.getStackInSlot(0)!=null)
 		{
-			NBTTagList backpack = new NBTTagList();
-			if (getStackInSlot(0) != null) 
-			{
-				NBTTagCompound slot0 = new NBTTagCompound();
-				slot0.setByte("Back", (byte) 0);
-				getStackInSlot(0).writeToNBT(slot0);
-				backpack.appendTag(slot0);
-			}
-			
-			NBTTagCompound theBack = new NBTTagCompound();
-			theBack.setTag("theBackPack", backpack);
-			
-			playerEntity.getEntityData().setCompoundTag("theBackpack", theBack);
-		}
-		else
-		{
+			ModLogger.logDebug(0);
 			NBTTagList itemList = new NBTTagList();
-			for (int i = 1; i < 28; i++) 
+			for (int i = 0; i < getSizeInventory(); i++) 
 			{
 				if (getStackInSlot(i) != null) 
 				{
@@ -118,67 +146,40 @@ public class InventoryCampingBag extends InventoryBasic {
 					itemList.appendTag(slotEntry);
 				}
 			}
-
+	
 			NBTTagCompound inventory = new NBTTagCompound();
 			inventory.setTag("BackpackItems", itemList);
-
-			if (getStackInSlot(0).stackTagCompound == null) 
+	
+			if (theBackpack.stackTagCompound == null) 
 			{
-				getStackInSlot(0).setTagCompound(new NBTTagCompound());
+				theBackpack.setTagCompound(new NBTTagCompound());
 			}
-			getStackInSlot(0).stackTagCompound.setCompoundTag("BackpackInv", inventory);
+			theBackpack.stackTagCompound.setCompoundTag("BackpackInv", inventory);
 		}
 	}
 
-	private void readFromNBT(boolean backpackInv) 
+	private void readFromNBT() 
 	{
-		reading = true;	
-
-		if(!backpackInv)
+		reading = true;
+		if(!usedInCampingInv||campInv.getStackInSlot(0)!=null)
 		{
-			NBTTagList backpack = playerEntity.getEntityData().getCompoundTag("theBackpack").getTagList("theBackPack");
-			for (int i = 0; i < backpack.tagCount(); i++) 
+			ModLogger.logDebug(0);
+			if (theBackpack.stackTagCompound == null) 
 			{
-				NBTTagCompound slotEntry = (NBTTagCompound) backpack.tagAt(i);
-				int j = slotEntry.getByte("Back") & 0xff;
-				if (j >= 0 && j < 1) 
-				{
-					setInventorySlotContents(j, ItemStack.loadItemStackFromNBT(slotEntry));
-				}
+				theBackpack.setTagCompound(new NBTTagCompound());
 			}
-		}
-		else
-		{
-			if (getStackInSlot(0).stackTagCompound == null) 
-			{
-				getStackInSlot(0).setTagCompound(new NBTTagCompound());
-			}
-
-			NBTTagList itemList = getStackInSlot(0).getTagCompound().getCompoundTag("BackpackInv").getTagList("BackpackItems");
+	
+			NBTTagList itemList = theBackpack.stackTagCompound.getCompoundTag("BackpackInv").getTagList("BackpackItems");
 			for (int i = 0; i < itemList.tagCount(); i++) 
 			{
 				NBTTagCompound slotEntry = (NBTTagCompound) itemList.tagAt(i);
 				int j = slotEntry.getByte("BackpackSlot") & 0xff;
-				if (j >= 1 && j < 28) 
+				if (j >= 0 && j < getSizeInventory()) 
 				{
 					setInventorySlotContents(j, ItemStack.loadItemStackFromNBT(slotEntry));
 				}
 			}
 		}
-		
 		reading = false;
-	}
-	
-	private boolean isNewBackpack() 
-	{
-		if(playerEntity.getEntityData().hasKey("backpackHelp"))backpackHelp = playerEntity.getEntityData().getInteger("backpackHelp");
-		
-		if(getStackInSlot(0)==null) backpackHelp = 1;
-		if(getStackInSlot(0)!=null&& backpackHelp != 1) backpackHelp = 0;
-		if(getStackInSlot(0)!=null&& backpackHelp == 1) backpackHelp = 2;
-		
-		playerEntity.getEntityData().setInteger("backpackHelp", backpackHelp);
-		
-		return (backpackHelp==2) ? true:false;
 	}
 }

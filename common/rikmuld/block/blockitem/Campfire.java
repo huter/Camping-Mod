@@ -65,6 +65,7 @@ public class Campfire extends CampingBlockItem{
     	{
     		return false;
     	}
+    	
     }
 
     @SideOnly(Side.CLIENT)

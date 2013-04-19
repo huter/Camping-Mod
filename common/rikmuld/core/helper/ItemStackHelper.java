@@ -18,7 +18,7 @@ public class ItemStackHelper {
 		return stack;
 	}
 	
-	public static ItemStack getWildValleu(ItemStack input)
+	public static ItemStack getWildValue(ItemStack input)
 	{
 		ItemStack stack = new ItemStack(input.itemID, 1, OreDictionary.WILDCARD_VALUE);
 		return stack;

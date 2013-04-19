@@ -2,6 +2,7 @@ package rikmuld.client.gui.screen;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
@@ -152,15 +153,15 @@ public class GuiGuideTent extends GuiGuide{
 	        }
 			if(page==3)
 	        {
-					GL11.glDisable(GL11.GL_LIGHTING);
 					GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 	        		GL11.glEnable(GL11.GL_COLOR_MATERIAL);
+	        		RenderHelper.enableGUIStandardItemLighting();
 					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, wool, ((this.width - this.bookImageWidth) / 2)+107, ((this.height - this.bookImageHeight) / 2)+102);
 					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, wool1, ((this.width - this.bookImageWidth) / 2)+124, ((this.height - this.bookImageHeight) / 2)+102);
 					this.itemRender.renderItemIntoGUI(this.mc.fontRenderer, this.mc.renderEngine, wool2, ((this.width - this.bookImageWidth) / 2)+141, ((this.height - this.bookImageHeight) / 2)+102);
-					GL11.glDisable(GL11.GL_LIGHTING);
 					GL11.glDepthMask(true);
 					GL11.glEnable(GL11.GL_DEPTH_TEST);
+//					RenderHelper.enableStandardItemLighting();
 			}
 		}
 	}

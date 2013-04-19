@@ -3,7 +3,7 @@ package rikmuld.core.helper;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class RecipieHelper {
+public class RecipeHelper {
 	
 	public static void addRecipe(ItemStack output, int count, Object... input)
 	{
