@@ -68,14 +68,14 @@ public class ContainerCamping extends Container {
 		
 		if(campingInventory.getStackInSlot(1)!=null)
 		{
-			this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, -50, 80));
-			this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix2, this.craftResult2, 0, 250, 80));	
+			this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, -45, 97));
+			this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix2, this.craftResult2, 0, 208, 97));	
 			
 			for (int l = 0; l < 3; ++l)
 	        {
 	            for (int i1 = 0; i1 < 3; ++i1)
 	            {
-	                this.addSlotToContainer(new Slot(this.craftMatrix, i1 + l * 3, -50 + i1 * 18, 17 + l * 18));
+	                this.addSlotToContainer(new Slot(this.craftMatrix, i1 + l * 3, -64 + i1 * 18, 3 + l * 18));
 	            }
 	        }
 			 
@@ -83,7 +83,7 @@ public class ContainerCamping extends Container {
 	        {
 	            for (int i1 = 0; i1 < 3; ++i1)
 	            {
-	                this.addSlotToContainer(new Slot(this.craftMatrix2, i1 + l * 3, 250 + i1 * 18, 17 + l * 18));
+	                this.addSlotToContainer(new Slot(this.craftMatrix2, i1 + l * 3, 189 + i1 * 18, 3 + l * 18));
 	            }
 	        }
 			 

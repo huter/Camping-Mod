@@ -48,7 +48,7 @@ public class PacketKeyPressed extends PacketCamping {
 	        {
 	            if(thePlayer.getCurrentEquippedItem().getItem() instanceof CampingItem)((CampingItem) thePlayer.getCurrentEquippedItem().getItem()).doKeyAction(thePlayer, thePlayer.getCurrentEquippedItem(), key);
 	        }
-	        else if(key.equals(KeyHelper.keyBackpack))
+	        if(key.equals(KeyHelper.keyBackpack))
 	        {
 	        	BackpackHelper.doKeyAction(thePlayer, key);
 	        }

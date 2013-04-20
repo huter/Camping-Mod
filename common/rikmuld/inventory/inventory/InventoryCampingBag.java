@@ -1,6 +1,5 @@
 package rikmuld.inventory.inventory;
 
-import rikmuld.core.register.ModLogger;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.item.ItemStack;
@@ -104,7 +103,7 @@ public class InventoryCampingBag extends InventoryBasic {
 
 	private void createInventory() 
 	{
-		if(!usedInCampingInv||campInv.getStackInSlot(0)!=null)writeToNBT();
+		writeToNBT();
 	}
 
 	private void setNBT() 
@@ -121,20 +120,19 @@ public class InventoryCampingBag extends InventoryBasic {
 
 	public void loadInventory() 
 	{
-		if(!usedInCampingInv||campInv.getStackInSlot(0)!=null)readFromNBT();
+		readFromNBT();
 	}
 
 	public void saveInventory() 
 	{
-		if(!usedInCampingInv||campInv.getStackInSlot(0)!=null)writeToNBT();
-		if(!usedInCampingInv||campInv.getStackInSlot(0)!=null)setNBT();
+		writeToNBT();
+		setNBT();
 	}
 
 	private void writeToNBT() 
 	{
 		if(!usedInCampingInv||campInv.getStackInSlot(0)!=null)
 		{
-			ModLogger.logDebug(0);
 			NBTTagList itemList = new NBTTagList();
 			for (int i = 0; i < getSizeInventory(); i++) 
 			{
@@ -163,7 +161,6 @@ public class InventoryCampingBag extends InventoryBasic {
 		reading = true;
 		if(!usedInCampingInv||campInv.getStackInSlot(0)!=null)
 		{
-			ModLogger.logDebug(0);
 			if (theBackpack.stackTagCompound == null) 
 			{
 				theBackpack.setTagCompound(new NBTTagCompound());

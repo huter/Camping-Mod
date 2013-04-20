@@ -1,8 +1,5 @@
 package rikmuld.inventory.inventory;
 
-import java.util.logging.Level;
-
-import rikmuld.core.register.ModLogger;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryBasic;
@@ -16,7 +13,7 @@ public class InventoryCamping extends InventoryBasic {
 	private boolean reading = false;
 	static Minecraft mc;
 	public InventoryCampingBag campingBagInv;
-	public int backpackHelp = 0;
+	public int backpackSwitch = 0;
 	
 	public InventoryCamping(EntityPlayer player) 
 	{
@@ -37,14 +34,44 @@ public class InventoryCamping extends InventoryBasic {
 	public void onInventoryChanged() 
 	{
 		super.onInventoryChanged();
+		boolean HelperBackpack = false;
+		if(playerEntity.getEntityData().hasKey("backpackSwitch"))backpackSwitch = playerEntity.getEntityData().getInteger("backpackSwitch");
+				
 		if (!reading) 
 		{
 			saveInventory();
 		}
-		if(campingBagInv!=null)
+		
+		if(getStackInSlot(0)!=null)
 		{
-			campingBagInv.onCampingInventoryChanged();
+			if (getStackInSlot(0).stackTagCompound == null) 
+			{
+				getStackInSlot(0).setTagCompound(new NBTTagCompound());
+			}
+			
+			if(getStackInSlot(0).stackTagCompound.hasKey("HelperBackpack"))HelperBackpack = getStackInSlot(0).stackTagCompound.getBoolean("HelperBackpack");
+			if(!HelperBackpack)
+			{
+				if(campingBagInv!=null)
+				{
+					 campingBagInv.onCampingInventoryChanged();
+					 HelperBackpack = true;
+				}
+			}
+			getStackInSlot(0).stackTagCompound.setBoolean("HelperBackpack", HelperBackpack);
 		}
+		
+		if(getStackInSlot(0)==null && backpackSwitch == 1)
+		{
+			 backpackSwitch = 0;
+			 if(campingBagInv!=null) campingBagInv.onCampingInventoryChanged();
+		}
+		if(getStackInSlot(0)!=null && backpackSwitch == 0)
+		{
+			 backpackSwitch = 1;
+			 if(campingBagInv!=null) campingBagInv.onCampingInventoryChanged();
+		}
+		playerEntity.getEntityData().setInteger("backpackSwitch", backpackSwitch);
 	}
 	
 	@Override
