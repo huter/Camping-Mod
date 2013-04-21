@@ -46,7 +46,7 @@ public class ContainerCamping extends Container {
 			this.addSlotToContainer(slot);
 		}
 		
-		this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 25, 180));
+		this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, -45, 97));
 		this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix2, this.craftResult2, 0, 208, 97));	
 		
 		for (int l = 0; l < 3; ++l)

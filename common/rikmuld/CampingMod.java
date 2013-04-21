@@ -84,7 +84,8 @@ public class CampingMod {
 		 ModLogger.log(Level.INFO, ModInfo.MOD_NAME + " has loaded successfylly.");
 	}
 	
-	/* TODO: fix the invertory backpack glich bug thingy!!!!!!!
+	/* 
+	 * TODO: finalise the camping inventory. fix the crafting drop click bug, make items drop on close wehn in crafting inv, make backpack working for backpack on backpack switsh.
 	 * TODO: finish the guide books.
 	 * TODO: make 2 new config options 1 for peasfull mode recipies, 1 for set home to tent.
 	 * 
