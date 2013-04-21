@@ -12,86 +12,72 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
 import rikmuld.inventory.inventory.InventoryCamping;
-import rikmuld.inventory.inventory.InventoryCampingBag;
+import rikmuld.inventory.slot.BackpackNoSlot;
 import rikmuld.inventory.slot.BackpackOnlySlot;
-import rikmuld.inventory.slot.BackpackSlot;
 import rikmuld.inventory.slot.CamperToolOnlySlot;
+import rikmuld.inventory.slot.CampingSlot;
 
 public class ContainerCamping extends Container {
 	
-	public InventoryCamping campingInv;
-	public InventoryCampingBag backpackInv;
 	public ItemStack backpack;
 	public World worldObj;
+	public EntityPlayer player;
+	public InventoryCamping campingInv;
 	public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
 	public InventoryCrafting craftMatrix2 = new InventoryCrafting(this, 3, 3);
     public IInventory craftResult = new InventoryCraftResult();
     public IInventory craftResult2 = new InventoryCraftResult();
-	
-	public ContainerCamping(InventoryPlayer playerInventory, InventoryCamping campingInventory) {
+    
+	public ContainerCamping(InventoryPlayer playerInventory,  InventoryCamping campInv) {
 		
 		this.worldObj = playerInventory.player.worldObj;
-		int var3;
+		this.player = playerInventory.player;
 		
-		this.addSlotToContainer(new BackpackOnlySlot(campingInventory, 0, 142, 1));
-		this.addSlotToContainer(new CamperToolOnlySlot(campingInventory, 1, 17, 1));
+		campingInv = campInv;
 		
-		campingInventory.openChest();
+		this.addSlotToContainer(new BackpackOnlySlot(campingInv, 0, 142, 1));
+		this.addSlotToContainer(new CamperToolOnlySlot(campingInv, 1, 17, 1));
 		
-		if(campingInventory.getStackInSlot(0)!=null)
+		for (int row = 0; row < 3; ++row) for (int col = 0; col < 9; ++col) 
 		{
-			backpackInv = new InventoryCampingBag(playerInventory.player, campingInventory.getStackInSlot(0), true, campingInventory);
-			campingInventory.setCampingBagInv(backpackInv);
-			
-			if(campingInventory.getStackInSlot(0).getItemDamage()==0)
-			{
-				for (int row = 0; row < 3; ++row) for (int col = 0; col < 3; ++col) 
-				{
-					this.addSlotToContainer(new BackpackSlot(backpackInv, col + row * 3, 62 + col * 18, 24 + row * 18));
-				}
-			}
-			else if(campingInventory.getStackInSlot(0).getItemDamage()==1)
-			{
-				for (int row = 0; row < 3; ++row) for (int col = 0; col < 6; ++col) 
-				{
-					this.addSlotToContainer(new BackpackSlot(backpackInv, col + row * 6, 35 + col * 18, 24 + row * 18));
-				}
-			}
-			else if(campingInventory.getStackInSlot(0).getItemDamage()==2)
-			{
-				for (int row = 0; row < 3; ++row) for (int col = 0; col < 9; ++col) 
-				{
-					this.addSlotToContainer(new BackpackSlot(backpackInv, col + row * 9, 8 + col * 18, 24 + row * 18));
-				}
-			}
+			BackpackNoSlot slot = new BackpackNoSlot(campingInv, col + row * 9+2, 8 + col * 18, 24 + row * 18);
+			slot.noItemsValid = true;
+			campingInv.backpackSlots.add(slot);
+			this.addSlotToContainer(slot);
 		}
 		
-		if(campingInventory.getStackInSlot(1)!=null)
-		{
-			this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, -45, 97));
-			this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix2, this.craftResult2, 0, 208, 97));	
-			
-			for (int l = 0; l < 3; ++l)
-	        {
-	            for (int i1 = 0; i1 < 3; ++i1)
-	            {
-	                this.addSlotToContainer(new Slot(this.craftMatrix, i1 + l * 3, -64 + i1 * 18, 3 + l * 18));
-	            }
-	        }
-			 
-			for (int l = 0; l < 3; ++l)
-	        {
-	            for (int i1 = 0; i1 < 3; ++i1)
-	            {
-	                this.addSlotToContainer(new Slot(this.craftMatrix2, i1 + l * 3, 189 + i1 * 18, 3 + l * 18));
-	            }
-	        }
-			 
-	        this.onCraftMatrixChanged(this.craftMatrix);
-	        this.onCraftMatrixChanged(this.craftMatrix2);
-		}
+		this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 25, 180));
+		this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix2, this.craftResult2, 0, 208, 97));	
 		
-		for (var3 = 0; var3 < 3; ++var3) 
+		for (int l = 0; l < 3; ++l)
+        {
+            for (int i1 = 0; i1 < 3; ++i1)
+            {
+            	CampingSlot slot = new CampingSlot(this.craftMatrix, i1 + l * 3, -64 + i1 * 18, 3 + l * 18);
+            	slot.noItemsValid = true;
+            	campingInv.craftingSlots.add(slot);
+                this.addSlotToContainer(slot);
+            }
+        }
+		
+		for (int l = 0; l < 3; ++l)
+        {
+            for (int i1 = 0; i1 < 3; ++i1)
+            {
+            	CampingSlot slot = new CampingSlot(this.craftMatrix2, i1 + l * 3, 189 + i1 * 18, 3 + l * 18);
+            	slot.noItemsValid = true;
+            	campingInv.craftingSlots.add(slot);
+                this.addSlotToContainer(slot);
+            }
+        }
+
+		campingInv.containerExsists = true;
+		
+        this.onCraftMatrixChanged(this.craftMatrix);
+        this.onCraftMatrixChanged(this.craftMatrix2);
+		
+		
+		for (int var3 = 0; var3 < 3; ++var3) 
 		{
 			for (int var4 = 0; var4 < 9; ++var4) 
 			{
@@ -99,12 +85,12 @@ public class ContainerCamping extends Container {
 			}
 		}
 
-		for (var3 = 0; var3 < 9; ++var3) 
+		for (int var3 = 0; var3 < 9; ++var3) 
 		{
 			this.addSlotToContainer(new Slot(playerInventory, var3, 8 + var3 * 18, 148));
 		}
 		
-		campingInv = campingInventory;
+		campingInv.openChest();
 	}
 	
 	public void onCraftMatrixChanged(IInventory par1IInventory)
@@ -119,6 +105,7 @@ public class ContainerCamping extends Container {
 		return true;
 	}
 
+	@Override
 	public void onCraftGuiClosed(EntityPlayer par1EntityPlayer)
     {
         super.onCraftGuiClosed(par1EntityPlayer);
@@ -156,15 +143,15 @@ public class ContainerCamping extends Container {
 				ItemStack itemstack1 = slot.getStack();
 				itemstack = itemstack1.copy();
 				
-				if (i < backpackInv.getInventorySize(null)) 
+				if (i < campingInv.getInventorySize()) 
 				{
-					if (!mergeItemStack(itemstack1, backpackInv.getInventorySize(null), inventorySlots.size(), true)) 
+					if (!mergeItemStack(itemstack1, campingInv.getInventorySize(), inventorySlots.size(), true)) 
 					{
 						return null;
 					}
 				} 
 				
-				else if (!mergeItemStack(itemstack1, 0, backpackInv.getInventorySize(null), false)) 
+				else if (!mergeItemStack(itemstack1, 0, campingInv.getInventorySize(), false)) 
 				{
 					return null;
 				}
@@ -182,4 +169,10 @@ public class ContainerCamping extends Container {
 		}
 		return itemstack;
 	}
+	
+	@Override
+    public boolean func_94530_a(ItemStack par1ItemStack, Slot par2Slot)
+    {
+        return par2Slot.inventory != this.craftResult && super.func_94530_a(par1ItemStack, par2Slot);
+    }
 }

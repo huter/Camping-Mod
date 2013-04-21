@@ -7,6 +7,8 @@ import rikmuld.item.normal.Backpack;
 
 public class BackpackOnlySlot extends Slot {
 	
+	public boolean noItemsValid = false;
+	
 	public BackpackOnlySlot(IInventory inventory, int slotIndex, int xPos, int yPos) 
 	{
 		super(inventory, slotIndex, xPos, yPos);
@@ -14,6 +16,7 @@ public class BackpackOnlySlot extends Slot {
 
 	public boolean isItemValid(ItemStack is) 
 	{
-        return (is != null && is.getItem() instanceof Backpack) ? true : false;
+		if(!noItemsValid) return (is != null && is.getItem() instanceof Backpack) ? true : false;
+		else return false;
     }
 }

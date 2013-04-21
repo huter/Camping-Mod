@@ -47,9 +47,8 @@ public class CommonProxy implements IGuiHandler {
     public static GuiGuideEquipment guideEquipment;
     public static GuiGuideFood guideFood;
     public static GuiGuideWorld guideWorld;
-    
-    InventoryCamping campingBagInv = null;
-    InventoryCampingBag singleCampingBagInv = null;
+
+    InventoryCampingBag CampingBagInv = null;
     
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) 
@@ -74,14 +73,13 @@ public class CommonProxy implements IGuiHandler {
 		}
 		if (ID == GuiIds.GUICamping) 
 		{
-			campingBagInv = new InventoryCamping(player);
-            return new ContainerCamping(player.inventory, campingBagInv);
+			return new ContainerCamping(player.inventory, new InventoryCamping(player));
 		}
 		if (ID == GuiIds.GUICampingBag) 
 		{
 			ItemStack backpack = player.getCurrentEquippedItem();
-			singleCampingBagInv = new InventoryCampingBag(player, backpack, false);
-            return new ContainerCampingBag(player.inventory, singleCampingBagInv, backpack);
+			CampingBagInv = new InventoryCampingBag(player, backpack);
+            return new ContainerCampingBag(player.inventory, CampingBagInv, backpack);
 		}
 		if (ID == GuiIds.GUICampTool) 
 		{
@@ -112,14 +110,13 @@ public class CommonProxy implements IGuiHandler {
 		}
 		if (ID == GuiIds.GUICamping) 
 		{
-			campingBagInv = new InventoryCamping(player);
-            return new GuiCamping(player.inventory, campingBagInv);
+            return new GuiCamping(player.inventory, new InventoryCamping(player));
 	    }
 		if (ID == GuiIds.GUICampingBag) 
 		{
 			ItemStack backpack = player.getCurrentEquippedItem();
-			singleCampingBagInv = new InventoryCampingBag(player, backpack, false);
-            return new GuiCampingBag(player.inventory, singleCampingBagInv, backpack);
+			CampingBagInv = new InventoryCampingBag(player, backpack);
+            return new GuiCampingBag(player.inventory, CampingBagInv, backpack);
 	    }
 		if (ID == GuiIds.GUIGuideCampfire) 
 		{

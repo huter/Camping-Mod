@@ -40,6 +40,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class Camper extends EntityAnimal implements  IMerchant, INpc{
 	 
 	  Random generator = new Random();
+	  String textureCamp;
 	  int isMale;
 	  
 	  boolean spawn;
@@ -63,6 +64,9 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
       
       this.isImmuneToFire = true;
       this.isMale = generator.nextInt(2);
+      
+      textureCamp = (isMale==0) ? (Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_MALE):(Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_FEMALE);       
+	  if(this.getEntityData().getString("texture").equals(""))this.getEntityData().setString("texture", textureCamp);
 	 }
 	 
 	 public Camper(World par1World, boolean AICampfireAvoid) 
@@ -126,8 +130,7 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
 	
 	 public String getTexture()
 	 {    
-	      if (isMale==0) return Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_MALE;      
-          else return Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_FEMALE;   
+		 return this.getEntityData().getString("texture");	 
 	 }
 	 
 	 protected boolean canDespawn()

@@ -39,27 +39,27 @@ public class CampsiteSimple extends WorldGenerator {
     {
 		RandomCampfire = ModBlocks.campfire.blockID;
 		
-    	if (randomcamp>=0&&randomcamp<70)
+    	if (randomcamp>=0&&randomcamp<=84)
     	{
 			Randommetadata = 0;
     	}
     	
-    	if (randomcamp>=70&&randomcamp<79)
+    	if (randomcamp>84&&randomcamp<=89)
     	{
 			Randommetadata = 1;
     	}
     	
-    	if (randomcamp>=79&&randomcamp<88)
+    	if (randomcamp>89&&randomcamp<=94)
     	{
 			Randommetadata = 2;
     	}
     	
-    	if (randomcamp>=88&&randomcamp<97)
+    	if (randomcamp>94&&randomcamp<=99)
     	{
     		Randommetadata = 3;
     	}
     	
-		if (randomcamp>=97&&randomcamp<=100)
+		if (randomcamp>99&&randomcamp<=100)
 		{
 			Randommetadata = 4;
 		}

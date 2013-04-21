@@ -20,8 +20,8 @@ public static ArrayList<Integer> keyItems = new ArrayList<Integer>();
 	public static void addKeyItem(Item item)
 	{		
 		keyItems.add(item.itemID);
-		LanguageRegistry.instance().addStringLocalization(keyCraft, "en_US", "Crafting Key");
-		LanguageRegistry.instance().addStringLocalization(keyBackpack, "en_US", "Open Backpack");
+		LanguageRegistry.instance().addStringLocalization(keyCraft, "en_US", "Camping: Crafting Key");
+		LanguageRegistry.instance().addStringLocalization(keyBackpack, "en_US", "Camping: Open Inventory");
 	}
 	
 	public static boolean hasKeyBind(ItemStack item)

@@ -6,7 +6,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import rikmuld.inventory.inventory.InventoryCampingBag;
-import rikmuld.inventory.slot.BackpackSlot;
+import rikmuld.inventory.slot.BackpackNoSlot;
 import rikmuld.item.normal.Backpack;
 
 public class ContainerCampingBag extends Container {
@@ -24,21 +24,21 @@ public class ContainerCampingBag extends Container {
 		{
 			for (int row = 0; row < 3; ++row) for (int col = 0; col < 3; ++col) 
 			{
-				this.addSlotToContainer(new BackpackSlot(backpackInventory, col + row * 3, 62 + col * 18, 18 + row * 18));
+				this.addSlotToContainer(new BackpackNoSlot(backpackInventory, col + row * 3, 62 + col * 18, 18 + row * 18));
 			}
 		}
 		else if(theBackpack.getItemDamage()==1)
 		{
 			for (int row = 0; row < 3; ++row) for (int col = 0; col < 6; ++col) 
 			{
-				this.addSlotToContainer(new BackpackSlot(backpackInventory, col + row * 6, 36 + col * 18, 18 + row * 18));
+				this.addSlotToContainer(new BackpackNoSlot(backpackInventory, col + row * 6, 36 + col * 18, 18 + row * 18));
 			}
 		}
 		else if(theBackpack.getItemDamage()==2)
 		{
 			for (int row = 0; row < 3; ++row) for (int col = 0; col < 9; ++col) 
 			{
-				this.addSlotToContainer(new BackpackSlot(backpackInventory, col + row * 9, 8 + col * 18, 18 + row * 18));
+				this.addSlotToContainer(new BackpackNoSlot(backpackInventory, col + row * 9, 8 + col * 18, 18 + row * 18));
 			}
 		}
 

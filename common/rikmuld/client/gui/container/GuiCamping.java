@@ -39,22 +39,24 @@ public class GuiCamping extends GuiContainer {
 	
 	private void addImg() 
 	{
-		drawTexturedModalRect(((this.width - this.xSize)/2)+16, ((this.height - this.ySize)/2)+7, 0, 180, 18, 18);
-		drawTexturedModalRect(((this.width - this.xSize)/2)+141, ((this.height - this.ySize)/2)+7, 0, 180, 18, 18);
+		drawTexturedModalRect(((this.width - this.xSize)/2)+16, ((this.height - this.ySize)/2)+7, 7, 96, 18, 18);
+		drawTexturedModalRect(((this.width - this.xSize)/2)+141, ((this.height - this.ySize)/2)+7, 7, 96, 18, 18);
+		drawTexturedModalRect(((this.width - this.xSize) / 2)+178, ((this.height - this.ySize) / 2), 176, 0, 73, 133); 
+		drawTexturedModalRect(((this.width - this.xSize) / 2)-75, ((this.height - this.ySize) / 2), 176, 0, 73, 133); 
 		
 		if(inventory.getStackInSlot(0)!=null)
 		{
 			switch (inventory.getStackInSlot(0).getItemDamage())
 			{
-				case 0: drawTexturedModalRect(((this.width - this.xSize) / 2)+61, ((this.height - this.ySize) / 2)+30, 0, 180, 54, 54); break;
-				case 1: drawTexturedModalRect(((this.width - this.xSize) / 2)+34, ((this.height - this.ySize) / 2)+30, 0, 180, 108, 54); break;
-				case 2: drawTexturedModalRect(((this.width - this.xSize) / 2)+7, ((this.height - this.ySize) / 2)+30, 0, 180, 162, 54); break;
+				case 0: drawTexturedModalRect(((this.width - this.xSize) / 2)+7, ((this.height - this.ySize) / 2)+30, 7, 96, 162, 18); break;
+				case 1: drawTexturedModalRect(((this.width - this.xSize) / 2)+7, ((this.height - this.ySize) / 2)+30, 7, 96, 162, 36); break;
+				case 2: drawTexturedModalRect(((this.width - this.xSize) / 2)+7, ((this.height - this.ySize) / 2)+30, 7, 96, 162, 54); break;
 			}
 		}
 		if (inventory.getStackInSlot(1)!=null)
 		{
-			drawTexturedModalRect(((this.width - this.xSize) / 2)+178, ((this.height - this.ySize) / 2), 176, 0, 73, 133); 
-			drawTexturedModalRect(((this.width - this.xSize) / 2)-75, ((this.height - this.ySize) / 2), 176, 0, 73, 133); 
+			drawTexturedModalRect(((this.width - this.xSize) / 2)+188, ((this.height - this.ySize) / 2)+9, 7, 96, 54, 54); 
+			drawTexturedModalRect(((this.width - this.xSize) / 2)-65, ((this.height - this.ySize) / 2)+9, 7, 96, 54, 54); 
 		}
 	}
 
