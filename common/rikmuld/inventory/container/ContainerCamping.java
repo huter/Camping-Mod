@@ -1,5 +1,9 @@
 package rikmuld.inventory.container;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -11,6 +15,7 @@ import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
+import rikmuld.core.register.ModItems;
 import rikmuld.inventory.inventory.InventoryCamping;
 import rikmuld.inventory.slot.BackpackNoSlot;
 import rikmuld.inventory.slot.BackpackOnlySlot;
@@ -112,36 +117,50 @@ public class ContainerCamping extends Container {
 	public ItemStack transferStackInSlot(EntityPlayer p, int i) 
 	{
 		ItemStack itemstack = null;
+		
+		int startNum = 2;
+		int endNum = 2;
+		
+		if(campingInv.getStackInSlot(0)!=null)endNum = ((campingInv.getStackInSlot(0).getItemDamage()+1)*9)+2;
+		
 		Slot slot = (Slot) inventorySlots.get(i);
-		if(campingInv.getStackInSlot(0)!=null)
+		
+		if (slot != null && slot.getHasStack()) 
 		{
-			if (slot != null && slot.getHasStack()) 
+			ItemStack itemstack1 = slot.getStack();
+			itemstack = itemstack1.copy();
+			
+			if(campingInv.getStackInSlot(1)==null&&itemstack1.getItem()==ModItems.CampTool2) startNum = 1;
+			if(campingInv.getStackInSlot(0)==null&&itemstack1.getItem()==ModItems.CampingBag) startNum = 0;
+			if(campingInv.getStackInSlot(0)==null&&itemstack1.getItem()==ModItems.CampingBag) endNum = 1;
+			else if(itemstack1.getItem()==ModItems.CampingBag) 
 			{
-				ItemStack itemstack1 = slot.getStack();
-				itemstack = itemstack1.copy();
-				
-				if (i < campingInv.getInventorySize()) 
-				{
-					if (!mergeItemStack(itemstack1, campingInv.getInventorySize(), inventorySlots.size(), true)) 
-					{
-						return null;
-					}
-				} 
-				
-				else if (!mergeItemStack(itemstack1, 0, campingInv.getInventorySize(), false)) 
+				itemstack = null;
+				startNum = 0;
+				endNum = 0;
+			}
+			
+			if (i < campingInv.getInventorySize()) 
+			{
+				if (!mergeItemStack(itemstack1, campingInv.getInventorySize(), inventorySlots.size(), true)) 
 				{
 					return null;
 				}
+			} 
 				
-				if (itemstack1.stackSize == 0) 
-				{
-					slot.putStack(null);
-				} 
-				
-				else 
-				{
-					slot.onSlotChanged();
-				}
+			else if (!mergeItemStack(itemstack1, startNum, endNum, false)) 
+			{
+				return null;
+			}
+			
+			if (itemstack1.stackSize == 0) 
+			{
+				slot.putStack(null);
+			} 
+			
+			else 
+			{
+				slot.onSlotChanged();
 			}
 		}
 		return itemstack;

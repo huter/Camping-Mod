@@ -1,9 +1,7 @@
 package rikmuld.inventory.inventory;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryBasic;
@@ -11,7 +9,6 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import rikmuld.core.register.ModLogger;
 import rikmuld.inventory.slot.BackpackNoSlot;
 import rikmuld.inventory.slot.CampingSlot;
 
