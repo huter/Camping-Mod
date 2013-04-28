@@ -20,8 +20,13 @@ public class ModLogger {
 		 campLogger.log(logLevel, message);
 	 }
 	 
-	 public static void logDebug(int message)
+	 public static void logDebug(char... message)
 	 {
-		 campLogger.log(Level.WARNING, "DEBUGGING... <"+Integer.toString(message)+">");
+		System.out.print("Debugging...   ");
+		for(int i = 0;i<message.length;i++)
+		{
+			 System.out.print(Character.toString(message[i]));
+		}
+		System.out.println();
 	 }
 }

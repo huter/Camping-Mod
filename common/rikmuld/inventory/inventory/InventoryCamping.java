@@ -33,54 +33,16 @@ public class InventoryCamping extends InventoryBasic {
 		super.onInventoryChanged();
 		setSlots();
 		
-		if(backpackSlotChanged())
+		if(backpackSlotChanged()||backpackSlotInventoryChanged())
 		{
-			if(getStackInSlot(0)!=null) this.setInvFromCampingBag();
-			if(getStackInSlot(0)==null) this.removeBackpackInv();	
+			this.removeBackpackInv();
+			if(getStackInSlot(0)!=null)this.setInvFromCampingBag();	
 		}
 		
 		if(!reading)
 		{
 			saveInventory();
 		}
-	}
-
-	private boolean backpackSlotChanged() 
-	{
-		int backpackSwitch = 0;
-		boolean HelperBackpack = false;
-		boolean result = false;
-		
-		if(playerEntity.getEntityData().hasKey("backpackSwitch"))backpackSwitch = playerEntity.getEntityData().getInteger("backpackSwitch");
-		if(getStackInSlot(0)!=null)
-		{
-			if (getStackInSlot(0).stackTagCompound == null) 
-			{
-				getStackInSlot(0).setTagCompound(new NBTTagCompound());
-			}
-
-			if(getStackInSlot(0).stackTagCompound.hasKey("HelperBackpack"))HelperBackpack = getStackInSlot(0).stackTagCompound.getBoolean("HelperBackpack");
-			if(!HelperBackpack)
-			{
-				HelperBackpack = true;
-				result = true;
-			}
-			getStackInSlot(0).stackTagCompound.setBoolean("HelperBackpack", HelperBackpack);
-		}
-
-		if(getStackInSlot(0)==null && backpackSwitch == 1)
-		{
-			 backpackSwitch = 0;
-			 result = true;
-		}
-		if(getStackInSlot(0)!=null && backpackSwitch == 0)
-		{
-			 backpackSwitch = 1;
-			 result = true;
-		}
-		playerEntity.getEntityData().setInteger("backpackSwitch", backpackSwitch);
-		
-		return result;
 	}
 
 	private void removeBackpackInv()
@@ -277,5 +239,62 @@ public class InventoryCamping extends InventoryBasic {
 			}
 		}
 		reading = false;
+	}
+	
+	public boolean backpackSlotChanged() 
+	{
+		int backpackSwitch = 0;
+		boolean HelperBackpack = false;
+		boolean result = false;
+
+		if(playerEntity.getEntityData().hasKey("backpackSwitch"))backpackSwitch = playerEntity.getEntityData().getInteger("backpackSwitch");
+		if(getStackInSlot(0)!=null)
+		{
+			if (getStackInSlot(0).stackTagCompound == null) 
+			{
+				getStackInSlot(0).setTagCompound(new NBTTagCompound());
+			}
+
+			if(getStackInSlot(0).stackTagCompound.hasKey("HelperBackpack"))HelperBackpack = getStackInSlot(0).stackTagCompound.getBoolean("HelperBackpack");
+			if(!HelperBackpack)
+			{
+				HelperBackpack = true;
+				result = true;
+			}
+			getStackInSlot(0).stackTagCompound.setBoolean("HelperBackpack", HelperBackpack);
+		}
+
+		if(getStackInSlot(0)==null && backpackSwitch == 1)
+		{
+			 backpackSwitch = 0;
+			 result = true;
+		}
+		if(getStackInSlot(0)!=null && backpackSwitch == 0)
+		{
+			 backpackSwitch = 1;
+			 result = true;
+		}
+		playerEntity.getEntityData().setInteger("backpackSwitch", backpackSwitch);
+		return result;
+	}
+
+	public boolean backpackSlotInventoryChanged() 
+	{
+		boolean result = false;
+		
+		if(getStackInSlot(0)!=null)
+		{
+			NBTTagCompound nbt = this.getStackInSlot(0).stackTagCompound;
+			if(playerEntity.getEntityData().hasKey("returnNBT"))nbt = playerEntity.getEntityData().getCompoundTag("returnNBT");
+			
+			if(getStackInSlot(0).stackTagCompound!=nbt)
+			{
+				nbt = this.getStackInSlot(0).stackTagCompound;
+				result = true;
+			}
+			
+			playerEntity.getEntityData().setCompoundTag("returnNBT", nbt);
+		}
+		return result;
 	}
 }
