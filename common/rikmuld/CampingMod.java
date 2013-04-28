@@ -85,29 +85,25 @@ public class CampingMod {
 	}
 	
 	/* 
-	 * TODO: finalise the camping inventory. fix the crafting drop click bug, make items drop on close wehn in crafting inv, make backpack working for backpack on backpack switsh.
+	 * TODO: finalise the camping inventory: fix the crafting drop click bug.
 	 * TODO: finish the guide books.
-	 * TODO: make 2 new config options 1 for peasfull mode recipies, 1 for set home to tent.
 	 * 
-	 * 
-	 * TODO: update the site!!! (also the new planed feutures)
-	 * TODO: make special armor for campers.
-	 * TODO: make the cloaks working.
-	 * TODO: complete the guide books.
-	 * TODO: make a camper AI for not run into campfires and stay with tents.
-	 * TODO: make a flashlight
-	 * TODO: make tents with traped chests and ender chests and make more for inside tents
-	 * TODO: make an seperated backpack slot for the backpack and make the backpack an model for when you were them.
-	 * TODO: fix the bugs
-	 * TODO: add camping animals 
+	 * TODO: the known bugs:
 	 * 
 	 * -camper skin change reload world (nbt thingy)
 	 * 
+	 * TODO: misc
+	 * 
+	 * -update the site!!! (also the new planed feutures)
+	 * -make special armor for campers.
+	 * -make the cloaks working.
+	 * -make a camper AI for not run into campfires and stay with tents.
+	 * -add camping animals 
+	 *
 	 * TODO: for next update (backpack Update) 1.0.1 --> 1.0.2
 	 * 
 	 * -finish the tent and the equipment guide book.
-	 * -make an seperated backpack slot for the backpack and make the backpack an model for when you were them.
-	 * -fix the known bugs.
+	 * -make an model for the camping bag for when it is on you bag
 	 * 
 	 * TODO: for next update (equipment update) 1.0.2 --> 1.0.3
 	 * 
@@ -116,7 +112,7 @@ public class CampingMod {
 	 * 
 	 * TODO for next update (tent update) 1.0.3 --> 1.0.4
 	 * 
-	 * -finifh the word guide book.
+	 * -finifh the world guide book.
 	 * -make the tent also working with trapped chests and ender chests
 	 * -make the tent rolatable in 4 directions 
 	 * -make the ghost blocks also half blocks so you are not standing very hight above the tent
@@ -127,7 +123,7 @@ public class CampingMod {
 	 * finish all the guide books and update them.
 	 * make a log were you can sit on
 	 * make a lantarn with gives light when equiped
-	 * make a supply box were you can stack upstackeble items.
+	 * make a supply box.
 	 * 
 	 */
 }

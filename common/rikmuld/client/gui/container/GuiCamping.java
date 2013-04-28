@@ -39,8 +39,8 @@ public class GuiCamping extends GuiContainer {
 	
 	private void addImg() 
 	{
-		drawTexturedModalRect(((this.width - this.xSize)/2)+16, ((this.height - this.ySize)/2)+7, 7, 96, 18, 18);
-		drawTexturedModalRect(((this.width - this.xSize)/2)+141, ((this.height - this.ySize)/2)+7, 7, 96, 18, 18);
+		drawTexturedModalRect(((this.width - this.xSize)/2)+16, ((this.height - this.ySize)/2)+7, 176, 133, 18, 18);
+		drawTexturedModalRect(((this.width - this.xSize)/2)+141, ((this.height - this.ySize)/2)+7, 176, 151, 18, 18);
 		drawTexturedModalRect(((this.width - this.xSize) / 2)+178, ((this.height - this.ySize) / 2), 176, 0, 73, 133); 
 		drawTexturedModalRect(((this.width - this.xSize) / 2)-75, ((this.height - this.ySize) / 2), 176, 0, 73, 133); 
 		
