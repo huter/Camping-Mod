@@ -70,8 +70,6 @@ public class ContainerCamping extends Container {
                 this.addSlotToContainer(slot);
             }
         }
-
-		campingInv.containerExsists = true;
 		
         this.onCraftMatrixChanged(this.craftMatrix);
         this.onCraftMatrixChanged(this.craftMatrix2);
@@ -90,11 +88,16 @@ public class ContainerCamping extends Container {
 			this.addSlotToContainer(new Slot(playerInventory, var3, 8 + var3 * 18, 148));
 		}
 		
+		campInv.craftMatrix = craftMatrix;
+		campInv.craftMatrix2 = craftMatrix2;
+		
+		campingInv.containerExsists = true;
 		campingInv.openChest();
 	}
 	
 	public void onCraftMatrixChanged(IInventory par1IInventory)
     {
+		campingInv.onInventoryChanged();
         this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
         this.craftResult2.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix2, this.worldObj));
     }
@@ -104,32 +107,6 @@ public class ContainerCamping extends Container {
 	{
 		return true;
 	}
-
-	@Override
-	public void onCraftGuiClosed(EntityPlayer par1EntityPlayer)
-    {
-        super.onCraftGuiClosed(par1EntityPlayer);
-
-        if (!this.worldObj.isRemote)
-        {
-            for (int i = 0; i < 9; ++i)
-            {
-                ItemStack itemstack = this.craftMatrix.getStackInSlotOnClosing(i);
-
-                if (itemstack != null)
-                {
-                    par1EntityPlayer.dropPlayerItem(itemstack);
-                }
-                
-                ItemStack itemstack2 = this.craftMatrix2.getStackInSlotOnClosing(i);
-
-                if (itemstack != null)
-                {
-                    par1EntityPlayer.dropPlayerItem(itemstack2);
-                }
-            }
-        }
-    }
 	
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer p, int i) 
@@ -169,10 +146,4 @@ public class ContainerCamping extends Container {
 		}
 		return itemstack;
 	}
-	
-	@Override
-    public boolean func_94530_a(ItemStack par1ItemStack, Slot par2Slot)
-    {
-        return par2Slot.inventory != this.craftResult && super.func_94530_a(par1ItemStack, par2Slot);
-    }
 }

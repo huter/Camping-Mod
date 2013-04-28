@@ -20,12 +20,12 @@ public class ModLogger {
 		 campLogger.log(logLevel, message);
 	 }
 	 
-	 public static void logDebug(char... message)
+	 public static void logDebug(String... message)
 	 {
 		System.out.print("Debugging...   ");
 		for(int i = 0;i<message.length;i++)
 		{
-			 System.out.print(Character.toString(message[i]));
+			 System.out.print(message + " ");
 		}
 		System.out.println();
 	 }

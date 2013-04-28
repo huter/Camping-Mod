@@ -1,13 +1,17 @@
 package rikmuld.inventory.inventory;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryBasic;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import rikmuld.core.register.ModLogger;
 import rikmuld.inventory.slot.BackpackNoSlot;
 import rikmuld.inventory.slot.CampingSlot;
 
@@ -19,6 +23,8 @@ public class InventoryCamping extends InventoryBasic {
 	public boolean containerExsists = false;
     public ArrayList<BackpackNoSlot> backpackSlots = new ArrayList<BackpackNoSlot>();
     public ArrayList<CampingSlot> craftingSlots = new ArrayList<CampingSlot>();
+	public InventoryCrafting craftMatrix;
+	public InventoryCrafting craftMatrix2;
     
 	public InventoryCamping(EntityPlayer player) 
 	{
@@ -39,9 +45,34 @@ public class InventoryCamping extends InventoryBasic {
 			if(getStackInSlot(0)!=null)this.setInvFromCampingBag();	
 		}
 		
+		if(getStackInSlot(1)==null)
+		{
+			removeCraftingInv();
+		}
+		
 		if(!reading)
 		{
 			saveInventory();
+		}
+	}
+
+	private void removeCraftingInv() 
+	{
+		if(containerExsists)
+		{	
+			for (int i = 0; i < 9; i++) 
+			{
+				if (craftMatrix.getStackInSlot(i) != null) 
+				{
+					playerEntity.dropPlayerItem(craftMatrix.getStackInSlot(i));
+					craftMatrix.setInventorySlotContents(i, null);
+				}
+				if (craftMatrix2.getStackInSlot(i) != null) 
+				{
+					playerEntity.dropPlayerItem(craftMatrix2.getStackInSlot(i));
+					craftMatrix2.setInventorySlotContents(i, null);
+				}
+			}
 		}
 	}
 
@@ -75,11 +106,13 @@ public class InventoryCamping extends InventoryBasic {
 
 	public void loadInventory() 
 	{
+		loadCraftingSlots();
 		readFromNBT();
 	}
 
 	public void saveInventory() 
 	{
+		saveCraftingSlots();
 		writeToNBT();
 		setInvToCampingBag();
 	}
@@ -296,5 +329,69 @@ public class InventoryCamping extends InventoryBasic {
 			playerEntity.getEntityData().setCompoundTag("returnNBT", nbt);
 		}
 		return result;
+	}
+	
+	private void saveCraftingSlots() 
+	{
+		if(containerExsists)
+		{
+			NBTTagList backpack = new NBTTagList();
+			for (int i = 0; i < 9; i++) 
+			{
+				if (craftMatrix.getStackInSlot(i) != null) 
+				{
+					NBTTagCompound slot = new NBTTagCompound();
+					slot.setByte("CampingCraftSlot", (byte) i);
+					craftMatrix.getStackInSlot(i).writeToNBT(slot);
+					backpack.appendTag(slot);
+				}
+			}
+			for (int i = 9; i < 18; i++) 
+			{
+				if (craftMatrix2.getStackInSlot(i-9) != null) 
+				{
+					NBTTagCompound slot = new NBTTagCompound();
+					slot.setByte("CampingCraftSlot", (byte) i);
+					craftMatrix2.getStackInSlot(i-9).writeToNBT(slot);
+					backpack.appendTag(slot);
+				}
+			}
+
+			NBTTagCompound theBack = new NBTTagCompound();
+			theBack.setTag("CampingCraftItems", backpack);
+
+			if (playerEntity.getEntityData().getCompoundTag("CampingCraftInventory") == null) 
+			{
+				playerEntity.getEntityData().setCompoundTag("CampingCraftInventory", new NBTTagCompound());
+			}
+			playerEntity.getEntityData().setCompoundTag("CampingCraftInventory", theBack);
+		}
+	}
+	
+	private void loadCraftingSlots() 
+	{
+		reading = true;
+		if(containerExsists)
+		{
+			if (playerEntity.getEntityData().getCompoundTag("CampingCraftInventory") == null) 
+			{
+				playerEntity.getEntityData().setCompoundTag("CampingCraftInventory", new NBTTagCompound());
+			}
+			NBTTagList backpack = playerEntity.getEntityData().getCompoundTag("CampingCraftInventory").getTagList("CampingCraftItems");
+			for (int i = 0; i < backpack.tagCount(); i++) 
+			{
+				NBTTagCompound slotEntry = (NBTTagCompound) backpack.tagAt(i);
+				int j = slotEntry.getByte("CampingCraftSlot") & 0xff;
+				if (j >= 0 && j < 9) 
+				{
+					craftMatrix.setInventorySlotContents(j, ItemStack.loadItemStackFromNBT(slotEntry));
+				}
+				if (j >= 9 && j < 18) 
+				{
+					craftMatrix2.setInventorySlotContents(j-9, ItemStack.loadItemStackFromNBT(slotEntry));
+				}
+			}
+		}
+		reading = false;
 	}
 }
