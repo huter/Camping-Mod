@@ -1,9 +1,5 @@
 package rikmuld.inventory.container;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -40,25 +36,25 @@ public class ContainerCamping extends Container {
 		
 		campingInv = campInv;
 		
-		this.addSlotToContainer(new BackpackOnlySlot(campingInv, 0, 142, 1));
-		this.addSlotToContainer(new CamperToolOnlySlot(campingInv, 1, 17, 1));
+		this.addSlotToContainer(new BackpackOnlySlot(campingInv, 0, 216, 8));
+		this.addSlotToContainer(new CamperToolOnlySlot(campingInv, 1, 91, 8));
 		
 		for (int row = 0; row < 3; ++row) for (int col = 0; col < 9; ++col) 
 		{
-			BackpackNoSlot slot = new BackpackNoSlot(campingInv, col + row * 9+2, 8 + col * 18, 24 + row * 18);
+			BackpackNoSlot slot = new BackpackNoSlot(campingInv, col + row * 9+2, 82 + col * 18, 31 + row * 18);
 			slot.noItemsValid = true;
 			campingInv.backpackSlots.add(slot);
 			this.addSlotToContainer(slot);
 		}
 		
-		this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, -45, 97));
-		this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix2, this.craftResult2, 0, 208, 97));	
+		this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 29, 104));
+		this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix2, this.craftResult2, 0, 282, 104));	
 		
 		for (int l = 0; l < 3; ++l)
         {
             for (int i1 = 0; i1 < 3; ++i1)
             {
-            	CampingSlot slot = new CampingSlot(this.craftMatrix, i1 + l * 3, -64 + i1 * 18, 3 + l * 18);
+            	CampingSlot slot = new CampingSlot(this.craftMatrix, i1 + l * 3, 10 + i1 * 18, 10 + l * 18);
             	slot.noItemsValid = true;
             	campingInv.craftingSlots.add(slot);
                 this.addSlotToContainer(slot);
@@ -69,7 +65,7 @@ public class ContainerCamping extends Container {
         {
             for (int i1 = 0; i1 < 3; ++i1)
             {
-            	CampingSlot slot = new CampingSlot(this.craftMatrix2, i1 + l * 3, 189 + i1 * 18, 3 + l * 18);
+            	CampingSlot slot = new CampingSlot(this.craftMatrix2, i1 + l * 3, 263 + i1 * 18, 10 + l * 18);
             	slot.noItemsValid = true;
             	campingInv.craftingSlots.add(slot);
                 this.addSlotToContainer(slot);
@@ -84,13 +80,13 @@ public class ContainerCamping extends Container {
 		{
 			for (int var4 = 0; var4 < 9; ++var4) 
 			{
-				this.addSlotToContainer(new Slot(playerInventory, var4 + var3 * 9 + 9, 8 + var4 * 18, 90 + var3 * 18));
+				this.addSlotToContainer(new Slot(playerInventory, var4 + var3 * 9 + 9, 82 + var4 * 18, 97 + var3 * 18));
 			}
 		}
 
 		for (int var3 = 0; var3 < 9; ++var3) 
 		{
-			this.addSlotToContainer(new Slot(playerInventory, var3, 8 + var3 * 18, 148));
+			this.addSlotToContainer(new Slot(playerInventory, var3, 82 + var3 * 18, 155));
 		}
 		
 		campInv.craftMatrix = craftMatrix;

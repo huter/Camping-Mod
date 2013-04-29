@@ -3,29 +3,15 @@ package rikmuld.core.register;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.player.BonemealEvent;
-import net.minecraftforge.event.world.WorldEvent.Load;
 import rikmuld.block.plant.RadishCrop;
-import rikmuld.core.helper.VersionHelper;
 
 public class ModEvents {
-	
-	boolean FirstTime = true;
 	
 	public static void init()
 	{
 		MinecraftForge.EVENT_BUS.register(new ModEvents());
 	}
-	
-	@ForgeSubscribe
-	public void WorldIsLoaded(Load event)
-	{
-		if(FirstTime)
-		{
-			FirstTime = false;
-			VersionHelper.execute();
-		}
-	}
-	
+
 	@ForgeSubscribe
     public void onUseBonemeal(BonemealEvent event)
     {

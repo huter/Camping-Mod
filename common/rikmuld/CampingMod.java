@@ -5,7 +5,9 @@ import java.util.logging.Level;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.AchievementPage;
+import net.minecraftforge.common.MinecraftForge;
 import rikmuld.core.handlers.CraftHandler;
+import rikmuld.core.handlers.PlayerHandler;
 import rikmuld.core.lib.ModInfo;
 import rikmuld.core.proxys.CommonProxy;
 import rikmuld.core.register.ModAchievements;
@@ -81,6 +83,10 @@ public class CampingMod {
 	@PostInit
 	public void postInit(FMLPostInitializationEvent event)
 	{
+		 PlayerHandler playerHandler = new PlayerHandler();
+         GameRegistry.registerPlayerTracker(playerHandler);
+         MinecraftForge.EVENT_BUS.register(playerHandler);
+         
 		 ModLogger.log(Level.INFO, ModInfo.MOD_NAME + " has loaded successfylly.");
 	}
 	

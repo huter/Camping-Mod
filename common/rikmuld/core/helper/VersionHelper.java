@@ -10,6 +10,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.ModLoader;
 
@@ -37,6 +38,7 @@ public class VersionHelper implements Runnable{
 	static DocumentBuilder builder;
 	static Document doc;
 	static Transformer xform;
+	static EntityPlayer player;
 	
 	static boolean checked = false;
 
@@ -104,27 +106,12 @@ public class VersionHelper implements Runnable{
 			
 			if(!NewVersion.equals(ModInfo.MOD_VERSION))
 			{	
-				if(MinecraftServer.getServer()!=null)
-				{
-					if(!MinecraftServer.getServer().isDedicatedServer()&&ModLoader.getMinecraftInstance().thePlayer!=null)
-					{
-						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_NEW);
-						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_VERSION + NewVersion); 
-						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_CURR + ModInfo.MOD_VERSION);
-						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_WHATSNEW + NewVersionNew);
-						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_DATE + NewVersionDate);
-						checked = true;
-					}
-				}
-				else if(ModLoader.getMinecraftInstance().thePlayer!=null)
-				{
-						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_NEW);
-						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_VERSION + NewVersion); 
-						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_CURR + ModInfo.MOD_VERSION);
-						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_WHATSNEW + NewVersionNew);
-						ModLoader.getMinecraftInstance().thePlayer.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_DATE + NewVersionDate);	
-						checked = true;
-				}
+				player.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_NEW);
+				player.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_VERSION + NewVersion); 
+				player.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_CURR + ModInfo.MOD_VERSION);
+				player.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_WHATSNEW + NewVersionNew);
+				player.addChatMessage(Colors.COLOR_RED+MOD_MESSAGE_VERSION_DATE + NewVersionDate);	
+				checked = true;
 			}
 		}
 	}
@@ -134,15 +121,6 @@ public class VersionHelper implements Runnable{
 	{
 		while(checked==false)
 		{
-			try 
-			{
-				Thread.sleep(4000);
-			} 
-			catch (InterruptedException e) 
-			{
-				e.printStackTrace();
-			}
-			
 			CheckVersion();
 	        
 			if(checked==false)
@@ -159,8 +137,10 @@ public class VersionHelper implements Runnable{
 		}
 	}
 	
-	 public static void execute() 
+	 public static void execute(EntityPlayer playerEntity) 
 	 {
+		 player = playerEntity;
+		 checked = false;
 	     new Thread(instance).start();
 	 }
 }

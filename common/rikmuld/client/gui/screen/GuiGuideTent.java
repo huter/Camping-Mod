@@ -107,7 +107,7 @@ public class GuiGuideTent extends GuiGuide{
 		 }
 		 if(page==4)
 		 {
-
+			 
 		 }
 		 GL11.glPopMatrix();
 	}

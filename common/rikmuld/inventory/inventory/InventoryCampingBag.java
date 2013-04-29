@@ -8,27 +8,23 @@ import net.minecraft.nbt.NBTTagList;
 
 public class InventoryCampingBag extends InventoryBasic {
 
-	private EntityPlayer playerEntity;
-	private boolean reading = false;
-	private ItemStack theBackpack;
-	public InventoryCamping campInv;
-	public static int backpackNum;
-	public boolean usedInCampingInv;
+		private EntityPlayer playerEntity;
+		private boolean reading = false;
+		private ItemStack theBackpack;
+		public InventoryCamping campInv;
+		public static int backpackNum;
+		public boolean usedInCampingInv;
 
-	public InventoryCampingBag(EntityPlayer player, ItemStack is) 
-	{
-		super("", false, (is.getItemDamage()+1)*9);
-
-		playerEntity = player;
-		theBackpack = is;
-		backpackNum = is.getItemDamage();
-		
-		if (!hasInventory(is.getTagCompound())) 
+		public InventoryCampingBag(EntityPlayer player, ItemStack is) 
 		{
-			createInventory();
+			super("", false, (is.getItemDamage()+1)*9);
+
+			playerEntity = player;
+			theBackpack = is;
+			backpackNum = is.getItemDamage();
+
+			loadInventory();
 		}
-		loadInventory();
-	}
 				
 		@Override
 		public void onInventoryChanged() 
@@ -55,28 +51,6 @@ public class InventoryCampingBag extends InventoryBasic {
 		public static int getInventorySize(ItemStack is)
 		{
 			return 9 * (backpackNum+1);
-		}
-
-		private boolean hasInventory(NBTTagCompound nbt)
-		{
-			return (nbt != null && (nbt.hasKey("BackpackInv")));
-		}
-
-		private void createInventory() 
-		{
-			NBTTagCompound tag;
-			if (theBackpack.hasTagCompound())
-			{
-				tag = theBackpack.getTagCompound();
-			} 
-
-			else 
-			{
-				tag = new NBTTagCompound();
-			}
-
-			writeToNBT(tag);
-			theBackpack.setTagCompound(tag);
 		}
 
 		private void setNBT() 

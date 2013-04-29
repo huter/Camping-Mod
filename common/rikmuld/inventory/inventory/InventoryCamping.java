@@ -22,6 +22,7 @@ public class InventoryCamping extends InventoryBasic {
     public ArrayList<CampingSlot> craftingSlots = new ArrayList<CampingSlot>();
 	public InventoryCrafting craftMatrix;
 	public InventoryCrafting craftMatrix2;
+	private boolean save = true;
     
 	public InventoryCamping(EntityPlayer player) 
 	{
@@ -75,6 +76,7 @@ public class InventoryCamping extends InventoryBasic {
 
 	private void removeBackpackInv()
 	{
+		this.save  = false;
 		for (int i = 2; i < 29; i++) 
 		{
 			if (getStackInSlot(i) != null) 
@@ -82,6 +84,7 @@ public class InventoryCamping extends InventoryBasic {
 				this.setInventorySlotContents(i, null);
 			}
 		}
+		this.save = true;
 	}
 
 	@Override
@@ -116,7 +119,7 @@ public class InventoryCamping extends InventoryBasic {
 
 	public void setInvToCampingBag() 
 	{
-		if(getStackInSlot(0)!=null) 
+		if(getStackInSlot(0)!=null&&save) 
 		{
 			NBTTagList backpack = new NBTTagList();
 			for (int i = 2; i < ((getStackInSlot(0).getItemDamage()+1)*9)+2; i++) 
