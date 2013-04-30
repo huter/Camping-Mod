@@ -2,8 +2,12 @@ package rikmuld.core.handlers;
 
 import java.util.EnumSet;
 
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.world.World;
 import rikmuld.core.lib.ModInfo;
 import rikmuld.core.proxys.CommonProxy;
 import rikmuld.core.register.ModItems;
@@ -14,9 +18,41 @@ import cpw.mods.fml.common.TickType;
 
 public class TickHandler implements ITickHandler{
 	
+	static boolean dropItems = true;
+	
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) 
 	{
+		if(type.equals(EnumSet.of(TickType.PLAYER)))	
+		{
+			if(FMLClientHandler.instance().getClient().thePlayer!=null)
+			{
+				EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
+				NBTTagList backpack = player.getEntityData().getCompoundTag("CampingInventory").getTagList("CampingItems");
+				World world = player.worldObj;
+				
+				double x = player.posX;
+				double y = player.posY;
+				double z = player.posZ;
+				
+				if(!player.isEntityAlive())
+				{
+					if(dropItems)
+					{
+						for (int i = 0; i < 2; i++) 
+						{
+							NBTTagCompound slotEntry = (NBTTagCompound) backpack.tagAt(i);
+							int j = slotEntry.getByte("CampingSlot") & 0xff;
+							if (j >= 0 && j < 2) 
+							{
+								world.spawnEntityInWorld(new EntityItem(world, x, y, z, ItemStack.loadItemStackFromNBT(slotEntry)));
+							}
+						}
+						dropItems = false;
+					}
+				}
+			}
+		}
 		if(type.equals(EnumSet.of(TickType.RENDER)))	
 		{
 			if(FMLClientHandler.instance().getClient().thePlayer!=null)
@@ -50,7 +86,7 @@ public class TickHandler implements ITickHandler{
 	@Override
 	public EnumSet<TickType> ticks() 
 	{
-		return EnumSet.of(TickType.RENDER);
+		return EnumSet.of(TickType.PLAYER,TickType.RENDER);
 	}
 
 	@Override
