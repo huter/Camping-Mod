@@ -28,7 +28,8 @@ public class TickHandler implements ITickHandler{
 			if(FMLClientHandler.instance().getClient().thePlayer!=null)
 			{
 				EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
-				NBTTagList backpack = player.getEntityData().getCompoundTag("CampingInventory").getTagList("CampingItems");
+				NBTTagCompound campingInventory = player.getEntityData().getCompoundTag("CampingInventory");
+				NBTTagList CampingInventory = player.getEntityData().getCompoundTag("CampingInventory").getTagList("CampingItems");
 				World world = player.worldObj;
 				
 				double x = player.posX;
@@ -37,19 +38,20 @@ public class TickHandler implements ITickHandler{
 				
 				if(!player.isEntityAlive())
 				{
-					if(dropItems)
-					{
-						for (int i = 0; i < 2; i++) 
-						{
-							NBTTagCompound slotEntry = (NBTTagCompound) backpack.tagAt(i);
-							int j = slotEntry.getByte("CampingSlot") & 0xff;
-							if (j >= 0 && j < 2) 
-							{
-								world.spawnEntityInWorld(new EntityItem(world, x, y, z, ItemStack.loadItemStackFromNBT(slotEntry)));
-							}
-						}
-						dropItems = false;
-					}
+					PlayerHandler.campingInv = campingInventory;
+//					if(dropItems)
+//					{
+//						for (int i = 0; i < 2; i++) 
+//						{
+//							NBTTagCompound slotEntry = (NBTTagCompound) CcmpingInventory.tagAt(i);
+//							int j = slotEntry.getByte("CampingSlot") & 0xff;
+//							if (j >= 0 && j < 2) 
+//							{
+//								world.spawnEntityInWorld(new EntityItem(world, x, y, z, ItemStack.loadItemStackFromNBT(slotEntry)));
+//							}
+//						}
+//						dropItems = false;
+//					}
 				}
 			}
 		}
