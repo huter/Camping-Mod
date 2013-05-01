@@ -27,7 +27,7 @@ public class GuiCampToolV2 extends GuiContainer {
     protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) 
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.bindTexture(Textures.GUI_LOCATIONS + Textures.GUI_TOOL_CAMP);
+        mc.renderEngine.bindTexture(Textures.GUI_LOCATION + Textures.GUI_TOOL_CAMP);
         int var5 = (width - xSize) / 2;
         int var6 = (height - ySize) / 2;
         this.drawTexturedModalRect(var5, var6, 0, 0, xSize, ySize);

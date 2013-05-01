@@ -56,6 +56,7 @@ public class CampingMod {
 		ModConfig.preInit(new File(event.getModConfigurationDirectory().getAbsolutePath() + "/Camping/" + ModInfo.MOD_ID + ".cfg"));
 		proxy.registerKeyBindingHandler();
 		proxy.registerTickHandler();
+		proxy.registerEntityRenderHandler();
 		
 		ModBlocks.init();
 		ModItems.init();

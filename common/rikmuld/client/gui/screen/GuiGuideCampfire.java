@@ -147,7 +147,7 @@ public class GuiGuideCampfire extends GuiGuide {
 		}
 		else
 		{
-			 this.mc.renderEngine.bindTexture(Textures.GUI_LOCATIONS + Textures.GUI_COMPONENTS);
+			 this.mc.renderEngine.bindTexture(Textures.GUI_LOCATION + Textures.GUI_COMPONENTS);
 			 int a = 0;
 			 
 			 for(int i=1; i<6;i++)

@@ -1,14 +1,11 @@
 package rikmuld.core.handlers;
 
 import java.util.EnumSet;
-import java.util.logging.Level;
 
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import rikmuld.core.helper.KeyHelper;
 import rikmuld.core.lib.ModInfo;
-import rikmuld.core.register.ModLogger;
 import rikmuld.network.PacketTypeHandler;
 import rikmuld.network.packets.PacketKeyPressed;
 import cpw.mods.fml.client.FMLClientHandler;

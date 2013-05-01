@@ -1,4 +1,4 @@
-package rikmuld.core.helper;
+package rikmuld.core.handlers;
 
 import static net.minecraftforge.client.IItemRenderer.ItemRenderType.EQUIPPED;
 import static net.minecraftforge.client.IItemRenderer.ItemRendererHelper.BLOCK_3D;
@@ -14,16 +14,23 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.RenderEngine;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.client.renderer.tileentity.TileEntitySkullRenderer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.MathHelper;
+import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
 
@@ -33,149 +40,303 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class CloakHelper extends RenderPlayer{
-	
-	static URL url;
-	static URLConnection conn;
-	static DocumentBuilderFactory factory;
-	static DocumentBuilder builder;
-	static Document doc;
-	static Transformer xform;
-	private ModelBiped modelBipedMain;
+import rikmuld.core.lib.Textures;
 
-	public static String[] developers;
-	public static String[] codinghelp;
-	public static String[] help;
+public class PlayerRenderingHandler extends RenderPlayer{
+
+		static URL url;
+		static URLConnection conn;
+		static DocumentBuilderFactory factory;
+		static DocumentBuilder builder;
+		static Document doc;
+		static Transformer xform;
 	
-	public CloakHelper()
-	{
-		  super();
-	      this.modelBipedMain = (ModelBiped)this.mainModel;
-	}
-	
-	public static void GetXmlFile()
-	{
-		try 
+		public static String[] developers;
+		public static String[] codinghelp;
+		public static String[] help;
+		
+	    private ModelBiped modelBipedMain;
+	    private ModelBiped modelArmorChestplate;
+	    private ModelBiped modelArmor;
+	    
+	    public PlayerRenderingHandler()
+	    {
+	    	this.modelBipedMain = (ModelBiped)this.mainModel;
+	        this.modelArmorChestplate = new ModelBiped(1.0F);
+	        this.modelArmor = new ModelBiped(0.5F);
+	    }
+	    
+	    @Override
+	    protected int setArmorModel(EntityPlayer par1EntityPlayer, int par2, float par3)
+	    {
+	    	int returnInt = 0;
+	    	
+	        ItemStack itemstack = par1EntityPlayer.inventory.armorItemInSlot(3 - par2);
+	        ItemStack itemstack2 = null;
+	        
+	        NBTTagList backpack = par1EntityPlayer.getEntityData().getCompoundTag("CampingInventory").getTagList("CampingItems");
+			for (int i = 0; i < backpack.tagCount(); i++) 
+			{
+				NBTTagCompound slotEntry = (NBTTagCompound) backpack.tagAt(i);
+				int j = slotEntry.getByte("CampingSlot") & 0xff;
+				if (j >= 0 && j < 1) 
+				{
+					itemstack2 = ItemStack.loadItemStackFromNBT(slotEntry);
+				}
+			}
+	      
+			if (itemstack2 != null)
+	        {
+	            Item item = itemstack2.getItem();
+
+	            if (item instanceof ItemArmor)
+	            {
+	                ItemArmor itemarmor = (ItemArmor)item;
+	                this.loadTexture(ForgeHooksClient.getArmorTexture(itemstack2, "/armor/" + armorFilenamePrefix[itemarmor.renderIndex] + "_" + (par2 == 2 ? 2 : 1) + ".png"));
+	                ModelBiped modelbiped = par2 == 2 ? this.modelArmor : this.modelArmorChestplate;
+	                modelbiped.bipedHead.showModel = par2 == 0;
+	                modelbiped.bipedHeadwear.showModel = par2 == 0;
+	                modelbiped.bipedBody.showModel = par2 == 1 || par2 == 2;
+	                modelbiped.bipedRightArm.showModel = par2 == 1;
+	                modelbiped.bipedLeftArm.showModel = par2 == 1;
+	                modelbiped.bipedRightLeg.showModel = par2 == 2 || par2 == 3;
+	                modelbiped.bipedLeftLeg.showModel = par2 == 2 || par2 == 3;
+	                this.setRenderPassModel(modelbiped);
+
+	                if (modelbiped != null)
+	                {
+	                    modelbiped.onGround = this.mainModel.onGround;
+	                }
+
+	                if (modelbiped != null)
+	                {
+	                    modelbiped.isRiding = this.mainModel.isRiding;
+	                }
+
+	                if (modelbiped != null)
+	                {
+	                    modelbiped.isChild = this.mainModel.isChild;
+	                }
+
+	                float f1 = 1.0F;
+
+	                if (itemarmor.getArmorMaterial() == EnumArmorMaterial.CLOTH)
+	                {
+	                    int j = itemarmor.getColor(itemstack);
+	                    float f2 = (float)(j >> 16 & 255) / 255.0F;
+	                    float f3 = (float)(j >> 8 & 255) / 255.0F;
+	                    float f4 = (float)(j & 255) / 255.0F;
+	                    GL11.glColor3f(f1 * f2, f1 * f3, f1 * f4);
+
+	                    if (itemstack.isItemEnchanted())
+	                    {
+	                        return 31;
+	                    }
+
+	                    return 16;
+	                }
+
+	                GL11.glColor3f(f1, f1, f1);
+
+	                if (itemstack2.isItemEnchanted())
+	                {
+	                    return 15;
+	                }
+	                returnInt = 1;
+	            }
+	        }
+
+	        if (itemstack != null)
+	        {
+	            Item item = itemstack.getItem();
+
+	            if (item instanceof ItemArmor)
+	            {
+	                ItemArmor itemarmor = (ItemArmor)item;
+	                this.loadTexture(ForgeHooksClient.getArmorTexture(itemstack, "/armor/" + armorFilenamePrefix[itemarmor.renderIndex] + "_" + (par2 == 2 ? 2 : 1) + ".png"));
+	                ModelBiped modelbiped = par2 == 2 ? this.modelArmor : this.modelArmorChestplate;
+	                modelbiped.bipedHead.showModel = par2 == 0;
+	                modelbiped.bipedHeadwear.showModel = par2 == 0;
+	                modelbiped.bipedBody.showModel = par2 == 1 || par2 == 2;
+	                modelbiped.bipedRightArm.showModel = par2 == 1;
+	                modelbiped.bipedLeftArm.showModel = par2 == 1;
+	                modelbiped.bipedRightLeg.showModel = par2 == 2 || par2 == 3;
+	                modelbiped.bipedLeftLeg.showModel = par2 == 2 || par2 == 3;
+	                this.setRenderPassModel(modelbiped);
+
+	                if (modelbiped != null)
+	                {
+	                    modelbiped.onGround = this.mainModel.onGround;
+	                }
+
+	                if (modelbiped != null)
+	                {
+	                    modelbiped.isRiding = this.mainModel.isRiding;
+	                }
+
+	                if (modelbiped != null)
+	                {
+	                    modelbiped.isChild = this.mainModel.isChild;
+	                }
+
+	                float f1 = 1.0F;
+
+	                if (itemarmor.getArmorMaterial() == EnumArmorMaterial.CLOTH)
+	                {
+	                    int j = itemarmor.getColor(itemstack);
+	                    float f2 = (float)(j >> 16 & 255) / 255.0F;
+	                    float f3 = (float)(j >> 8 & 255) / 255.0F;
+	                    float f4 = (float)(j & 255) / 255.0F;
+	                    GL11.glColor3f(f1 * f2, f1 * f3, f1 * f4);
+
+	                    if (itemstack.isItemEnchanted())
+	                    {
+	                        return 31;
+	                    }
+
+	                    return 16;
+	                }
+
+	                GL11.glColor3f(f1, f1, f1);
+
+	                if (itemstack.isItemEnchanted())
+	                {
+	                    return 15;
+	                }
+
+	                returnInt = 1;
+	            }
+	        }
+
+	        return (returnInt==1)? 1:-1;
+	    }
+	    
+		
+		public void GetXmlFile()
 		{
-			url = new URL("http://rikmuld.com/cloaks.xml");
-		} 	
-		catch (MalformedURLException e) 
-		{
-			e.printStackTrace();
+			try 
+			{
+				url = new URL("http://rikmuld.com/cloaks.xml");
+			} 	
+			catch (MalformedURLException e) 
+			{
+				e.printStackTrace();
+			}
+			
+			try 
+			{
+				conn = url.openConnection();
+			} 	
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
+
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			
+			try
+			{
+				builder = factory.newDocumentBuilder();
+			}
+			catch (ParserConfigurationException e) 
+			{	
+				e.printStackTrace();
+			}
+			
+			try 
+			{
+				doc = builder.parse(conn.getInputStream());
+			} 
+			catch (SAXException e1)
+			{	
+				e1.printStackTrace();
+			} 
+			catch (IOException e1)
+			{
+				e1.printStackTrace();
+			}
 		}
 		
-		try 
+		public void GetUsers()
 		{
-			conn = url.openConnection();
-		} 	
-		catch (IOException e) 
-		{
-			e.printStackTrace();
+			GetXmlFile();
+			if(doc!=null)
+			{	
+				NodeList developer = doc.getElementsByTagName("developer");
+				NodeList codinghelpers = doc.getElementsByTagName("codinghelpers");
+				NodeList helper = doc.getElementsByTagName("helpers");
+				
+				Node dev = developer.item(0);	
+				
+				int manyCoders = codinghelpers.getLength();			
+				Node[] coders = new Node[manyCoders+1];
+				
+				int manyHelpers = helper.getLength();			
+				Node[] helpers = new Node[manyHelpers+1];
+				
+				for (int x = 0; x<manyCoders; x++)
+				{
+					coders[x] = codinghelpers.item(x);
+				}
+				
+				for (int x = 0; x<manyHelpers; x++)
+				{
+					helpers[x] = helper.item(x);
+				}
+				
+				developers = new String[1];
+				codinghelp = new String[manyCoders];
+				help = new String[manyHelpers];
+				
+				developers[0] = dev.getTextContent();
+				
+				for (int x = 0; x<manyCoders; x++)
+				{
+					codinghelp[x] = coders[x].getTextContent();
+				}
+				
+				for (int x = 0; x<manyHelpers; x++)
+				{
+					help[x] = helpers[x].getTextContent();	
+				}
+			}
 		}
-
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		
-		try
-		{
-			builder = factory.newDocumentBuilder();
-		}
-		catch (ParserConfigurationException e) 
-		{	
-			e.printStackTrace();
-		}
-		
-		try 
-		{
-			doc = builder.parse(conn.getInputStream());
-		} 
-		catch (SAXException e1)
-		{	
-			e1.printStackTrace();
-		} 
-		catch (IOException e1)
-		{
-			e1.printStackTrace();
-		}
-	}
-	
-	public static void GetUsers()
-	{
-		GetXmlFile();
-		if(doc!=null)
-		{	
-			NodeList developer = doc.getElementsByTagName("developer");
-			NodeList codinghelpers = doc.getElementsByTagName("codinghelpers");
-			NodeList helper = doc.getElementsByTagName("helpers");
-			
-			Node dev = developer.item(0);	
-			
-			int manyCoders = codinghelpers.getLength();			
-			Node[] coders = new Node[manyCoders+1];
-			
-			int manyHelpers = helper.getLength();			
-			Node[] helpers = new Node[manyHelpers+1];
-			
-			for (int x = 0; x<manyCoders; x++)
-			{
-				coders[x] = codinghelpers.item(x);
-			}
-			
-			for (int x = 0; x<manyHelpers; x++)
-			{
-				helpers[x] = helper.item(x);
-			}
-			
-			developers = new String[1];
-			codinghelp = new String[manyCoders];
-			help = new String[manyHelpers];
-			
-			developers[0] = dev.getTextContent();
-			
-			for (int x = 0; x<manyCoders; x++)
-			{
-				codinghelp[x] = coders[x].getTextContent();
-			}
-			
-			for (int x = 0; x<manyHelpers; x++)
-			{
-				help[x] = helpers[x].getTextContent();	
-			}
-		}
-	}
-
-	 protected void renderSpecials(EntityPlayer par1EntityPlayer, float par2)
-	 {
-		 GetUsers();
-		 
-			 for(int x = 0; x<developers.length; x++)
-			 {
+	    @Override
+	    protected void renderSpecials(EntityPlayer par1EntityPlayer, float par2)
+	    {
+	    	this.GetUsers();
+	    	
+	    	String cloakFile = null;
+	    	
+	    	for(int x = 0; x<developers.length; x++)
+	    	{
 				 if(par1EntityPlayer.username.equals(developers[x]))
 				 {
-					 par1EntityPlayer.cloakUrl = "rikmuld.com/cloakDev.png";
+					 cloakFile = Textures.CLOAK_LOCATION + Textures.CLOAK_DEV;
 				 }
-			 }
-			 
-			 for(int x = 0; x<codinghelp.length; x++)
-			 {
-				 if(par1EntityPlayer.username.equals(codinghelp[x]))
-				 {
-					 par1EntityPlayer.cloakUrl = "rikmuld.com/cloakCoder.png";
-				 }
-			 }
-			 
-			 for(int x = 0; x<help.length; x++)
-			 {
+	    	}
+		 
+	    	for(int x = 0; x<codinghelp.length; x++)
+	    	{
+	    		if(par1EntityPlayer.username.equals(codinghelp[x]))
+	    		{
+	    			 cloakFile = Textures.CLOAK_LOCATION + Textures.CLOAK_CHELP;
+	    		}
+		 	}
+		 
+	    	for(int x = 0; x<help.length; x++)
+	    	{
 				 if(par1EntityPlayer.username.equals(help[x]))
 				 {
-					 par1EntityPlayer.cloakUrl = "rikmuld.com/cloakHelper.png";
+					 cloakFile = Textures.CLOAK_LOCATION + Textures.CLOAK_HELP;
 				 }
-			 }
-		 
+	    	}
+			 
 	        float f1 = 1.0F;
 	        GL11.glColor3f(f1, f1, f1);
-	        super.renderEquippedItems(par1EntityPlayer, par2);
-	        super.renderArrowsStuckInEntity(par1EntityPlayer, par2);
 	        ItemStack itemstack = par1EntityPlayer.inventory.armorItemInSlot(3);
+	        par1EntityPlayer.cloakUrl = "http://rikmuld.com/CloakDev.png";
 
 	        if (itemstack != null)
 	        {
@@ -240,8 +401,12 @@ public class CloakHelper extends RenderPlayer{
 
 	        float f6;
 
-	        if (this.loadDownloadableImageTexture(par1EntityPlayer.cloakUrl, (String)null) && !par1EntityPlayer.getHasActivePotion() && !par1EntityPlayer.getHideCape())
+	        if (cloakFile!=null&&!par1EntityPlayer.getHasActivePotion() && !par1EntityPlayer.getHideCape())
 	        {
+	        	RenderEngine renderengine = this.renderManager.renderEngine;
+	        	int i = renderengine.getTexture(cloakFile);
+	            GL11.glBindTexture(GL11.GL_TEXTURE_2D, i);
+	                 
 	            GL11.glPushMatrix();
 	            GL11.glTranslatef(0.0F, 0.0F, 0.125F);
 	            double d0 = par1EntityPlayer.field_71091_bM + (par1EntityPlayer.field_71094_bP - par1EntityPlayer.field_71091_bM) * (double)par2 - (par1EntityPlayer.prevPosX + (par1EntityPlayer.posX - par1EntityPlayer.prevPosX) * (double)par2);

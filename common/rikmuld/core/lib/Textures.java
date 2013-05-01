@@ -2,9 +2,10 @@ package rikmuld.core.lib;
 
 public class Textures {
 
-	public static final String GUI_LOCATIONS= "/mods/camping/textures/gui/";
+	public static final String GUI_LOCATION= "/mods/camping/textures/gui/";
 	public static final String SPRITE_LOCATION= "/mods/camping/textures/sprites/";	
 	public static final String MODEL_LOCATION= "/mods/camping/textures/models/";
+	public static final String CLOAK_LOCATION = "/mods/camping/textures/cloaks/";
 	
 	public static final String SPRITE_PARTICLES= "Particles.png";
 	public static final String SPRITE_BUTTONS = "Buttons.png";
@@ -28,4 +29,8 @@ public class Textures {
 	public static final String GUI_BOOK_GUIDE= "GuideBook.png";
 	public static final String GUI_COMPONENTS = "GuideBookComponents.png";
 	public static final String GUI_TOOL_CAMP = "GuiCampTool.png";
+	
+	public static final String CLOAK_DEV= "CloakDev.png";
+	public static final String CLOAK_CHELP = "CloakCodingHelp.png";
+	public static final String CLOAK_HELP = "CloakHelp.png";
 }

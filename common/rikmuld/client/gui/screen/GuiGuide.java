@@ -59,7 +59,7 @@ public class GuiGuide extends GuiScreen{
 	public void drawScreen(int par1, int par2, float par3)
 	{
 		 GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		 this.mc.renderEngine.bindTexture(Textures.GUI_LOCATIONS + Textures.GUI_BOOK_GUIDE);
+		 this.mc.renderEngine.bindTexture(Textures.GUI_LOCATION + Textures.GUI_BOOK_GUIDE);
 		 int var5 = (this.width - this.bookImageWidth) / 2;
 		 int var6 = ((this.height - this.bookImageHeight) / 2)-10;
 		 this.drawTexturedModalRect(var5, var6, 0, 0, this.bookImageWidth, this.bookImageHeight);

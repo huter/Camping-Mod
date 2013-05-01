@@ -40,7 +40,7 @@ public class CommonProxy implements IGuiHandler {
     public void registerKeyBindingHandler() {}
     public void setKeyBinding(String name, int value) {}   
     public void registerTickHandler() {}
-    public void registerCloaks() {}
+	public void registerEntityRenderHandler() {}
   
     public static GuiGuideCampfire guideCamp;
     public static GuiGuideTent guideTent;

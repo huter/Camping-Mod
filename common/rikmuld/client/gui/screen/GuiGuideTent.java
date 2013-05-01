@@ -128,7 +128,7 @@ public class GuiGuideTent extends GuiGuide{
 			ItemStack wool1 = new ItemStack(Block.cloth, 1, IntegerHelper.getLimitedNumber(woolNum1, 0, 15));
 			ItemStack wool2 = new ItemStack(Block.cloth, 1, IntegerHelper.getLimitedNumber(woolNum2, 0, 15));
 			
-			this.mc.renderEngine.bindTexture(Textures.GUI_LOCATIONS + Textures.GUI_COMPONENTS);
+			this.mc.renderEngine.bindTexture(Textures.GUI_LOCATION + Textures.GUI_COMPONENTS);
 			
 			for(int i=1; i<5;i++)
 			{  	
