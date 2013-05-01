@@ -1,5 +1,6 @@
 package rikmuld.inventory.inventory;
 
+import rikmuld.core.register.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.item.ItemStack;
@@ -117,4 +118,9 @@ public class InventoryCampingBag extends InventoryBasic {
 			}
 			reading = false;
 		}
+		
+		public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
+	    {
+	        return ((par1EntityPlayer.getCurrentEquippedItem().getItem() == ModItems.CampingBag)? true:false);
+	    }
 }

@@ -8,7 +8,6 @@ import net.minecraft.item.ItemStack;
 import rikmuld.core.register.ModItems;
 import rikmuld.inventory.inventory.InventoryCampingBag;
 import rikmuld.inventory.slot.BackpackNoSlot;
-import rikmuld.item.normal.Backpack;
 
 public class ContainerCampingBag extends Container {
 	
@@ -65,7 +64,8 @@ public class ContainerCampingBag extends Container {
 	@Override
 	public boolean canInteractWith(EntityPlayer player) 
 	{
-		return true;
+		if(player.getCurrentEquippedItem()!=null) return (player.getCurrentEquippedItem().isItemEqual(backpack))? true:false;
+		return false;
 	}
 
 	@Override

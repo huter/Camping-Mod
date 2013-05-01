@@ -20,7 +20,6 @@ import rikmuld.inventory.slot.CampingSlot;
 
 public class ContainerCamping extends Container {
 	
-	public ItemStack backpack;
 	public World worldObj;
 	public EntityPlayer player;
 	public InventoryCamping campingInv;
