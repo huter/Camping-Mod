@@ -9,8 +9,6 @@ import cpw.mods.fml.common.IPlayerTracker;
 
 public class PlayerHandler implements IPlayerTracker{
 
-	public static NBTTagCompound campingInv;
-
 	@Override
 	public void onPlayerLogin(EntityPlayer player) 
 	{	
@@ -43,8 +41,6 @@ public class PlayerHandler implements IPlayerTracker{
 	@Override
 	public void onPlayerRespawn(EntityPlayer player) 
 	{
-		TickHandler.dropItems = true;
-		player.getEntityData().setCompoundTag("CampingInventory", campingInv);
 		player.getEntityData().setBoolean("NotFirstLoggedin", true);
 	}
 

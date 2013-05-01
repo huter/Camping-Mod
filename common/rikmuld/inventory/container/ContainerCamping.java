@@ -121,7 +121,7 @@ public class ContainerCamping extends Container {
 		
 		Slot slot = (Slot) inventorySlots.get(i);
 		
-		if (slot != null && slot.getHasStack()) 
+		if (slot != null && slot.getHasStack() && slot.inventory!=craftResult && slot.inventory!=craftResult2) 
 		{
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
@@ -129,6 +129,7 @@ public class ContainerCamping extends Container {
 			if(campingInv.getStackInSlot(1)==null&&itemstack1.getItem()==ModItems.CampTool2) startNum = 1;
 			if(campingInv.getStackInSlot(0)==null&&itemstack1.getItem()==ModItems.CampingBag) startNum = 0;
 			if(campingInv.getStackInSlot(0)==null&&itemstack1.getItem()==ModItems.CampingBag) endNum = 1;
+			
 			else if(itemstack1.getItem()==ModItems.CampingBag) 
 			{
 				itemstack = null;
@@ -158,6 +159,49 @@ public class ContainerCamping extends Container {
 			{
 				slot.onSlotChanged();
 			}
+		}
+		if(slot != null && slot.getHasStack() && slot.inventory==craftResult || slot.inventory==craftResult2)
+		{
+		    ItemStack itemstack1 = slot.getStack();
+            itemstack = itemstack1.copy();
+
+			if(campingInv.getStackInSlot(1)==null&&itemstack1.getItem()==ModItems.CampTool2) startNum = 1;
+			if(campingInv.getStackInSlot(0)==null&&itemstack1.getItem()==ModItems.CampingBag) startNum = 0;
+			if(campingInv.getStackInSlot(0)==null&&itemstack1.getItem()==ModItems.CampingBag) endNum = 1;
+			
+			else if(itemstack1.getItem()==ModItems.CampingBag) 
+			{
+				itemstack = null;
+				startNum = 0;
+				endNum = 0;
+			}
+			
+            if (i == 29||i == 30)
+            {
+                if (!this.mergeItemStack(itemstack1, 1, endNum, true)&!this.mergeItemStack(itemstack1, 49, 85, true))
+                {
+                    return null;
+                }
+
+                this.onCraftMatrixChanged((i==29)? craftMatrix:craftMatrix2);
+                slot.onSlotChange(itemstack1, itemstack);
+            }
+
+            if (itemstack1.stackSize == 0)
+            {
+                slot.putStack((ItemStack)null);
+            }
+            else
+            {
+                slot.onSlotChanged();
+            }
+
+            if (itemstack1.stackSize == itemstack.stackSize)
+            {
+                return null;
+            }
+
+            slot.onPickupFromSlot(player, itemstack1);
 		}
 		return itemstack;
 	}

@@ -5,6 +5,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import rikmuld.core.register.ModItems;
 import rikmuld.inventory.inventory.InventoryCampingBag;
 import rikmuld.inventory.slot.BackpackNoSlot;
 import rikmuld.item.normal.Backpack;
@@ -71,21 +72,28 @@ public class ContainerCampingBag extends Container {
 	public ItemStack transferStackInSlot(EntityPlayer p, int i) 
 	{
 		ItemStack itemstack = null;
+		
 		Slot slot = (Slot) inventorySlots.get(i);
-		if (slot != null && slot.getHasStack() && slot.getStack().getItem() instanceof Backpack) 
+		
+		if (slot != null && slot.getHasStack()) 
 		{
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
 			
-			if (i < backInv.getInventorySize(null)) 
+			if(itemstack.getItem()==ModItems.CampingBag)
 			{
-				if (!mergeItemStack(itemstack1, backInv.getInventorySize(null), inventorySlots.size(), true)) 
+				return null;
+			}
+			
+			if (i < backInv.getInventorySize(backpack)) 
+			{
+				if (!mergeItemStack(itemstack1, backInv.getInventorySize(backpack), inventorySlots.size(), true)) 
 				{
 					return null;
 				}
 			} 
-			
-			else if (!mergeItemStack(itemstack1, 0, backInv.getInventorySize(null), false)) 
+				
+			else if (!mergeItemStack(itemstack1, 0, (backpack.getItemDamage()+1)*9, false)) 
 			{
 				return null;
 			}
@@ -99,6 +107,7 @@ public class ContainerCampingBag extends Container {
 			{
 				slot.onSlotChanged();
 			}
+			
 		}
 		return itemstack;
 	}
