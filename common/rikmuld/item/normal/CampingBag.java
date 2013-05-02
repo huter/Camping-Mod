@@ -1,4 +1,4 @@
-package rikmuld.item.armor;
+package rikmuld.item.normal;
 
 import java.util.List;
 
@@ -13,18 +13,18 @@ import rikmuld.CampingMod;
 import rikmuld.core.lib.GuiIds;
 import rikmuld.core.lib.Items;
 import rikmuld.core.lib.Textures;
+import rikmuld.item.CampingItem;
 import rikmuld.item.CampingItemArmor;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ArmorCampingBag extends CampingItemArmor implements IArmorTextureProvider{
+public class CampingBag extends CampingItem implements IArmorTextureProvider{
 
 	public static final String[] metadataNames = new String[] {Items.ITEM_TOOL_BACK_SMALL_NAME, Items.ITEM_TOOL_BACK_NORMAL_NAME, Items.ITEM_TOOL_BACK_LARGE_NAME };
-	static EnumArmorMaterial BACKPACK = EnumHelper.addArmorMaterial("BACKPACK", -1, new int[] { 0, 5, 0, 0 }, 0);
-
-		public ArmorCampingBag(int i) 
+		
+	public CampingBag(int i) 
 		{
-			super(i, BACKPACK,  0, 1, metadataNames);
+			super(i, metadataNames);
 			maxStackSize = 1;
 			setHasSubtypes(true);
 			setMaxDamage(0);

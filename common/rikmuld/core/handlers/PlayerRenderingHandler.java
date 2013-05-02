@@ -14,7 +14,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.RenderEngine;
@@ -41,6 +40,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import rikmuld.core.lib.Textures;
+import rikmuld.item.normal.CampingBag;
 
 public class PlayerRenderingHandler extends RenderPlayer{
 
@@ -87,12 +87,11 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	      
 			if (itemstack2 != null)
 	        {
-	            Item item = itemstack2.getItem();
+	            Item itemarmor = itemstack2.getItem();
 
-	            if (item instanceof ItemArmor)
+	            if (itemarmor instanceof CampingBag)
 	            {
-	                ItemArmor itemarmor = (ItemArmor)item;
-	                this.loadTexture(ForgeHooksClient.getArmorTexture(itemstack2, "/armor/" + armorFilenamePrefix[itemarmor.renderIndex] + "_" + (par2 == 2 ? 2 : 1) + ".png"));
+	                this.loadTexture(ForgeHooksClient.getArmorTexture(itemstack2, "/armor/" + armorFilenamePrefix[2] + "_" + (par2 == 2 ? 2 : 1) + ".png"));
 	                ModelBiped modelbiped = par2 == 2 ? this.modelArmor : this.modelArmorChestplate;
 	                modelbiped.bipedHead.showModel = par2 == 0;
 	                modelbiped.bipedHeadwear.showModel = par2 == 0;
@@ -119,29 +118,9 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	                }
 
 	                float f1 = 1.0F;
-
-	                if (itemarmor.getArmorMaterial() == EnumArmorMaterial.CLOTH)
-	                {
-	                    int j = itemarmor.getColor(itemstack);
-	                    float f2 = (float)(j >> 16 & 255) / 255.0F;
-	                    float f3 = (float)(j >> 8 & 255) / 255.0F;
-	                    float f4 = (float)(j & 255) / 255.0F;
-	                    GL11.glColor3f(f1 * f2, f1 * f3, f1 * f4);
-
-	                    if (itemstack.isItemEnchanted())
-	                    {
-	                        return 31;
-	                    }
-
-	                    return 16;
-	                }
-
+	                
 	                GL11.glColor3f(f1, f1, f1);
-
-	                if (itemstack2.isItemEnchanted())
-	                {
-	                    return 15;
-	                }
+	                
 	                returnInt = 1;
 	            }
 	        }
@@ -336,7 +315,6 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	        float f1 = 1.0F;
 	        GL11.glColor3f(f1, f1, f1);
 	        ItemStack itemstack = par1EntityPlayer.inventory.armorItemInSlot(3);
-	        par1EntityPlayer.cloakUrl = "http://rikmuld.com/CloakDev.png";
 
 	        if (itemstack != null)
 	        {
@@ -406,7 +384,7 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	        	RenderEngine renderengine = this.renderManager.renderEngine;
 	        	int i = renderengine.getTexture(cloakFile);
 	            GL11.glBindTexture(GL11.GL_TEXTURE_2D, i);
-	                 
+	            
 	            GL11.glPushMatrix();
 	            GL11.glTranslatef(0.0F, 0.0F, 0.125F);
 	            double d0 = par1EntityPlayer.field_71091_bM + (par1EntityPlayer.field_71094_bP - par1EntityPlayer.field_71091_bM) * (double)par2 - (par1EntityPlayer.prevPosX + (par1EntityPlayer.posX - par1EntityPlayer.prevPosX) * (double)par2);
@@ -450,6 +428,52 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	            this.modelBipedMain.renderCloak(0.0625F);
 	            GL11.glPopMatrix();
 	        }
+	        else if (this.loadDownloadableImageTexture(par1EntityPlayer.cloakUrl, (String)null) && !par1EntityPlayer.getHasActivePotion() && !par1EntityPlayer.getHideCape())
+	        {
+	            GL11.glPushMatrix();
+	            GL11.glTranslatef(0.0F, 0.0F, 0.125F);
+	            double d0 = par1EntityPlayer.field_71091_bM + (par1EntityPlayer.field_71094_bP - par1EntityPlayer.field_71091_bM) * (double)par2 - (par1EntityPlayer.prevPosX + (par1EntityPlayer.posX - par1EntityPlayer.prevPosX) * (double)par2);
+	            double d1 = par1EntityPlayer.field_71096_bN + (par1EntityPlayer.field_71095_bQ - par1EntityPlayer.field_71096_bN) * (double)par2 - (par1EntityPlayer.prevPosY + (par1EntityPlayer.posY - par1EntityPlayer.prevPosY) * (double)par2);
+	            double d2 = par1EntityPlayer.field_71097_bO + (par1EntityPlayer.field_71085_bR - par1EntityPlayer.field_71097_bO) * (double)par2 - (par1EntityPlayer.prevPosZ + (par1EntityPlayer.posZ - par1EntityPlayer.prevPosZ) * (double)par2);
+	            f6 = par1EntityPlayer.prevRenderYawOffset + (par1EntityPlayer.renderYawOffset - par1EntityPlayer.prevRenderYawOffset) * par2;
+	            double d3 = (double)MathHelper.sin(f6 * (float)Math.PI / 180.0F);
+	            double d4 = (double)(-MathHelper.cos(f6 * (float)Math.PI / 180.0F));
+	            float f7 = (float)d1 * 10.0F;
+
+	            if (f7 < -6.0F)
+	            {
+	                f7 = -6.0F;
+	            }
+
+	            if (f7 > 32.0F)
+	            {
+	                f7 = 32.0F;
+	            }
+
+	            float f8 = (float)(d0 * d3 + d2 * d4) * 100.0F;
+	            float f9 = (float)(d0 * d4 - d2 * d3) * 100.0F;
+
+	            if (f8 < 0.0F)
+	            {
+	                f8 = 0.0F;
+	            }
+
+	            float f10 = par1EntityPlayer.prevCameraYaw + (par1EntityPlayer.cameraYaw - par1EntityPlayer.prevCameraYaw) * par2;
+	            f7 += MathHelper.sin((par1EntityPlayer.prevDistanceWalkedModified + (par1EntityPlayer.distanceWalkedModified - par1EntityPlayer.prevDistanceWalkedModified) * par2) * 6.0F) * 32.0F * f10;
+
+	            if (par1EntityPlayer.isSneaking())
+	            {
+	                f7 += 25.0F;
+	            }
+
+	            GL11.glRotatef(6.0F + f8 / 2.0F + f7, 1.0F, 0.0F, 0.0F);
+	            GL11.glRotatef(f9 / 2.0F, 0.0F, 0.0F, 1.0F);
+	            GL11.glRotatef(-f9 / 2.0F, 0.0F, 1.0F, 0.0F);
+	            GL11.glRotatef(180.0F, 0.0F, 1.0F, 0.0F);
+	            this.modelBipedMain.renderCloak(0.0625F);
+	            GL11.glPopMatrix();
+	        }
+	        
 
 	        ItemStack itemstack1 = par1EntityPlayer.inventory.getCurrentItem();
 
