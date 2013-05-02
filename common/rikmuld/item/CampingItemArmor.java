@@ -28,11 +28,11 @@ public abstract class CampingItemArmor extends ItemArmor implements IArmorTextur
 	}
 
 	@Override
-	public void updateIcons(IconRegister iconRegister)
+	public void registerIcons(IconRegister iconRegister)
 	{
 		if(this.metadata == null)
 		{
-			 iconIndex = iconRegister.registerIcon(ModInfo.MOD_ID+":"+this.getUnlocalizedName().substring(5));
+			itemIcon = iconRegister.registerIcon(ModInfo.MOD_ID+":"+this.getUnlocalizedName().substring(5));
 		}
 		else
 		{
@@ -48,9 +48,9 @@ public abstract class CampingItemArmor extends ItemArmor implements IArmorTextur
     {
     	if(this.metadata != null)
 		{
-    		iconIndex = iconBuffer[par1][0];
+    		itemIcon = iconBuffer[par1][0];
 		}
-    	return this.iconIndex;
+    	return this.itemIcon;
     }
 
 	@Override

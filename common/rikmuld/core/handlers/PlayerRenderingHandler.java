@@ -40,6 +40,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import rikmuld.core.lib.Textures;
+import rikmuld.core.register.ModLogger;
 import rikmuld.item.normal.CampingBag;
 
 public class PlayerRenderingHandler extends RenderPlayer{
@@ -50,6 +51,8 @@ public class PlayerRenderingHandler extends RenderPlayer{
 		static DocumentBuilder builder;
 		static Document doc;
 		static Transformer xform;
+		
+		public boolean hasUsers;
 	
 		public static String[] developers;
 		public static String[] codinghelp;
@@ -279,12 +282,14 @@ public class PlayerRenderingHandler extends RenderPlayer{
 					help[x] = helpers[x].getTextContent();	
 				}
 			}
+			ModLogger.logDebug("debugging...");
+			hasUsers = true;
 		}
 		
 	    @Override
 	    protected void renderSpecials(EntityPlayer par1EntityPlayer, float par2)
 	    {
-	    	this.GetUsers();
+	    	if(!hasUsers)this.GetUsers();
 	    	
 	    	String cloakFile = null;
 	    	
@@ -379,7 +384,7 @@ public class PlayerRenderingHandler extends RenderPlayer{
 
 	        float f6;
 
-	        if (cloakFile!=null&&!par1EntityPlayer.getHasActivePotion() && !par1EntityPlayer.getHideCape())
+	        if (cloakFile!=null&& !par1EntityPlayer.isInvisible() && !par1EntityPlayer.getHideCape())
 	        {
 	        	RenderEngine renderengine = this.renderManager.renderEngine;
 	        	int i = renderengine.getTexture(cloakFile);
@@ -428,7 +433,7 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	            this.modelBipedMain.renderCloak(0.0625F);
 	            GL11.glPopMatrix();
 	        }
-	        else if (this.loadDownloadableImageTexture(par1EntityPlayer.cloakUrl, (String)null) && !par1EntityPlayer.getHasActivePotion() && !par1EntityPlayer.getHideCape())
+	        else if (this.loadDownloadableImageTexture(par1EntityPlayer.cloakUrl, (String)null) && !par1EntityPlayer.isInvisible() && !par1EntityPlayer.getHideCape())
 	        {
 	            GL11.glPushMatrix();
 	            GL11.glTranslatef(0.0F, 0.0F, 0.125F);

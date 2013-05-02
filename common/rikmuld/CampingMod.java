@@ -88,16 +88,17 @@ public class CampingMod {
          GameRegistry.registerPlayerTracker(playerHandler);
          MinecraftForge.EVENT_BUS.register(playerHandler);
          
-		 ModLogger.log(Level.INFO, ModInfo.MOD_NAME + " has loaded successfylly.");
+		 ModLogger.log(Level.INFO, ModInfo.MOD_NAME + " has loaded successfully.");
 	}
 	
-	/* 
-	 * TODO: finalise the camping inventory: fix the crafting drop click bug.
-	 * TODO: finish the guide books.
+	/* TODO: for next update
+	 * 
+	 * -make an saparated treated class for the playerRenderingHandler for the get users for the cloaks and update the methodes from the RenderPlayer into the playerRenderingHandler
+	 * -finish some guide books.
 	 * 
 	 * TODO: the known bugs:
 	 * 
-	 * -camper skin change reload world (nbt thingy)
+	 * -camper skin change reload world (nbt/packedhandling thingy)
 	 * 
 	 * TODO: misc
 	 * 
@@ -109,6 +110,7 @@ public class CampingMod {
 	 *
 	 * TODO: for next update (backpack Update) 1.0.1 --> 1.0.2
 	 * 
+	 * -fix the knows bugs
 	 * -finish the tent and the equipment guide book.
 	 * -make an model for the camping bag for when it is on you bag
 	 * 

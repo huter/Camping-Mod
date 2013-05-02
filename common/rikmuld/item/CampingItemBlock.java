@@ -22,11 +22,11 @@ public abstract class CampingItemBlock extends ItemBlock {
 	}
 		
 	@Override
-	public void updateIcons(IconRegister iconRegister)
+	public void registerIcons(IconRegister iconRegister)
 	{
 		if(this.metadata == null)
 		{
-			 iconIndex = iconRegister.registerIcon(ModInfo.MOD_ID+":"+this.getUnlocalizedName().substring(5));
+			itemIcon = iconRegister.registerIcon(ModInfo.MOD_ID+":"+this.getUnlocalizedName().substring(5));
 		}
 		else
 		{
@@ -42,9 +42,9 @@ public abstract class CampingItemBlock extends ItemBlock {
     {
     	if(this.metadata != null)
 		{
-    		iconIndex = iconBuffer[par1][0];
+    		itemIcon = iconBuffer[par1][0];
 		}
-    	return this.iconIndex;
+    	return this.itemIcon;
     }
 }
 		

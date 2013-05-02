@@ -123,7 +123,7 @@ public class TileEntityCampfire extends TileEntity implements IInventory{
             }
             if (var2 instanceof ItemTool && ((ItemTool) var2).getToolMaterialName().equals("WOOD")) return 2*feul;
             if (var2 instanceof ItemSword && ((ItemSword) var2).getToolMaterialName().equals("WOOD")) return 2*feul;
-            if (var2 instanceof ItemHoe && ((ItemHoe) var2).func_77842_f().equals("WOOD")) return 2*feul;
+            if (var2 instanceof ItemHoe && ((ItemHoe) var2).getMaterialName().equals("WOOD")) return 2*feul;
             if (var1 == Item.stick.itemID) return 1*feul;
             if (var1 == Item.coal.itemID) return 16*feul;
             if (var1 == Item.bucketLava.itemID) return 200*feul;

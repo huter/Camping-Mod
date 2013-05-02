@@ -31,7 +31,7 @@ public class ContainerCampingBag extends Container {
 		{
 			for (int row = 0; row < 3; ++row) for (int col = 0; col < 6; ++col) 
 			{
-				this.addSlotToContainer(new BackpackNoSlot(backpackInventory, col + row * 6, 36 + col * 18, 18 + row * 18));
+				this.addSlotToContainer(new BackpackNoSlot(backpackInventory, col + row * 6, 35 + col * 18, 18 + row * 18));
 			}
 		}
 		else if(theBackpack.getItemDamage()==2)

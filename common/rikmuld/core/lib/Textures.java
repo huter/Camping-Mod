@@ -30,7 +30,7 @@ public class Textures {
 	public static final String GUI_COMPONENTS = "GuideBookComponents.png";
 	public static final String GUI_TOOL_CAMP = "GuiCampTool.png";
 	
-	public static final String CLOAK_DEV= "CloakDev.png";
-	public static final String CLOAK_CHELP = "CloakCodingHelp.png";
-	public static final String CLOAK_HELP = "CloakHelp.png";
+	public static final String CLOAK_DEV= "cloakDev.png";
+	public static final String CLOAK_CHELP = "cloakCodingHelp.png";
+	public static final String CLOAK_HELP = "cloakHelp.png";
 }
