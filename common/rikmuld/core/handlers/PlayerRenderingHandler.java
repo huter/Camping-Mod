@@ -39,20 +39,14 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import rikmuld.core.helper.CloakHelper;
 import rikmuld.core.lib.Textures;
 import rikmuld.core.register.ModLogger;
 import rikmuld.item.normal.CampingBag;
 
 public class PlayerRenderingHandler extends RenderPlayer{
-
-		static URL url;
-		static URLConnection conn;
-		static DocumentBuilderFactory factory;
-		static DocumentBuilder builder;
-		static Document doc;
-		static Transformer xform;
 		
-		public boolean hasUsers;
+		public static boolean hasUsers = false;
 	
 		public static String[] developers;
 		public static String[] codinghelp;
@@ -191,130 +185,40 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	        }
 
 	        return (returnInt==1)? 1:-1;
-	    }
+	    }		
 	    
-		
-		public void GetXmlFile()
-		{
-			try 
-			{
-				url = new URL("http://rikmuld.com/cloaks.xml");
-			} 	
-			catch (MalformedURLException e) 
-			{
-				e.printStackTrace();
-			}
-			
-			try 
-			{
-				conn = url.openConnection();
-			} 	
-			catch (IOException e) 
-			{
-				e.printStackTrace();
-			}
-
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			
-			try
-			{
-				builder = factory.newDocumentBuilder();
-			}
-			catch (ParserConfigurationException e) 
-			{	
-				e.printStackTrace();
-			}
-			
-			try 
-			{
-				doc = builder.parse(conn.getInputStream());
-			} 
-			catch (SAXException e1)
-			{	
-				e1.printStackTrace();
-			} 
-			catch (IOException e1)
-			{
-				e1.printStackTrace();
-			}
-		}
-		
-		public void GetUsers()
-		{
-			GetXmlFile();
-			if(doc!=null)
-			{	
-				NodeList developer = doc.getElementsByTagName("developer");
-				NodeList codinghelpers = doc.getElementsByTagName("codinghelpers");
-				NodeList helper = doc.getElementsByTagName("helpers");
-				
-				Node dev = developer.item(0);	
-				
-				int manyCoders = codinghelpers.getLength();			
-				Node[] coders = new Node[manyCoders+1];
-				
-				int manyHelpers = helper.getLength();			
-				Node[] helpers = new Node[manyHelpers+1];
-				
-				for (int x = 0; x<manyCoders; x++)
-				{
-					coders[x] = codinghelpers.item(x);
-				}
-				
-				for (int x = 0; x<manyHelpers; x++)
-				{
-					helpers[x] = helper.item(x);
-				}
-				
-				developers = new String[1];
-				codinghelp = new String[manyCoders];
-				help = new String[manyHelpers];
-				
-				developers[0] = dev.getTextContent();
-				
-				for (int x = 0; x<manyCoders; x++)
-				{
-					codinghelp[x] = coders[x].getTextContent();
-				}
-				
-				for (int x = 0; x<manyHelpers; x++)
-				{
-					help[x] = helpers[x].getTextContent();	
-				}
-			}
-			ModLogger.logDebug("debugging...");
-			hasUsers = true;
-		}
-		
 	    @Override
 	    protected void renderSpecials(EntityPlayer par1EntityPlayer, float par2)
 	    {
-	    	if(!hasUsers)this.GetUsers();
+	    	if(!hasUsers)CloakHelper.getCloakUsers(this);
 	    	
 	    	String cloakFile = null;
 	    	
-	    	for(int x = 0; x<developers.length; x++)
+	    	if(developers!=null&&codinghelp!=null&&help!=null)
 	    	{
-				 if(par1EntityPlayer.username.equals(developers[x]))
-				 {
-					 cloakFile = Textures.CLOAK_LOCATION + Textures.CLOAK_DEV;
-				 }
-	    	}
-		 
-	    	for(int x = 0; x<codinghelp.length; x++)
-	    	{
-	    		if(par1EntityPlayer.username.equals(codinghelp[x]))
-	    		{
-	    			 cloakFile = Textures.CLOAK_LOCATION + Textures.CLOAK_CHELP;
-	    		}
-		 	}
-		 
-	    	for(int x = 0; x<help.length; x++)
-	    	{
-				 if(par1EntityPlayer.username.equals(help[x]))
-				 {
-					 cloakFile = Textures.CLOAK_LOCATION + Textures.CLOAK_HELP;
-				 }
+		    	for(int x = 0; x<developers.length; x++)
+		    	{
+					 if(par1EntityPlayer.username.equals(developers[x]))
+					 {
+						 cloakFile = Textures.CLOAK_LOCATION + Textures.CLOAK_DEV;
+					 }
+		    	}
+			 
+		    	for(int x = 0; x<codinghelp.length; x++)
+		    	{
+		    		if(par1EntityPlayer.username.equals(codinghelp[x]))
+		    		{
+		    			 cloakFile = Textures.CLOAK_LOCATION + Textures.CLOAK_CHELP;
+		    		}
+			 	}
+			 
+		    	for(int x = 0; x<help.length; x++)
+		    	{
+					 if(par1EntityPlayer.username.equals(help[x]))
+					 {
+						 cloakFile = Textures.CLOAK_LOCATION + Textures.CLOAK_HELP;
+					 }
+		    	}
 	    	}
 			 
 	        float f1 = 1.0F;
