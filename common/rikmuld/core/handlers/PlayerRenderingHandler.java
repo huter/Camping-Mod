@@ -68,7 +68,7 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	    {
 	    	int returnInt = 0;
 	    	
-	        ItemStack itemstack = par1EntityPlayer.inventory.armorItemInSlot(3 - par2);
+			ItemStack itemstack = par1EntityPlayer.inventory.armorItemInSlot(3 - par2);
 	        ItemStack itemstack2 = null;
 	        
 	        NBTTagList backpack = par1EntityPlayer.getEntityData().getCompoundTag("CampingInventory").getTagList("CampingItems");
@@ -88,7 +88,7 @@ public class PlayerRenderingHandler extends RenderPlayer{
 
 	            if (itemarmor instanceof CampingBag)
 	            {
-	                this.loadTexture(ForgeHooksClient.getArmorTexture(itemstack2, "/armor/" + armorFilenamePrefix[2] + "_" + (par2 == 2 ? 2 : 1) + ".png"));
+	                this.loadTexture(ForgeHooksClient.getArmorTexture(par1EntityPlayer, itemstack2, "/armor/" + armorFilenamePrefix[2] + "_" + (par2 == 2 ? 2 : 1) + ".png", par2, 1));
 	                ModelBiped modelbiped = par2 == 2 ? this.modelArmor : this.modelArmorChestplate;
 	                modelbiped.bipedHead.showModel = par2 == 0;
 	                modelbiped.bipedHeadwear.showModel = par2 == 0;
@@ -97,6 +97,7 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	                modelbiped.bipedLeftArm.showModel = par2 == 1;
 	                modelbiped.bipedRightLeg.showModel = par2 == 2 || par2 == 3;
 	                modelbiped.bipedLeftLeg.showModel = par2 == 2 || par2 == 3;
+	                modelbiped = ForgeHooksClient.getArmorModel(par1EntityPlayer, itemstack2, par2, modelbiped);
 	                this.setRenderPassModel(modelbiped);
 
 	                if (modelbiped != null)
@@ -115,9 +116,14 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	                }
 
 	                float f1 = 1.0F;
-	                
+
 	                GL11.glColor3f(f1, f1, f1);
-	                
+
+	                if (itemstack2.isItemEnchanted())
+	                {
+	                    return 15;
+	                }
+
 	                returnInt = 1;
 	            }
 	        }
@@ -129,7 +135,7 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	            if (item instanceof ItemArmor)
 	            {
 	                ItemArmor itemarmor = (ItemArmor)item;
-	                this.loadTexture(ForgeHooksClient.getArmorTexture(itemstack, "/armor/" + armorFilenamePrefix[itemarmor.renderIndex] + "_" + (par2 == 2 ? 2 : 1) + ".png"));
+	                this.loadTexture(ForgeHooksClient.getArmorTexture(par1EntityPlayer, itemstack, "/armor/" + armorFilenamePrefix[itemarmor.renderIndex] + "_" + (par2 == 2 ? 2 : 1) + ".png", par2, 1));
 	                ModelBiped modelbiped = par2 == 2 ? this.modelArmor : this.modelArmorChestplate;
 	                modelbiped.bipedHead.showModel = par2 == 0;
 	                modelbiped.bipedHeadwear.showModel = par2 == 0;
@@ -138,6 +144,7 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	                modelbiped.bipedLeftArm.showModel = par2 == 1;
 	                modelbiped.bipedRightLeg.showModel = par2 == 2 || par2 == 3;
 	                modelbiped.bipedLeftLeg.showModel = par2 == 2 || par2 == 3;
+	                modelbiped = ForgeHooksClient.getArmorModel(par1EntityPlayer, itemstack, par2, modelbiped);
 	                this.setRenderPassModel(modelbiped);
 
 	                if (modelbiped != null)
@@ -157,9 +164,9 @@ public class PlayerRenderingHandler extends RenderPlayer{
 
 	                float f1 = 1.0F;
 
-	                if (itemarmor.getArmorMaterial() == EnumArmorMaterial.CLOTH)
+	                int j = itemarmor.getColor(itemstack);
+	                if (j != -1)
 	                {
-	                    int j = itemarmor.getColor(itemstack);
 	                    float f2 = (float)(j >> 16 & 255) / 255.0F;
 	                    float f3 = (float)(j >> 8 & 255) / 255.0F;
 	                    float f4 = (float)(j & 255) / 255.0F;
@@ -183,9 +190,8 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	                returnInt = 1;
 	            }
 	        }
-
 	        return (returnInt==1)? 1:-1;
-	    }		
+	    }
 	    
 	    @Override
 	    protected void renderSpecials(EntityPlayer par1EntityPlayer, float par2)
@@ -224,6 +230,7 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	        float f1 = 1.0F;
 	        GL11.glColor3f(f1, f1, f1);
 	        ItemStack itemstack = par1EntityPlayer.inventory.armorItemInSlot(3);
+
 
 	        if (itemstack != null)
 	        {
@@ -337,7 +344,7 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	            this.modelBipedMain.renderCloak(0.0625F);
 	            GL11.glPopMatrix();
 	        }
-	        else if (this.loadDownloadableImageTexture(par1EntityPlayer.cloakUrl, (String)null) && !par1EntityPlayer.isInvisible() && !par1EntityPlayer.getHideCape())
+	        if (this.loadDownloadableImageTexture(par1EntityPlayer.cloakUrl, (String)null) && !par1EntityPlayer.isInvisible() && !par1EntityPlayer.getHideCape())
 	        {
 	            GL11.glPushMatrix();
 	            GL11.glTranslatef(0.0F, 0.0F, 0.125F);
@@ -382,7 +389,6 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	            this.modelBipedMain.renderCloak(0.0625F);
 	            GL11.glPopMatrix();
 	        }
-	        
 
 	        ItemStack itemstack1 = par1EntityPlayer.inventory.getCurrentItem();
 
@@ -406,8 +412,9 @@ public class PlayerRenderingHandler extends RenderPlayer{
 
 	            IItemRenderer customRenderer = MinecraftForgeClient.getItemRenderer(itemstack1, EQUIPPED);
 	            boolean is3D = (customRenderer != null && customRenderer.shouldUseRenderHelper(EQUIPPED, itemstack1, BLOCK_3D));
+	            boolean isBlock = itemstack1.itemID < Block.blocksList.length && itemstack1.getItemSpriteNumber() == 0;
 
-	            if (itemstack1.getItem() instanceof ItemBlock && (is3D || RenderBlocks.renderItemIn3d(Block.blocksList[itemstack1.itemID].getRenderType())))
+	            if (is3D || (isBlock && RenderBlocks.renderItemIn3d(Block.blocksList[itemstack1.itemID].getRenderType())))
 	            {
 	                f3 = 0.5F;
 	                GL11.glTranslatef(0.0F, 0.1875F, -0.3125F);

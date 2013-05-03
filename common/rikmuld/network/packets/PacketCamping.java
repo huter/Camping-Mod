@@ -16,35 +16,36 @@ public class PacketCamping {
 
     public PacketCamping(PacketTypeHandler packetType, boolean isChunkDataPacket) 
     {
-
         this.packetType = packetType;
         this.isChunkDataPacket = isChunkDataPacket;
     }
 
     public byte[] populate() 
     {
-
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(bos);
 
-        try {
+        try 
+        {
             dos.writeByte(packetType.ordinal());
             this.writeData(dos);
         }
-        catch (IOException e) {
+        catch (IOException e)
+        {
             e.printStackTrace(System.err);
         }
-
         return bos.toByteArray();
     }
 
     public void readPopulate(DataInputStream data) 
     {
 
-        try {
+        try 
+        {
             this.readData(data);
         }
-        catch (IOException e) {
+        catch (IOException e) 
+        {
             e.printStackTrace(System.err);
         }
     }

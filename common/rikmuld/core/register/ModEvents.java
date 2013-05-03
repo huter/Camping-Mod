@@ -39,5 +39,15 @@ public class ModEvents {
 				event.drops.add(new EntityItem(event.entityPlayer.worldObj, event.entityPlayer.posX, event.entityPlayer.posY, event.entityPlayer.posZ, ItemStack.loadItemStackFromNBT(slotEntry)));
 			}
 		}
+		NBTTagList backpack2 = event.entityPlayer.getEntityData().getCompoundTag("CampingCraftInventory").getTagList("CampingCraftItems");
+		for (int i = 0; i < backpack2.tagCount(); i++) 
+		{
+			NBTTagCompound slotEntry = (NBTTagCompound) backpack.tagAt(i);
+			int j = slotEntry.getByte("CampingCraftSlot") & 0xff;
+			if (j >= 0 && j < 18) 
+			{
+				event.drops.add(new EntityItem(event.entityPlayer.worldObj, event.entityPlayer.posX, event.entityPlayer.posY, event.entityPlayer.posZ, ItemStack.loadItemStackFromNBT(slotEntry)));
+			}
+		}
     }	
 }

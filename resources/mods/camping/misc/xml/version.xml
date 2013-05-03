@@ -3,6 +3,9 @@
 <Versions>
 
 <Version>
+	<VersionNumber>1.0.1c</VersionNumber><VersionDate>3-5-2013</VersionDate><NewInVersion>Camping Inventory, Bugfixes</NewInVersion>
+	
+	</Version><Version>
 
 <VersionNumber>1.0.1b</VersionNumber>
 <VersionDate>5-4-2013</VersionDate>
@@ -50,6 +53,7 @@
 
 </Version>
 	
+
 
 
 </Versions>

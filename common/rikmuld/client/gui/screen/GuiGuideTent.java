@@ -103,11 +103,44 @@ public class GuiGuideTent extends GuiGuide{
 		 }
 		 if(page==3)
 		 {
-			 
+			 fontRenderer.drawString("Tents and storage tents are fine and great,", var3+32, var4+55, 0x2b2b2b, false);
+			 fontRenderer.drawString("but what if we want to sleep in them.", var3+32, var4+65, 0x2b2b2b, false);
+			 fontRenderer.drawString("No worries you only need to make yourself a", var3+32, var4+75, 0x2b2b2b, false);
+			 fontRenderer.drawString("sleepingbag and let you camping dreams begin.", var3+32, var4+85, 0x2b2b2b, false);
+			 fontRenderer.drawString("To craft it you will need 3 wool of any type.", var3+32, var4+95, 0x2b2b2b, false);
+			 fontRenderer.drawString("Then if you have an tent and a sleeping bag", var3+32, var4+105, 0x2b2b2b, false);
+			 fontRenderer.drawString("you need to right click the tent with the", var3+32, var4+115, 0x2b2b2b, false);
+			 fontRenderer.drawString("sleepingbag and you will get an sleeping tent.", var3+32, var4+125, 0x2b2b2b, false);
+			 fontRenderer.drawString("now if you are done sleeping.", var3+32, var4+135, 0x2b2b2b, false);
+			 fontRenderer.drawString("you can retreve the", var3+32, var4+145, 0x2b2b2b, false);
+			 fontRenderer.drawString("sleepingbag with a right click", var3+32, var4+155, 0x2b2b2b, false);
+			 fontRenderer.drawString("on the front of the sleeping", var3+32, var4+165, 0x2b2b2b, false);
+			 fontRenderer.drawString("tent with an camper's tool,", var3+32, var4+175, 0x2b2b2b, false);
+			 fontRenderer.drawString("and your sleeping tent will",var3+32, var4+185, 0x2b2b2b, false);
+			 fontRenderer.drawString("change back into an normal", var3+32, var4+195, 0x2b2b2b, false);
+			 fontRenderer.drawString("tent and you will get back", var3+32, var4+205, 0x2b2b2b, false);
+			 fontRenderer.drawString("your sleepingbag.", var3+32, var4+215, 0x2b2b2b, false);
 		 }
 		 if(page==4)
 		 {
-			 
+			 fontRenderer.drawString("Tents are very handy if it comes to survive", var3+32, var4+55, 0x2b2b2b, false);
+			 fontRenderer.drawString("in the wild, and there are 3 types of tents.", var3+32, var4+65, 0x2b2b2b, false);
+			 fontRenderer.drawString("Normal tents, storage tents, and sleeping", var3+32, var4+75, 0x2b2b2b, false);
+			 fontRenderer.drawString("tents. To get the last two you first need", var3+32, var4+85, 0x2b2b2b, false);
+			 fontRenderer.drawString("to make the basic one, and to craft it you", var3+32, var4+95, 0x2b2b2b, false);
+			 fontRenderer.drawString("will need 2 tent pegs and 5 canvas. To get", var3+32, var4+105, 0x2b2b2b, false);			 
+			 fontRenderer.drawString("an storage tent you need to right clik, the", var3+32, var4+115, 0x2b2b2b, false);
+			 fontRenderer.drawString("tent with an chest. To make an sleeping tent", var3+32, var4+125, 0x2b2b2b, false);
+			 fontRenderer.drawString("you need to right clik the tent", var3+32, var4+135, 0x2b2b2b, false);
+			 fontRenderer.drawString("with an sleepingbag. Tents", var3+32, var4+145, 0x2b2b2b, false);
+			 fontRenderer.drawString("can be turned if you right", var3+32, var4+155, 0x2b2b2b, false);
+			 fontRenderer.drawString("click them with an camper's", var3+32, var4+165, 0x2b2b2b, false);
+			 fontRenderer.drawString("tool. you also can get the", var3+32, var4+175, 0x2b2b2b, false);
+			 fontRenderer.drawString("stuff in an tent back with",var3+32, var4+185, 0x2b2b2b, false);
+			 fontRenderer.drawString("an right click with an", var3+32, var4+195, 0x2b2b2b, false);
+			 fontRenderer.drawString("camper's tool at the front", var3+32, var4+205, 0x2b2b2b, false);
+			 fontRenderer.drawString("of an tent. The storage", var3+32, var4+215, 0x2b2b2b, false);
+			 fontRenderer.drawString("tent can store up to 55 slots.", var3+32, var4+225, 0x2b2b2b, false);
 		 }
 		 GL11.glPopMatrix();
 	}

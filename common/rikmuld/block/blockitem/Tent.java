@@ -118,18 +118,14 @@ public class Tent extends CampingBlockItem{
 				 if (currentitem.itemID == ModItems.TentParts.itemID && currentitem.getItemDamage() == 2)
 				 {
 					 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 2, 2);
-					 ItemStack sleepingbag = new ItemStack(ModItems.TentParts, currentitem.stackSize-1, 2);
-					 player.destroyCurrentEquippedItem();
-					 player.inventory.addItemStackToInventory(sleepingbag);
+					 currentitem.stackSize--;
 					 player.addStat(ModAchievements.TentSleeping, 1);	
 				 }
 				 
 				 if (currentitem.itemID == Block.chest.blockID) 
 				 {
 					 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 1, 2);
-					 ItemStack chest = new ItemStack(Block.chest, currentitem.stackSize-1);
-					 player.destroyCurrentEquippedItem();
-					 player.inventory.addItemStackToInventory(chest);										 
+					 currentitem.stackSize--;									 
 					 player.addStat(ModAchievements.TentStorage, 1);			
 			     }
 				 
@@ -206,18 +202,14 @@ public class Tent extends CampingBlockItem{
 				 if (currentitem.itemID == ModItems.TentParts.itemID && currentitem.getItemDamage() == 2)
 				 {
 					 	par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 5, 2);
-					 	ItemStack sleepingbag = new ItemStack(ModItems.TentParts, currentitem.stackSize-1, 2);
-					    player.destroyCurrentEquippedItem();
-					    player.inventory.addItemStackToInventory(sleepingbag);
+					 	currentitem.stackSize--;
 						player.addStat(ModAchievements.TentSleeping, 1); 
 						return true;
 				 }		 
 				 if (currentitem.itemID == Block.chest.blockID) 
 				 {
 					 par1world.setBlock(par2, par3, par4, ModBlocks.tent.blockID, 4, 2);
-					 ItemStack chest = new ItemStack(Block.chest, currentitem.stackSize-1);
-					 player.destroyCurrentEquippedItem();
-					 player.inventory.addItemStackToInventory(chest);
+					 currentitem.stackSize--;
 					 player.addStat(ModAchievements.TentStorage, 1);
 					 return true;
 			      }

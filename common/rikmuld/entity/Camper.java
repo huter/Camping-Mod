@@ -31,7 +31,6 @@ import net.minecraft.world.World;
 import rikmuld.core.lib.Textures;
 import rikmuld.core.register.ModAchievements;
 import rikmuld.core.register.ModItems;
-import rikmuld.entity.ai.EntityAIAvoidCampfire;
 import rikmuld.entity.ai.EntityAILookAtTradePlayerCamper;
 import rikmuld.entity.ai.EntityAITradePlayerCamper;
 import cpw.mods.fml.relauncher.Side;
@@ -40,42 +39,30 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class Camper extends EntityAnimal implements  IMerchant, INpc{
 	 
 	  Random generator = new Random();
-	  String textureCamp;
-	  int isMale;
+	  public int isMale = generator.nextInt(2);  
+	  public String textureCamp = (isMale==0) ? (Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_MALE):(Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_FEMALE);  
 	  
 	  boolean spawn;
 
 	 public Camper(World par1World) 
 	 {
-	  super(par1World);
-	  this.moveSpeed = 0.30F;
-      this.texture = "Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_MALE";
-      this.setSize(0.6F, 1.8F);
-	  this.tasks.addTask(0, new EntityAISwimming(this));
-      this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityMob.class, 8.0F, 0.3F, 0.35F));
-      this.tasks.addTask(1, new EntityAITradePlayerCamper(this));
-      this.tasks.addTask(1, new EntityAILookAtTradePlayerCamper(this));
-      this.tasks.addTask(2, new EntityAIOpenDoor(this, true));
-      this.tasks.addTask(3, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
-      this.tasks.addTask(3, new EntityAIWatchClosest2(this, Camper.class, 5.0F, 0.02F));
-      this.tasks.addTask(3, new EntityAIWander(this, 0.3F));
-      this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
-    
-      
-      this.isImmuneToFire = true;
-      this.isMale = generator.nextInt(2);
-      
-      textureCamp = (isMale==0) ? (Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_MALE):(Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_FEMALE);       
-	  if(this.getEntityData().getString("texture").equals(""))this.getEntityData().setString("texture", textureCamp);
-	 }
-	 
-	 public Camper(World par1World, boolean AICampfireAvoid) 
-	 {
-		  this(par1World);	
-		  int SpawnX = (int) this.posX;
-		  int SpawnY = (int) this.posY;
-		  int SpawnZ = (int) this.posZ;
-		  this.tasks.addTask(5, new EntityAIAvoidCampfire(this, SpawnX, SpawnY, SpawnZ));
+		  super(par1World);
+		  this.moveSpeed = 0.30F;
+		  this.texture = "Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_MALE";
+		  this.setSize(0.6F, 1.8F);
+		  this.tasks.addTask(0, new EntityAISwimming(this));
+		  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityMob.class, 8.0F, 0.3F, 0.35F));
+		  this.tasks.addTask(1, new EntityAITradePlayerCamper(this));
+		  this.tasks.addTask(1, new EntityAILookAtTradePlayerCamper(this));
+		  this.tasks.addTask(2, new EntityAIOpenDoor(this, true));
+		  this.tasks.addTask(3, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
+		  this.tasks.addTask(3, new EntityAIWatchClosest2(this, Camper.class, 5.0F, 0.02F));
+		  this.tasks.addTask(3, new EntityAIWander(this, 0.3F));
+		  this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
+		  
+		  this.isImmuneToFire = true;
+		  
+		  this.writeEntityToNBT(this.getEntityData());
 	 }
 	 
 	    private boolean isPlaying;
@@ -130,7 +117,8 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
 	
 	 public String getTexture()
 	 {    
-		 return this.getEntityData().getString("texture");	 
+		 this.readEntityFromNBT(this.getEntityData());
+		 return textureCamp; 
 	 }
 	 
 	 protected boolean canDespawn()
@@ -161,7 +149,8 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
 	 public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
 	 {
 		 super.writeEntityToNBT(par1NBTTagCompound);
-		 par1NBTTagCompound.setInteger("Gender", this.isMale);
+
+		 if(!par1NBTTagCompound.hasKey("textureCamper"))par1NBTTagCompound.setString("textureCamper", textureCamp);
 		 
 		 if (this.buyingList != null)
 		 {
@@ -172,13 +161,13 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
    	 public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
    	 {
         super.readEntityFromNBT(par1NBTTagCompound);
-        this.isMale = par1NBTTagCompound.getInteger("Gender");
         
         if (par1NBTTagCompound.hasKey("offers"))
         {
             NBTTagCompound nbttagcompound1 = par1NBTTagCompound.getCompoundTag("offers");
             this.buyingList = new MerchantRecipeList(nbttagcompound1);
         }
+        this.textureCamp = par1NBTTagCompound.getString("textureCamper");
      }
    	 
      public boolean interact(EntityPlayer par1EntityPlayer)

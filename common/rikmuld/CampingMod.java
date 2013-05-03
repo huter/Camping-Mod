@@ -91,11 +91,7 @@ public class CampingMod {
 		 ModLogger.log(Level.INFO, ModInfo.MOD_NAME + " has loaded successfully.");
 	}
 	
-	/* TODO: for next update
-	 * 
-	 * -make an saparated treated class for the playerRenderingHandler for the get users for the cloaks and update the methodes from the RenderPlayer into the playerRenderingHandler
-	 * -finish some guide books.
-	 * 
+	/*
 	 * TODO: the known bugs:
 	 * 
 	 * -camper skin change reload world (nbt/packedhandling thingy)
@@ -103,8 +99,6 @@ public class CampingMod {
 	 * TODO: misc
 	 * 
 	 * -update the site!!! (also the new planed feutures)
-	 * -make special armor for campers.
-	 * -make the cloaks working.
 	 * -make a camper AI for not run into campfires and stay with tents.
 	 * -add camping animals 
 	 *
