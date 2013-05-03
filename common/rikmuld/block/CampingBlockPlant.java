@@ -18,7 +18,8 @@ public abstract class CampingBlockPlant extends BlockFlower {
 		super(par1, material);
 	}
 	
-    public Icon getBlockTextureFromSideAndMetadata(int par1, int par2)
+	@Override
+    public Icon getIcon(int par1, int par2)
     {
         if (par2 < 0 || par2 > this.metadata)
         {

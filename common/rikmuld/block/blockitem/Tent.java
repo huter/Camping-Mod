@@ -87,6 +87,12 @@ public class Tent extends CampingBlockItem{
 	{
 		return null;
 	}
+	
+	public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9)
+    {
+		par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, this.tickRate());
+        return par9;
+    }
 
 	public MovingObjectPosition collisionRayTrace(World par1World, int par2, int par3, int par4, Vec3 par5Vec3, Vec3 par6Vec3) 
 	{
