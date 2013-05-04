@@ -3,6 +3,7 @@ package rikmuld.core.proxys;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
+import rikmuld.client.renderer.item.ItemCampingBagRenderer;
 import rikmuld.client.renderer.tileentity.TileEntityCampfireRenderer;
 import rikmuld.client.renderer.tileentity.TileEntityTentRenderer;
 import rikmuld.core.handlers.KeyHandler;
@@ -10,6 +11,7 @@ import rikmuld.core.handlers.PlayerRenderingHandler;
 import rikmuld.core.handlers.TickHandler;
 import rikmuld.core.helper.KeyHelper;
 import rikmuld.core.lib.Textures;
+import rikmuld.core.register.ModItems;
 import rikmuld.tileentity.TileEntityCampfire;
 import rikmuld.tileentity.TileEntityTent;
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -19,15 +21,19 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 public class ClientProxy extends CommonProxy {
+
+	public static ItemCampingBagRenderer backpackRenderer;
 		
 	public void initRenderingAndTextures() {}
 	
 	public void registerRenderers () 
 	{
-		MinecraftForgeClient.preloadTexture(Textures.SPRITE_LOCATION + Textures.SPRITE_PARTICLES);
+		backpackRenderer = new ItemCampingBagRenderer();
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCampfire.class, new TileEntityCampfireRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTent.class, new TileEntityTentRenderer());
+		
+		MinecraftForgeClient.registerItemRenderer(ModItems.CampingBag.itemID, backpackRenderer);
 	}
 	
 	@Override

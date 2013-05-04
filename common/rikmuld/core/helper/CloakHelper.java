@@ -16,6 +16,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import rikmuld.core.handlers.PlayerRenderingHandler;
+import rikmuld.core.lib.Config;
 
 public class CloakHelper implements Runnable{
 
@@ -38,23 +39,26 @@ public class CloakHelper implements Runnable{
 	@Override
 	public void run() 
 	{
-		while(gotXml==false)
+		if(Config.GENERAL_CHECK_VERSION)
 		{
-			GetUsers();
-	        
-			if(gotXml==false)
+			while(gotXml==false)
 			{
-				try 
+				GetUsers();
+		        
+				if(gotXml==false)
 				{
-					Thread.sleep(500000);
-				} 
-				catch (InterruptedException e) 
-				{
-					e.printStackTrace();
+					try 
+					{
+						Thread.sleep(500000);
+					} 
+					catch (InterruptedException e) 
+					{
+						e.printStackTrace();
+					}
 				}
 			}
 		}
-		
+			
 		PlayerRenderingHandler.developers = developers;
 		PlayerRenderingHandler.codinghelp = codinghelp;
 		PlayerRenderingHandler.help = help;

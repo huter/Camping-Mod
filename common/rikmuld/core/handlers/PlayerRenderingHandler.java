@@ -2,17 +2,6 @@ package rikmuld.core.handlers;
 
 import static net.minecraftforge.client.IItemRenderer.ItemRenderType.EQUIPPED;
 import static net.minecraftforge.client.IItemRenderer.ItemRendererHelper.BLOCK_3D;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -21,7 +10,6 @@ import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.client.renderer.tileentity.TileEntitySkullRenderer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBlock;
@@ -34,14 +22,10 @@ import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 import org.lwjgl.opengl.GL11;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import rikmuld.core.helper.CloakHelper;
 import rikmuld.core.lib.Textures;
-import rikmuld.core.register.ModLogger;
+import rikmuld.core.proxys.ClientProxy;
 import rikmuld.item.normal.CampingBag;
 
 public class PlayerRenderingHandler extends RenderPlayer{
@@ -65,12 +49,11 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	    
 	    @Override
 	    protected int setArmorModel(EntityPlayer par1EntityPlayer, int par2, float par3)
-	    {
-	    	int returnInt = 0;
-	    	
+	    {   	
 			ItemStack itemstack = par1EntityPlayer.inventory.armorItemInSlot(3 - par2);
-	        ItemStack itemstack2 = null;
-	        
+			
+			ItemStack itemstack2 = null;
+			 
 	        NBTTagList backpack = par1EntityPlayer.getEntityData().getCompoundTag("CampingInventory").getTagList("CampingItems");
 			for (int i = 0; i < backpack.tagCount(); i++) 
 			{
@@ -81,52 +64,11 @@ public class PlayerRenderingHandler extends RenderPlayer{
 					itemstack2 = ItemStack.loadItemStackFromNBT(slotEntry);
 				}
 			}
-	      
-			if (itemstack2 != null)
-	        {
-	            Item itemarmor = itemstack2.getItem();
-
-	            if (itemarmor instanceof CampingBag)
-	            {
-	                this.loadTexture(ForgeHooksClient.getArmorTexture(par1EntityPlayer, itemstack2, "/armor/" + armorFilenamePrefix[2] + "_" + (par2 == 2 ? 2 : 1) + ".png", par2, 1));
-	                ModelBiped modelbiped = par2 == 2 ? this.modelArmor : this.modelArmorChestplate;
-	                modelbiped.bipedHead.showModel = par2 == 0;
-	                modelbiped.bipedHeadwear.showModel = par2 == 0;
-	                modelbiped.bipedBody.showModel = par2 == 1 || par2 == 2;
-	                modelbiped.bipedRightArm.showModel = par2 == 1;
-	                modelbiped.bipedLeftArm.showModel = par2 == 1;
-	                modelbiped.bipedRightLeg.showModel = par2 == 2 || par2 == 3;
-	                modelbiped.bipedLeftLeg.showModel = par2 == 2 || par2 == 3;
-	                modelbiped = ForgeHooksClient.getArmorModel(par1EntityPlayer, itemstack2, par2, modelbiped);
-	                this.setRenderPassModel(modelbiped);
-
-	                if (modelbiped != null)
-	                {
-	                    modelbiped.onGround = this.mainModel.onGround;
-	                }
-
-	                if (modelbiped != null)
-	                {
-	                    modelbiped.isRiding = this.mainModel.isRiding;
-	                }
-
-	                if (modelbiped != null)
-	                {
-	                    modelbiped.isChild = this.mainModel.isChild;
-	                }
-
-	                float f1 = 1.0F;
-
-	                GL11.glColor3f(f1, f1, f1);
-
-	                if (itemstack2.isItemEnchanted())
-	                {
-	                    return 15;
-	                }
-
-	                returnInt = 1;
-	            }
-	        }
+			
+			if(itemstack2!=null)
+			{
+				ClientProxy.backpackRenderer.renderItemOnBack(par1EntityPlayer, itemstack2);
+			}
 
 	        if (itemstack != null)
 	        {
@@ -186,11 +128,10 @@ public class PlayerRenderingHandler extends RenderPlayer{
 	                {
 	                    return 15;
 	                }
-
-	                returnInt = 1;
+		            return 1;
 	            }
 	        }
-	        return (returnInt==1)? 1:-1;
+			return -1;
 	    }
 	    
 	    @Override

@@ -5,9 +5,9 @@ import net.minecraft.tileentity.TileEntity;
 
 import org.lwjgl.opengl.GL11;
 
-import rikmuld.client.model.ModelTentNormal;
-import rikmuld.client.model.ModelTentSleeping;
-import rikmuld.client.model.ModelTentStorage;
+import rikmuld.client.model.block.ModelTentNormal;
+import rikmuld.client.model.block.ModelTentSleeping;
+import rikmuld.client.model.block.ModelTentStorage;
 import rikmuld.core.lib.Textures;
 import rikmuld.tileentity.TileEntityTent;
 

@@ -5,7 +5,7 @@ import net.minecraft.tileentity.TileEntity;
 
 import org.lwjgl.opengl.GL11;
 
-import rikmuld.client.model.ModelCampfire;
+import rikmuld.client.model.block.ModelCampfire;
 import rikmuld.core.lib.Textures;
 import rikmuld.tileentity.TileEntityCampfire;
 

@@ -20,6 +20,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import rikmuld.core.lib.Colors;
+import rikmuld.core.lib.Config;
 import rikmuld.core.lib.ModInfo;
 
 public class VersionHelper implements Runnable{
@@ -119,19 +120,22 @@ public class VersionHelper implements Runnable{
 	@Override
 	public void run() 
 	{
-		while(checked==false)
+		if(Config.GENERAL_CHECK_VERSION)
 		{
-			CheckVersion();
-	        
-			if(checked==false)
+			while(checked==false)
 			{
-				try 
+				CheckVersion();
+				
+				if(checked==false)
 				{
-					Thread.sleep(500000);
-				} 
-				catch (InterruptedException e) 
-				{
-					e.printStackTrace();
+					try 
+					{
+						Thread.sleep(500000);
+					} 
+					catch (InterruptedException e) 
+					{
+						e.printStackTrace();
+					}
 				}
 			}
 		}

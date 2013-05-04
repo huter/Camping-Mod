@@ -19,6 +19,7 @@ public class Textures {
 	public static final String MODEL_ARMOR_BACKPACK_SMALL = "armorBackpack-small.png";
 	public static final String MODEL_ARMOR_BACKPACK_NORMAL = "armorBackpack-normal.png";
 	public static final String MODEL_ARMOR_BACKPACK_LARGE = "armorBackpack-large.png";
+	public static final String MODEL_BACKPACK = "Backpack.png";
 	
 	public static final String GUI_CAMPFIRE_MULTI= "CampfireMultiCooker.png";
 	public static final String GUI_CAMPFIRE_FAST= "CampfireFastCooker.png";

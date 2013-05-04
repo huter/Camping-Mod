@@ -98,19 +98,20 @@ public class CampingMod {
 	 * 
 	 * TODO: misc
 	 * 
-	 * -update the site!!! (also the new planed feutures)
 	 * -make a camper AI for not run into campfires and stay with tents.
 	 * -add camping animals 
 	 *
 	 * TODO: for next update (backpack Update) 1.0.1 --> 1.0.2
 	 * 
 	 * -fix the knows bugs
-	 * -finish the tent and the equipment guide book.
-	 * -make an model for the camping bag for when it is on you bag
+	 * -start on the equipment guide book.
+	 * -make the model for backpack compatable with player sneaking.
+	 * -make the model show up directly after first loggin.
+	 * -make the ghost blocks also half blocks so you are not standing very hight above the tent
 	 * 
 	 * TODO: for next update (equipment update) 1.0.2 --> 1.0.3
 	 * 
-	 * -finish the food guide book.
+	 * -finish the equipment guide book.
 	 * -make a special armor set (ex. the camping boots (get fast speed ed.))
 	 * 
 	 * TODO for next update (tent update) 1.0.3 --> 1.0.4
@@ -118,7 +119,6 @@ public class CampingMod {
 	 * -finifh the world guide book.
 	 * -make the tent also working with trapped chests and ender chests
 	 * -make the tent rolatable in 4 directions 
-	 * -make the ghost blocks also half blocks so you are not standing very hight above the tent
 	 * -fix the position were you sleep in the tents
 	 * 
 	 * TODO for next update (Campsite update) 1.0.4 --> 1.0.5

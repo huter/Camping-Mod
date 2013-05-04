@@ -18,51 +18,39 @@ import rikmuld.item.CampingItemArmor;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class CampingBag extends CampingItem implements IArmorTextureProvider{
+public class CampingBag extends CampingItem {
 
 	public static final String[] metadataNames = new String[] {Items.ITEM_TOOL_BACK_SMALL_NAME, Items.ITEM_TOOL_BACK_NORMAL_NAME, Items.ITEM_TOOL_BACK_LARGE_NAME };
 		
 	public CampingBag(int i) 
-		{
-			super(i, metadataNames);
-			maxStackSize = 1;
-			setHasSubtypes(true);
-			setMaxDamage(0);
-			setUnlocalizedName(Items.ITEM_META_TOOL_BACK_NAME);
-		}
+	{
+		super(i, metadataNames);
+		maxStackSize = 1;
+		setHasSubtypes(true);
+		setMaxDamage(0);
+		setUnlocalizedName(Items.ITEM_META_TOOL_BACK_NAME);
+	}
 
-		@Override
-		public String getArmorTextureFile(ItemStack itemstack) 
+	@Override
+	public String getUnlocalizedName(ItemStack itemstack) 
+	{
+		return metadataNames[itemstack.getItemDamage()];
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(int par1, CreativeTabs creativetabs, List list) 
+	{
+		for (int var4 = 0; var4 < 3; ++var4) 
 		{
-			switch(itemstack.getItemDamage())
-			{
-			case 0: return Textures.MODEL_LOCATION + Textures.MODEL_ARMOR_BACKPACK_SMALL;
-			case 1: return Textures.MODEL_LOCATION + Textures.MODEL_ARMOR_BACKPACK_NORMAL;
-			case 2: return Textures.MODEL_LOCATION + Textures.MODEL_ARMOR_BACKPACK_LARGE;
-			}
-			return Textures.MODEL_LOCATION + Textures.MODEL_ARMOR_BACKPACK_SMALL;
+			list.add(new ItemStack(par1, 1, var4));
 		}
-		
-		@Override
-		public String getUnlocalizedName(ItemStack itemstack) 
-		{
-			return metadataNames[itemstack.getItemDamage()];
-		}
-		
-		@SideOnly(Side.CLIENT)
-		public void getSubItems(int par1, CreativeTabs creativetabs, List list) 
-		{
-			for (int var4 = 0; var4 < 3; ++var4) 
-			{
-				list.add(new ItemStack(par1, 1, var4));
-			}
-		}
-		
-		@Override
-		public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
-	    {
-			player.openGui(CampingMod.instance, GuiIds.GUICampingBag, world, 0, 0, 0);
-			return stack;
-	    }
+	}
+	
+	@Override
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+    {
+		player.openGui(CampingMod.instance, GuiIds.GUICampingBag, world, 0, 0, 0);
+		return stack;
+    }
 }
 
