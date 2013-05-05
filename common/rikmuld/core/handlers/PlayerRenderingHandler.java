@@ -26,6 +26,7 @@ import org.lwjgl.opengl.GL11;
 import rikmuld.core.helper.CloakHelper;
 import rikmuld.core.lib.Textures;
 import rikmuld.core.proxys.ClientProxy;
+import rikmuld.core.proxys.CommonProxy;
 import rikmuld.item.normal.CampingBag;
 
 public class PlayerRenderingHandler extends RenderPlayer{
@@ -53,17 +54,8 @@ public class PlayerRenderingHandler extends RenderPlayer{
 			ItemStack itemstack = par1EntityPlayer.inventory.armorItemInSlot(3 - par2);
 			
 			ItemStack itemstack2 = null;
-			 
-	        NBTTagList backpack = par1EntityPlayer.getEntityData().getCompoundTag("CampingInventory").getTagList("CampingItems");
-			for (int i = 0; i < backpack.tagCount(); i++) 
-			{
-				NBTTagCompound slotEntry = (NBTTagCompound) backpack.tagAt(i);
-				int j = slotEntry.getByte("CampingSlot") & 0xff;
-				if (j >= 0 && j < 1) 
-				{
-					itemstack2 = ItemStack.loadItemStackFromNBT(slotEntry);
-				}
-			}
+		
+			itemstack2 = CommonProxy.CampingInv.getStackInSlot(0);
 			
 			if(itemstack2!=null)
 			{

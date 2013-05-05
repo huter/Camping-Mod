@@ -37,16 +37,14 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class Camper extends EntityAnimal implements  IMerchant, INpc{
-	 
-	  Random generator = new Random();
-	  public int isMale = generator.nextInt(2);  
-	  public String textureCamp = (isMale==0) ? (Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_MALE):(Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_FEMALE);  
-	  
+	
 	  boolean spawn;
+	  Random random = new Random();
 
 	 public Camper(World par1World) 
 	 {
 		  super(par1World);
+		  this.setGender(random.nextInt(2));
 		  this.moveSpeed = 0.30F;
 		  this.texture = "Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_MALE";
 		  this.setSize(0.6F, 1.8F);
@@ -59,9 +57,6 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
 		  this.tasks.addTask(3, new EntityAIWatchClosest2(this, Camper.class, 5.0F, 0.02F));
 		  this.tasks.addTask(3, new EntityAIWander(this, 0.3F));
 		  this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
-		  
-		  this.isImmuneToFire = true;
-		  
 		  this.writeEntityToNBT(this.getEntityData());
 	 }
 	 
@@ -114,11 +109,31 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
 	 {
 	     return 6;
 	 }
+	 
+	 protected void entityInit()
+	 {
+        super.entityInit();
+        this.dataWatcher.addObject(30, Integer.valueOf(0));
+	 }
+	 
+	 public void setGender(int par1)
+	 {
+        this.dataWatcher.updateObject(30, Integer.valueOf(par1));
+	 }
+
+	 public int getGender()
+	 {
+        return this.dataWatcher.getWatchableObjectInt(30);
+	 }
 	
 	 public String getTexture()
 	 {    
-		 this.readEntityFromNBT(this.getEntityData());
-		 return textureCamp; 
+		 switch (this.getGender())
+		 {
+            case 0: return Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_MALE;
+            case 1: return Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_FEMALE;
+            default: return Textures.MODEL_LOCATION + Textures.MODEL_CAMPER_MALE;
+		 }    
 	 }
 	 
 	 protected boolean canDespawn()
@@ -150,7 +165,7 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
 	 {
 		 super.writeEntityToNBT(par1NBTTagCompound);
 
-		 if(!par1NBTTagCompound.hasKey("textureCamper"))par1NBTTagCompound.setString("textureCamper", textureCamp);
+		 par1NBTTagCompound.setInteger("Gender", this.getGender());
 		 
 		 if (this.buyingList != null)
 		 {
@@ -162,12 +177,13 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
    	 {
         super.readEntityFromNBT(par1NBTTagCompound);
         
+        this.setGender(par1NBTTagCompound.getInteger("Gender"));
+        
         if (par1NBTTagCompound.hasKey("offers"))
         {
             NBTTagCompound nbttagcompound1 = par1NBTTagCompound.getCompoundTag("offers");
             this.buyingList = new MerchantRecipeList(nbttagcompound1);
         }
-        this.textureCamp = par1NBTTagCompound.getString("textureCamper");
      }
    	 
      public boolean interact(EntityPlayer par1EntityPlayer)
@@ -389,9 +405,9 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
         blacksmithSellingList.put(Integer.valueOf(ModItems.guideBook.itemID), new Tuple(Integer.valueOf(1), Integer.valueOf(3)));
         
     }
-    
+
 	@Override
-	public EntityAgeable createChild(EntityAgeable var1) 
+	public EntityAgeable createChild(EntityAgeable entityageable) 
 	{
 		return null;
 	}

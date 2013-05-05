@@ -52,11 +52,17 @@ public class ItemCampingBagRenderer implements IItemRenderer {
 	{
 		GL11.glPushMatrix();
 		
-		GL11.glScalef(1.26F, 1.525F, 1.20F);
-		
-		GL11.glTranslatef(-0.189F, 0.0F, 0.1F);
-		
 		Minecraft.getMinecraft().renderEngine.bindTexture(Textures.MODEL_LOCATION + Textures.MODEL_BACKPACK);
+		
+		GL11.glScalef(0.63F, 0.7625F, 0.6F);
+		
+		GL11.glTranslatef(-0.189F, 0.0F, 0.22F);
+		
+		if(player.isSneaking())
+		{
+			GL11.glRotatef(30F, 1.0F, 0.0F, 0.0F);
+		}
+				
 		model.render(player, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 	
 		GL11.glPopMatrix();

@@ -4,7 +4,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import rikmuld.core.helper.VersionHelper;
+import rikmuld.core.proxys.CommonProxy;
 import rikmuld.core.register.ModItems;
+import rikmuld.inventory.inventory.InventoryCamping;
 import cpw.mods.fml.common.IPlayerTracker;
 
 public class PlayerHandler implements IPlayerTracker{
@@ -12,6 +14,8 @@ public class PlayerHandler implements IPlayerTracker{
 	@Override
 	public void onPlayerLogin(EntityPlayer player) 
 	{	
+		CommonProxy.CampingInv = new InventoryCamping(player);
+		
 		VersionHelper.execute(player);
 		
 		NBTTagCompound playerNBT = player.getEntityData();

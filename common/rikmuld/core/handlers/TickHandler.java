@@ -25,8 +25,7 @@ public class TickHandler implements ITickHandler{
 	{
 		if(type.equals(EnumSet.of(TickType.PLAYER)))	
 		{
-			EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
-			campInv = player.getEntityData().getCompoundTag("CampingInventory");
+			
 		}
 		if(type.equals(EnumSet.of(TickType.RENDER)))	
 		{

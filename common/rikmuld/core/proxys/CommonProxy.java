@@ -49,6 +49,7 @@ public class CommonProxy implements IGuiHandler {
     public static GuiGuideWorld guideWorld;
 
     InventoryCampingBag CampingBagInv = null;
+    public static InventoryCamping CampingInv = null;
     
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) 
@@ -73,7 +74,8 @@ public class CommonProxy implements IGuiHandler {
 		}
 		if (ID == GuiIds.GUICamping) 
 		{
-			return new ContainerCamping(player.inventory, new InventoryCamping(player));
+			CampingInv = new InventoryCamping(player);
+			return new ContainerCamping(player.inventory, CampingInv);
 		}
 		if (ID == GuiIds.GUICampingBag) 
 		{
@@ -110,7 +112,8 @@ public class CommonProxy implements IGuiHandler {
 		}
 		if (ID == GuiIds.GUICamping) 
 		{
-            return new GuiCamping(player.inventory, new InventoryCamping(player));
+			CampingInv = new InventoryCamping(player);
+            return new GuiCamping(player.inventory, CampingInv);
 	    }
 		if (ID == GuiIds.GUICampingBag) 
 		{

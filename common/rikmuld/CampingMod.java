@@ -91,22 +91,12 @@ public class CampingMod {
 		 ModLogger.log(Level.INFO, ModInfo.MOD_NAME + " has loaded successfully.");
 	}
 	
-	/*
-	 * TODO: the known bugs:
-	 * 
-	 * -camper skin change reload world (nbt/packedhandling thingy)
-	 * 
-	 * TODO: misc
-	 * 
-	 * -make a camper AI for not run into campfires and stay with tents.
-	 * -add camping animals 
+	/* 
 	 *
 	 * TODO: for next update (backpack Update) 1.0.1 --> 1.0.2
 	 * 
-	 * -fix the knows bugs
 	 * -start on the equipment guide book.
-	 * -make the model for backpack compatable with player sneaking.
-	 * -make the model show up directly after first loggin.
+	 * -finish the texture for the backpack model
 	 * -make the ghost blocks also half blocks so you are not standing very hight above the tent
 	 * 
 	 * TODO: for next update (equipment update) 1.0.2 --> 1.0.3
@@ -128,5 +118,8 @@ public class CampingMod {
 	 * make a lantarn with gives light when equiped
 	 * make a supply box.
 	 * 
+	 * 
+	 * 	 * -make a camper AI for not run into campfires and stay with tents.
+	 * -add camping animals 
 	 */
 }
