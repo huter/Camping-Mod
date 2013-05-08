@@ -1,59 +1,67 @@
 <?xml version="1.0"?>
 
 <Versions>
-
-<Version>
-	<VersionNumber>1.0.1c</VersionNumber><VersionDate>3-5-2013</VersionDate><NewInVersion>Camping Inventory, Bugfixes</NewInVersion>
+	<Version>
 	
-	</Version><Version>
-
-<VersionNumber>1.0.1b</VersionNumber>
-<VersionDate>5-4-2013</VersionDate>
-<NewInVersion>Bugfixes and a new tool.</NewInVersion>
+		<VersionNumber>1.0.1d</VersionNumber>
+		<VersionDate>8-5-2013</VersionDate>
+		<NewInVersion>Bugfixes, Backpack Model</NewInVersion>
+		
+	</Version>
 	
-</Version>
-
-<Version>
-
-<VersionNumber>1.0.1a</VersionNumber>
-<VersionDate>25-3-2013</VersionDate>
-<NewInVersion>more Achievements, a lot of bugfixes</NewInVersion>
+	<Version>
+		
+		<VersionNumber>1.0.1c</VersionNumber>
+		<VersionDate>3-5-2013</VersionDate>
+		<NewInVersion>Camping Inventory, Bugfixes</NewInVersion>
+		
+	</Version>
 	
-</Version>
-
-<Version>
+	<Version>
 	
-<VersionNumber>1.0.1</VersionNumber>
-<VersionDate>23-3-2013</VersionDate>
-<NewInVersion>minecraft 1.5.1, Guide Books, Camper trade.</NewInVersion>
+		<VersionNumber>1.0.1b</VersionNumber>
+		<VersionDate>5-4-2013</VersionDate>
+		<NewInVersion>Bugfixes and a new tool.</NewInVersion>
+		
+	</Version>
 	
-</Version>
-
-<Version>
-
-<VersionNumber>1.0.0b</VersionNumber>
-<VersionDate>1-3-2013</VersionDate>
-<NewInVersion>A version check</NewInVersion>
-
-</Version>
-
-<Version>
-
-<VersionNumber>1.0.0a</VersionNumber>
-<VersionDate>28-2-2013</VersionDate>
-<NewInVersion>Many bug fixes</NewInVersion>
-
-</Version>
-
-<Version>
-
-<VersionNumber>1.0.0</VersionNumber>
-<VersionDate>22-2-2013</VersionDate>
-<NewInVersion>First real release</NewInVersion>
-
-</Version>
+	<Version>
 	
-
-
-
+		<VersionNumber>1.0.1a</VersionNumber>
+		<VersionDate>25-3-2013</VersionDate>
+		<NewInVersion>more Achievements, a lot of bugfixes</NewInVersion>
+			
+	</Version>
+	
+	<Version>
+		
+		<VersionNumber>1.0.1</VersionNumber>
+		<VersionDate>23-3-2013</VersionDate>
+		<NewInVersion>minecraft 1.5.1, Guide Books, Camper trade.</NewInVersion>
+			
+	</Version>
+	
+	<Version>
+	
+		<VersionNumber>1.0.0b</VersionNumber>
+		<VersionDate>1-3-2013</VersionDate>
+		<NewInVersion>A version check</NewInVersion>
+	
+	</Version>
+	
+	<Version>
+		
+		<VersionNumber>1.0.0a</VersionNumber>
+		<VersionDate>28-2-2013</VersionDate>
+		<NewInVersion>Many bug fixes</NewInVersion>
+	
+	</Version>
+	
+	<Version>
+	
+		<VersionNumber>1.0.0</VersionNumber>
+		<VersionDate>22-2-2013</VersionDate>
+		<NewInVersion>First real release</NewInVersion>
+		
+	</Version>
 </Versions>

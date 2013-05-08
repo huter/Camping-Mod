@@ -20,6 +20,7 @@ public class Config {
 	public static final boolean CAMPFIRE_CAN_TRANS_STICK_DEV = true;
 	public static final boolean GENERAL_RECIPIE_PEASFULL_DEV = false;
 	public static final boolean GENERAL_CHECK_VERSION_DEV = true;
+	public static final boolean GENERAL_SEPARATED_TENT_DEV = false;
 	
 	public static int WORLD_GEN_SMALL_CAMP_SPAWN_RARENESS;
 	public static int WORLD_GEN_SMALL_CAMP_CAMPER_SPAWNRATE;
@@ -39,6 +40,7 @@ public class Config {
 	public static boolean CAMPFIRE_CAN_TRANS_STICK;
 	public static boolean GENERAL_RECIPIE_PEASFULL;
 	public static boolean GENERAL_CHECK_VERSION;
+	public static boolean GENERAL_SEPARATED_TENT;
 	
 	public static String WORLD_GEN_ENABLED_MESSAGE = "enable word genaration";
 	public static String WORD_GEN_SMALL_CAMP_SPAWN_RARENESS_MESSAGE = "spawn rareness small campsite";
@@ -58,6 +60,7 @@ public class Config {
 	public static String CAMPFIRE_CAN_BURN_MESSAGE = "campfires will hurt entitys";
 	public static String CAMPFIRE_CAN_BE_RECOLORED_MESSAGE = "campfires can be recolored";
 	public static String CAMPFIRE_CAN_TRANS_STICK_MESSAGE = "campfires can transform sticks into torches";
+	public static String GENERAL_SEPARATED_TENT_MESSAGE = "requested option by empty22, used for separated storage/sleeping tents";
 	
 	public static String CATEGORY_WORLD_GEN = "world genaration";
 	public static String CATEGORY_CAMPFIRE = "campfires";

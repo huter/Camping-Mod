@@ -97,7 +97,6 @@ public class CampingMod {
 	 * 
 	 * -start on the equipment guide book.
 	 * -finish the texture for the backpack model
-	 * -make the ghost blocks also half blocks so you are not standing very hight above the tent
 	 * 
 	 * TODO: for next update (equipment update) 1.0.2 --> 1.0.3
 	 * 
@@ -110,6 +109,7 @@ public class CampingMod {
 	 * -make the tent also working with trapped chests and ender chests
 	 * -make the tent rolatable in 4 directions 
 	 * -fix the position were you sleep in the tents
+	 * -make the ghost blocks also half blocks so you are not standing very hight above the tent
 	 * 
 	 * TODO for next update (Campsite update) 1.0.4 --> 1.0.5
 	 * 

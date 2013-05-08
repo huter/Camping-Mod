@@ -33,18 +33,20 @@ public class PlayerHandler implements IPlayerTracker{
 	@Override
 	public void onPlayerLogout(EntityPlayer player) 
 	{
-		
+
 	}
 
 	@Override
 	public void onPlayerChangedDimension(EntityPlayer player) 
 	{
-	
+
 	}
 
 	@Override
 	public void onPlayerRespawn(EntityPlayer player) 
 	{
+		if(player.getEntityData().hasKey("CampingInventory"))player.getEntityData().setCompoundTag("CampingInventory", null);
+		CommonProxy.CampingInv = new InventoryCamping(player);
 		player.getEntityData().setBoolean("NotFirstLoggedin", true);
 	}
 

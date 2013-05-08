@@ -26,6 +26,7 @@ import rikmuld.CampingMod;
 import rikmuld.block.CampingBlockItem;
 import rikmuld.core.helper.ToolHelper;
 import rikmuld.core.lib.Blocks;
+import rikmuld.core.lib.Config;
 import rikmuld.core.register.ModAchievements;
 import rikmuld.core.register.ModBlocks;
 import rikmuld.core.register.ModItems;
@@ -77,10 +78,17 @@ public class Tent extends CampingBlockItem{
 	 @SideOnly(Side.CLIENT)
 	 public void getSubBlocks(int unknown, CreativeTabs tab, List subItems) 
 	 {
-	 	for (int ix = 0; ix < 1; ix++) 
-	 	{
-	 		subItems.add(new ItemStack(this, 1, ix));
-	 	}
+		 int registerTents = 1;
+		 
+		 if(Config.GENERAL_SEPARATED_TENT)
+		 {
+			 registerTents = 3;
+		 }
+		 
+	 	 for (int ix = 0; ix < registerTents; ix++) 
+	 	 {
+	 		 subItems.add(new ItemStack(this, 1, ix));
+	 	 }
 	 }
 
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) 

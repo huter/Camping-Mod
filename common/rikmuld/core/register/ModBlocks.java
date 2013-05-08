@@ -7,6 +7,7 @@ import rikmuld.block.blockitem.Tent;
 import rikmuld.block.normal.GhostBlock;
 import rikmuld.block.plant.RadishCrop;
 import rikmuld.core.lib.Blocks;
+import rikmuld.core.lib.Config;
 import rikmuld.item.itemblock.ItemCampfire;
 import rikmuld.item.itemblock.ItemTent;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -31,8 +32,16 @@ public class ModBlocks {
 		GameRegistry.registerBlock(ghostBlock, Blocks.BLOCK_GHOST_NAME);
 		GameRegistry.registerBlock(RadishCrop, Blocks.BLOCK_RADISH_NAME);
 		
-		
-		LanguageRegistry.addName(tent, Blocks.BLOCK_TENT_GAME_NAME);
+		if(!Config.GENERAL_SEPARATED_TENT) 
+		{
+			LanguageRegistry.addName(new ItemStack(tent, 1, 0), Blocks.BLOCK_TENT_GAME_NAME);
+		}
+		else
+		{
+			LanguageRegistry.addName(new ItemStack(tent, 1, 0), Blocks.BLOCK_TENT_GAME_NAME);
+			LanguageRegistry.addName(new ItemStack(tent, 1, 1), Blocks.BLOCK_TENT_STORAGE_GAME_NAME);
+			LanguageRegistry.addName(new ItemStack(tent, 1, 2), Blocks.BLOCK_TENT_SLEEP_GAME_NAME);
+		}
 		
 		LanguageRegistry.addName(new ItemStack(campfire, 1, 0), Blocks.BLOCK_CAMP_GAME_NAME);
 		LanguageRegistry.addName(new ItemStack(campfire, 1, 1), Blocks.BLOCK_CAMP_MULTI_GAME_NAME);

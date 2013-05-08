@@ -8,6 +8,8 @@ public class Blocks {
 	public static final String BLOCK_CAMP_CHEAP_NAME = "campfireCheapCooker";
 	public static final String BLOCK_CAMP_INSTA_NAME = "campfireInstaCooker";
 	public static final String BLOCK_TENT_NAME = "tent";
+	public static final String BLOCK_TENT_STORAGE_NAME = "storageTent";
+	public static final String BLOCK_TENT_SLEEP_NAME = "sleepingTent";
 	public static final String BLOCK_GHOST_NAME = "ghostBlock";
 	public static final String BLOCK_RADISH_NAME = "radishCrop";
 	
@@ -19,6 +21,8 @@ public class Blocks {
 	public static final String BLOCK_CAMP_CHEAP_GAME_NAME = Colors.COLOR_ORANGE + "Cheap Cooking Campfire";
 	public static final String BLOCK_CAMP_INSTA_GAME_NAME = Colors.COLOR_PURPLE + "Insta Cooking Campfire";
 	public static final String BLOCK_TENT_GAME_NAME = "Tent";
+	public static final String BLOCK_TENT_STORAGE_GAME_NAME = "Storage Tent";
+	public static final String BLOCK_TENT_SLEEP_GAME_NAME = "Sleeping Tent";
 	public static final String BLOCK_GHOST_GAME_NAME = "Ghost Block";
 	public static final String BLOCK_RADISH_GAME_NAME = "Radish Crop";
 	
