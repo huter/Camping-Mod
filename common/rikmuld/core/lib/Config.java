@@ -2,7 +2,7 @@ package rikmuld.core.lib;
 
 public class Config {
 
-	public static final int WORLD_GEN_SMALL_CAMP_SPAWN_RARENESS_DEV = 1500;
+	public static final int WORLD_GEN_SMALL_CAMP_SPAWN_RARENESS_DEV = 750;
 	public static final int WORLD_GEN_SMALL_CAMP_CAMPER_SPAWNRATE_DEV = 1;
 	public static final int TOOL_CAMPTOOL_MAX_DURABILATY_DEV = 100;
 	public static final int TOOL_CAMPTOOL2_MAX_DURABILATY_DEV = 250;
@@ -21,6 +21,7 @@ public class Config {
 	public static final boolean GENERAL_RECIPIE_PEASFULL_DEV = false;
 	public static final boolean GENERAL_CHECK_VERSION_DEV = true;
 	public static final boolean GENERAL_SEPARATED_TENT_DEV = false;
+	public static final boolean GENERAL_CAMPING_RENDERING_DISABLED_DEV = false;
 	
 	public static int WORLD_GEN_SMALL_CAMP_SPAWN_RARENESS;
 	public static int WORLD_GEN_SMALL_CAMP_CAMPER_SPAWNRATE;
@@ -41,6 +42,7 @@ public class Config {
 	public static boolean GENERAL_RECIPIE_PEASFULL;
 	public static boolean GENERAL_CHECK_VERSION;
 	public static boolean GENERAL_SEPARATED_TENT;
+	public static boolean GENERAL_CAMPING_RENDERING_DISABLED;
 	
 	public static String WORLD_GEN_ENABLED_MESSAGE = "enable word genaration";
 	public static String WORD_GEN_SMALL_CAMP_SPAWN_RARENESS_MESSAGE = "spawn rareness small campsite";
@@ -61,6 +63,7 @@ public class Config {
 	public static String CAMPFIRE_CAN_BE_RECOLORED_MESSAGE = "campfires can be recolored";
 	public static String CAMPFIRE_CAN_TRANS_STICK_MESSAGE = "campfires can transform sticks into torches";
 	public static String GENERAL_SEPARATED_TENT_MESSAGE = "requested option by empty22, used for separated storage/sleeping tents";
+	public static String GENERAL_CAMPING_RENDERING_DISABLED_MESSAGE = "disable the camping rendering";
 	
 	public static String CATEGORY_WORLD_GEN = "world genaration";
 	public static String CATEGORY_CAMPFIRE = "campfires";

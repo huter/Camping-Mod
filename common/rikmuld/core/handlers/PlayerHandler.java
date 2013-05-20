@@ -11,10 +11,16 @@ import cpw.mods.fml.common.IPlayerTracker;
 
 public class PlayerHandler implements IPlayerTracker{
 
+	public NBTTagCompound inventotyCamp = null;
+	public NBTTagCompound InventotyCraft = null;
+
 	@Override
 	public void onPlayerLogin(EntityPlayer player) 
 	{	
 		CommonProxy.CampingInv = new InventoryCamping(player);
+		
+		this.inventotyCamp = player.getEntityData().getCompoundTag("CampingInventory");
+		this.InventotyCraft = player.getEntityData().getCompoundTag("CampingCraftInventory");
 		
 		VersionHelper.execute(player);
 		
@@ -45,7 +51,19 @@ public class PlayerHandler implements IPlayerTracker{
 	@Override
 	public void onPlayerRespawn(EntityPlayer player) 
 	{
-		if(player.getEntityData().hasKey("CampingInventory"))player.getEntityData().setCompoundTag("CampingInventory", null);
+		boolean keepInv = player.worldObj.getGameRules().getGameRuleBooleanValue("keepInventory");
+		
+		if(!keepInv)
+		{
+			player.getEntityData().setCompoundTag("CampingInventory", new NBTTagCompound());
+			player.getEntityData().setCompoundTag("CampingCraftInventory", new NBTTagCompound());	
+		}
+		else
+		{
+			player.getEntityData().setCompoundTag("CampingInventory", inventotyCamp);
+			player.getEntityData().setCompoundTag("CampingCraftInventory", InventotyCraft);	
+		}
+		
 		CommonProxy.CampingInv = new InventoryCamping(player);
 		player.getEntityData().setBoolean("NotFirstLoggedin", true);
 	}

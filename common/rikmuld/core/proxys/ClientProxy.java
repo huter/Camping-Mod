@@ -10,13 +10,14 @@ import rikmuld.core.handlers.KeyHandler;
 import rikmuld.core.handlers.PlayerRenderingHandler;
 import rikmuld.core.handlers.TickHandler;
 import rikmuld.core.helper.KeyHelper;
-import rikmuld.core.lib.Textures;
+import rikmuld.core.lib.Config;
 import rikmuld.core.register.ModItems;
 import rikmuld.tileentity.TileEntityCampfire;
 import rikmuld.tileentity.TileEntityTent;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
@@ -58,6 +59,16 @@ public class ClientProxy extends CommonProxy {
     @Override
 	public void registerEntityRenderHandler()
 	{
-    	RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new PlayerRenderingHandler());
+    	if(!Config.GENERAL_CAMPING_RENDERING_DISABLED)
+    	{
+    		RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new PlayerRenderingHandler());
+    	}
 	}
+    
+    @Override
+    public void registerPlayerHandlers()
+    {
+	    GameRegistry.registerPlayerTracker(playerHandler);
+	    MinecraftForge.EVENT_BUS.register(playerHandler);
+    }
 }

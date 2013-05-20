@@ -39,6 +39,15 @@ public class ModRecipies {
 	public static ItemStack tent = new ItemStack(ModBlocks.tent);
 	public static ItemStack[] tentParts = ItemStackHelper.getMetaCycle(ModItems.TentParts, 3);
 	public static ItemStack[] campingBag = ItemStackHelper.getMetaCycle(ModItems.CampingBag, 3);
+	public static ItemStack campBoot = new ItemStack(ModItems.CampingArmorBoot);
+	public static ItemStack campLeg = new ItemStack(ModItems.CampingArmorLeg);
+	public static ItemStack campChest = new ItemStack(ModItems.CampingArmorChest);
+	public static ItemStack campHelm = new ItemStack(ModItems.CampingArmorHelm);
+	public static ItemStack feather = new ItemStack(Item.feather);
+	public static ItemStack leatherBoot = new ItemStack(Item.bootsLeather);
+	public static ItemStack leatherLeg = new ItemStack(Item.legsLeather);
+	public static ItemStack leatherChest = new ItemStack(Item.plateLeather);
+	public static ItemStack leatherHelm = new ItemStack(Item.helmetLeather);
 	
 	public static void init() 
 	{
@@ -52,6 +61,11 @@ public class ModRecipies {
 			{
 				RecipeHelper.addShapelessRecipe(tentParts[0], 4, ItemStackHelper.getWildValue(tool[0]), iron);
 				RecipeHelper.addShapelessRecipe(tentParts[1], 10, ItemStackHelper.getWildValue(tool[0]), string, string, string, string, string, string);
+
+				RecipeHelper.addRecipe(campBoot, 1, "010", "232", "020", '0', feather, '1', ItemStackHelper.getWildValue(tool[0]), '2', leather, '3', leatherBoot);
+				RecipeHelper.addRecipe(campLeg, 1, "010", "232", "020", '0', feather, '1', ItemStackHelper.getWildValue(tool[0]), '2', leather, '3', leatherLeg);
+				RecipeHelper.addRecipe(campChest, 1, "010", "232", "020", '0', feather, '1', ItemStackHelper.getWildValue(tool[0]), '2', leather, '3', leatherChest);
+				RecipeHelper.addRecipe(campHelm, 1, "010", "232", "020", '0', feather, '1', ItemStackHelper.getWildValue(tool[0]), '2', leather, '3', leatherHelm);
 			}
 		}
 		else

@@ -21,6 +21,10 @@ public class Items {
 	public static final String ITEM_BOOK_GUIDE_EQUIP_NAME = "guideBookEquipment";
 	public static final String ITEM_BOOK_GUIDE_FOOD_NAME = "guideBookFood";
 	public static final String ITEM_BOOK_GUIDE_WORLD_NAME = "guideBookWorld";
+	public static final String ITEM_ARMOR_BOOT_NAME = "campingArmorBoot";
+	public static final String ITEM_ARMOR_LEG_NAME = "campingArmorLeg";
+	public static final String ITEM_ARMOR_CHEST_NAME = "campingArmorChest";
+	public static final String ITEM_ARMOR_HELM_NAME = "campingArmorHelm";
 	
 	public static final String ITEM_META_MARSH_NAME = "marshmallow";
 	public static final String ITEM_META_TOOL_BACK_NAME = "campingBag";
@@ -46,6 +50,10 @@ public class Items {
 	public static final String ITEM_BOOK_GUIDE_EQUIP_GAME_NAME = "Camping Guide: Equipment";
 	public static final String ITEM_BOOK_GUIDE_FOOD_GAME_NAME = "Camping Guide: Food";
 	public static final String ITEM_BOOK_GUIDE_WORLD_GAME_NAME = "Camping Guide: The World";
+	public static final String ITEM_ARMOR_BOOT_GAME_NAME = "Camper's Boots";
+	public static final String ITEM_ARMOR_LEG_GAME_NAME = "Camper's Leggings";
+	public static final String ITEM_ARMOR_CHEST_GAME_NAME = "Camper's Chestplate";
+	public static final String ITEM_ARMOR_HELM_GAME_NAME = "Camper's Helmet";
 	
 	public static final String ITEM_META_MARSH_GAME_NAME = "Marshmallows";
 	public static final String ITEM_META_TOOL_BACK_GAME_NAME = "Camping Bags";
@@ -59,9 +67,13 @@ public class Items {
 	public static final int ITEM_TOOL_CAMP_ID_DEV = 4103;
 	public static final int ITEM_TOOL_CAMP2_ID_DEV = 4104;
 	public static final int ITEM_TOOL_BACK_ID_DEV = 4105;
-	public static final int ITEM_RADISH_SEED_ID_DEV = 4106;
-	public static final int ITEM_BOOK_GUIDE_ID_DEV = 4107;
-
+	public static final int ITEM_BOOK_GUIDE_ID_DEV = 4106;
+	public static final int ITEM_ARMOR_HELM_ID_DEV = 4107;
+	public static final int ITEM_ARMOR_CHEST_ID_DEV = 4108;
+	public static final int ITEM_ARMOR_LEG_ID_DEV = 4109;
+	public static final int ITEM_ARMOR_BOOT_ID_DEV = 4110;
+	public static final int ITEM_RADISH_SEED_ID_DEV = 4111;
+	
 	public static int ITEM_TENT_PARTS_ID;
 	public static int ITEM_MARSH_ID;
 	public static int ITEM_FOOD_ID;
@@ -70,4 +82,8 @@ public class Items {
 	public static int ITEM_TOOL_BACK_ID;
 	public static int ITEM_RADISH_SEED_ID;
 	public static int ITEM_BOOK_GUIDE_ID;
+	public static int ITEM_ARMOR_HELM_ID;
+	public static int ITEM_ARMOR_CHEST_ID;
+	public static int ITEM_ARMOR_LEG_ID;
+	public static int ITEM_ARMOR_BOOT_ID;
 }

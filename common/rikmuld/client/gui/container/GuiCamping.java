@@ -53,11 +53,13 @@ public class GuiCamping extends GuiContainer {
 				case 1: drawTexturedModalRect(((this.width - 176) / 2)+7, ((this.height - this.ySize) / 2)+30, 7, 96, 162, 36); break;
 				case 2: drawTexturedModalRect(((this.width - 176) / 2)+7, ((this.height - this.ySize) / 2)+30, 7, 96, 162, 54); break;
 			}
+			drawTexturedModalRect(((this.width - 176) / 2)+141, ((this.height - this.ySize) / 2)+7, 7, 96, 18, 18);
 		}
 		if (inventory.getStackInSlot(1)!=null)
 		{
 			drawTexturedModalRect(((this.width - 176) / 2)+188, ((this.height - this.ySize) / 2)+9, 7, 96, 54, 54); 
 			drawTexturedModalRect(((this.width - 176) / 2)-65, ((this.height - this.ySize) / 2)+9, 7, 96, 54, 54); 
+			drawTexturedModalRect(((this.width - 176) / 2)+16, ((this.height - this.ySize) / 2)+7, 7, 96, 18, 18);
 		}
 	}
 

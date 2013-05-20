@@ -1,14 +1,17 @@
 package rikmuld.world.structures;
 
 import java.util.Random;
+import java.util.logging.Level;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraftforge.common.BiomeDictionary;
 import rikmuld.core.lib.Config;
 import rikmuld.core.register.ModBlocks;
+import rikmuld.core.register.ModLogger;
 import rikmuld.entity.Camper;
 
 public class CampsiteSimple extends WorldGenerator {
@@ -67,7 +70,7 @@ public class CampsiteSimple extends WorldGenerator {
     
 	public boolean generate(World world, Random rand, int i, int j, int k) 
 	{		
-		if ((world.getBiomeGenForCoords(i, k)==BiomeGenBase.forest||world.getBiomeGenForCoords(i, k)==BiomeGenBase.plains)&&Config.WORLD_GEN_SMALL_CAMP_CANT_SPAWN_ANYWERE)
+		if ((BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(i, k), BiomeDictionary.Type.FOREST)||BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(i, k), BiomeDictionary.Type.PLAINS))&&Config.WORLD_GEN_SMALL_CAMP_CANT_SPAWN_ANYWERE)
 		{
 			int BlockUp = world.getBlockId(i,j+1,k);
 			int BlockUp2 = world.getBlockId(i,j+2,k);
@@ -205,8 +208,8 @@ public class CampsiteSimple extends WorldGenerator {
 			world.setBlock(i + 4, j + 2, k + 1, ModBlocks.ghostBlock.blockID,0 , 2);
 			world.setBlock(i + 2, j + 2, k + 1, ModBlocks.ghostBlock.blockID,0 , 2);
 			world.setBlock(i + 3, j + 2, k + 1, ModBlocks.ghostBlock.blockID,0 , 2);
-		}
-	return true;
+			}
+		    return true;
 	}
 }
 	

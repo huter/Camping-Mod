@@ -13,13 +13,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiTent extends GuiContainer {
-
-	public int xSize = 212;
-	public int ySize = 184;
 	
 	public GuiTent(InventoryPlayer par1InventoryPlayer,	TileEntityTent par2TileEntitycampfire) 
 	{
 		super(new ContainerTent(par1InventoryPlayer, par2TileEntitycampfire));
+    	this.xSize = 230;
+    	this.ySize = 184;
 	}
 
 	@Override
@@ -27,9 +26,9 @@ public class GuiTent extends GuiContainer {
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.renderEngine.bindTexture(Textures.GUI_LOCATION + Textures.GUI_TENT);
-		int var5 = (this.width - this.xSize) / 2;
-		int var6 = (this.height - this.ySize) / 2;
-		this.drawTexturedModalRect(var5, var6, 0, 0, this.xSize, this.ySize);
+		int var5 = (this.width - 212) / 2;
+		int var6 = (this.height - 184) / 2;
+		this.drawTexturedModalRect(var5, var6, 0, 0, 212, 184);
 	}
 
 	protected void keyTyped(char par1, int par2) 

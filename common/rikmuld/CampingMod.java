@@ -84,26 +84,20 @@ public class CampingMod {
 	@PostInit
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		 PlayerHandler playerHandler = new PlayerHandler();
-         GameRegistry.registerPlayerTracker(playerHandler);
-         MinecraftForge.EVENT_BUS.register(playerHandler);
+		 proxy.registerPlayerHandlers();
          
 		 ModLogger.log(Level.INFO, ModInfo.MOD_NAME + " has loaded successfully.");
 	}
 	
-	/* 
-	 *
-	 * TODO: for next update (backpack Update) 1.0.1 --> 1.0.2
+	/*
+ 	 *	TODO: for next update (equipment update) 1.0.2
 	 * 
-	 * -start on the equipment guide book.
-	 * -finish the texture for the backpack model
-	 * 
-	 * TODO: for next update (equipment update) 1.0.2 --> 1.0.3
-	 * 
+	 * -finish the texture for the backpack model.
+	 * -texture for the camping armor
+	 * -Smart moving intergration backpack model (just config option to disable it) // disable camping player rendering
 	 * -finish the equipment guide book.
-	 * -make a special armor set (ex. the camping boots (get fast speed ed.))
 	 * 
-	 * TODO for next update (tent update) 1.0.3 --> 1.0.4
+	 * TODO for next update (tent update) 1.0.3 
 	 * 
 	 * -finifh the world guide book.
 	 * -make the tent also working with trapped chests and ender chests
@@ -111,15 +105,15 @@ public class CampingMod {
 	 * -fix the position were you sleep in the tents
 	 * -make the ghost blocks also half blocks so you are not standing very hight above the tent
 	 * 
-	 * TODO for next update (Campsite update) 1.0.4 --> 1.0.5
+	 * TODO for next update (Campsite update) 1.0.4
 	 * 
 	 * finish all the guide books and update them.
 	 * make a log were you can sit on
 	 * make a lantarn with gives light when equiped
 	 * make a supply box.
 	 * 
-	 * 
-	 * 	 * -make a camper AI for not run into campfires and stay with tents.
+	 * -Inventory tweeks mod intergration containers (maybe use the invtweeks api)
+	 * -make a camper AI for not run into campfires and stay with tents.
 	 * -add camping animals 
 	 */
 }

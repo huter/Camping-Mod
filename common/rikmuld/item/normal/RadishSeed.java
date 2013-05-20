@@ -9,16 +9,17 @@ import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
 import rikmuld.core.lib.Items;
 import rikmuld.core.register.ModAchievements;
+import rikmuld.core.register.ModBlocks;
 import rikmuld.item.CampingItem;
 
 public class RadishSeed extends CampingItem implements IPlantable
 {
 	    private int blockType;
 
-	    public RadishSeed(int par1, int par2, int par3)
+	    public RadishSeed(int par1)
 	    {
 	        super(par1);
-	        this.blockType = par2;
+	        this.blockType = ModBlocks.RadishCrop.blockID;
 	        setUnlocalizedName(Items.ITEM_RADISH_SEED_NAME);
 	        
 	    }

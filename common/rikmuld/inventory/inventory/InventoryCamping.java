@@ -9,6 +9,8 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import rikmuld.core.handlers.PlayerHandler;
+import rikmuld.core.proxys.CommonProxy;
 import rikmuld.inventory.slot.BackpackNoSlot;
 import rikmuld.inventory.slot.CampingSlot;
 
@@ -251,6 +253,7 @@ public class InventoryCamping extends InventoryBasic {
 			playerEntity.getEntityData().setCompoundTag("CampingInventory", new NBTTagCompound());
 		}
 		playerEntity.getEntityData().setCompoundTag("CampingInventory", theBack);
+		CommonProxy.playerHandler.inventotyCamp = theBack;
 	}
 
 	public void readFromNBT()
@@ -365,6 +368,7 @@ public class InventoryCamping extends InventoryBasic {
 				playerEntity.getEntityData().setCompoundTag("CampingCraftInventory", new NBTTagCompound());
 			}
 			playerEntity.getEntityData().setCompoundTag("CampingCraftInventory", theBack);
+			CommonProxy.playerHandler.InventotyCraft = theBack;
 		}
 	}
 	

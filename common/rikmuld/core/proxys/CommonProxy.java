@@ -16,6 +16,7 @@ import rikmuld.client.gui.screen.GuiGuideEquipment;
 import rikmuld.client.gui.screen.GuiGuideFood;
 import rikmuld.client.gui.screen.GuiGuideTent;
 import rikmuld.client.gui.screen.GuiGuideWorld;
+import rikmuld.core.handlers.PlayerHandler;
 import rikmuld.core.lib.GuiIds;
 import rikmuld.inventory.container.ContainerCampToolV2;
 import rikmuld.inventory.container.ContainerCampfireCheapCooker;
@@ -41,6 +42,7 @@ public class CommonProxy implements IGuiHandler {
     public void setKeyBinding(String name, int value) {}   
     public void registerTickHandler() {}
 	public void registerEntityRenderHandler() {}
+	public void registerPlayerHandlers() {}
   
     public static GuiGuideCampfire guideCamp;
     public static GuiGuideTent guideTent;
@@ -50,6 +52,7 @@ public class CommonProxy implements IGuiHandler {
 
     InventoryCampingBag CampingBagInv = null;
     public static InventoryCamping CampingInv = null;
+    public static PlayerHandler playerHandler = new PlayerHandler();
     
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) 

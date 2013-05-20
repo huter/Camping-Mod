@@ -8,6 +8,11 @@ import rikmuld.item.tool.ToolCampingV2;
 public class CamperToolOnlySlot extends Slot {
 	
 	public boolean noItemsValid = false;
+	public String[] validOtherMod = 
+	{
+		"item.stoneMinium", 
+		"item.stonePhilosophers"
+	};
 	
 	public CamperToolOnlySlot(IInventory inventory, int slotIndex, int xPos, int yPos) 
 	{
@@ -16,7 +21,13 @@ public class CamperToolOnlySlot extends Slot {
 
 	public boolean isItemValid(ItemStack is) 
 	{
-		if(!noItemsValid) return (is != null && is.getItem() instanceof ToolCampingV2) ? true : false;
-        else return false;
+		if(!noItemsValid)
+		{
+			for(String item : validOtherMod) 
+			{
+				if (is != null &&(is.getItem() instanceof ToolCampingV2 || is.getItem().getUnlocalizedName().equals(item))) return true;
+			}
+		}	
+        return false;
     }
 }

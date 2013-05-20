@@ -38,97 +38,24 @@ public class PlayerRenderingHandler extends RenderPlayer{
 		public static String[] help;
 		
 	    private ModelBiped modelBipedMain;
-	    private ModelBiped modelArmorChestplate;
-	    private ModelBiped modelArmor;
 	    
 	    public PlayerRenderingHandler()
 	    {
 	    	this.modelBipedMain = (ModelBiped)this.mainModel;
-	        this.modelArmorChestplate = new ModelBiped(1.0F);
-	        this.modelArmor = new ModelBiped(0.5F);
 	    }
 	    
 	    @Override
-	    protected int setArmorModel(EntityPlayer par1EntityPlayer, int par2, float par3)
-	    {   	
-			ItemStack itemstack = par1EntityPlayer.inventory.armorItemInSlot(3 - par2);
+	    protected void renderSpecials(EntityPlayer par1EntityPlayer, float par2)
+	    {	
+	    	ItemStack itemstack2 = null;
 			
-			ItemStack itemstack2 = null;
-		
-			itemstack2 = CommonProxy.CampingInv.getStackInSlot(0);
+			if(CommonProxy.CampingInv!=null) itemstack2 = CommonProxy.CampingInv.getStackInSlot(0);
 			
 			if(itemstack2!=null)
 			{
 				ClientProxy.backpackRenderer.renderItemOnBack(par1EntityPlayer, itemstack2);
 			}
-
-	        if (itemstack != null)
-	        {
-	            Item item = itemstack.getItem();
-
-	            if (item instanceof ItemArmor)
-	            {
-	                ItemArmor itemarmor = (ItemArmor)item;
-	                this.loadTexture(ForgeHooksClient.getArmorTexture(par1EntityPlayer, itemstack, "/armor/" + armorFilenamePrefix[itemarmor.renderIndex] + "_" + (par2 == 2 ? 2 : 1) + ".png", par2, 1));
-	                ModelBiped modelbiped = par2 == 2 ? this.modelArmor : this.modelArmorChestplate;
-	                modelbiped.bipedHead.showModel = par2 == 0;
-	                modelbiped.bipedHeadwear.showModel = par2 == 0;
-	                modelbiped.bipedBody.showModel = par2 == 1 || par2 == 2;
-	                modelbiped.bipedRightArm.showModel = par2 == 1;
-	                modelbiped.bipedLeftArm.showModel = par2 == 1;
-	                modelbiped.bipedRightLeg.showModel = par2 == 2 || par2 == 3;
-	                modelbiped.bipedLeftLeg.showModel = par2 == 2 || par2 == 3;
-	                modelbiped = ForgeHooksClient.getArmorModel(par1EntityPlayer, itemstack, par2, modelbiped);
-	                this.setRenderPassModel(modelbiped);
-
-	                if (modelbiped != null)
-	                {
-	                    modelbiped.onGround = this.mainModel.onGround;
-	                }
-
-	                if (modelbiped != null)
-	                {
-	                    modelbiped.isRiding = this.mainModel.isRiding;
-	                }
-
-	                if (modelbiped != null)
-	                {
-	                    modelbiped.isChild = this.mainModel.isChild;
-	                }
-
-	                float f1 = 1.0F;
-
-	                int j = itemarmor.getColor(itemstack);
-	                if (j != -1)
-	                {
-	                    float f2 = (float)(j >> 16 & 255) / 255.0F;
-	                    float f3 = (float)(j >> 8 & 255) / 255.0F;
-	                    float f4 = (float)(j & 255) / 255.0F;
-	                    GL11.glColor3f(f1 * f2, f1 * f3, f1 * f4);
-
-	                    if (itemstack.isItemEnchanted())
-	                    {
-	                        return 31;
-	                    }
-
-	                    return 16;
-	                }
-
-	                GL11.glColor3f(f1, f1, f1);
-
-	                if (itemstack.isItemEnchanted())
-	                {
-	                    return 15;
-	                }
-		            return 1;
-	            }
-	        }
-			return -1;
-	    }
-	    
-	    @Override
-	    protected void renderSpecials(EntityPlayer par1EntityPlayer, float par2)
-	    {
+			
 	    	if(!hasUsers)CloakHelper.getCloakUsers(this);
 	    	
 	    	String cloakFile = null;

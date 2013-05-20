@@ -3,13 +3,11 @@ package rikmuld.item;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
-import net.minecraftforge.common.IArmorTextureProvider;
 import rikmuld.CampingMod;
 import rikmuld.core.lib.ModInfo;
 
-public abstract class CampingItemArmor extends ItemArmor implements IArmorTextureProvider{
+public class CampingItemArmor extends ItemArmor {
 
 	private Icon[][] iconBuffer;
     private String[] metadata;
@@ -23,7 +21,7 @@ public abstract class CampingItemArmor extends ItemArmor implements IArmorTextur
 
 	public CampingItemArmor(int par1, EnumArmorMaterial material, int par2, int par3) 
 	{
-		super(par1, material, par3, par3);
+		super(par1, material, par2, par3);
 		this.setCreativeTab(CampingMod.customTab);
 	}
 
@@ -52,7 +50,4 @@ public abstract class CampingItemArmor extends ItemArmor implements IArmorTextur
 		}
     	return this.itemIcon;
     }
-
-	@Override
-	public abstract String getArmorTextureFile(ItemStack itemstack);
 }

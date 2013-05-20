@@ -21,7 +21,7 @@ public class ContainerTent extends Container {
 		{
 			for (int var4 = 0; var4 < 11; ++var4) 
 			{
-				this.addSlotToContainer(new Slot(par2TileEntityTent, x, -10 + var4 * 18, -2 + var3 * 18));
+				this.addSlotToContainer(new Slot(par2TileEntityTent, x, 17 + var4 * 18, 7 + var3 * 18));
 				x++;
 			}
 		}
@@ -30,13 +30,13 @@ public class ContainerTent extends Container {
 		{
 			for (int var4 = 0; var4 < 9; ++var4) 
 			{
-				this.addSlotToContainer(new Slot(par1InventoryPlayer, var4 + var3 * 9 + 9, 8 + var4 * 18, 93 + var3 * 18));
+				this.addSlotToContainer(new Slot(par1InventoryPlayer, var4 + var3 * 9 + 9, 35 + var4 * 18, 102 + var3 * 18));
 			}
 		}
 
 		for (var3 = 0; var3 < 9; ++var3) 
 		{
-			this.addSlotToContainer(new Slot(par1InventoryPlayer, var3, 8 + var3 * 18, 151));
+			this.addSlotToContainer(new Slot(par1InventoryPlayer, var3, 35 + var3 * 18, 160));
 		}
 	}
 
