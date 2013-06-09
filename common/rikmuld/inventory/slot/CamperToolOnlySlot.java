@@ -3,6 +3,7 @@ package rikmuld.inventory.slot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import rikmuld.core.proxys.CommonProxy;
 import rikmuld.item.tool.ToolCampingV2;
 
 public class CamperToolOnlySlot extends Slot {

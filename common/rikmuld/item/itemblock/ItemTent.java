@@ -4,12 +4,11 @@ import java.util.List;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import rikmuld.core.lib.Blocks;
 import rikmuld.core.lib.Config;
-import rikmuld.core.lib.Items;
 import rikmuld.item.CampingItemBlock;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTent extends CampingItemBlock {
 

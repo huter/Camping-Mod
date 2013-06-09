@@ -9,7 +9,6 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import rikmuld.core.handlers.PlayerHandler;
 import rikmuld.core.proxys.CommonProxy;
 import rikmuld.inventory.slot.BackpackNoSlot;
 import rikmuld.inventory.slot.CampingSlot;

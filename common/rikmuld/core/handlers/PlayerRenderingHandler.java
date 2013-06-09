@@ -2,6 +2,9 @@ package rikmuld.core.handlers;
 
 import static net.minecraftforge.client.IItemRenderer.ItemRenderType.EQUIPPED;
 import static net.minecraftforge.client.IItemRenderer.ItemRendererHelper.BLOCK_3D;
+
+import java.util.logging.Level;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -11,37 +14,36 @@ import net.minecraft.client.renderer.tileentity.TileEntitySkullRenderer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.MathHelper;
-import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 import org.lwjgl.opengl.GL11;
 
 import rikmuld.core.helper.CloakHelper;
+import rikmuld.core.lib.Config;
 import rikmuld.core.lib.Textures;
 import rikmuld.core.proxys.ClientProxy;
 import rikmuld.core.proxys.CommonProxy;
-import rikmuld.item.normal.CampingBag;
+import rikmuld.core.register.ModBlocks;
+import rikmuld.core.register.ModLogger;
 
 public class PlayerRenderingHandler extends RenderPlayer{
 		
+		private ModelBiped modelBipedMain;
+
 		public static boolean hasUsers = false;
 	
 		public static String[] developers;
 		public static String[] codinghelp;
 		public static String[] help;
-		
-	    private ModelBiped modelBipedMain;
 	    
 	    public PlayerRenderingHandler()
 	    {
-	    	this.modelBipedMain = (ModelBiped)this.mainModel;
+	    	 super();
+	    	 this.modelBipedMain = (ModelBiped)this.mainModel;
 	    }
 	    
 	    @Override
@@ -56,7 +58,7 @@ public class PlayerRenderingHandler extends RenderPlayer{
 				ClientProxy.backpackRenderer.renderItemOnBack(par1EntityPlayer, itemstack2);
 			}
 			
-	    	if(!hasUsers)CloakHelper.getCloakUsers(this);
+	    	if(!hasUsers&&Config.GENERAL_XML_INTERACTION)CloakHelper.getCloakUsers(this);
 	    	
 	    	String cloakFile = null;
 	    	

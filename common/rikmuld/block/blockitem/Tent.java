@@ -125,8 +125,8 @@ public class Tent extends CampingBlockItem{
 		par1world.scheduleBlockUpdate(par2, par3, par4, this.blockID, this.tickRate());
 		int var6 = par1world.getBlockMetadata(par2, par3, par4);
 
-		if(var6==0){
-			
+		if(var6==0)
+		{	
 			if (currentitem != null)
 			{
 				 if (currentitem.itemID == ModItems.TentParts.itemID && currentitem.getItemDamage() == 2)
@@ -428,28 +428,27 @@ public class Tent extends CampingBlockItem{
 				{
 					setBedOccupied(par1world, par2, par3, par4, player,true);
 					return true;
-					} 
+				} 
 				
-					else 
+				else 
+				{
+					if (var20 == EnumStatus.NOT_POSSIBLE_NOW) 
 					{
-						if (var20 == EnumStatus.NOT_POSSIBLE_NOW) 
-						{
-							player.addChatMessage("tile.bed.noSleep");
-						} 
-						
-						else if (var20 == EnumStatus.NOT_SAFE) 
-						{
-							player.addChatMessage("tile.bed.notSafe");
-						}
-						return true;
+						player.addChatMessage("tile.bed.noSleep");
+					} 
+					
+					else if (var20 == EnumStatus.NOT_SAFE) 
+					{
+						player.addChatMessage("tile.bed.notSafe");
 					}
+					return true;
+				}
 			}			   
 		}
 		return true;
 	 }
-	
-	
-	 public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4)
+
+	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4)
 	 {	 
 			if (par1World.getBlockId(par2, par3, par4-1)!=0 && par1World.getBlockId(par2, par3, par4-1)!=31 && par1World.getBlockId(par2, par3, par4-1)!=78
 				||par1World.getBlockId(par2, par3, par4+1)!=0 && par1World.getBlockId(par2, par3, par4+1)!=31 && par1World.getBlockId(par2, par3, par4+1)!=78

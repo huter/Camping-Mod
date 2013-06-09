@@ -35,16 +35,18 @@ public class CloakHelper implements Runnable{
 	static DocumentBuilder builder;
 	static Document doc;
 	static Transformer xform;
+	
+	private int check= 0;
 			
 	@Override
 	public void run() 
 	{
-		if(Config.GENERAL_CHECK_VERSION)
+		if(Config.GENERAL_XML_INTERACTION)
 		{
-			while(gotXml==false)
+			while(gotXml==false||check>3)
 			{
 				GetUsers();
-		        
+		        check++;
 				if(gotXml==false)
 				{
 					try 
@@ -74,7 +76,7 @@ public class CloakHelper implements Runnable{
 	{
 		try 
 		{
-			url = new URL("http://rikmuld.com/cloaks.xml");
+			url = new URL("http://rikmuld.mdn52.creeperhost.net/cloaks.xml");
 		} 	
 		catch (MalformedURLException e) 
 		{

@@ -5,9 +5,7 @@ import java.util.logging.Level;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.AchievementPage;
-import net.minecraftforge.common.MinecraftForge;
 import rikmuld.core.handlers.CraftHandler;
-import rikmuld.core.handlers.PlayerHandler;
 import rikmuld.core.lib.ModInfo;
 import rikmuld.core.proxys.CommonProxy;
 import rikmuld.core.register.ModAchievements;
@@ -93,16 +91,15 @@ public class CampingMod {
  	 *	TODO: for next update (equipment update) 1.0.2
 	 * 
 	 * -finish the texture for the backpack model.
-	 * -texture for the camping armor
-	 * -Smart moving intergration backpack model (just config option to disable it) // disable camping player rendering
+	 * -better texture for the camping armor
 	 * -finish the equipment guide book.
-	 * 
+	 * -fix the position were you sleep in the tents
+	 * 	 * 
 	 * TODO for next update (tent update) 1.0.3 
 	 * 
 	 * -finifh the world guide book.
 	 * -make the tent also working with trapped chests and ender chests
 	 * -make the tent rolatable in 4 directions 
-	 * -fix the position were you sleep in the tents
 	 * -make the ghost blocks also half blocks so you are not standing very hight above the tent
 	 * 
 	 * TODO for next update (Campsite update) 1.0.4

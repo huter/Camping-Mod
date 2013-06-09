@@ -5,6 +5,8 @@ import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.EnumHelper;
 import rikmuld.core.lib.Items;
+import rikmuld.core.lib.Textures;
+import rikmuld.core.register.ModItems;
 import rikmuld.item.CampingItemArmor;
 
 public class ArmorCamping extends CampingItemArmor{
@@ -22,7 +24,13 @@ public class ArmorCamping extends CampingItemArmor{
 	@Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer)
     {
-		// TODO: make it have textures
-		return null;
+		if(stack.itemID==ModItems.CampingArmorLeg.itemID)
+		{
+			return Textures.MODEL_LOCATION + Textures.MODEL_ARMOR_2;
+		}
+		else
+		{
+			return Textures.MODEL_LOCATION + Textures.MODEL_ARMOR_1;
+		}
     }
 }

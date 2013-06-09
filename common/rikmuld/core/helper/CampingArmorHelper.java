@@ -4,7 +4,6 @@ import java.util.Random;
 
 import net.minecraft.entity.player.EntityPlayer;
 import rikmuld.core.register.ModEvents;
-import rikmuld.core.register.ModLogger;
 
 public class CampingArmorHelper {
 

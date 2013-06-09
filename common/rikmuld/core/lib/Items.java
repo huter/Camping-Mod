@@ -16,11 +16,7 @@ public class Items {
 	public static final String ITEM_TOOL_BACK_LARGE_NAME = "campingBagLarge";
 	public static final String ITEM_TOOL_CAMP_NAME = "toolCamping";
 	public static final String ITEM_TOOL_CAMP2_NAME = "toolCampingV2";
-	public static final String ITEM_BOOK_GUIDE_CAMP_NAME = "guideBookCampfires";
-	public static final String ITEM_BOOK_GUIDE_TENT_NAME = "guideBookTent";
-	public static final String ITEM_BOOK_GUIDE_EQUIP_NAME = "guideBookEquipment";
-	public static final String ITEM_BOOK_GUIDE_FOOD_NAME = "guideBookFood";
-	public static final String ITEM_BOOK_GUIDE_WORLD_NAME = "guideBookWorld";
+	public static final String ITEM_BOOK_GUIDE_NAME = "guideBook";
 	public static final String ITEM_ARMOR_BOOT_NAME = "campingArmorBoot";
 	public static final String ITEM_ARMOR_LEG_NAME = "campingArmorLeg";
 	public static final String ITEM_ARMOR_CHEST_NAME = "campingArmorChest";
@@ -29,7 +25,6 @@ public class Items {
 	public static final String ITEM_META_MARSH_NAME = "marshmallow";
 	public static final String ITEM_META_TOOL_BACK_NAME = "campingBag";
 	public static final String ITEM_META_TENT_PARTS_NAME = "tentPart";
-	public static final String ITEM_META_BOOK_GUIDE_NAME = "guideBook";
 	public static final String ITEM_META_FOOD_NAME = "campingFood";
 	
 	public static final String ITEM_MARSH_NORMAL_GAME_NAME = "Marshmallows";
@@ -45,11 +40,7 @@ public class Items {
 	public static final String ITEM_TOOL_BACK_LARGE_GAME_NAME = Colors.COLOR_ORANGE + "Large Camping Bag";
 	public static final String ITEM_TOOL_CAMP_GAME_NAME = "Camper's Tool";
 	public static final String ITEM_TOOL_CAMP2_GAME_NAME = Colors.COLOR_AQUA_LIGHT + "Camper's Tool V2";
-	public static final String ITEM_BOOK_GUIDE_CAMP_GAME_NAME = "Camping Guide: Campfires";
-	public static final String ITEM_BOOK_GUIDE_TENT_GAME_NAME = "Camping Guide: Tents";
-	public static final String ITEM_BOOK_GUIDE_EQUIP_GAME_NAME = "Camping Guide: Equipment";
-	public static final String ITEM_BOOK_GUIDE_FOOD_GAME_NAME = "Camping Guide: Food";
-	public static final String ITEM_BOOK_GUIDE_WORLD_GAME_NAME = "Camping Guide: The World";
+	public static final String ITEM_BOOK_GUIDE_GAME_NAME = "Camping Guide";
 	public static final String ITEM_ARMOR_BOOT_GAME_NAME = "Camper's Boots";
 	public static final String ITEM_ARMOR_LEG_GAME_NAME = "Camper's Leggings";
 	public static final String ITEM_ARMOR_CHEST_GAME_NAME = "Camper's Chestplate";
@@ -58,7 +49,6 @@ public class Items {
 	public static final String ITEM_META_MARSH_GAME_NAME = "Marshmallows";
 	public static final String ITEM_META_TOOL_BACK_GAME_NAME = "Camping Bags";
 	public static final String ITEM_META_TENT_PARTS_GAME_NAME = "Tent Parts";
-	public static final String ITEM_META_BOOK_GUIDE_GAME_NAME = "Camping Guides";
 	public static final String ITEM_META_FOOD_GAME_NAME = "Camping Food";
 	
 	public static final int ITEM_TENT_PARTS_ID_DEV = 4100;

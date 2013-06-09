@@ -11,8 +11,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.src.ModLoader;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -41,13 +39,15 @@ public class VersionHelper implements Runnable{
 	static Transformer xform;
 	static EntityPlayer player;
 	
+	private int check = 0;
+	
 	static boolean checked = false;
 
 	public static void GetXmlFile()
 	{
 		try 
 		{
-			url = new URL("http://rikmuld.com/version.xml");
+			url = new URL("http://rikmuld.mdn52.creeperhost.net/version.xml");
 		} 	
 		catch (MalformedURLException e) 
 		{
@@ -120,12 +120,12 @@ public class VersionHelper implements Runnable{
 	@Override
 	public void run() 
 	{
-		if(Config.GENERAL_CHECK_VERSION)
+		if(Config.GENERAL_XML_INTERACTION)
 		{
-			while(checked==false)
+			while(checked==false||check>3)
 			{
 				CheckVersion();
-				
+				check++;
 				if(checked==false)
 				{
 					try 

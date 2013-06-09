@@ -6,6 +6,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import org.lwjgl.opengl.GL11;
 
 import rikmuld.core.lib.Textures;
+import rikmuld.core.proxys.CommonProxy;
 import rikmuld.inventory.container.ContainerCamping;
 import rikmuld.inventory.inventory.InventoryCamping;
 

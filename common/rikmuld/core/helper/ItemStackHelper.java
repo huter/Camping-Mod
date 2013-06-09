@@ -23,9 +23,4 @@ public class ItemStackHelper {
 		ItemStack stack = new ItemStack(input.itemID, 1, OreDictionary.WILDCARD_VALUE);
 		return stack;
 	}
-	
-	public static Object[] mergeObjects(Object... objects)
-	{
-		return objects;
-	}
 }

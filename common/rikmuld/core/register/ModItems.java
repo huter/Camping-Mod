@@ -55,6 +55,7 @@ public class ModItems {
 		LanguageRegistry.addName(CampingArmorChest, Items.ITEM_ARMOR_CHEST_GAME_NAME);
 		LanguageRegistry.addName(CampingArmorLeg, Items.ITEM_ARMOR_LEG_GAME_NAME);
 		LanguageRegistry.addName(CampingArmorBoot, Items.ITEM_ARMOR_BOOT_GAME_NAME);
+		LanguageRegistry.addName(guideBook, Items.ITEM_BOOK_GUIDE_GAME_NAME);
 		LanguageRegistry.addName(new ItemStack(TentParts, 1, 0), Items.ITEM_TENT_PARTS_PEGS_GAME_NAME);
 		LanguageRegistry.addName(new ItemStack(TentParts, 1, 1), Items.ITEM_TENT_PARTS_CANVAS_GAME_NAME);	
 		LanguageRegistry.addName(new ItemStack(TentParts, 1, 2), Items.ITEM_TENT_PARTS_SLEEP_GAME_NAME);	
@@ -65,11 +66,6 @@ public class ModItems {
 		LanguageRegistry.addName(new ItemStack(CampingBag, 1, 0), Items.ITEM_TOOL_BACK_SMALL_GAME_NAME);
 		LanguageRegistry.addName(new ItemStack(CampingBag, 1, 1), Items.ITEM_TOOL_BACK_NORMAL_GAME_NAME);	
 		LanguageRegistry.addName(new ItemStack(CampingBag, 1, 2), Items.ITEM_TOOL_BACK_LARGE_GAME_NAME);	
-		LanguageRegistry.addName(new ItemStack(guideBook, 1, 0), Items.ITEM_BOOK_GUIDE_CAMP_GAME_NAME);
-		LanguageRegistry.addName(new ItemStack(guideBook, 1, 1), Items.ITEM_BOOK_GUIDE_TENT_GAME_NAME);	
-		LanguageRegistry.addName(new ItemStack(guideBook, 1, 2), Items.ITEM_BOOK_GUIDE_EQUIP_GAME_NAME);	
-		LanguageRegistry.addName(new ItemStack(guideBook, 1, 3), Items.ITEM_BOOK_GUIDE_FOOD_GAME_NAME);
-		LanguageRegistry.addName(new ItemStack(guideBook, 1, 4), Items.ITEM_BOOK_GUIDE_WORLD_GAME_NAME);
 		
 	    MinecraftForge.addGrassSeed(new ItemStack(radishSeed), Config.PLANT_RADISH_DROP_RATE);
 	}

@@ -25,8 +25,10 @@ public class ClientProxy extends CommonProxy {
 
 	public static ItemCampingBagRenderer backpackRenderer;
 		
+	@Override
 	public void initRenderingAndTextures() {}
 	
+	@Override
 	public void registerRenderers () 
 	{
 		backpackRenderer = new ItemCampingBagRenderer();

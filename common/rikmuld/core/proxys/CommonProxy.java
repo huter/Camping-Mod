@@ -11,11 +11,7 @@ import rikmuld.client.gui.container.GuiCampfireMultiCooker;
 import rikmuld.client.gui.container.GuiCamping;
 import rikmuld.client.gui.container.GuiCampingBag;
 import rikmuld.client.gui.container.GuiTent;
-import rikmuld.client.gui.screen.GuiGuideCampfire;
-import rikmuld.client.gui.screen.GuiGuideEquipment;
-import rikmuld.client.gui.screen.GuiGuideFood;
-import rikmuld.client.gui.screen.GuiGuideTent;
-import rikmuld.client.gui.screen.GuiGuideWorld;
+import rikmuld.client.gui.screen.GuiGuide;
 import rikmuld.core.handlers.PlayerHandler;
 import rikmuld.core.lib.GuiIds;
 import rikmuld.inventory.container.ContainerCampToolV2;
@@ -44,12 +40,8 @@ public class CommonProxy implements IGuiHandler {
 	public void registerEntityRenderHandler() {}
 	public void registerPlayerHandlers() {}
   
-    public static GuiGuideCampfire guideCamp;
-    public static GuiGuideTent guideTent;
-    public static GuiGuideEquipment guideEquipment;
-    public static GuiGuideFood guideFood;
-    public static GuiGuideWorld guideWorld;
-
+    public static GuiGuide guide;
+    
     InventoryCampingBag CampingBagInv = null;
     public static InventoryCamping CampingInv = null;
     public static PlayerHandler playerHandler = new PlayerHandler();
@@ -115,8 +107,7 @@ public class CommonProxy implements IGuiHandler {
 		}
 		if (ID == GuiIds.GUICamping) 
 		{
-			CampingInv = new InventoryCamping(player);
-            return new GuiCamping(player.inventory, CampingInv);
+            return new GuiCamping(player.inventory, new InventoryCamping(player));
 	    }
 		if (ID == GuiIds.GUICampingBag) 
 		{
@@ -124,30 +115,10 @@ public class CommonProxy implements IGuiHandler {
 			CampingBagInv = new InventoryCampingBag(player, backpack);
             return new GuiCampingBag(player.inventory, CampingBagInv, backpack);
 	    }
-		if (ID == GuiIds.GUIGuideCampfire) 
+		if (ID == GuiIds.GUIGuide) 
 		{
-            guideCamp = new GuiGuideCampfire();
-            return guideCamp;
-	    }
-		if (ID == GuiIds.GUIGuideTent) 
-		{
-            guideTent = new GuiGuideTent();
-            return guideTent;
-	    }
-		if (ID == GuiIds.GUIGuideEquipment) 
-		{
-            guideEquipment = new GuiGuideEquipment();
-            return guideEquipment;
-	    }
-		if (ID == GuiIds.GUIGuideFood) 
-		{
-            guideFood = new GuiGuideFood();
-            return guideFood;
-	    }
-		if (ID == GuiIds.GUIGuideWorld) 
-		{
-            guideWorld = new GuiGuideWorld();
-            return guideWorld;
+            guide = new GuiGuide();
+            return guide;
 	    }
 		if (ID == GuiIds.GUICampTool) 
 		{

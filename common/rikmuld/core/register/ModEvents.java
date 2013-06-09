@@ -10,7 +10,6 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import rikmuld.block.plant.RadishCrop;
-import rikmuld.core.helper.CampingArmorHelper;
 
 public class ModEvents {
 	

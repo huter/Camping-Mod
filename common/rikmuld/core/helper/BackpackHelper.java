@@ -1,9 +1,9 @@
 package rikmuld.core.helper;
 
-import rikmuld.CampingMod;
-import rikmuld.core.lib.GuiIds;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+import rikmuld.CampingMod;
+import rikmuld.core.lib.GuiIds;
 
 public class BackpackHelper {
 

@@ -4,17 +4,12 @@ import java.util.List;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.common.EnumHelper;
-import net.minecraftforge.common.IArmorTextureProvider;
 import rikmuld.CampingMod;
 import rikmuld.core.lib.GuiIds;
 import rikmuld.core.lib.Items;
-import rikmuld.core.lib.Textures;
 import rikmuld.item.CampingItem;
-import rikmuld.item.CampingItemArmor;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

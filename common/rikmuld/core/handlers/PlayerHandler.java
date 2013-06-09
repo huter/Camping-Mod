@@ -4,6 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import rikmuld.core.helper.VersionHelper;
+import rikmuld.core.lib.Config;
 import rikmuld.core.proxys.CommonProxy;
 import rikmuld.core.register.ModItems;
 import rikmuld.inventory.inventory.InventoryCamping;
@@ -26,12 +27,9 @@ public class PlayerHandler implements IPlayerTracker{
 		
 		NBTTagCompound playerNBT = player.getEntityData();
 		
-		if(!playerNBT.getBoolean("NotFirstLoggedin"))
+		if(!playerNBT.getBoolean("NotFirstLoggedin")&&Config.GENERAL_GET_GUIDES)
 		{
-			for(int damage = 0; damage<5; damage++)
-			{
-				player.inventory.addItemStackToInventory(new ItemStack(ModItems.guideBook, 1, damage));
-			}
+			player.inventory.addItemStackToInventory(new ItemStack(ModItems.guideBook));
 			playerNBT.setBoolean("NotFirstLoggedin", true);
 		}
 	}
@@ -67,5 +65,4 @@ public class PlayerHandler implements IPlayerTracker{
 		CommonProxy.CampingInv = new InventoryCamping(player);
 		player.getEntityData().setBoolean("NotFirstLoggedin", true);
 	}
-
 }

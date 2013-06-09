@@ -1,17 +1,14 @@
 package rikmuld.world.structures;
 
 import java.util.Random;
-import java.util.logging.Level;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary;
 import rikmuld.core.lib.Config;
 import rikmuld.core.register.ModBlocks;
-import rikmuld.core.register.ModLogger;
 import rikmuld.entity.Camper;
 
 public class CampsiteSimple extends WorldGenerator {

@@ -1,5 +1,7 @@
 package rikmuld.item.normal;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import net.minecraft.creativetab.CreativeTabs;

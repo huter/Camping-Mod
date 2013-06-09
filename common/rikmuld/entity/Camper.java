@@ -368,10 +368,6 @@ public class Camper extends EntityAnimal implements  IMerchant, INpc{
                 	metadata = MathHelper.getRandomIntegerInRange(par2Random, 0, 2);
                 	var4+=(metadata*MathHelper.getRandomIntegerInRange(par2Random, 2, 4));
                 }
-                if(par1==ModItems.guideBook.itemID)
-                {	
-                	metadata = MathHelper.getRandomIntegerInRange(par2Random, 0, 4);
-                }
                 
                 var5 = new ItemStack(Item.emerald.itemID, var4, 0);
                 var6 = new ItemStack(par1, 1, metadata);

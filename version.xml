@@ -3,6 +3,14 @@
 <Versions>
 	<Version>
 	
+		<VersionNumber>1.0.2</VersionNumber>
+		<VersionDate>8-5-2013</VersionDate>
+		<NewInVersion>Bugfixes, Backpack Model</NewInVersion>
+		
+	</Version>
+	
+	<Version>
+	
 		<VersionNumber>1.0.1d</VersionNumber>
 		<VersionDate>8-5-2013</VersionDate>
 		<NewInVersion>Bugfixes, Backpack Model</NewInVersion>

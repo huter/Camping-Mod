@@ -28,13 +28,13 @@ public class TickHandler implements ITickHandler{
 		if(type.equals(EnumSet.of(TickType.PLAYER)))	
 		{
 			EntityPlayer player = (EntityPlayer)tickData[0];
-			
+
 			if(player.getCurrentArmor(3)!=null && player.getCurrentArmor(3).getItem() == ModItems.CampingArmorHelm) CampingArmorHelper.applyHelmEffects(player);
 			if(player.getCurrentArmor(2)!=null && player.getCurrentArmor(2).getItem() == ModItems.CampingArmorChest) CampingArmorHelper.applyChestEffects(player);
 			if(player.getCurrentArmor(1)!=null && player.getCurrentArmor(1).getItem() == ModItems.CampingArmorLeg) CampingArmorHelper.applyLegEffects(player);
 			else
 			{
-				player.stepHeight = 0; 
+				player.stepHeight = 0.5F; 
 			}
 			if(player.getCurrentArmor(0)!=null && player.getCurrentArmor(0).getItem() == ModItems.CampingArmorBoot) CampingArmorHelper.applyBootEffects(player);
 			else
@@ -56,11 +56,7 @@ public class TickHandler implements ITickHandler{
 					{
 						if(GuideBook.isGuiOpen)
 						{
-							if(CommonProxy.guideCamp!=null && currentItem.getItemDamage()==0)CommonProxy.guideCamp.updateTick();
-							if(CommonProxy.guideTent!=null && currentItem.getItemDamage()==1)CommonProxy.guideTent.updateTick();
-							if(CommonProxy.guideEquipment!=null && currentItem.getItemDamage()==2)CommonProxy.guideEquipment.updateTick();
-							if(CommonProxy.guideFood!=null && currentItem.getItemDamage()==3)CommonProxy.guideFood.updateTick();
-							if(CommonProxy.guideWorld!=null && currentItem.getItemDamage()==4)CommonProxy.guideWorld.updateTick();
+							if(CommonProxy.guide!=null)CommonProxy.guide.updateTick();
 						}
 					}	
 				}

@@ -10,6 +10,8 @@ import cpw.mods.fml.common.IWorldGenerator;
 
 public class WorldGen implements IWorldGenerator {
 	
+	Random random = new Random();
+	
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
 		switch (world.provider.dimensionId)
@@ -23,11 +25,14 @@ public class WorldGen implements IWorldGenerator {
 	{ 
 		if (Config.WORLD_GEN_ENABLED)
 		{
-			int Xcoord1 = blockX + random.nextInt(Config.WORLD_GEN_SMALL_CAMP_SPAWN_RARENESS);
-			int Ycoord1 = random.nextInt(80);
-			int Zcoord1 = blockZ + random.nextInt(Config.WORLD_GEN_SMALL_CAMP_SPAWN_RARENESS);
-			
-			(new CampsiteSimple()).generate(world, random, Xcoord1, Ycoord1, Zcoord1);
+			if(random.nextInt(Config.WORLD_GEN_SMALL_CAMP_SPAWN_RARENESS)<2)
+			{
+				int Xcoord1 = blockX + random.nextInt(16);
+				int Ycoord1 = random.nextInt(80);
+				int Zcoord1 = blockZ + random.nextInt(16);
+				
+				(new CampsiteSimple()).generate(world, random, Xcoord1, Ycoord1, Zcoord1);
+			}
 		}
 	}
  

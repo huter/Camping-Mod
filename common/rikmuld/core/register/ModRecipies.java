@@ -61,11 +61,6 @@ public class ModRecipies {
 			{
 				RecipeHelper.addShapelessRecipe(tentParts[0], 4, ItemStackHelper.getWildValue(tool[0]), iron);
 				RecipeHelper.addShapelessRecipe(tentParts[1], 10, ItemStackHelper.getWildValue(tool[0]), string, string, string, string, string, string);
-
-				RecipeHelper.addRecipe(campBoot, 1, "010", "232", "020", '0', feather, '1', ItemStackHelper.getWildValue(tool[0]), '2', leather, '3', leatherBoot);
-				RecipeHelper.addRecipe(campLeg, 1, "010", "232", "020", '0', feather, '1', ItemStackHelper.getWildValue(tool[0]), '2', leather, '3', leatherLeg);
-				RecipeHelper.addRecipe(campChest, 1, "010", "232", "020", '0', feather, '1', ItemStackHelper.getWildValue(tool[0]), '2', leather, '3', leatherChest);
-				RecipeHelper.addRecipe(campHelm, 1, "010", "232", "020", '0', feather, '1', ItemStackHelper.getWildValue(tool[0]), '2', leather, '3', leatherHelm);
 			}
 		}
 		else
@@ -77,7 +72,15 @@ public class ModRecipies {
 				RecipeHelper.addShapelessRecipe(tentParts[1], 10, ItemStackHelper.getWildValue(tool[0]), leather, leather, leather, leather, leather, leather);
 			}
 		}
-
+				
+		for(ItemStack[] tool : ToolHelper.toolStacks)
+		{
+			RecipeHelper.addRecipe(campBoot, 1, "010", "232", "020", '0', feather, '1', ItemStackHelper.getWildValue(tool[0]), '2', leather, '3', leatherBoot);
+			RecipeHelper.addRecipe(campLeg, 1, "010", "232", "020", '0', feather, '1', ItemStackHelper.getWildValue(tool[0]), '2', leather, '3', leatherLeg);
+			RecipeHelper.addRecipe(campChest, 1, "010", "232", "020", '0', feather, '1', ItemStackHelper.getWildValue(tool[0]), '2', leather, '3', leatherChest);
+			RecipeHelper.addRecipe(campHelm, 1, "010", "232", "020", '0', feather, '1', ItemStackHelper.getWildValue(tool[0]), '2', leather, '3', leatherHelm);
+		}
+		
 		RecipeHelper.addRecipe(tent, 1, "000", "0 0", "1 1", '0', tentParts[1], '1', tentParts[0]);
 		RecipeHelper.addRecipe(tentParts[2], 1, "000", '0', ItemStackHelper.getWildValue(wool[0]));
 		RecipeHelper.addRecipe(toolCamp[0], 1,  "010", "010", "010", '0', dye[1], '1', iron);

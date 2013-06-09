@@ -1,11 +1,11 @@
 package rikmuld.inventory.inventory;
 
-import rikmuld.core.register.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import rikmuld.core.register.ModItems;
 
 public class InventoryCampingBag extends InventoryBasic {
 

@@ -47,7 +47,7 @@ public class Campfire extends CampingBlockItem{
 		setHardness(3.0F);
 		setLightValue(1.0F);
 		setStepSound(soundWoodFootstep);
-		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.15F, 1.0F);
+		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.14F, 1.0F);
 	}
 
 	public final boolean canPlaceBlockOnSide(World par1World, int par2, int par3, int par4, int par5)
