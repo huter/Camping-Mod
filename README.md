@@ -9,7 +9,7 @@ Here are links to official posts/websites (newest public version 1.0.1 for minec
  
 [official minecraft forum post]  (http://www.minecraftforum.net/topic/1566230-147rikmulds-camping-mods100-pre2ssplansmp-camping-bags-and-radish/) 
  
-[official website] (rikmuld.com)  - Contains the downloads. 
+[official website] (http://rikmuld.com)  - Contains the downloads. 
  
 ------------------------------------------------------------------------------------
  
