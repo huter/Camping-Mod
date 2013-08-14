@@ -1,7 +1,9 @@
 The-Camping-mod
 ===============
  
-Welcome to the camping mod universal source
+Welcome to the camping mod universal source!
+
+------------------------------------------------------------------------------------
 
 Here are links to official posts/websites:
  
